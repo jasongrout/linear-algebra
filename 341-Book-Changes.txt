@@ -1,0 +1,12 @@
+In the applications unit:
+	Change the order to be 
+		Derivatives
+		Vector fields (they are derivatives)
+		Special Kinds of vector fields - represented by matrices
+		The second derivative test (they can tell me why flow outwards means positive eigenvalues, means concave up).
+		Then move Markov Processes
+		Then hit Kirchoff's laws, fitting data points, and regression
+		End with Vector space vocabulary and why regression works.
+		
+I think this method will help students see the beauty and power of vectors much more.  It will help economists see why they need vector fields.  It will show how the second derivative test is used and why it is used.  If students had taylor series, I could even show them why it works (or include it inside an appendix).
+

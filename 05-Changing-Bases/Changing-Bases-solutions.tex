@@ -1,0 +1,159 @@
+
+\section{Solutions}
+{\small
+\begin{multicols}{2}
+
+Use the links below to download handwritten solutions to the relevant problems in Schaum's. I have provided these solutions to illustrate how the matrix inverse provides the key tool to all the problems in the unit.  Schaum's shows how these problems can be solved without an inverse. The solutions below emphasize the use of the inverse.
+\begin{itemize}
+\item \href{http://ilearn.byui.edu/bbcswebdav/institution/Physical\_Sci\_Eng/Mathematics/Personal\%20Folders/WoodruffB/341/5-Chp6-Solutions.pdf}{Chapter 6 Solutions}
+\item \href{http://ilearn.byui.edu/bbcswebdav/institution/Physical\_Sci\_Eng/Mathematics/Personal\%20Folders/WoodruffB/341/5-Chp9-Solutions.pdf}{Chapter 9 Solutions}
+\item \href{http://ilearn.byui.edu/bbcswebdav/institution/Physical\_Sci\_Eng/Mathematics/Personal\%20Folders/WoodruffB/341/5-Chp11-Solutions.pdf}{Chapter 11 Solutions}
+\item \href{http://ilearn.byui.edu/bbcswebdav/institution/Physical\_Sci\_Eng/Mathematics/Personal\%20Folders/WoodruffB/341/5-All-Solutions.pdf}{All Solutions}
+
+\end{itemize}
+
+As time permits, I will add more solutions to the problems from this book. 
+
+
+
+Please use Sage to check all your work.  As time permits, I will add in solutions to the problems I have done.
+
+\begin{enumerate}
+
+\item \textbf{Key Subspaces:} All 3 proofs are given in example \ref{verification of key subspaces}.
+
+\item  \textbf{General Position:} Once you have choses $B$ and $B'$, you know you are correct if $B'^{-1} A B$ has the identity matrix in the upper left corner, with possible extra rows or columns of zeros at the bottom or right. See problem 4 for a step-by-step way to do each of these. 
+
+%\begin{enumerate}
+%
+%\item %$T(x,y,z)=(x+2y-z,y+z)$ 
+%$A = \bm{1&2&-1\\0&1&1}$, 
+%$S=\{\}$, 
+%$S'=\{\}$
+%
+%\item $T(x,y,z)=(x+2y-z,y+z,x+3y)$
+%$A = \bm{1&2&-1\\0&1&1}$, 
+%$S=\{\}$, 
+%$S'=\{\}$
+%
+%\item $T(x,y,z)=(x+2y-z,2x+4y-2z)$
+%$A = \bm{1&2&-1\\0&1&1}$, 
+%$S=\{\}$, 
+%$S'=\{\}$
+%
+%\item $T(x,y)=(x+2y,y,3x-y)$
+%$A = \bm{1&2&-1\\0&1&1}$, 
+%$S=\{\}$, 
+%$S'=\{\}$
+%
+%\item $T(x,y)=(x+2y,2x+4y,3x+6y)$
+%$A = \bm{1&2&-1\\0&1&1}$, 
+%$S=\{\}$, 
+%$S'=\{\}$
+%
+%\end{enumerate}
+
+
+\item 
+\begin{enumerate}
+	\item $[T]_E = \bm{ 1 & 4 \\2 & 3}$ is the standard matrix representation or $T$ (relative to the standard bases).
+	\item $[\vec v]_S = (7,7/2)$ is the coordinates of $\vec v$ relative to $S$. 
+	\item $T(\vec v) = (28,21)$ is the image of $\vec v$.
+	\item $[T(\vec v)]_{S'} = ( 7,7 ) $ is the coordinates  of $T(\vec v)$ relative to $S'$.
+	\item $[T]_{S,S'}=\bm{ 2 & -2 \\
+ 1 & 0
+}$ is the matrix representation of $T$ relative to $S$ and $S'$.
+	\item $[T]_{S',S}=\bm{ 8 & 9 \\
+ -\frac{1}{2} & 1
+}$ is  the matrix representation of $T$  relative to $S'$ and $S$.
+	\item $[T]_S=\bm{ 5 & -4 \\
+ 0 & -1
+}$ is the matrix representation of $T$  relative to $S$.
+	\item $[T]_{S'}=\bm{ 3 & 4 \\
+ 2 & 1
+}$ is the matrix representation of $T$  relative to $S'$.
+	\item Interpret $(a,b)_S = [(x,y)]_S$ as ``the vector $(a,b)$ is the coordinates of $(x,y)$ relative to $S$''.  To find the coordinates of $T(x,y)$ relative to $S'$, we compute $[T(x,y)]_{S'} = [T]_{S,S'}[(x,y)]_S = \bm{ 2 & -2 \\
+ 1 & 0
+}\bm{ a \\
+ b
+} = (2a-2b,a)_{S'}$.
+	\item Interpret $(a,b)_S = [(x,y)]_S$ as ``the vector $(a,b)$ is the coordinates of $(x,y)$ relative to $S$''.  To find the coordinates of $T(x,y)$ relative to $S$, we compute $[T(x,y)]_{S} = [T]_{S}[(x,y)]_S = \bm{ 5 & -4 \\
+ 0 & -1
+}\bm{ a \\
+ b
+} = (5a-4b,-b)_{S}$.
+	\item You just find the eigenvalues $\lambda = 5,-1$ and eigenvectors $S=\{(1,1),(-2,1)\}$.  With this order $[T]_S = \bm{5&0\\0&-1}$.  If you reverse the order of $S=\{(-2,1),(1,1)\}$, then $[T]_S = \bm{-1&0\\0&5}$. 
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+	\item $\{(-2,1,0)\}$
+	\item $S=\{(1,0,0),(0,0,1),(-2,1,0)\}$
+	\item The matrix representation of $T$ relative to $S$ and $E$ is $[T]_{S,E} = \bm{ 1 & -1 & 0 \\
+ 2 & 4 & 0 \\
+ -1 & 0 & 0}
+$.
+	\item $S' = \{(1,2,-1),(-1,4,0),(1,0,0)\}$.
+	\item The matrix representation of $T$ relative to $S$ and $S'$ is $[T]_{S,S'} =  
+	\bm{ 
+	1 & -1 & 1 \\
+ 2 & 4 & 0 \\
+ -1 & 0 & 0}^{-1}
+ \bm{ 
+	1 & 2 & -1 \\
+ 2 & 4 & 4 \\
+ -1 & -2 & 0}
+	\bm{ 
+	1 & 0 & -2 \\
+ 0 & 0 & 1 \\
+ 0 & 1 & 0}
+=
+	\bm{ 1 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 0}
+$.
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+	\item Yes. $\lambda =2$ has algebraic and geometric multiplicity equal to 1.  So does $\lambda=3$.  One possible choice of matrices is
+	$P = \bm{ 
+ 1 & 2 \\
+ 3 & 5
+ 	}$, 
+	$D = \bm{ 
+ 2 & 0 \\
+ 0 & 3
+ 	}$. 
+	\item 
+No.  $\lambda = 2$ has algebraic multiplicity 2, but only 1 corresponding eigenvector in a basis for the eigenspace so geometric multiplicity is 1.
+	\item For $\lambda =2$ both algebraic and geometric multiplicities are 2.  For $\lambda = 3$ the geometric and algebraic multiplicities are both 1.  Hence it is diagonalizable.  
+	$P = \bm{ 
+ 1 & 0 & -1 \\
+ 2 & 1 & 0 \\
+ 0 & 1 & 1
+ 	}$, 
+	$D = \bm{ 
+ 2 & 0 & 0 \\
+ 0 & 2 & 0 \\
+ 0 & 0 & 3
+ 	}$. 
+	\item 
+No.  The algebraic multiplicity of $\lambda =2 $ is 2, while the geometric multiplicity is 1.
+	\item 
+No.  The algebraic multiplicity of $\lambda =2 $ is 3, while the geometric multiplicity is 2.
+	\item 
+No.  The algebraic multiplicity of $\lambda =2 $ is 3, while the geometric multiplicity is 2.
+	\item 
+No.  The algebraic multiplicity of $\lambda =2 $ is 3, while the geometric multiplicity is 2.
+	\item 
+No.  The algebraic multiplicity of $\lambda =2 $ is 3, while the geometric multiplicity is 1. 
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+\end{multicols}
+}
+%

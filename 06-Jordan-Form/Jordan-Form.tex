@@ -1,0 +1,1073 @@
+\chapter{Jordan Form}
+
+This chapter covers the following ideas.
+
+\input{06-Jordan-Form/Jordan-Form-objectives}
+
+
+
+
+\section{Differential Equations}
+
+Now that we have developed the language of bases and coordinates relative to a basis, we can use this language to solve many problems throughout all the sciences.  
+This chapter focuses on one key use related to ordinary differential equations (ODEs).  
+Derivatives describe rates of change, so any time we can measure how something is changing, we can use this information to create a differential equation. 
+As examples, we can model velocity, acceleration, inflation, interest, population growth, deforestation, immigration, forensics, and much much more with differential equations. 
+In this chapter we will build the tools needed to solve large systems of differential equations. 
+We'll discover that diagonalizing a matrix is directly related to finding a basis of solutions to the system of differential equations.  
+When a matrix is not diagonalizable, we will see that a basis of generalized eigenvectors and Jordan form provides the key tool needed to solve every linear differential equation. 
+
+
+\subsection{Investing - An Introductory Example}
+
+Before embarking on a full description of solution techniques and real world applications of differential equations, let's look at an example. 
+For notational convenience, we will generally use $t$ as the independent variable, as $\vec x$ we'll use for talking about eigenvectors. 
+
+\begin{example}
+The equation $y' = .05 y$ is called a differential equation because it contains a function $y$ and its derivative $y'$. 
+We can use this equation to model investment growth, where the investment is gaining 5\% interest, compounded continuously. 
+We can interpret the equation $y' = .05 y$ in terms of money flow as follows:
+\marginpar{For those of you familiar with simple interest, you may recall the formula $I=Pr$ 
+
+(interest = principal times rate). } 
+\begin{quote}
+	The rate at which money is accumulated ($y'(t)$) is equal to the amount of money in the account ($y(t)$) multiplied by the interest rate.  
+\end{quote}
+To solve the differential equation $y' = .05 y$, we need to find the function $y(t)$ which satisfies this differential equation.  
+
+The simplest way to solve this equation involves separating variables, putting all the $y$'s on one side of the equation and all the $t$' on another side.  
+Here's how we do it. 
+First replace $y'$ with $\frac{dy}{dt}$ and obtain the equation $$\frac{dy}{dt} = .05 y.$$ 
+Multiply both sides by $dt$ and divide both sides by $y$, giving the equation $\ds \frac{1}{y}dy=.05 dt$. 
+We now integrate both sides which gives 
+$$\ds\int \frac{1}{y}dy = \int .05dt\quad\quad\text{ or }\quad \quad \ln|y|+c_1=.05 t +c_2$$ for some constants $c_1$ and $c_2$.  
+Because the difference $c_3=c_2-c_1$ is just a constant, we could just write $$\ln|y|=.05 t +c_3.$$ 
+Now exponentiate both sides to obtain 
+$$|y|=e^{.05 t+c_3} = e^{.05t}e^{c_3}\quad\quad\text{or}\quad\quad y=\pm e^{.05t}e^{c_3}.$$  
+Notice that $\pm e^{c_3}$ is just another constant, so we'll replace it with $c$ and just write 
+$$y=e^{.05 t}c.$$ \marginpar{I wrote $y=e^{.05 t}c$ instead of $y=c e^{.05 t}$ because we'll soon find that the solution in higher dimensions is $\vec y=e^{A t}\vec c$ and the order matters.}
+We have obtained a solution to the differential equation.  We know that if $y=e^{.05 t}c$ for any constant $c$, then $y' = .05 y$.  We can verify that our solution is correct by explicitly taking the derivative, $y' = .05 e^{.05 t}c$, and then noticing that this does indeed equal $.05 y$.
+
+
+Now that we have a solution involving some arbitrary constant $c$, we can use an initial condition to find the constant $c$. 
+Suppose we had 1000 dollars in the bank at time $t=0$.  We write this symbolically as the initial value $y(0)=1000$.
+We replace $y$ with 1000 and $t$ with zero in the general solution $y = e^{.05 t}c$ to obtain 
+$$y(0) =  c e^{.05 (0)}\quad\quad \text{or}\quad\quad 1000 = c e^0=c.$$ We just found the constant $c=1000$ is our initial investment. 
+In summary, the solution to the ordinary differential equation (ODE) $y'=.05 y$ together with the initial value (IV) $y(0)=1000$ is precisely $y = e^{.05 t} 1000 = 1000 e^{.05 t}$. 
+You may recall the compound interest formula $A=Pe^{rt}$, where $P$ is the initial investment, $r$ is the interest rate, $t$ is the time, and $A$ is the amount of money in your account. This general formula is obtained using the exact same steps used above, just replace the .05 with r, and let $y(0) = P$.
+\end{example}
+
+
+In the last example, we began with the differential equation $y'=.05 y$ and solved for the function $y$ which satisfies this differential equation. We found the general solution $y=e^{.05t}c$, and used the initial condition $y'(0) = 1000$ to obtain the particular solution $y=e^{.05t}1000$.   If we replace $.05$ with any other constant $a$, then
+$$y'=ay \quad \text{has solution} \quad y=e^{at}c\quad \text{where}\quad c=y(0).$$ 
+The differential equation $y' = a y$ provides us with the fundamental tool for solving differential equations in all dimensions.  
+In the language of linear algebra, a basis for the set of solutions to $y'=ay$ is the set $\{e^{at}\}$. All other solutions are linear combinations (the $c$) of this solution.  
+
+Let's now examine what happens if we try to solve multiple ODEs simultaneously. 
+The solution will involve finding eigenvalues, eigenvectors, and diagonalizing a matrix. One key reason for this chapter is to learn why diagonalizing a matrix is so useful. This is only one of the many uses of diagonalization.
+
+\begin{example}
+Consider the system of ordinary differential equations (ODE's) 
+$$y_1'(t)=2y_1(t)+y_2(t)\quad\text{and}\quad y_2'(t) = y_1(t)+2y_2(t).$$  
+We rewrite the system in matrix form as 
+$$
+\begin{bmatrix}y_1'\\y_2'\end{bmatrix} 
+= 
+\begin{bmatrix}2&1\\1&2\end{bmatrix} 
+\begin{bmatrix}y_1\\y_2\end{bmatrix}
+.$$ 
+We can summarize this in vector and matrix form by writing $\vec y' =A\vec y$, where $\vec y = (y_1,y_2)$. 
+Since the system of ODEs $\vec y' =A\vec y$ looks very much like the simple ODE $y'=ay$, whose solutions are all multiples of $e^{at}$, let's try and guess a solution to $\vec y' =A\vec y$.
+Perhaps both $y_1$ and $y_2$ will be of the form $y_1 = e^{kt}c_1$ and $y_2=e^{kt}c_2$ for some constant $k$ and scalars $c_1$ and $c_2$.  
+If so, then the solution would look like 
+$$\vec y = e^{k t} \vec c \quad \text{or}\quad \bm{y_1\\y_2}=e^{k t}\bm {c_1\\c_2} \quad \text{for some vector $\vec c=\begin{bmatrix}c_1\\c_2\end{bmatrix}$ and scalar $k$}.$$  
+Now differentiate $\vec y$ which gives  $\vec y ' = k e^{kt}\vec c$. 
+Now return to the original ODE $\vec y ' =A\vec y$ and replace $\vec y '$ with its derivative $k e^{kt}\vec c$ to obtain 
+$$k e^{k t}\vec c =Ae^{k t}\vec c \quad \text{or after dividing by $e^{kt}$ just}\quad  k \vec c =A\vec c.$$ 
+Wait!  This looks pretty familiar.  Have you seen $A\vec c = k\vec c$ anywhere else.  We are replacing matrix multiplcation with scalar multiplication.  We need a scalar $k$ and a vector $\vec c$ such that multiplying $\vec c$ on the left by a matrix $A$ is equivalent to multiplying by a constant $k$. 
+\begin{quote}
+\textbf{$A\vec c = k\vec c$ is an eigenvalue $k$ and eigenvector $\vec c$ problem}. 
+\end{quote} 
+We now return to our guess and fix the notation. Instead of writing $\vec y = e^{kt}\vec c$, we replace $k$ with $\lambda$ and $\vec c$ with $\vec x$. We now know that $\vec y = e^{\lambda t}\vec x$ where $\vec x$ is an eigenvector corresponding to $\lambda$ is a solution to the ODE. This is true for any eigenvalue and eigenvector of $A$.
+
+The matrix eigenvalues of $A=\begin{bmatrix}2&1\\1&2\end{bmatrix}$ are $\lambda_1 = 1$ and $\lambda_2= 3$, with a basis of corresponding eigenvectors $\vec x_1=\begin{bmatrix}1\\-1\end{bmatrix}$ and $\vec x_2=\begin{bmatrix}1\\1\end{bmatrix}$. Hence, two solutions to the system of ODEs are 
+$$ \begin{bmatrix}y_1\\y_2\end{bmatrix} = e^t\begin{bmatrix}1\\-1\end{bmatrix}\quad\quad \text{and} \quad\quad \begin{bmatrix}y_1\\y_2\end{bmatrix} = e^{3t}\begin{bmatrix}1\\1\end{bmatrix}.$$ 
+These two solutions form a basis for all solutions to this system of ODEs. 
+In other words, all other solutions are linear combinations of these two solutions, so the general solution is 
+$$ \begin{bmatrix}y_1\\y_2\end{bmatrix} 
+= c_1 e^t\begin{bmatrix}1\\-1\end{bmatrix} 
++ c_2 e^{3t}\begin{bmatrix}1\\1\end{bmatrix}
+=
+\begin{bmatrix}c_1e^t + c_2e^{3t}\\-c_1e^t + c_2e^{3t}\end{bmatrix}.$$ 
+\end{example}
+
+
+\subsection{The Eigenvalue Approach to Solving ODEs}
+
+For the rest of this section, we will examine how to solve every linear systems of differential equations of the form $\vec y' = A\vec y$, where $A$ is a matrix with constants.  
+From the introductory example, we guessed that a solution is of the form $e^{\lambda t}\vec x$ for some $\lambda$ and vector $\vec x$. Returning to the ODE $\vec y ' =A\vec y$ and replacing $\vec y'$ with $\lambda e^{\lambda t}\vec x$, we have $$\lambda \vec x e^{\lambda t}=A\vec x e^\lambda t \quad \text{or after dividing by $e^{kt}$ just}\quad \lambda \vec x =A\vec x$$. 
+This is an eigenvalue-eigenvector problem. 
+The equation $ \vec y=e^{\lambda t}\vec x$ is a solution of the system of ODEs for any eigenvalue $\lambda$ with a corresponding eigenvector $\vec x$. 
+This is the general theory, and it works in all finite dimensions.  
+\begin{theorem}
+If the eigenvalues of $A$ in a system of $n$ ODE of the form $\vec y'=A\vec y$ are 
+$\lambda_1,\ldots,\lambda_n$ (whether there are repeats or not), 
+and there are $n$ linearly independent eigenvectors $\{\vec x_{1}, \ldots, \vec x_{n}$, 
+then a basis for the set of solutions is
+$$S=\left\{e^{\lambda_1 t}\vec x_{1},\ldots, e^{\lambda_n t}\vec x_{n} \right\}.$$
+The general solution of the system of ODEs is all linear combinations 
+$$\vec y = c_1e^{\lambda_1 t}\vec x_{1}  + \cdots + c_n e^{\lambda_n t}\vec x_{n}.$$ 
+\end{theorem}
+Let's now use this theorem to look at another example, and then connect the result to diagonalizing a matrix. 
+
+\begin{example}
+Consider the system of ODEs $y_1' = 2y_1+y_2, y_2'= y_1+2y_2$ from the previous example, together with the initial conditions $y_1(0)=3,y_2(0)=4$. 
+Since the eigenvalues are 1 and 3 with eigenvectors $\{(1,-1),(1,1)\}$, the general solution is 
+$$
+\begin{bmatrix}y_1\\y_2\end{bmatrix} 
+= c_1e^t\begin{bmatrix}1\\-1\end{bmatrix} 
++ c_2e^{3t}\begin{bmatrix}1\\1\end{bmatrix}. 
+$$ 
+Since we are multiplying the eigenvectors by constants, we can rewrite this as the matrix product 
+\marginpar{If we let $Q=\begin{bmatrix}1 &1\\-1&1\end{bmatrix}$, $D = \begin{bmatrix}e^t&0\\0&e^{3t}\end{bmatrix}$ and $\vec c= \begin{bmatrix}c_1\\c_2\end{bmatrix}$, then we have the equation $\vec y  = Q D \vec c$. It almost looks like a diagonalization problem, we are just missing a $Q\inv$ after $D$. }  
+\begin{align*}
+\begin{bmatrix}y_1\\y_2\end{bmatrix} 
+&= c_1e^t\begin{bmatrix}1\\-1\end{bmatrix} 
++ c_2e^{3t}\begin{bmatrix}1\\1\end{bmatrix} 
+\\&=
+\begin{bmatrix}1 &1\\-1&1\end{bmatrix}
+\begin{bmatrix}c_1e^t\\c_2e^{3t}\end{bmatrix}
+\\&=
+\begin{bmatrix}1 &1\\-1&1\end{bmatrix}
+\begin{bmatrix}e^t&0\\0&e^{3t}\end{bmatrix}
+\begin{bmatrix}c_1\\c_2\end{bmatrix} 
+.\end{align*}
+We now use the initial conditions $y_1(0)=3,y_2(0)=4$ to obtain the matrix equation 
+\begin{align*}
+\begin{bmatrix}y_1(0)\\y_2(0)\end{bmatrix} 
+&= 
+\begin{bmatrix}1 &1\\-1&1\end{bmatrix}
+\begin{bmatrix}e^{0}&0\\0&e^{3(0)}\end{bmatrix}
+\begin{bmatrix}c_1\\c_2\end{bmatrix} 
+\\
+\begin{bmatrix}3\\4\end{bmatrix} 
+&= 
+\begin{bmatrix}1 &1\\-1&1\end{bmatrix}
+\begin{bmatrix}1&0\\0&1\end{bmatrix}
+\begin{bmatrix}c_1\\c_2\end{bmatrix} 
+=
+\begin{bmatrix}1 &1\\-1&1\end{bmatrix}
+\begin{bmatrix}c_1\\c_2\end{bmatrix} .
+\end{align*} 
+If we let $Q = \begin{bmatrix}1 &1\\-1&1\end{bmatrix}$, then the constants $c_1$ and $c_2$ are found using the inverse by notice that the solution to 
+\marginpar{We're just finding the coordinates of $(3,4)$ relative to the basis of eigenvectors. 
+So $\vec c = Q\inv \vec y(0)$.}
+
+$$\begin{bmatrix}3\\4\end{bmatrix} 
+=
+\begin{bmatrix}1 &1\\-1&1\end{bmatrix}
+\begin{bmatrix}c_1\\c_2\end{bmatrix}
+ \quad\text{is}\quad 
+\begin{bmatrix}c_1\\c_2\end{bmatrix} 
+=
+\begin{bmatrix}1 &1\\-1&1\end{bmatrix}^{-1}
+\begin{bmatrix}3\\4\end{bmatrix} 
+=
+\frac{1}{2}
+\begin{bmatrix}1 &-1\\1&1\end{bmatrix}
+\begin{bmatrix}3\\4\end{bmatrix} 
+=
+\frac{1}{2}
+\begin{bmatrix}-1 \\7\end{bmatrix}
+.$$ We have found that $c_1=-\frac12$ and $c_2=\frac72$, so the solution to our initial value problem (ODE together with an IV) is 
+$$ \begin{bmatrix}y_1\\y_2\end{bmatrix} 
+= -\frac12 e^t \begin{bmatrix}1\\-1\end{bmatrix} 
++ \frac72 e^{3t} \begin{bmatrix}1\\1\end{bmatrix}
+=
+\begin{bmatrix}-\frac12e^t + \frac72e^{3t}\\\frac12e^t + \frac72e^{3t}\end{bmatrix}.$$
+\end{example}
+
+\marginpar{If we combine $\vec y = Q D \vec c$ with $\vec c = Q\inv \vec y(0)$, then we obtain the general solution $$\vec y  = Q D Q\inv \vec y(0),$$ which looks a lot like diagonalization. }
+In the previous example, we used the inverse matrix to find our constants from our initial conditions.  
+Notice that the general solution was written in the form $\vec y = QD\vec c$ where $Q$ is a matrix whose columns are the eigenvectors of $A$, and $D$ is a diagonal matrix with $e^{\lambda t}$ on the diagonals.  
+Inserting the initial conditions into your matrix equation turned $D$ into the identity matrix and gave us the equation $\vec y(0) = Q\vec c$. In other words, we need the coordinates of $\vec y(0)$ relative to the basis of eigenvectors.  We used an inverse to  write $\vec c = Q^{-1}\vec y(0)$.  Combining this with $\vec y = QD\vec c$, we can write our general solution in the form 
+$$\vec y = \left[QDQ^{-1}\right]\vec y(0).$$ 
+The matrix $QDQ^{-1}$ is called the matrix exponential of $At$. 
+We will soon show that it equals $e^{At}$, where we place a matrix in the exponent of $e$. 
+If we are given initial conditions, then we can find a solution to our system of differential equations $\vec y ' = A\vec y$ by using the following 4 step process: 
+\begin{enumerate}
+	\item Find the eigenvalues of $A$ to create $D$ (put $e^{\lambda t}$ on the diagonals).
+	\item Place the eigenvectors in the columns of $Q$ (provided there are enough), making sure the order matches the diagonals of $D$.
+	\item Find the inverse of $Q$ (quick for 2 by 2 matrices).
+	\item Compute the product $\vec y = QDQ^{-1}\vec y(0) = e^{At}\vec y(0)$ and you're done. 
+\end{enumerate}
+This method will solve every linear system of differential equations, provided you can find $n$ linearly independent eigenvectors. The rest of this document deals with what to do in the case of a deficient eigenvalue, where $n$ linearly independent eigenvectors are not obtainable. 
+
+
+
+\section{Jordan Canonical Form}
+The matrix $\begin{bmatrix} 2&1\\1&2\end{bmatrix} $ has eigenvalues $\lambda=1,3$ and eigenvectors $\begin{bmatrix} -1\\1\end{bmatrix} $, $\begin{bmatrix} 1\\1\end{bmatrix} $ (check this). Let $Q = \begin {bmatrix} -1&1\\1&1\end {bmatrix} $ be a matrix whose columns are linearly independent eigenvectors of $A$.  Then the product $Q^{-1}AQ = \begin {bmatrix} 1&0\\0&3\end {bmatrix}$ is a diagonal matrix whose entries are the eigenvalues of $A$ (written in the same order in which the eigenvectors were listed in $Q$.  This process (finding $Q$ and multiplying $J=Q^{-1}AQ$) is called diagonalizing a matrix, and is always possible for an $n\times n$ matrix which has $n$ linearly independent eigenvectors. Notationally we often write $Q^{-1}AQ=J$ for the diagonal matrix $J$, and $J$ is called a Jordan canonical form for $A$.  
+
+\marginpar{
+%Each Jordan block consists of an upper triangular matrix with 1's above each diagonal entry but the first.
+%
+%$J=\begin{bmatrix}
+%2&1&0\\
+%0&2&1\\
+%0&0&2
+%\end{bmatrix}$
+%
+The Jordan form of a matrix with eigenvalues $\lambda=2,2,2,3$ where the geometric multiplicity of $\lambda$ is 1 is
+$$J=\begin{bmatrix}
+\begin{pmatrix}
+2&1&0\\
+0&2&1\\
+0&0&2
+\end{pmatrix}&\cl{0\\0\\0}\\
+\begin{matrix}0&0&0\end{matrix}&\begin{pmatrix}3\end{pmatrix}\\
+\end{bmatrix}.$$
+The extra parenthesis highlight the submatrices (called Jordan blocks) used to build $J$.
+}
+Recall that if a matrix has an eigenvalue $\lambda$ which occurs $k$ times (we say its algebraic multiplicity is $k$), but does not have $k$ linearly independent eigenvectors (the geometric multiplicity is less than $k$), then we call the eigenvalue defective. 
+Whenever a matrix has a defective eigenvalue, the matrix cannot be diagonalized. 
+However, it is possible to find a matrix $J$ whose diagonal entries are the eigenvalues and the only nonzero terms are a few 1's which are found directly above the defective eigenvalues. 
+The matrix on the right is a Jordan canonical form for a matrix whose eigenvalues are $2,2,2,$ and $3$ where $2$ is a defective eigenvalue. 
+
+To find this matrix $J$, we need to find generalized eigenvectors, which are vectors that satisfy $(A-\lambda I)^r\vec x=\vec 0$ for some $r$.  If $\vec x$ is a vector which satisfies this equation for $r$ but not for $r-1$, then we call $r$ the rank of the eigenvector $\vec x$. We will focus our examples on $2\times 2$ and $3\times 3$ matrices. It can be shown that if the algebraic multiplicity of an eigenvector is $k$, then there will be $k$ linearly independent generalized eigenvalues, which we can then use to obtain the Jordan form.
+
+This paragraph explains a method for finding generalized eigenvectors.  The examples which follow illustrate this idea. Skim read this paragraph, try the examples, and then come back and read it again. A generalized eigenvector $\vec v_r$ of rank $r$ satisfies $(A-\lambda I)^r\vec v_r=\vec 0$ but not $(A-\lambda I)^{r-1}\vec v_r=\vec 0$.  If we let $\vec v_{r-1}= (A-\lambda I)\vec v_r$, then $\vec v_{r-1}$ is a generalized eigenvector of rank $r-1$. The equation $\vec v_{r-1}=(A-\lambda I)^r\vec v_r$ gives us a way of solving for $\vec v_{r}$ based upon $\vec v_{r-1}$. Similarly, we could use $\vec v_{r-2}$ to obtain $\vec v_{r-1}$.   If we repeat this process until we get back to $\vec v_1$ (which is an actual eigenvector), then we can write all of the generalized eigenvectors in terms of a basis of eigenvectors. If $\vec v_1$ is an eigenvector, then we solve $(A-\lambda I)\vec v_2 =\vec v_1$ to find $\vec v_2$. We then solve  $(A-\lambda I)\vec v_3 =\vec v_2$ to find $\vec v_3$. Continue this process to obtain a chain of generalized eigenvectors $\vec v_1, \vec v_2, \ldots, \vec v_r$ which are then inserted in the matrix $Q$ to obtain Jordan form.
+
+\begin{example}
+Let $A=\begin {bmatrix} 0&1\\-1&-2\end {bmatrix}$. The characteristic polynomial is $\begin {vmatrix} -\lambda&1\\-1&-2-\lambda\end {vmatrix}= \lambda^2+2\lambda+1=(\lambda+1)^2$. A double eigenvalue is $\lambda=-1$.  To find the eigenvectors we compute {$A-\lambda I = \begin {bmatrix} 1&1\\-1&-1\end {bmatrix} $}. The only eigenvectors are multiples of $\vec v_1 = \begin {bmatrix} 1\\-1\end {bmatrix}$. Hence there is only one linearly independent eigenvector for the double root $-1$, which means $-1$ is a defective eigenvalue. In order to find Jordan Form, we must find a generalized eigenvector of rank 2. 
+
+We solve the equation 
+$(A-\lambda I)\vec v_2=\vec v_1$ by row reducing the matrix 
+$\begin {bmatrix}[cc|c] 1&1&1\\-1&-1&-1\end {bmatrix}$, which gives the solution $x_1+x_2=1$ (notice we just augmented $A-\lambda I$ by our eigenvector).  The vectors $[1,0]$ and $[0,1]$ both satisfy this system, so we can pick either vector as $\vec v_2$ (it doesn't matter which one you pick). Now let $Q=\begin{bmatrix}\vec v_1 &\vec v_2\end{bmatrix}$. The Jordan form is then $Q^{-1}AQ =\begin {bmatrix} -1&1\\0&-1\end {bmatrix}$.  
+\end{example}
+
+The example above gives a general method for finding Jordan form. Start by finding the eigenvalues. For each eigenvalue, find a basis of eigenvectors.  For each eigenvector in this basis, use the equation $\vec v_{k-1}=(A-\lambda I)^r\vec v_k$ to obtain a chain of generalized eigenvectors $\{\vec v_1,\vec v_2, \ldots, \vec v_r\}$ corresponding to that eigenvector (the chain stops when the equation $\vec v_{k-1}=(A-\lambda I)^r\vec v_k$ has no solution, which will always occur). Once you have completed this, you will find that the total number of generalized eigenvectors you have obtained matches the size of the matrix, and that the vectors are linearly independent (proving this is not difficult, but beyond the scope of our class). Place the vectors into the columns of $Q$ (keeping the chains together) and then the product $Q^{-1}AQ=J$ will give you a Jordan form, where each chain of vectors corresponds to a block matrix on the diagonal whose diagonal entries are the eigenvalue and 1's above the main diagonal.
+
+\begin{example}
+Consider the matrix 
+$A=
+\begin{bmatrix}
+4&-4&10\\
+1&0&5\\
+0&0&2
+\end{bmatrix}
+$. The characteristic polynomial is $-\lambda^3+6\lambda^2-12 t+8 = (2-\lambda)^3$, so $A$ has one eigenvalue, namely $\lambda=2$.  We compute $A-2I = \begin{bmatrix} 2&-4&10\\1&-2&5
+\\0&0&0\end{bmatrix} 
+$.  Row reduction gives $\begin{bmatrix} 1&-2&5\\0&0&0
+\\0&0&0\end{bmatrix} 
+$, so two linearly independent eigenvectors are $\begin{bmatrix}2\\1\\0\end{bmatrix}$   and $\begin{bmatrix}-5\\0\\1\end{bmatrix}$.  We currently have only 2 linearly independent vectors, so we have to find a third.  We solve $(A-2I)v_2= \begin{bmatrix}2\\1\\0\end{bmatrix}$ by row reducing $ \begin{bmatrix} 2&-4&10&2\\1&-2&5&1
+\\0&0&0&0\end{bmatrix} 
+$ to obtain $\begin{bmatrix} 1&-2&5&1\\0&0&0&0
+\\0&0&0&0\end{bmatrix}$, which means $\vec v_2=\begin{bmatrix}1\\0\\0\end{bmatrix}$ is a generalized eigenvector since $1-2(0)+5(0)=1$. We now have three independent vectors, so we can use them to form the matrix $Q$.
+We have $Q= \begin{bmatrix} 2&1&-5\\1&0&0
+\\0&0&1\end{bmatrix}$.  The inverse of $Q$ is 
+$\begin{bmatrix} 0&1&0\\1&-2&5
+\\0&0&1\end{bmatrix}
+$ (using a computer). Matrix multiplication gives $Q^{-1}AQ = \begin{bmatrix} 2&1&0\\0&2&0
+\\0&0&2\end{bmatrix}
+$ as the Jordan Form.
+
+As a side note, if we try to find any more generalized eigenvectors, we will fail because we will get inconsistent systems. Reduction of the matrix 
+$ \begin{bmatrix} 2&-4&10&1\\1&-2&5&0
+\\0&0&0&0\end{bmatrix} 
+$ gives $\begin{bmatrix} 1&-2&5&0\\0&0&0&1
+\\0&0&0&0\end{bmatrix}$ which means there is no rank 3 eigenvector in the first chain. Row reduction of the matrix 
+$ \begin{bmatrix} 2&-4&10&-5\\1&-2&5&0
+\\0&0&0&1\end{bmatrix} 
+$ gives $\begin{bmatrix} 1&-2&5&0\\0&0&0&1
+\\0&0&0&0\end{bmatrix}$ which has no solution, meaning that the second chain is only one long, and there are no generalized eigenvectors of rank 2 for the second eigenvector.  
+\end{example}
+
+\begin{example}
+Consider the matrix 
+$ \begin{bmatrix} 
+1&2&2\\
+0&1&0\\
+0&0&1
+\end{bmatrix} 
+$.  Because it is upper triangular, the eigenvalues are the entries on the diagonal, namely $\lambda = 1$ is an eigenvalue with algebraic multiplicity 3. To find the eigenvectors, we note that the matrix 
+$A-I= \begin{bmatrix} 
+0&2&2\\
+0&0&0\\
+0&0&0
+\end{bmatrix} 
+$
+has only 1 pivot, so it has 2 free variable, or two linearly independent eigenvectors 
+$\begin{bmatrix} 
+1\\
+0\\
+0
+\end{bmatrix}$ 
+and
+$\begin{bmatrix} 
+0\\
+1\\
+-1
+\end{bmatrix}$. 
+Since there are only 2 linearly independent eigenvectors, we need to find a third.  Row reduction of $\begin{bmatrix} 
+0&2&2&1\\
+0&0&0&0\\
+0&0&0&0
+\end{bmatrix}$ 
+shows that  
+$\begin{bmatrix} 
+0\\
+1/2\\
+0
+\end{bmatrix}$ is a generalized eigenvector.  Hence we let $Q=\begin{bmatrix} 
+1&0&0\\
+0&1/2&1\\
+0&0&-1
+\end{bmatrix} 
+$ and then compute $Q^{-1} = \begin{bmatrix} 
+1&0&0\\
+0&2&2\\
+0&0&-1
+\end{bmatrix} 
+$. 
+Then a Jordan Canonical form is $J=Q^{-1}AQ=\begin{bmatrix} 
+1&1&0\\
+0&1&0\\
+0&0&1
+\end{bmatrix} 
+$. 
+
+\end{example}
+
+
+
+
+
+\begin{example}
+Consider the matrix 
+$ A=\begin{bmatrix} 
+1&2&2\\
+0&1&2\\
+0&0&1
+\end{bmatrix} 
+$.  Because it is upper triangular, $\lambda = 1$ is a triple eigenvalue. To find the eigenvectors, we note that the matrix 
+$A-I= \begin{bmatrix} 
+0&2&2\\
+0&0&2\\
+0&0&0
+\end{bmatrix} 
+$
+has 2 pivots, so one linearly independent eigenvector 
+$\begin{bmatrix} 
+1\\
+0\\
+0
+\end{bmatrix}$. 
+Since there is only one linearly independent eigenvector, we need to find two linearly independent generalized eigenvectors. Row reduction of $\begin{bmatrix} 
+0&2&2&1\\
+0&0&2&0\\
+0&0&0&0
+\end{bmatrix}$ 
+shows that  
+$\begin{bmatrix} 
+0\\
+1/2\\
+0
+\end{bmatrix}$ is a rank 2 generalized eigenvector. Replacing the 4th column of the previous calculation with this rank 2 eigenvector gives us the matrix 
+$\begin{bmatrix} 
+0&2&2&0\\
+0&0&2&1/2\\
+0&0&0&0
+\end{bmatrix}$, which shows that $\begin{bmatrix} 
+0\\
+-1/4\\
+1/4
+\end{bmatrix}$ is a rank 3 generalized eigenvector (just reduce the matrix to discover this).
+Let $Q=\begin{bmatrix} 
+1&0&0\\
+0&1/2&-1/4\\
+0&0&1/4
+\end{bmatrix} 
+$ and then compute $Q^{-1} = \begin{bmatrix} 
+1&0&0\\
+0&2&2\\
+0&0&4
+\end{bmatrix} 
+$. 
+Jordan Canonical form is $J=Q^{-1}AQ=\begin{bmatrix} 
+1&1&0\\
+0&1&1\\
+0&0&1
+\end{bmatrix} 
+$. 
+
+
+
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{The Matrix Exponential}
+What we are about to learn in this unit is a very powerful tool which essentially encompasses and explains almost every idea in an introductory ODE class.   Recall that the solution to the differential equation $y' = ay$ is $y=e^{at}c$. To solve this in higher dimensions, the solution is simply $\vec y=e^{At}\vec c$.  The key thing we need to learn before we can proceed any more is to understand what the matrix exponential $e^{At}$ means. When a matrix is diagonalizable $D=Q^{-1} A Q$, then the matrix exponential is precisely $Qe^{D}Q^{-1}=e^{A}$ (which is why the eigenvalue approach to solving differential equations worked).
+
+For those of you who have had math 113, recall that the MacLaurin series of $e^x$ is
+$$e^x = \sum_{n=0}^\infty \frac{1}{n!}x^n = 1+x+\frac{1}{2!}x^2+\frac{1}{3!}x^3+\frac{1}{4!}x^4+\cdots.$$
+We now introduce the exponential of a matrix $A$ by using the exact same idea, namely we define $e^A$ as the infinite series
+$$e^A = exp(A) = \sum_{n=0}^\infty \frac{1}{n!}A^n = 1+x+\frac{1}{2!}A^2+\frac{1}{3!}A^3+\frac{1}{4!}A^4+\cdots.$$
+We will use the following facts without proof.
+\begin{enumerate}
+	\item The matrix exponential exists for every square matrix. In other words, the infinite sum will always converge.
+	\item The inverse of the matrix exponential of $A$ is the matrix exponential of $-A$, i.e. $(e^A)^{-1}=e^{-A}$. 
+	\item If two matrices commute (meaning $AB=BA$), then  $e^{A+B}=e^Ae^B = e^Be^A$.
+\end{enumerate}
+Essentially, these facts mean that the laws of exponents with numbers are the same as the laws of exponents with matrices.
+
+
+\subsection{The Matrix Exponential for Diagonal Matrices - exponentiate the diagonals}
+We'll start by computing the matrix exponential for a few diagonal matrices.  Let's start with the zero matrix
+$A=
+\begin{bmatrix}
+ 0 & 0 \\
+ 0 & 0
+	\end{bmatrix}
+$. 
+ Every power of $A$ is the zero matrix, expect the zeroth power which is the identity matrix.  Hence we have
+$$e^A = 
+\begin{bmatrix}
+ 1 & 0 \\
+ 0 & 1
+	\end{bmatrix}
++
+\begin{bmatrix}
+ 0 & 0 \\
+ 0 & 0
+	\end{bmatrix}
++\cdots = 
+\begin{bmatrix}
+ 1 & 0 \\
+ 0 & 1
+	\end{bmatrix}
+.$$
+This shows us that $e^{0} = I$, the identity matrix.
+
+Now let's compute the exponential of the identity matrix, $A=
+\begin{bmatrix}
+ 1 & 0 \\
+ 0 & 1
+\end{bmatrix}
+$
+Every power will still be I, so we have 
+$$e^A = 
+\begin{bmatrix}
+ 1 & 0 \\
+ 0 & 1
+\end{bmatrix}
++
+\begin{bmatrix}
+ 1 & 0 \\
+ 0 & 1
+\end{bmatrix}
++
+\begin{bmatrix}
+ \frac{1}{2!} & 0 \\
+ 0 & \frac{1}{2!}
+\end{bmatrix}
++
+\begin{bmatrix}
+ \frac{1}{3!} & 0 \\
+ 0 & \frac{1}{3!}
+\end{bmatrix}
++\cdots = 
+\begin{bmatrix}
+ 1+1+\frac{1}{2!}+\frac{1}{3!}+\cdots & 0 \\
+ 0 & 1+1+\frac{1}{2!}+\frac{1}{3!}+\cdots
+\end{bmatrix}
+.$$
+In summary, we have $e^I = 
+\begin{bmatrix}
+ e^1 & 0 \\
+ 0 & e^1
+\end{bmatrix}
+$. For the diagonal matrix 
+$A=
+\begin{bmatrix}
+ a & 0 \\
+ 0 & b
+\end{bmatrix}
+$, a similar computation shows that $e^{A} = 
+\begin{bmatrix}
+ e^a & 0 \\
+ 0 & e^b
+\end{bmatrix}
+.$  If we multiply $A$ by $t$ and then exponentiate, we obtain 
+$e^(At) = 
+\begin{bmatrix}
+ e^{at} & 0 \\
+ 0 & e^{bt}
+\end{bmatrix}
+.$ 
+The ideas above generalize immediately to all $n\times n$ matrices. If $A$ is a diagonal matrix, then its matrix exponential is found by exponentiating all the terms on the diagonal.  
+
+
+
+\subsection{Nilpotent Matrices - $A^n=0$ for some $n$}
+A nilpotent matrix is a matrix for which $A^n=0$ for some $n$. This means that the infinite sum involved in the matrix exponential eventually terminates. We will only look at a few examples of nilpotent matrices, in particular the kinds that show up when calculating Jordan form. 
+
+The matrix $A=
+\begin{bmatrix}
+ 0 & t \\
+ 0 & 0
+\end{bmatrix}
+$ is nilpotent because 
+$
+\begin{bmatrix}
+ 0 & t \\
+ 0 & 0
+\end{bmatrix}
+^2
+=
+\begin{bmatrix}
+ 0 & 0 \\
+ 0 & 0
+\end{bmatrix}
+$. 
+The matrix exponential is hence 
+$$e^A = 
+\begin{bmatrix}
+ 1 & 0 \\
+ 0 & 1
+\end{bmatrix}
++
+\begin{bmatrix}
+ 0 & t \\
+ 0 & 0
+\end{bmatrix}
++
+\begin{bmatrix}
+ 0 & 0 \\
+ 0 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 1 & t \\
+ 0 & 1
+\end{bmatrix}
+.
+$$
+
+The matrix $A=
+\begin{bmatrix}
+ 0 & t & 0 \\
+ 0 & 0 & t \\
+ 0 & 0 & 0
+\end{bmatrix}
+$ satisfies $A^2 = 
+\begin{bmatrix}
+ 0 & 0 & t^2 \\
+ 0 & 0 & 0 \\
+ 0 & 0 & 0
+\end{bmatrix}
+$ and
+$A^3 = 
+\begin{bmatrix}
+ 0 & 0 & 0 \\
+ 0 & 0 & 0 \\
+ 0 & 0 & 0
+\end{bmatrix}
+$, hence it is nilpotent. Its matrix exponential is
+$e^A=
+\begin{bmatrix}
+ 1 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 1
+\end{bmatrix}
++
+\begin{bmatrix}
+ 0 & t & 0 \\
+ 0 & 0 & t \\
+ 0 & 0 & 0
+\end{bmatrix}
++\frac{1}{2}
+\begin{bmatrix}
+ 0 & 0 & t^2 \\
+ 0 & 0 & 0 \\
+ 0 & 0 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 1 & t & \frac{1}{2}t^2 \\
+ 0 & 1 & t \\
+ 0 & 0 & 1
+\end{bmatrix}
+$
+
+
+The 4 by 4 matrix $A=
+\begin{bmatrix}
+ 0 & t & 0 & 0 \\
+ 0 & 0 & t & 0 \\
+ 0 & 0 & 0 & t \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$ satisfies
+$A^2 = 
+\begin{bmatrix}
+ 0 & 0 & t^2 & 0 \\
+ 0 & 0 & 0 & t^2 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+,
+A^2 = 
+\begin{bmatrix}
+ 0 & 0 & 0 & t^3 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+,$ and
+$A^4 = 0,$ so it is nilpotent. Its matrix exponential is
+$
+\begin{bmatrix}
+ 1 & t & \frac{1}{2!}t^2 & \frac{1}{3!}t^3 \\
+ 0 & 1 & t & \frac{1}{2!}t^2 \\
+ 0 & 0 & 1 & t \\
+ 0 & 0 & 0 & 1
+\end{bmatrix}
+$. 
+
+The point to these last few examples is to help you see a pattern. If there are not all $t$'s on the upper diagonal, then each block of $t$'s will contribute a similar matrix.  For example, the exponential of the matrix 
+$$
+\begin{bmatrix}[ccc|cccc]
+ 0 & t & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & t & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\hline
+ 0 & 0 & 0 & 0 & t & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & t & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & t \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\quad\text{ is }
+\quad
+\begin{bmatrix}[ccc|cccc]
+ 1 & t & \frac{1}{2}t^2 & 0 & 0 & 0 & 0 \\
+ 0 & 1 & t & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 0 & 0 & 0 & 0 \\\hline
+ 0 & 0 & 0 & 1 & t & \frac{1}{2}t^2 & \frac{1}{3!}t^3 \\
+ 0 & 0 & 0 & 0 & 1 & t & \frac{1}{2}t^2 \\
+ 0 & 0 & 0 & 0 & 0 & 1 & t \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+.$$
+
+\subsection{Matrices in Jordan Form}
+If a matrix is in Jordan form, then it can be written as $J=D+N$, where $D$ is a diagonal matrix and $N$ is a nilpotent matrix similar to the matrices from the last section. Since $e^{D+N}=e^De^N$, all we have to do is multiply the two matrix exponential together to find the matrix exponential of $J$. We will almost always be working with matrices of the form $Jt$, so we need the matrix exponential of $Dt$ and $Nt$.  Let's look at an example.
+
+Consider the matrix $J=
+\begin{bmatrix}
+ 2 & 1 \\
+ 0 & 2
+\end{bmatrix}
+$, which is already in Jordan form.  We write $Jt=Dt+Nt$ as
+$
+\begin{bmatrix}
+ 2t & t \\
+ 0 & 2t
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 2t & 0 \\
+ 0 & 2t
+\end{bmatrix}
++
+\begin{bmatrix}
+ 0 & t \\
+ 0 & 0
+\end{bmatrix}
+$.  The matrix exponentials are $e^{Dt}= 
+\begin{bmatrix}
+ e^{2t} & 0 \\
+ 0 & e^{2t}
+\end{bmatrix}
+$ and $e^{Nt} = 
+\begin{bmatrix}
+ 1 & t \\
+ 0 & 1
+\end{bmatrix}
+$. The product of these two matrices is the matrix exponential of $Jt$, namely $e^{Jt} = 
+\begin{bmatrix}
+ e^{2 t} & e^{2 t} t \\
+ 0 & e^{2 t}
+\end{bmatrix}
+$.  Similar computations shows that the matrix exponential of 
+$
+\begin{bmatrix}
+ 2 t & t & 0 \\
+ 0 & 2 t & t \\
+ 0 & 0 & 2 t
+\end{bmatrix}
+$ is 
+$
+\begin{bmatrix}
+ e^{2 t} & e^{2 t} t & \frac{1}{2} e^{2 t} t^2 \\
+ 0 & e^{2 t} & e^{2 t} t \\
+ 0 & 0 & e^{2 t}
+\end{bmatrix}
+$, and the matrix exponential of 
+$
+\begin{bmatrix}
+ 2 t & t & 0 & 0 \\
+ 0 & 2 t & t & 0 \\
+ 0 & 0 & 2 t & t \\
+ 0 & 0 & 0 & 2 t
+\end{bmatrix}
+$ is $
+\begin{bmatrix}
+ e^{2 t} & e^{2 t} t & \frac{1}{2} e^{2 t} t^2 & \frac{1}{3!} e^{2 t} t^3
+   \\
+ 0 & e^{2 t} & e^{2 t} t & \frac{1}{2} e^{2 t} t^2 \\
+ 0 & 0 & e^{2 t} & e^{2 t} t \\
+ 0 & 0 & 0 & e^{2 t}
+\end{bmatrix}
+$.  The pattern that you see continues. If you change the eigenvalues on the diagonal, then the 2 in the exponent will change.  If there are multiple eigenvalues, then each block of eigenvalues will contribute a block matrix to the matrix exponential. For a large example, we compute 
+$$exp 
+\begin{bmatrix}[ccc|cccc]
+ 3 t & t & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 3 t & t & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 3 t & 0 & 0 & 0 & 0 \\\hline
+ 0 & 0 & 0 & 2 t & t & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 2 t & t & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 2 t & t \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 2 t
+\end{bmatrix}
+=
+\begin{bmatrix}[ccc|cccc]
+ e^{3 t} & e^{3 t} t & \frac{1}{2} e^{3 t} t^2 & 0 & 0 & 0 & 0 \\
+ 0 & e^{3 t} & e^{3 t} t & 0 & 0 & 0 & 0 \\
+ 0 & 0 & e^{3 t} & 0 & 0 & 0 & 0 \\ \hline
+ 0 & 0 & 0 & e^{2 t} & e^{2 t} t & \frac{1}{2} e^{2 t} t^2 & \frac{1}{3!} e^{2 t} t^3 \\
+ 0 & 0 & 0 & 0 & e^{2 t} & e^{2 t} t & \frac{1}{2} e^{2 t} t^2 \\
+ 0 & 0 & 0 & 0 & 0 & e^{2 t} & e^{2 t} t \\
+ 0 & 0 & 0 & 0 & 0 & 0 & e^{2 t}
+\end{bmatrix}
+.$$
+
+
+
+
+
+\subsection{Jordan form gives the matrix exponential for any matrix.}
+
+We now consider the matrix exponential of any matrix $A$.  Start by finding $Q$ and $J$ so that $Q^{-1}AQ=J$ is a Jordan form for $A$.  This means that $A=Q J Q^{-1}$.  Notice that 
+$A^2 = Q J Q^{-1}Q J Q^{-1} = Q J^2 Q^{-1}$, 
+$A^3 = Q J Q^{-1}Q J Q^{-1}Q J Q^{-1} = Q J^3 Q^{-1}$, and 
+$A^n = Q J^n Q^{-1}$.  This means that the matrix exponential of $A$ is 
+$$e^A = \sum_{n=0}^\infty \frac{1}{n!}A^n = \sum_{n=0}^\infty \frac{1}{n!}Q J^nQ^{-1} = Q\left(\sum_{n=0}^\infty \frac{1}{n!}J^n\right)Q^{-1} = Q e^J Q^{-1}.$$ So if we can find the matrix exponential of a matrix in Jordan form, and we can compute $Q$ and $Q^{-1}$, then we can find the matrix exponential of any matrix.  We will never go beyond 2 by 2 and 3 by 3 matrices when we do problems in class, but theoretically you now have the tools for computing matrix exponentials of any matrix.
+If we need to find the matrix exponential of $At$, then we can find the matrix exponential of $Jt$ and get $exp(At)=Q\ exp(Jt)\ Q^{-1}$.  
+
+As an example, let's consider the matrix 
+$A=
+\begin{bmatrix}
+ 2 & 1 \\
+ 1 & 2
+\end{bmatrix}
+$ whose eigenvalues are 1 and 3, with eigenvectors $[-1,1],[1,1]$.
+We then have 
+$Q=
+\begin{bmatrix}
+ -1 & 1 \\
+ 1 & 1
+\end{bmatrix}
+$ and 
+$J=
+\begin{bmatrix}
+ 1 & 0 \\
+ 0 & 3
+\end{bmatrix}
+$ 
+so $exp(Jt) = 
+\begin{bmatrix}
+ e^{t} & 0 \\
+ 0 & e^{3t}
+\end{bmatrix}
+$ and the matrix exponential of $At$ is 
+$$exp(At) = Q e^{Jt}Q^{-1} =
+\begin{bmatrix}
+ -1 & 1 \\
+ 1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+ e^{t} & 0 \\
+ 0 & e^{3t}
+\end{bmatrix}
+\left(-\frac{1}{2}\right)
+\begin{bmatrix}
+ 1 & -1 \\
+ -1 & -1
+\end{bmatrix}
+=
+\left(-\frac{1}{2}\right)
+\begin{bmatrix}
+ -e^t-e^{3 t} & e^t-e^{3 t} \\
+ e^t-e^{3 t} & -e^t-e^{3 t}
+\end{bmatrix}
+$$
+
+For an example with a repeated eigenvalue, let's consider the matrix 
+$A=
+\begin{bmatrix}
+ 0 & 1 \\
+ -9 & 6
+\end{bmatrix}
+$.  We can compute 
+$Q=
+\begin{bmatrix}
+ 1 & -\frac{1}{3} \\
+ 3 & 0
+\end{bmatrix}
+$
+and
+$J=
+\begin{bmatrix}
+ 3 & 1 \\
+ 0 & 3
+\end{bmatrix}
+$. The matrix exponential of $Jt$ is 
+$
+\begin{bmatrix}
+ e^{3 t} & e^{3 t} t \\
+ 0 & e^{3 t}
+\end{bmatrix}
+$. We then have
+$$exp\left(A t\right) = exp\left(
+\begin{bmatrix}
+ 0 & 1t \\
+ -9t & 6t
+\end{bmatrix}
+\right)
+=
+\begin{bmatrix}
+ 1 & -\frac{1}{3} \\
+ 3 & 0
+\end{bmatrix}
+\begin{bmatrix}
+ e^{3 t} & e^{3 t} t \\
+ 0 & e^{3 t}
+\end{bmatrix}
+\begin{bmatrix}
+ 0 & \frac{1}{3} \\
+ -3 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+ e^{3 t}-3 e^{3 t} t & e^{3 t} t \\
+ -9 e^{3 t} t & 3 e^{3 t} t+e^{3 t}
+\end{bmatrix}
+.
+$$
+
+If the eigenvalues are irrational or complex, the computations are still the same. When the eigenvalues are complex, Euler's formula $e^{ix}=\cos x+i\sin x$ or the identities $\cosh ix = \cos x, \sinh ix = i\sin x$ can be used to simplify the matrix exponential so that it contains no imaginary components. We will focus only on examples where the eigenvalues are real, and leave the complex case to another class.
+
+
+\section{Applications to Systems of ODEs}
+\subsection{Dilution - Tank Mixing Problems}
+Let's look at an application to see why systems of differential equations are useful. Systems are used to understand the motion of moving parts in a machine, the flow of electricity in a complex network, and many more places. Lets focus on a dilution problem with multiple tanks, so we can see how the systems of ODEs are created. We won't be solving any of the ODEs below by hand, rather we will just set them up and let the computer solve them by finding the matrix exponential.
+
+Suppose that two tanks are connected via tubes so that the water in the tanks can circulate between each other.  Both tanks contain 50 gallons of water. The first tank contains 100lbs of salt, while the second tank is pure water.  The tubes connecting the tanks allow 3 gallons of water to flow from the first tank to the second tank each minute.  Similarly, 3 gallons of water are allowed to flow from tank 2 to tank 1 each minute. As soon as water enters either tank, a mixing blade ensures that the salt content is perfectly mixed into the tank.  The problem we want to solve is this: how much salt is in each tank at any given time $t$.  We know that after sufficient time, we should have 50lbs in each tank (since 100 lbs spread evenly between two tanks will give 50 lbs in each tank).
+
+Let $y_1(t)$ be the salt content in lbs in tank 1, and $y_2(t)$ be the salt content in tank 2, where $t$ is given in minutes and $y_1$ and $y_2$ are given in lbs. 
+We know that 3 gallons of water flows out of each tank each minute, and 3 gallons flows in each minute.  
+Let's focus on tank 1 for a minute and determine the outflow and inflow rates or salt, instead of water.  The only water coming into tank 1 each minute comes from tank 2.  
+We know that 3 out of the 50 gallons from tank 2 will enter tank 1, so the fraction $\frac{3}{50}$ represents the proportion of water leaving tank 2 and entering tank 1. This is also the proportion of salt that leaves tank 2.
+This means that the inflow rate of salt for tank 1 is $\frac{3}{50}y_2$, since $y_2$ represents the amount of salt in tank 2. 
+Similarly, the outflow rate for tank 1 is $\frac{3}{50}y_2$.  
+Combining these gives a differential equation $y_1' = \frac{3}{50}y_2 - \frac{3}{50}y_1$.  Examining tank 2 gives the equation $y_2' = \frac{3}{50}y_1 - \frac{3}{50}y_2$.  
+We now have a system of ODEs 
+$\begin{cases}
+y_1' = \frac{3}{50}y_2 - \frac{3}{50}y_1\\
+y_2' = \frac{3}{50}y_1 - \frac{3}{50}y_2
+\end{cases}$ or in matrix form 
+$
+\begin{bmatrix}
+y_1'\\
+y_2'
+\end{bmatrix}
+=
+\begin{bmatrix}
+-3/50&3/50\\
+3/50&-3/50
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\
+y_2
+\end{bmatrix}
++
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}$, which a first order homogeneous linear system of ODEs. The initial conditions are $y_1(0)=100$ and $y_2(0)=0$. A solution to this problem is $\vec y = e^{A t}\vec y(0)$.
+
+
+Consider a similar problem, with these modifications.  Each tank still has 50 gals, with 100 lbs of salt in tank 1.  Each minute, 2 gallons of pure water are dumped into tank 1 from an outside source. The pump in tank 1 causes 5 gallons per minute to leave tank 1 and enter tank 2.  The pump in tank 2 cause only 3 gallons per minute to flow back into tank 1. The extra 2 gallons per minute which flow into tank 2 from the tank 1 pipes flow out of the system via a drainage pipe.  How much water is in each tank at any given time?
+
+The flow into tank 1 comes from 2 parts. Each minute 2 gallons containing 0 lbs/gal enters the tank, so no salt enters.  In addition, 3/50 ths of the salt in tank 2 will enter tank 1.  The outflow is 5/50 ths the salt in tank 1, since 5 gal are flowing toward tank 2 each minute.  This gives the ODE $y_1' = 8+3/50 y_2 - 5/50 y_1$.  The inflow in the second tank is 5/50 ths of $y_1$, and the outflow is 3/50 ths of $y_2$ toward tank 1 plus 2/50 ths of $y_2$ toward drainage.  This means we have $y_2' = 5/50 y_1 -5/50 y_2$.  In matrix form we can write the system as 
+$\begin{cases}
+y_1' = \frac{3}{50}y_2 - \frac{5}{50}y_1\\
+y_2' = \frac{5}{50}y_1 - \frac{5}{50}y_2
+\end{cases}$ or in matrix form 
+$
+\begin{bmatrix}
+y_1'\\
+y_2'
+\end{bmatrix}
+=
+\begin{bmatrix}
+-5/50&3/50\\
+5/50&-5/50
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\
+y_2
+\end{bmatrix}
+$, which is a homogeneous linear system of ODEs, with initial conditions $y_1(0)=100$ and $y_2(0)=0$. 
+
+Now let's change the size of the tanks, to see how size affects the problem.  Let tank 1 contain 100 gallons and tank 2 contain 50 gallons. Dump 3 gallons or pure water into tank 1 each minute.  Pumps cause 6 gallons to flow from tank 1 to tank 2, and 3 gallons to flow from tank 2 to tank 1.  This leaves 3 gallons per minute to leave via a drain pipe in tank 2. The corresponding system of ODEs would be $y_1' = 3/50 y_2 - 6/100 y_1$ and $y_2' = 6/100 y_1 - 6/50 y_2$. In matrix form we can write this as  
+$
+\begin{bmatrix}
+y_1'\\
+y_2'
+\end{bmatrix}
+=
+\begin{bmatrix}
+-6/100&3/50\\
+6/100&-6/50
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\
+y_2
+\end{bmatrix}
+$.
+ 
+As a final example, let's consider 3 tanks.  Suppose tank 1 contains 100 gallons with 300 lbs of salt.  Tank 2 contains 50 gallons with 20 lbs of salt, and tank 3 contains 30 gallons of pure water.  Pumps allows 2 gallons per minute to flow each direction between tank 1 and tank 2.  Another set of pumps allows 3 gallons per minute to flow between tanks 1 and 3.  There are no pumps connecting tank 2 and tank 3. Let's set up a system of ODEs in matrix form whose solution would give us the salt content in each tank at any given time.  For tank 1, we have an inflow of 2/50 $y_2$ plus 3/40 $y_3$. The outflow is 5/100 $y_1$ (2 gal toward tank 2 and 3 toward tank 3).  Continuing in this fashion, we eventually obtain the matrix equation
+$
+\begin{bmatrix}
+y_1'\\
+y_2'\\
+y_3'
+\end{bmatrix}
+=
+\begin{bmatrix}
+-5/100&2/50 &3/40\\
+2/100 &-2/50&0\\
+3/100 &0    &-3/40
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\
+y_2\\
+y_3
+\end{bmatrix}
+$, which is a homogeneous linear first order system of ODEs.
+
+Problems such as the ones above appear in waste processing plants, chemical labs, immigration, supply/demand, economics, and more. Learning how to set up and solve more complicated problems is the content of an introductory course in differential equations.  The point to this unit is to help you see that every one of these problems can be solved by finding the matrix exponential, which is just an application of diagonalizing a matrix (picking a good basis to represent the linear transformation).
+
+
+\subsection{Solving a system of ODEs}
+I'll finish with one more example to remind us how to use the matrix exponential to solve the differential equations above.  Recall at the beginning of the unit that the solution to the ODE 
+ $y' =a y$ is $y=e^{at}c$. In terms of systems, we can solve the linear system of equations with constant coefficient matrix $A$ given by $\vec y' =A \vec y$ using the solution
+$\vec y=e^{At}\vec c.$ If the initial conditions are $\vec y(0)=\vec y_0$, then the constant vector $\vec c$ must equal the initial conditions.
+
+Lets solve the system of ODEs given by  
+$
+\begin{bmatrix}
+y_1'\\
+y_2'
+\end{bmatrix}
+=
+\begin{bmatrix}
+3&1\\
+0&3
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\
+y_2
+\end{bmatrix}
+$. Since the coefficient matrix $A = \begin{bmatrix}
+3&1\\
+0&3
+\end{bmatrix}
+$ is already in Jordan form, we know the matrix exponential of $A$ times $t$ is 
+$exp(At) = 
+\begin{bmatrix}
+e^{3t}&te^{3t}\\
+0&e^{3t}
+\end{bmatrix}
+$.  Hence we have as a solution to our ODE 
+$
+\begin{bmatrix}
+y_1\\
+y_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+e^{3t}&te^{3t}\\
+0&e^{3t}
+\end{bmatrix}
+\begin{bmatrix}
+c_1\\
+c_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+c_1e^{3t}+c_2te^{3t}\\
+c_2e^{3t}
+\end{bmatrix}$. Without using matrix form, a general solution would be $y_1=c_1e^{3t}+c_2te^{3t}, y_2=c_2e^{3t}$.  To check our solution, we compute $y_1' = 3c_1e^{3t}+3c_2te^{3t}+c_2e^{3t}$ and $y_2' = 3c_2e^{3t}$.  The system of ODEs requires that $y_1' = 3y_1+y_2 = 3(c_1e^{3t}+c_2te^{3t})+(c_2e^{3t})$ (which is correct), and that $y_2' = 3y_2 = 3(c_2e^{3t})$ (which is also correct). 
+
+In the previous problem, let's add the initial conditions $y_1(0)=2$ and $y_2(0)=7$. Recall that $e^0=I$, so plugging in $t=0$ into our vector equation $\vec y = e^{At}\vec c$ means 
+$
+\begin{bmatrix}
+y_1(0)\\
+y_2(0)
+\end{bmatrix}
+=I
+\begin{bmatrix}
+c_1\\
+c_2
+\end{bmatrix}
+$, or 
+$
+\begin{bmatrix}
+2\\
+7
+\end{bmatrix}
+=
+\begin{bmatrix}
+c_1\\
+c_2
+\end{bmatrix}
+$. Hence the solution of our initial value problem is simply the matrix exponential times the initial conditions, i.e.
+$
+\begin{bmatrix}
+y_1\\
+y_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+e^{3t}&te^{3t}\\
+0&e^{3t}
+\end{bmatrix}
+\begin{bmatrix}
+2\\
+7
+\end{bmatrix}
+$.
+
+This solution technique solves almost every differential equation you will encounter in an introductory differential equations class. In an introduction to ODEs, you will learn many additional applications to motion, springs, electrical networks, and more. Knowing linear algebra provides you with the language needed to see how solutions in high dimensions are really just extensions of solutions in 1 dimension.
+

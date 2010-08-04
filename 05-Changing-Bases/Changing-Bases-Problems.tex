@@ -1,0 +1,212 @@
+\input{05-Changing-Bases/Changing-Bases-Preparation}
+
+\section{Problems}
+
+Most of the homework from this unit comes from Schaum's Oultines. Here are some additional problems related to the topics in this unit.
+
+\begin{enumerate}
+
+\item \textbf{Key Subspaces:} Show the following by checking the three requirements to be a subspace.
+\begin{enumerate}
+\item The kernel of a linear transformation is a subspace of the domain. 
+
+\item The image of a linear transformation is a subspace of the range.
+
+\item For each eigenvalue of a linear transformation, the corresponding eigenspace is a subspace of both the domain and range.
+\end{enumerate}
+
+\item  \textbf{General Position:} For each of the following linear transformations, find a basis $S$ for the domain and a basis $S^\prime$ for the range so that the matrix representation relative to $S$ and $S^\prime$ consists of all zeros and 1's, where the 1's occur on the diagonal of a sub matrix located in the upper left corner of the matrix.  In other words, the matrix representation consists of adding rows and/or columns of zeros to the identity matrix (where the number of 1's equals the rank of the matrix).
+
+\begin{enumerate}
+
+\item $T(x,y,z)=(x+2y-z,y+z)$
+
+\item $T(x,y,z)=(x+2y-z,y+z,x+3y)$
+
+\item $T(x,y,z)=(x+2y-z,2x+4y-2z)$
+
+\item $T(x,y)=(x+2y,y,3x-y)$
+
+\item $T(x,y)=(x+2y,2x+4y,3x+6y)$
+
+\item Now select your own linear transformation and repeat this problem. 
+
+\end{enumerate}
+
+
+\item Consider the linear transformation, vectors, and bases 
+$$T(x,y) = (x+4y, 2x+3y),\quad \vec v = (0,5),\quad S=\{(1,1),(-2,0)\},\quad S'=\{(1,2),(3,1)\}.$$  Find the following, and write the name given to this quantity:
+\begin{enumerate}
+\begin{multicols}{8}
+	\item $[T]_E$  %- The standard matrix representation ($E$ is the standard basis).
+	\item $[\vec v]_S$% - The coordinates of $\vec v$ relative to $S$. 
+	\item $T(\vec v)$% - The image of $\vec v$.
+	\item $[T(\vec v)]_{S'}$% - The coordinates  of $T(\vec v)$ relative to $S'$.
+	\item $[T]_{S,S'}$% - The matrix representation relative to $S$ and $S'$.
+	\item $[T]_{S',S}$% - The matrix representation relative to $S'$ and $S$.
+	\item $[T]_S$% - The matrix representation relative to $S$.
+	\item $[T]_{S'}$% - The matrix representation relative to $S'$.
+\end{multicols}
+	\item If $(a,b)_S = [(x,y)]_S$, find $[T(x,y)]_{S'}$ in terms of $a$ and $b$.
+	\item If $(a,b)_S = [(x,y)]_S$, find $[T(x,y)]_{S}$ in terms of $a$ and $b$.
+	\item Find a basis $S$ that diagonalizes $T$.  What is $[T]_S$ using this basis?
+\end{enumerate}
+
+\item Consider the linear transformation
+$T(x,y,z) = (x+2y-z, 2x+4y+4z,-x-2y)$.
+\begin{enumerate}
+	\item Find a basis for the kernel of $T$.
+	\item Find a basis $S$ for the domain of $T$ that includes the basis vectors for the kernel as the last vectors.
+	\item What is $[T]_{S,E}$?
+	\item Find a basis $S'$ for the range of $T$ that includes the nonzero columns of $[T]_{S,E}$ as the first vectors.
+	\item What is $[T]_{S,S'}$? Does it have the identity matrix in the upper left corner as it should?
+\end{enumerate}
+
+\item Which matrices are diagonalizable?  Find the algebraic and geometric multiplicity of each eigenvalue and use this to answer the question.  If the matrix is diagonalizable, what similarity matrix $P$ diagonalizes the matrix?
+\begin{multicols}{4}
+\begin{enumerate}
+	\item 
+	$\bm{ 
+	8 & -2 \\
+ 	15 & -3
+ 	}$
+	\item 
+	$\bm{ 
+ 5 & -1 \\
+ 9 & -1
+ 	}$
+	\item 
+	$\bm{ 
+ 4 & -1 & 1 \\
+ 0 & 2 & 0 \\
+ -2 & 1 & 1
+ 	}$
+	\item 
+	$\bm{ 
+ 6 & -2 & 3 \\
+ 4 & 0 & 4 \\
+ -2 & 1 & 1
+ 	}$
+	\item 
+	$\bm{ 
+ 3 & 1 & 0 \\
+ 0 & 3 & 0 \\
+ 0 & 0 & 3
+ 	}$
+	\item 
+	$\bm{ 
+ 3 & 0 & 1 \\
+ 0 & 3 & 0 \\
+ 0 & 0 & 3
+ 	}$
+	\item 
+	$\bm{ 
+ 3 & 1 & 1 \\
+ 0 & 3 & 0 \\
+ 0 & 0 & 3
+ 	}$
+	\item 
+	$\bm{ 
+ 3 & 1 & 1 \\
+ 0 & 3 & 1 \\
+ 0 & 0 & 3
+ 	}$
+\end{enumerate}
+\end{multicols}
+
+\end{enumerate}
+
+
+\section{Projects}
+
+\begin{enumerate}
+\item This project explores the use of coordinates relative to a basis to send and receive radio communications.  We'll start with a brief introduction to the idea, and then do some computations. Make sure you have a CAS like SAGE nearby so that you can rapidly perform the computations required.
+
+Radio waves form a vector space, which means the sum of two radio waves is again a radio wave, and radio waves can be scaled by any real number. We will represent radio waves in this example by using trigonometric functions. The telecommunications industry (radio, TV, internet, cell phone, etc.) utilizes these facts to send and receive messages.  Here is the basis idea:
+\begin{itemize}
+	\item The government assigns each radio station a different frequency to broadcast at (they state a basis and require everyone to use this basis). We'll see what happens later if someone doesn't follow the rules. 
+	\item The radio station first converts their message into numbers (vectors). They then creates and transmit radio waves whose amplitude matches the numbers being sent. (Here is where we use the ability to scale vectors by any amount.)
+	\item Every radio station simultaneously transmits radio waves at their frequency, so these radios waves add together. This total combined radio wave looks very different than any of the individually transmitted radio waves. (Here is where we use the ability to sum any collection of vectors.)
+	\item When you turn the dial on your radio tuner to FM 91.5, an electrical circuit in your radio called an ``integrator'' computes an integral (yes it actually computes an integral). This integral is a linear transformation that takes radio waves to numbers. The numbers obtained from this integral are the numbers sent by FM 91.5, or the coordinates of some vectors, relative to a basis.  
+	When you change the dial to a different frequency, then the integral returns the coordinates transmitted by the new station.	
+\end{itemize}
+
+The rest of this project asks you to explore the idea above, using some simple examples. 
+First, we need a basis for the space of radio waves (the Federal Communications Commission (FCC) provides the basis for the telecommunications industry).  
+We'll represent radio waves using sines and cosine functions, so let's use the simplified basis 
+$$S=\{\cos(\pi x),\sin(\pi x),\cos(2\pi x),\sin(2\pi x),\cos(3\pi x),\sin(3\pi x),\cos(4\pi x),\sin(4\pi x),\ldots.$$
+This is an infinite dimensional vector space of functions. When you purchase the right to broadcast, you purchase the right to use certain basis vectors. You basically are buying the rights to a subspace. You can then broadcast using any linear combination of these basis vectors.
+\begin{enumerate}
+	\item Suppose we have two radio stations at frequencies 1 and 2. 
+	The radio station with frequency 1 wants to send the numbers $(2,-1)$, so they transmit the vector $v_1 = 2\cos(\pi x)-\sin(\pi x)$. 	
+	The radio station with frequency 2 wants to send the numbers $(-3,1)$, so they transmit the vector $v_2 = -3\cos(2\pi x)+1\sin(2\pi x)$. Notice how both stations used the numbers they want to send as the coordinates of their vector.
+	Use your CAS to plot $v_1$ and $v_2$ on the same set of axes for $-2\leq x\leq 2$. In Sage you could type 
+	\begin{verbatim}
+v1=2 *cos(pi*x)-sin(pi*x)
+v2=-3 *cos(2*pi*x)+sin(2*pi*x)
+p1=plot(v1,-2,2,color='red')
+p2=plot(v2,-2,2,color='blue')
+p1+p2
+	\end{verbatim}
+	
+	\item 
+	Add to your graph the radio waves from three more stations:
+	$$v_3 = 7\cos(3\pi x)-2\sin(3\pi x), v_4 = 0\cos(4\pi x)+5\sin(4\pi x),v_5 = -2\cos(5\pi x)+6\sin(5\pi x).$$
+	
+	\item 
+	When all 5 stations broadcast simultaneously, their waves sum together.  Graph the sum $v = v_1+v_2+v_3+v_4+v_5$ for for $-2\leq x\leq 2$. Notice the graph is periodic. This is the wave that your antenna receives.
+	
+	\item We now use our tuner to obtain the numbers sent by station 1. Use your CAS to compute the following two integrals
+	$$ \int_{-1}^1 v \cos(\pi x) dx \quad \text{and}\quad \int_{-1}^1 v \sin(\pi x) dx .$$
+	You should obtain the numbers (2,-1).  You can use the following Sage command:
+	\begin{verbatim}
+	integrate( (v)*cos(1*pi*x),(x,-1,1)).n()
+	\end{verbatim}
+	The .n() gives you a decimal approximation (try removing it and see what you get).
+
+	\item How do we obtain the numbers sent by station 2? Use your CAS to compute
+	$$ \int_{-1}^1 v \cos(2 \pi x) dx \quad \text{and}\quad \int_{-1}^1 v \sin(2 \pi x) dx .$$
+	Did you obtain the coefficients (-3,1)? These are the coordinates of $v_2 = -3\cos(2\pi x)+1\sin(2\pi x)$ relative to the basis vectors $\{\cos(2\pi x),\sin(2\pi x)\}$ purchased by station 2.  
+	
+	\item In the previous two parts, we first multiplied our vector $v$ by $\cos (n\pi x)$ or $\sin (n\pi x)$ where $n$ is the frequency of the station, and then integrated from -1 to 1. Electrical circuits do all this inside the radio. 
+	Repeat these integrals for $n = 3,4,5$ to verify that you get the coordinates $(7,-2)$, $(0,5)$, and $(-2,6)$.
+	
+	\item As long as everyone broadcasts at their assigned frequency, mandated by the FCC, the integrals provide the correct coordinates.  
+	What happens if someone broadcasts at a frequency not approved by the FCC?  
+	Their radio wave can jam the other stations. 
+	Let's broadcast the radio wave $u = 20\cos(1.5\pi x)+3\sin(1.5\pi x)$ and see what happens.  
+\begin{itemize}
+%	\item Go back to your graph of $v_1$ through $v_5$ and add to it $u$.  
+	\item Let $w=v+u = v_1+v_2+v_3+v_4+v_5+u$ and graph $w$. Notice that it is no longer periodic.  
+	\item Compute $\ds \int_{-1}^1 w \cos(1 \pi x) dx$ and $\ds \int_{-1}^1 w \sin(1 \pi x) dx $, and compare  to $(2,-1)$. Use a decimal approximation (so .n() in Sage).
+	\item Compute $\ds \int_{-1}^1 w \cos(5 \pi x) dx$ and $\ds \int_{-1}^1 w \sin(5 \pi x) dx $, and compare  to $(-2,6)$.
+	\item Notice the jamming frequency $1.5$ caused a larger problem to frequency 1 than it did to frequency 5.  
+	You should have obtained $(17.279, 0.528)$ instead of $(2,-1)$ and $(-2.839, 5.581)$ instead of $(-2,6)$.
+	
+	\item Change the jamming vector to $u = 20\cos(4.5\pi x)+3\sin(4.5\pi x)$ and repeat the integrals above. 
+	
+\end{itemize}
+
+Jamming frequencies can greatly jam the frequencies close to them.  This is one reason why you are asked to turn off your cell phone and laptop during takeoff on an air plane.  You don't want cellular or wireless emissions to accidentally jam the air traffic control communications, resulting in two planes crashing on the runway. 
+
+Using a radio jammer is illegal without a permit, and could result in huge fines and/or prison time. The electronic devices we use must comply with the FCC rules which state:
+\begin{quote}
+This device complies with Part 15 of the FCC rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.
+\end{quote} 
+You could interpret this as: (1) your device should not jam other communications, and (2) your device must allow others to jam it.  The latter rule allows law enforcement to jam communications if needed.  
+
+	\item Why does all of this work?  It has to do with the fact that certain integrals are zero.  If you select any two different basis vectors $f,g$ in $S$, and compute $\int_{-1}^1 fg\ dx$, then the result is zero. In other words, we have $\ds \int_{-1}^1 \cos(m\pi x)\sin(n \pi x) dx = 0$, and provided $m\neq n$ we also have $\ds \int_{-1}^1 \cos(m\pi x)\cos(n \pi x) dx = 0$ and $\ds \int_{-1}^1 \sin(m\pi x)\sin(n \pi x) dx = 0$. These trig functions (vectors) are said to be orthogonal because this integral is zero. Your final job in this assignment is to compute a few of these integrals to verify this result. \begin{itemize}
+	\item Compute $\ds \int_{-1}^1 \cos(2\pi x)\cos(n \pi x) dx$ for $n=1,2,3$. One is nonzero.
+	\item Compute $\ds \int_{-1}^1 \cos(2\pi x)\sin(n \pi x) dx$ for $n=1,2,3$. All are zero.
+	\item Compute $\ds \int_{-1}^1 \sin(3\pi x)\cos(n \pi x) dx$ for $n=1,2,3$. All are zero.
+	\item Compute $\ds \int_{-1}^1 \sin(3\pi x)\sin(n \pi x) dx$ for $n=1,2,3$. One is nonzero.
+\end{itemize}
+As a challenge (optional), use the product-to-sum trig identities to prove the general cases. 
+We'll be revisiting this topic when we study inner products.  The integral $\int _{-1}^1 fg dx$ is called an inner product. Because the nonzero integrals are 1, we say that $S$ is an orthonormal basis.
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+\input{05-Changing-Bases/Changing-Bases-solutions}

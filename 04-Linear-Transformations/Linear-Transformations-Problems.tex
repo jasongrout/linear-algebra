@@ -1,0 +1,204 @@
+\input{04-Linear-Transformations/Linear-Transformations-Preparation}
+
+\section{Problems}
+
+Most of the homework from this unit comes from Schaum's Oultines. Here are some additional problems related to the topics in this unit.
+
+\begin{enumerate}
+	\item 2D Transformations:
+	Use Sage to visualize how each of the following matrices transforms the plane. Before drawing each one, first construct your own 2D graph where you transform a 1 by 1 box to the appropriate parallelogram (so show where you send the vectors $(1,0)$, $(0,1)$, and $(1,1)$. Then use Sage to see if your graph is correct.
+Notice how the determinant of the transformation is precisely the area of the transformed region (where a negative sign means the image was flipped). Look for eigenvectors and convince yourself that the transformation stretches the image radially outwards in this direction, where the scaling factor is the eigenvalue. If the eigenvalues are complex, look for a clockwise or counterclockwise rotation.
+\begin{enumerate}
+\item
+	$\begin{bmatrix}
+	2 &0 \\
+	0 &3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	2 &0 \\
+	0 &-3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	2 &4 \\
+	0 &3
+	\end{bmatrix}$
+\item 
+	$\begin{bmatrix}
+	-2 &1 \\
+	4 &-2
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	2 &1 \\
+	1 &2
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &2 \\
+	4 &8
+	\end{bmatrix}$
+
+\item
+	$\begin{bmatrix}
+	2 &4 \\
+	4 &2
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	-2 &4 \\
+	4 &-8
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	0 &-1 \\
+	1 &0
+	\end{bmatrix}$
+\item
+	$\begin{bmatrix}
+	0 &1 \\
+	-4 &0
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &-1 \\
+	1 &1
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	-1 &1 \\
+	-1 &-1
+	\end{bmatrix}$
+\item Type in 3 more matrices of your own choice, trying to obtain examples with positive, negative, and complex eigenvalues.
+\item Use a rotation matrix to visualize rotations in the plane using the angles $\pi/4, \pi/2, \pi, -\pi/2, 3\pi/5, 3\pi$, do any result in real (instead of complex) eigenvalues? Why or why not? 
+\end{enumerate}
+
+
+
+
+
+
+
+\item 3D Transformations:
+For each matrix below, start by determining where the unit cube is mapped.  Then use Sage to visualize the 3D transformation.  Identify the determinant and eigenvectors in the diagrams, and relate them to the concepts from the 2D problems above.
+\begin{enumerate}
+\item 
+	$\begin{bmatrix}
+	1 &0 &0\\
+	0 &2 &0\\
+	0 &0 &3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &0 &0\\
+	0 &2 &0\\
+	0 &0 &-3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &0 &4\\
+	0 &-2 &0\\
+	0 &0 &3
+	\end{bmatrix}$
+
+\item 
+	$\begin{bmatrix}
+	2 &1 &0\\
+	1 &2 &0\\
+	0 &0 &2
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	2 &4 &1\\
+	4 &2 &0\\
+	0 &6 &2
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	2 &0 &4\\
+	0 &2 &0\\
+	4 &0 &2
+	\end{bmatrix}$
+
+\item 
+	$\begin{bmatrix}
+	0 &1 &0\\
+	-1 &0 &0\\
+	-2 &4 &3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &2 &3\\
+	0 &0 &0\\
+	6 &2 &-3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &-1 &0\\
+	1 &1 &2\\
+	0 &0 &3
+	\end{bmatrix}$
+%\item Use the 3D rotations code to perform rotations about the $x,y,z$ axes, using the angles $\pi/4$ and $\pi/2$.
+\end{enumerate}
+
+
+
+
+
+\item Non Square Transformations:
+In order to visualize a transformation which results from a non square matrix, extend the matrix to be a square matrix by adding rows or columns of zeros. Before using the computer, construct a rough sketch of the linear transformation by determining where each basis vector is mapped. Then use Sage to visualize the transformation.  Notice how in each case 0 is an eigenvalue, and the eigenvector corresponding to 0 is the direction in which space was smashed so that you obtain the appropriate transformation.
+\begin{enumerate}
+\item 
+	$\begin{bmatrix}
+	1 \\
+	2 
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &2 
+	\end{bmatrix}$
+,  $\begin{bmatrix}
+	3 \\
+	-2
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	3 &-2 
+	\end{bmatrix}$
+\item
+	$\begin{bmatrix}
+	1 &-1 &0\\
+	0 &0 &3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1 &0 \\
+	-1 &0 \\
+	0 &3
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	1\\	-1 \\0
+	\end{bmatrix}$
+,	$\begin{bmatrix}
+	2 &0 \\
+	0 &3 \\
+	0 &1 
+	\end{bmatrix}$
+\end{enumerate}
+
+\item Elementary Matrices and Determinants:
+Select a large matrix (4 by 4 or bigger) and compute the determinant using software. 
+Then use row reduction by hand to verify that this is the determinant of the matrix. 
+If the determinant is too large to work with, then change your matrix until you get a smaller determinant.  
+Repeat this problem as needed.
+
+\end{enumerate}
+
+
+\section{Projects}
+%\fixthis
+%I could make the project here be a project that guides the students towards diagonalizing matrices.  Have them grab two different bases of eigenvectors, but still they obtain the same diagonal matrix.
+
+%I could have the project guide them towards an SVD.
+
+%I could skip the project. 
+
+%I would like them to have to work with a large matrix and explore images, kernels, etc.  Finding coordinates of vectors relative to a basis could be good.  I could guide them to finding this.
+
+%This could be an LU decomposition, and even possibly any LUP decomposotion.  I like this.  Let's do it. But Why?  I need to give the students a reason to do this.  Perhaps I could have them study how an LU decomposition is used to solve a system.  
+%	We could start with finding an LU Decomposition (4 steps - just row reduce the lower left portion). Then you already have L and U
+
+%I need to have a project which emphasizes the fact that every solution to a system is of the form yp + yh. However, this is not really a computational issue.  I could ask them to find all solutions (using sage).  Then take two solutions and show the difference is in the null space. 
+
+%Maybe the best project right now is to just wait.  I need help here.  I need to be part of a team so that I can bounce ideas of others.  
+
+
+
+
+
+\input{04-Linear-Transformations/Linear-Transformations-solutions}
+Please use Sage to check all your work.

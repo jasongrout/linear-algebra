@@ -1,0 +1,12 @@
+.log
+.aux
+.blg
+.synctex
+.bbl
+.dvi
+.out
+.toc
+.tps
+.tcp
+.DS_Store
+341-Book.pdf

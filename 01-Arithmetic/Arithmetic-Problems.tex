@@ -1,0 +1,1583 @@
+\newpage
+
+\input{01-Arithmetic/Arithmetic-Preparation}
+
+
+
+\section{Problems}
+
+
+\begin{enumerate}
+
+
+\item \textbf{Vector Arithmetic:} For each pair of vectors, (1) find the length of each vector, (2) compute the dot product of the vectors, (3) find the cosine of the angle between them, and (4) determine if the vectors are orthogonal.
+\begin{enumerate}
+\begin{multicols}{3}
+	\item $(1,2), (3,4)$
+	\item $[-2~1], [4~-8]$
+	\item $(1,2,2), (3,0,-4)$
+	\item $\left<-2,3,5\right>, \left<4,-4,4\right>$
+	\item $[1~1~1~1], [2~3~-4~-1]$
+	\item $[1~-4~3~0~2]^T, [2~1~0~10~1]^T$
+\end{multicols}
+\end{enumerate}
+More problems are in Schaum's Outlines - 
+Chapter 1:1-13,  54-66.
+\item \textbf{Matrix Arithmetic:} Consider the matrices
+$$
+A=
+\begin{bmatrix}
+ 1 & 2 \\
+ 3 & 4
+\end{bmatrix}
+,
+B=
+\begin{bmatrix}
+ 4 & -1 \\
+ 3 & 2
+\end{bmatrix}
+,
+C=
+\begin{bmatrix}
+ 1 & 0 & -1 \\
+ 2 & 3 & 4
+\end{bmatrix}
+,
+D=
+\begin{bmatrix}
+ 0 & 2 & 1 \\
+ 3 & 0 & 4 \\
+ -1 & 1 & 2
+\end{bmatrix}
+, \text{ and }
+E=
+\begin{bmatrix}
+ 3 \\
+ 1 \\
+ -4
+\end{bmatrix}.
+$$
+Compute each of the following, or explain why it is not possible.
+\begin{enumerate}
+\begin{multicols}{4}
+	\item $A+B$ and $3A-2B$
+	\item $AB$ and $BA$
+	\item $AC$ and $CA$
+	\item $BC$ and $CB$
+	\item $CD$ and $DC$
+	\item $DE$ and $ED$
+	\item $CDE$
+	\item $CC^T$ and $C^TC$
+	\item $DC^T$ and $CD^T$
+	\item $AB$ and $B^TA^T$
+	\item $BA$ and $A^TB^T$
+	\item Trace of $A$, $B$, $D$.	
+\end{multicols}
+\end{enumerate}
+For each of the following, compute the product in three ways (1) using linear combinations of columns, (2) using rows dotted by columns, and (3) using linear combinations of rows (see Table \ref{matrixmult}).
+\begin{multicols}{4}
+\begin{enumerate}[resume]
+\item $AB$
+\item $BC$
+\item $CD$
+\item $DE$
+\end{enumerate}
+\end{multicols}
+More problems are in Schaum's Outlines - 
+Chapter 1:14-26, 67-79;
+Chapter 3:1-3, 68-70.
+
+
+
+
+
+
+\item \textbf{Interpreting RREF:} Each of the following augmented matrices requires one row operation to be in reduced row echelon form. Perform the required row operation, and then write the solution to corresponding system of equations in terms of the free variables.
+\begin{multicols}{3}
+\begin{enumerate}
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 0 & 0 & 3 \\
+ 0 & 0 & 1 & 1 \\
+ 0 & 1 & 0 & -2
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 2 & 0 & -4 \\
+ 0 & 0 & 1 & 3 \\
+ -3 & -6 & 0 & 12
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 0 & 1 & 0 & 4 \\
+ 0 & 0 & 5 & 15 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 0 & 2 & 4 \\
+ 0 & 1 & -3 & 0 \\
+ 0 & 0 & 0 & 1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}[ccccc|c]
+ 0 & 1 & 0 & 7 & 0 & 3 \\
+ 0 & 0 & 1 & 5 & -3 & -10 \\
+ 0 & 0 & 0 & 0 & 1 & 2 \\
+ 0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+$
+\end{enumerate}
+\end{multicols}
+
+More problems are in Schaum's Outlines - 
+Chapter 2:37-40
+
+
+\item \textbf{Solving Systems with Gaussian Elimination:} Solve each system of equations using Gaussian elimination, by reducing the augmented matrix to reduced row echelon form (rref).
+\begin{multicols}{3}
+\begin{enumerate}
+	\item 
+$
+\begin{array}{rl}
+ x  -3y &= 10 \\
+ 3x +2y &= 8
+\end{array}
+$
+
+
+	\item 
+$
+\begin{array}{rl}
+ 2x+ 6y -z &= 9 \\
+ x+ 3y -3z &= 17
+\end{array}
+$
+
+
+	\item 
+$
+\begin{array}{rl}
+  x_2 -2x_3 &= -5 \\
+ 2x_1 -x_2 + 3x_3 &= 4 \\
+ 4x_1 +x_2 + 4x_3 &= 5
+\end{array}
+$
+
+
+	\item 
+$
+\begin{array}{rl}
+ x_1 + 2x_3 &= -2 \\
+ 2x_1  -3x_2  &= -3 \\
+ 3x_1 +x_2 -x_3 &= 2
+\end{array}
+$
+
+
+	\item 
+$
+\begin{array}{rl}
+ 2x_1 +x_2 + 4x_3 &= -1 \\
+ -x_1 + 3x_2 + 5x_3 &= 2 \\
+ x_2 + 2x_3 &= -2
+\end{array}
+$
+
+
+	\item 
+$
+\begin{array}{rl}
+ x_1 -2x_2 +x_3 &= 4 \\
+ -x_1 + 2x_2 + 3x_3 &= 8 \\
+ 2x_1  -4x_2 +x_3 &= 5
+\end{array}
+$
+
+
+	\item 
+$
+\begin{array}{rl}
+ x_1 + 2x_3 + 3x_4 &= -7 \\
+ 2x_1 +x_2 + 4x_4 &= -7 \\
+ -x_1 + 2x_2 + 3x_3  &= 0 \\
+ x_2  -2x_3  -x_4 &= 4
+\end{array}
+$
+\end{enumerate}
+\end{multicols}
+
+More problems are in Schaum's Outlines - 
+Chapter 2:
+44-48, 51-56, 70-72, 75-28, 86-90 
+
+
+
+
+
+
+\item \textbf{Rank and Linear Dependence:} Compute the rank of each matrix. Use this result to determine if the columns are linearly dependent. If the vectors are dependent, write each non pivot column as a linear combination of the pivot columns.
+\begin{multicols}{4}
+\begin{enumerate}
+	\item \label{rank1} 
+$
+\begin{bmatrix}
+ 1 & 2 & 3 \\
+ 4 & -2 & 1 \\
+ 3 & 0 & 4
+\end{bmatrix}
+$
+
+	\item \label{rank2}
+$
+\begin{bmatrix}
+ 1 & -1 & -1 \\
+ -2 & 3 & 5 \\
+ 3 & 1 & 9
+\end{bmatrix}
+$
+
+	\item 
+$
+\begin{bmatrix}
+ 1 & 3 & -1 & 9 \\
+ -1 & -2 & 0 & -5 \\
+ 2 & 1 & 3 & -2
+\end{bmatrix}
+$
+
+	\item \label{rank4}
+$
+\begin{bmatrix}
+ 1 & 3 & 12 & 1 \\
+ 2 & 0 & -6 & 3 \\
+ -1 & 1 & 8 & -4 \\
+ 0 & 2 & 10 & 2
+\end{bmatrix}
+$
+
+\end{enumerate}
+\end{multicols}
+
+More problems are in Schaum's Outlines - 
+Chapter 5:
+19, 20, 22, 68.
+
+
+
+
+
+\item \textbf{Linear Independence:} In each problem, determine if the vectors given are linearly independent. If the vectors are linearly dependent, write one of the vectors as a linear combination of the others.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item \,
+	$[2, -1, 0]$, $[1, 0, 3]$, $[3, 2, 4]$
+
+	\item \,
+$[1, 2, -3, 4], [3, -2, -1, -2], [5, -2, -3, -1]$
+
+	\item \,
+$[0, 1, 1, 1], [1, 0, 1, 1], [1, 1, 0, 1], [1, 1, 1, 0]$
+
+	\item \,
+$[1, 0, -1, -2], [1, 2, 3, 0], [0, 1, -1, 2], [2, 0, 1, -5]$
+\end{enumerate}
+\end{multicols}
+
+More problems are in Schaum's Outlines - 
+Chapter 5:
+1, 3, 4, 50, 53.
+
+
+\item \textbf{Determinants:} Find the determinant of each matrix. For 3 by 3 matrices, compute the determinant in 2 different ways by using a cofactor expansion along a different row or column. 
+\begin{enumerate}
+\begin{multicols}{3}
+	\item 
+$
+\begin{bmatrix}
+ 1 & 2 \\
+ 3 & 4
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 4 & 3 \\
+ 5 & 9
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 2 & 1 & 0 \\
+ 0 & 2 & 1 \\
+ 1 & 0 & 2
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 3 & 1 & -2 \\
+ 1 & -1 & 4 \\
+ 2 & 2 & 1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 2 & 3 & -1 \\
+ 1 & 0 & 0 \\
+ 4 & 2 & 5
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 5 & 1 & -3 \\
+ 2 & -1 & 2 \\
+ 1 & 4 & -1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 2 & 1 & -6 & 8 \\
+ 0 & 3 & 5 & 4 \\
+ 0 & 0 & 1 & 5 \\
+ 0 & 0 & 0 & -4
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 3 & 2 & 5 & -1 \\
+ 0 & 8 & 4 & 2 \\
+ 0 & -1 & 0 & 0 \\
+ 0 & -5 & 3 & -1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 1 & 1 & 1 \\
+ 2 & -1 & 1 & 1 \\
+ -1 & 1 & 2 & -2 \\
+ 1 & 1 & -1 & -1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 1 & 1 & 1 \\
+ 2 & 2 & 2 & 2 \\
+ 0 & 2 & 1 & -1 \\
+ 1 & 0 & -2 & 1
+\end{bmatrix}
+$
+\end{multicols}
+\end{enumerate}
+
+For the following matrices, compute the determinant and use your answer to determine if the columns are linearly independent.
+\begin{enumerate}[resume]
+\begin{multicols}{3}
+	\item Use the matrix from \ref{rank1}
+	\item Use the matrix from \ref{rank2}
+	\item Use the matrix from \ref{rank4}
+\end{multicols}
+\end{enumerate}
+
+More problems are in Schaum's Outlines -  
+Chapter 10:
+1-6, 21, 23, 51-55
+
+
+
+
+
+
+\item \textbf{Inverse:} Find the inverse of each matrix below.
+\begin{multicols}{4}
+\begin{enumerate}
+	\item \label{inv1}
+$
+\begin{bmatrix}
+ 1 & 2 \\
+ 3 & 4
+\end{bmatrix}
+$
+	\item \label{inv2}
+$
+\begin{bmatrix}
+ -2 & 4 \\
+ 3 & -5
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 0 & 1 \\
+ -1 & 0
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 2 & 3 \\
+ 4 & 5
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 7 & 3 \\
+ 2 & 1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 0 & 2 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 4
+\end{bmatrix}
+$
+	\item \label{inv3}
+$
+\begin{bmatrix}
+ 1 & 0 & 2 \\
+ 0 & 1 & 0 \\
+ -1 & 1 & 4
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 3 & 0 & 3 \\
+ 0 & -1 & 1 \\
+ 0 & 3 & -4
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 2 & -1 \\
+ 2 & 3 & -2 \\
+ 0 & 3 & 2
+\end{bmatrix}
+$
+	\item \label{inv4}
+$
+\begin{bmatrix}
+ -2 & 0 & 5 \\
+ -1 & 0 & 3 \\
+ 4 & 1 & -1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 2 & 1 & 1 \\
+ 1 & 2 & 1 \\
+ 1 & 1 & 2
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+a & b\\
+c & d
+\end{bmatrix}
+$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+More problems are in Schaum's Oultines:
+Chapter 3: 7-11, 77-80.
+
+
+\item \textbf{Solve systems using an inverse:} Solve each system by using an inverse from above.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item 
+$\left\{
+\begin{array}{rl}
+ x_1 + 2x_2  &=3\\
+ 3x_1 + 4x_2  &=4
+\end{array}
+\right.$ using \ref{inv1}.
+	\item 
+$\left\{
+\begin{array}{rl}
+ -2x_1 + 4x_2  &=4\\
+ 3x_1  -5x_2  &=-2
+\end{array}
+\right.$ using \ref{inv2}.
+	\item 
+$\left\{
+\begin{array}{rl}
+ 1x_1 + 2x_3 &=2\\
+ x_2 &=3\\
+ -x_1 +x_2 + 4x_3  &=1
+\end{array}
+\right.$ using \ref{inv3}.
+	\item 
+$\left\{
+\begin{array}{rl}
+ -2x_1+ 5x_3 &=-2\\
+ -x_1+ 3x_3 &=1\\
+ 4x_1 +x_2  -x_3 &=3
+\end{array}
+\right.$ using \ref{inv4}.
+\end{enumerate}
+\end{multicols}
+
+Now grab any problem from the entire unit that involves solving a system where an inverse applies.  Find the inverse of the coefficient matrix and use it to find the solution. (Use the solutions at the back to select a problem with a unique solution).
+
+
+
+\item \textbf{Eigenvalues and Eigenvectors:} For each matrix, compute the characteristic polynomial and eigenvalues. For each eigenvalue, give all the corresponding eigenvectors. Remember that you can check your answer by comparing the trace to the sum of the eigenvalues, and the determinant to the product of the eigenvalues.
+\begin{multicols}{4}
+\begin{enumerate}
+	\item 
+$
+\begin{bmatrix}
+ 1 & 2 \\
+ 0 & 3
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 0 & 1 \\
+ -1 & -2
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 2 & 3 \\
+ 3 & 2
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 0 & 1 \\
+ -1 & 0
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 4 \\
+ 2 & 3
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 3 & 1 \\
+ 4 & 6
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 2 & 2 \\
+ 0 & 1 & 2 \\
+ 0 & 0 & 1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 2 & 2 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 3 & 0 & 0 \\
+ 0 & 2 & 1 \\
+ 0 & 1 & 2
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 1 & 0 \\
+ 0 & 2 & 0 \\
+ 0 & 1 & 1
+\end{bmatrix}
+$
+\end{enumerate}
+\end{multicols}
+ 
+More problems are in Schaum's Outlines - 
+(only worry about the eigenvalues and eigenvectors part of each problem - ignore diagonalization questions)
+Chapter 11: 9, 10, 11, 17, 18, 20, 57, 58, 59, 60
+
+
+
+\item At this point, you are ready to make your own examples. Create your own 2 by 2 or 3 by 3 matrix $A$.
+\begin{itemize}
+\begin{multicols}{2}
+	\item Find rref $A$.
+	\item Find the rank of $A$.
+	\item Are the columns of $A$ independent?
+	\item Compute $|A|$.
+	\item Compute $A^{-1}$ (or explain why not possible).
+	\item Find the eigenvalues and eigenvectors of $A$.
+\end{multicols}
+\end{itemize}
+For a 3 by 3 matrix, the eigenvalues and eigenvectors may be hard to find by hand (so use technology).
+Use technology to check your work by hand. The first column of questions applies to all matrices (square or not), whereas the last column only makes sense when the matrix is square. For a 2 by 2 matrix, you can always compute the eigenvalues using the quadratic formula, which may result in irrational or complex eigenvalues. 
+
+Repeat this exercise a few times with various types of matrices (diagonal, triangular, symmetric, skew-symmetric). Do you notice any patterns? If you pick larger matrices, you can do everything except the eigenvalues and eigenvectors by hand. Once you feel comfortable with the computations by hand, move to a computer and start using larger matrices to find patterns. 
+ 
+
+
+\end{enumerate}
+
+
+
+\section{Projects}
+The following projects require you to use technology to further explore a topic from this unit. Use a computer algebra system (CAS) to perform your computations so you can save your work and quickly modify things as needed. 
+
+\begin{enumerate}
+	\item A matrix and its transpose $A^T$ have some common properties. Your job in this project is to explore the relationships between a matrix and its transpose.	
+	
+\begin{enumerate}
+	\item Start by choosing your own 4 by 4 matrix.  For both $A$ and $A^T$, compute the rref, rank, determinant, inverse, eigenvalues, and eigenvectors. Which are the same? 
+	\item Change your matrix to some other 4 by 4 or larger matrix and repeat the computations. 
+	\item Based on these two examples, which quantities do you think will be always be the same for $A$ and $A^T$? 
+	\item Try creating an ugly large matrix and see if your conjecture is correct. While examples are not proofs that a conjecture is true, examples do provide the foundation upon which all mathematical theorems are built.  New ideas always stem from examples.
+	\item What happens if a matrix is not square? Select your own non square matrix (such as 3 by 4). Compute the rref of both $A$ and $A^T$, as well as the rank. 
+	\item Change the matrix and repeat this computation. What conjecture should you make?
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\section{Solutions}
+
+
+
+
+\begin{multicols}{2}
+\begin{enumerate}
+\small
+\item \textbf{Vector Arithmetic:}
+\begin{enumerate}
+	\item $\sqrt{5}, 5, 11, \cos\theta = \frac{11}{5\sqrt{5}}$, No
+	\item $\sqrt{5}, 2\sqrt{5}, 0, \cos\theta = 0$, Yes
+	\item $3, 5, -5, \cos\theta = -\frac{1}{3}$, No
+	\item $\sqrt{38}, 4\sqrt{3}, 0, \cos\theta = 0$, Yes
+	\item $2, \sqrt{30}, 0, \cos\theta = 0$, Yes
+	\item $\sqrt{30}, \sqrt{106}, 0, \cos\theta = 0$, Yes
+\end{enumerate}
+\item \textbf{Matrix Arithmetic:}
+%\begin{multicols}{4}
+\begin{enumerate}
+	\item $ 
+\begin{bmatrix}
+5 & 1 \\
+ 6 & 6
+\end{bmatrix}
+$, $
+\begin{bmatrix}
+ -5 & 8 \\
+ 3 & 8
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 10 & 3 \\
+ 24 & 5
+\end{bmatrix}
+$, 
+$
+\begin{bmatrix}
+ 1 & 4 \\
+ 9 & 14
+\end{bmatrix}
+$
+	\item 
+	$
+\begin{bmatrix}
+ 5 & 6 & 7 \\
+ 11 & 12 & 13
+\end{bmatrix}
+$, $CA$ not possible
+	\item 
+	$
+\begin{bmatrix}
+ 2 & -3 & -8 \\
+ 7 & 6 & 5
+\end{bmatrix}
+$, $CB$ not possible
+	\item 
+	$
+\begin{bmatrix}
+ 1 & 1 & -1 \\
+ 5 & 8 & 22
+\end{bmatrix}
+$, $DC$ not possible
+	\item 
+	$
+\begin{bmatrix}
+ -2 \\
+ -7 \\
+ -10
+\end{bmatrix}
+$, $ED$ not possible
+	\item $
+\begin{bmatrix}
+ 8 \\
+ -65
+\end{bmatrix}
+$
+	\item 
+$\begin{bmatrix}
+ 2 & -2 \\
+ -2 & 29
+\end{bmatrix}$, 
+$
+\begin{bmatrix}
+ 5 & 6 & 7 \\
+ 6 & 9 & 12 \\
+ 7 & 12 & 17
+\end{bmatrix}
+$
+	\item 
+$\begin{bmatrix}
+ -1 & 10 \\
+ -1 & 22 \\
+ -3 & 9
+\end{bmatrix}
+$, $
+\begin{bmatrix}
+ -1 & -1 & -3 \\
+ 10 & 22 & 9
+\end{bmatrix}
+$	\item 
+$\begin{bmatrix}
+ 10 & 3 \\
+ 24 & 5
+\end{bmatrix}
+$, $
+\begin{bmatrix}
+ 10 & 24 \\
+ 3 & 5
+\end{bmatrix}
+$	
+\item 
+$\begin{bmatrix}
+ 1 & 4 \\
+ 9 & 14
+\end{bmatrix}
+$, $
+\begin{bmatrix}
+ 1 & 9 \\
+ 4 & 14
+\end{bmatrix}
+$	\item  Tr$A=5$, Tr$B=6$, Tr$D=2$.	
+\end{enumerate}
+%\end{multicols}
+
+
+
+
+
+
+
+\item \textbf{Interpreting RREF:} 
+%\begin{multicols}{3}
+\begin{enumerate}
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 0 & 0 & 3 \\
+ 0 & 1 & 0 & -2 \\
+ 0 & 0 & 1 & 1
+\end{bmatrix}$,
+$\begin{array}{rl}
+x_1&=3\\ 
+x_2&=-2\\
+x_3&=1
+\end{array}$
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 2 & 0 & -4 \\
+ 0 & 0 & 1 & 3 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$,
+$\begin{array}{rl}
+x_1&=-2x_2-4 \\
+x_2&=x_2 \text{ (free variable)} \\
+x_3&=3
+\end{array}$
+
+
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 0 & 1 & 0 & 4 \\
+ 0 & 0 & 1 & 3 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$,
+$
+\begin{array}{rl}
+x_1&=x_1 \text{ (free)} \\
+x_2&=4 \\
+x_3&=3
+\end{array}
+$
+
+
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 0 & 2 & 0 \\
+ 0 & 1 & -3 & 0 \\
+ 0 & 0 & 0 & 1
+\end{bmatrix}
+$,
+no solution
+
+
+	\item 
+$
+\begin{bmatrix}[ccccc|c]
+ 0 & 1 & 0 & 7 & 0 & 3 \\
+ 0 & 0 & 1 & 5 & 0 & -4 \\
+ 0 & 0 & 0 & 0 & 1 & 2 \\
+ 0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+$,
+$\begin{array}{rl}
+x_1&=x_1 \text{ (free)}\\
+x_2&=-7x_4+3\\
+x_3&=-5x_4-4\\
+x_4&=x_4 \text{ (free)}\\
+x_5&=2
+\end{array}$
+
+
+\end{enumerate}
+%\end{multicols}
+
+
+\item \textbf{Solving Systems with Gaussian Elimination:} 
+%\begin{multicols}{3}
+\begin{enumerate}
+	\item 
+$
+\begin{bmatrix}[cc|c]
+ 1 & 0 & 4 \\
+ 0 & 1 & -2
+\end{bmatrix}
+$
+$
+\begin{array}{rl}
+x_1&=4 \\
+x_2&=-2 
+\end{array}
+$
+
+
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 3 & 0 & 2 \\
+ 0 & 0 & 1 & -5
+\end{bmatrix}
+$
+$
+\begin{array}{rl}
+x_1&=-3x_2+2  \\
+x_2&=x_2 \text{ (free)} \\
+x_3&=-5
+\end{array}
+$
+
+
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 0 & 0 & -2 \\
+ 0 & 1 & 0 & 1 \\
+ 0 & 0 & 1 & 3
+\end{bmatrix}
+$
+$
+\begin{array}{rl}
+x_1&=-2  \\
+x_2&=1 \\
+x_3&=3
+\end{array}
+$
+
+
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 1 \\
+ 0 & 0 & 1 & -1
+\end{bmatrix}
+$
+$
+\begin{array}{rl}
+x_1&=0  \\
+x_2&=1 \\
+x_3&=-1
+\end{array}
+$
+
+
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & 0 & 1 & 0 \\
+ 0 & 1 & 2 & 0 \\
+ 0 & 0 & 0 & 1
+\end{bmatrix}
+$,
+no solution
+
+
+	\item 
+$
+\begin{bmatrix}[ccc|c]
+ 1 & -2 & 0 & 1 \\
+ 0 & 0 & 1 & 3 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$
+$
+\begin{array}{rl}
+x_1&=2x_2+1  \\
+x_2&=x_2 \text{ (free)} \\
+x_3&=3
+\end{array}
+$
+
+
+	\item 
+$
+\begin{bmatrix}[cccc|c]
+ 1 & 0 & 0 & 0 & 2 \\
+ 0 & 1 & 0 & 0 & 1 \\
+ 0 & 0 & 1 & 0 & 0 \\
+ 0 & 0 & 0 & 1 & -3
+\end{bmatrix}
+$
+$
+\begin{array}{rl}
+x_1&=2  \\
+x_2&=1 \\
+x_3&=0\\
+x_4&=-3
+\end{array}
+$
+
+\end{enumerate}
+%\end{multicols}
+
+
+
+
+
+
+
+\item \textbf{Rank and Linear Dependence:}
+%\begin{multicols}{4}
+\begin{enumerate}
+	\item 3, independent
+	\item 2, dependent, 
+	rref is $\begin{bmatrix}
+ 1 & 0 & 2 \\
+ 0 & 1 & 3 \\
+ 0 & 0 & 0
+	\end{bmatrix}
+	$ 
+	so
+	
+$
+2\begin{bmatrix}
+ 1  \\
+ -2  \\
+ 3 
+\end{bmatrix}
++3\begin{bmatrix}
+ -1 \\
+ 3  \\
+ 1 
+\end{bmatrix}
+=\begin{bmatrix}
+-1 \\
+ 5 \\
+ 9
+\end{bmatrix}
+$
+
+	\item 2, dependent, rref is 
+$
+\begin{bmatrix}
+ 1 & 0 & 2 & -3 \\
+ 0 & 1 & -1 & 4 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$ so
+
+$
+2\begin{bmatrix}
+ 1 \\
+ -1  \\
+ 2 
+\end{bmatrix}
+-1\begin{bmatrix}
+  3  \\
+  -2  \\
+  1 
+\end{bmatrix}
+=\begin{bmatrix}
+-1  \\
+0  \\
+3 
+\end{bmatrix}
+$ and
+
+$
+-3\begin{bmatrix}
+ 1 \\
+ -1  \\
+ 2 
+\end{bmatrix}
++4\begin{bmatrix}
+  3  \\
+  -2  \\
+  1 
+\end{bmatrix}
+=\begin{bmatrix}
+9 \\
+-5 \\
+-2
+\end{bmatrix}
+$
+
+
+	\item 3, dependent, rref is 
+$
+\begin{bmatrix}
+ 1 & 0 & -3 & 0 \\
+ 0 & 1 & 5 & 0 \\
+ 0 & 0 & 0 & 1 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$ so 
+
+$-3
+\begin{bmatrix}
+ 1\\
+ 2\\
+ -1\\
+ 0
+\end{bmatrix}
++5
+\begin{bmatrix}
+3  \\
+0 \\
+1 \\
+2 
+\end{bmatrix}
++0
+\begin{bmatrix}
+ 1 \\
+3 \\
+-4 \\
+2
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 12 \\
+ -6 \\
+ 8 \\
+ 10
+\end{bmatrix}
+$
+
+\end{enumerate}
+%\end{multicols}
+
+
+
+
+
+
+\item \textbf{Linear Independence:} 
+%\begin{multicols}{2}
+\begin{enumerate}
+	\item 
+$
+\begin{bmatrix}
+ 2 & 1 & 3 \\
+ -1 & 0 & 2 \\
+ 0 & 3 & 4
+\end{bmatrix}
+\xrightarrow{\text{rref}}
+\begin{bmatrix}
+ 1 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 1
+\end{bmatrix}
+$, 
+independent
+
+	\item 
+$
+\begin{bmatrix}
+ 1 & 3 & 5 \\
+ 2 & -2 & -2 \\
+ -3 & -1 & -3 \\
+ 4 & -2 & -1
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+ 1 & 0 & \frac{1}{2} \\
+ 0 & 1 & \frac{3}{2} \\
+ 0 & 0 & 0 \\
+ 0 & 0 & 0
+\end{bmatrix}
+$, 
+dependent
+
+$\dfrac{1}{2}\begin{bmatrix}
+ 1 \\
+ 2 \\
+ -3 \\
+ 4 
+\end{bmatrix}
++\dfrac{3}{2}
+\begin{bmatrix}
+3  \\
+-2 \\
+-1  \\
+-2
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 5 \\
+ -2 \\
+-3 \\
+-1
+\end{bmatrix}$
+
+
+	\item Independent. Placing the vectors in columns of a 4 by 4 matrix reduces to the identity, so there are 4 pivot columns.
+
+	\item 
+$
+\begin{bmatrix}
+ 1 & 1 & 0 & 2 \\
+ 0 & 2 & 1 & 0 \\
+ -1 & 3 & -1 & 1 \\
+ -2 & 0 & 2 & -5
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+ 1 & 0 & 0 & \frac{3}{2} \\
+ 0 & 1 & 0 & \frac{1}{2} \\
+ 0 & 0 & 1 & -1 \\
+ 0 & 0 & 0 & 0
+\end{bmatrix}
+$, 
+
+dependent
+
+$\dfrac{3}{2}\begin{bmatrix}
+ 1  \\
+ 0 \\
+ -1  \\
+ -2 
+\end{bmatrix}
++\dfrac{1}{2}
+\begin{bmatrix}
+1 \\
+2 \\
+3 \\
+0
+\end{bmatrix}
+-
+\begin{bmatrix}
+ 0 \\
+ 1 \\
+ -1 \\
+ 2 
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 2 \\
+ 0 \\
+ 1 \\
+-5
+\end{bmatrix}$
+
+
+
+\end{enumerate}
+%\end{multicols}
+
+
+\item \textbf{Determinants:}
+\begin{multicols}{3}
+\begin{enumerate}
+	\item $-2$
+	\item $21$
+	\item $9$
+	\item $-28$
+	\item $-17$
+	\item $-58$
+	\item $-24$
+	\item $-30$
+	\item $24$
+	\item $0$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+\item \textbf{Inverse:}
+\begin{multicols}{2}
+\begin{enumerate}
+	\item 
+$
+\begin{bmatrix}
+ -2 & 1 \\
+ \frac{3}{2} & -\frac{1}{2}
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ \frac{5}{2} & 2 \\
+ \frac{3}{2} & 1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 0 & -1 \\
+ 1 & 0
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ -\frac{5}{2} & \frac{3}{2} \\
+ 2 & -1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & -3 \\
+ -2 & 7
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ 1 & 0 & -\frac{1}{2} \\
+ 0 & 1 & 0 \\
+ 0 & 0 & \frac{1}{4}
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ \frac{2}{3} & \frac{1}{3} & -\frac{1}{3} \\
+ 0 & 1 & 0 \\
+ \frac{1}{6} & -\frac{1}{6} & \frac{1}{6}
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ \frac{1}{3} & 3 & 1 \\
+ 0 & -4 & -1 \\
+ 0 & -3 & -1
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ -6 & \frac{7}{2} & \frac{1}{2} \\
+ 2 & -1 & 0 \\
+ -3 & \frac{3}{2} & \frac{1}{2}
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ -3 & 5 & 0 \\
+ 11 & -18 & 1 \\
+ -1 & 2 & 0
+\end{bmatrix}
+$
+	\item 
+$
+\begin{bmatrix}
+ \frac{3}{4} & -\frac{1}{4} & -\frac{1}{4} \\
+ -\frac{1}{4} & \frac{3}{4} & -\frac{1}{4} \\
+ -\frac{1}{4} & -\frac{1}{4} & \frac{3}{4}
+\end{bmatrix}
+$
+	\item 
+$
+\dfrac{1}{ad-bc}\begin{bmatrix}
+d & -b\\
+-c & a
+\end{bmatrix}
+$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+
+\item \textbf{Solve systems using an inverse:} 
+%\begin{multicols}{2}
+\begin{enumerate}
+	\item 
+$
+\begin{bmatrix}
+ -2 & 1 \\
+ \frac{3}{2} & -\frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+ 3 \\
+ 4
+\end{bmatrix}
+=
+\begin{bmatrix}
+ -2 \\
+ \frac{5}{2}
+\end{bmatrix}
+$
+
+	\item 
+$
+\begin{bmatrix}
+ \frac{5}{2} & 2 \\
+ \frac{3}{2} & 1
+\end{bmatrix}
+\begin{bmatrix}
+ 4 \\
+ -2
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 6 \\
+ 4
+\end{bmatrix}
+$
+
+
+	\item 
+$
+\begin{bmatrix}
+ \frac{2}{3} & \frac{1}{3} & -\frac{1}{3} \\
+ 0 & 1 & 0 \\
+ \frac{1}{6} & -\frac{1}{6} & \frac{1}{6}
+\end{bmatrix}
+\begin{bmatrix}
+ 2 \\
+ 3 \\
+ 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 2 \\
+ 3 \\
+ 0
+\end{bmatrix}
+$
+
+
+	\item 
+$
+\begin{bmatrix}
+ -3 & 5 & 0 \\
+ 11 & -18 & 1 \\
+ -1 & 2 & 0
+\end{bmatrix}
+\begin{bmatrix}
+ -2 \\
+ 1 \\
+ 3
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 11 \\
+ -37 \\
+ 4
+\end{bmatrix}
+$
+
+
+\end{enumerate}
+%\end{multicols}
+
+
+
+
+
+\item \textbf{Eigenvalues and Eigenvectors:} 
+%\begin{multicols}{4}
+\begin{enumerate}
+	\item 
+$\lambda ^2-4 \lambda +3$,
+for 
+$\lambda=3$
+eigenvectors are
+$\begin{bmatrix}1\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$, 
+for
+$\lambda=1$ 
+eigenvectors are
+$\begin{bmatrix}1\\ 0\end{bmatrix}x_1$ where $x_1\neq 0$.
+
+
+
+
+	\item 
+$\lambda ^2+2 \lambda +1$,
+for 
+$\lambda=-1$
+eigenvectors are
+$\begin{bmatrix}-1\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$
+
+
+
+	\item 
+$\lambda ^2-4 \lambda -5$,
+for 
+$\lambda=-1$
+eigenvectors are
+$\begin{bmatrix}-1\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$,
+for 
+$\lambda=5$
+eigenvectors are
+$\begin{bmatrix}1\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$
+
+
+	\item 
+$\lambda ^2+1$,
+for 
+$\lambda=i$
+eigenvectors are
+$\begin{bmatrix}-i\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$,
+for 
+$\lambda=-i$
+eigenvectors are
+$\begin{bmatrix}i\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$
+
+
+	\item 
+$\lambda ^2-4 \lambda -5$,
+for 
+$\lambda=5$
+eigenvectors are
+$\begin{bmatrix}1\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$,
+for 
+$\lambda=-1$
+eigenvectors are
+$\begin{bmatrix}-2\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$
+
+	\item 
+$\lambda ^2-9 \lambda +14$,
+for 
+$\lambda=7$
+eigenvectors are
+$\begin{bmatrix}1/4\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$ (alternatively you could write any nonzero multiple of $[1,4]^T$ if you want to avoid fractions),
+for 
+$\lambda=2$
+eigenvectors are
+$\begin{bmatrix}-1\\ 1\end{bmatrix}x_2$ where  $x_2\neq 0$
+
+	\item 
+$-\lambda ^3+3 \lambda ^2-3 \lambda +1 = -(\lambda -1)^3=-(\lambda -1)^3$, 
+for 
+$\lambda=1$
+eigenvectors are
+$\begin{bmatrix}1\\ 0\\ 0\end{bmatrix}x_1$ where  $x_1\neq 0$
+
+
+
+	\item 
+$-\lambda ^3+3 \lambda ^2-3 \lambda +1=
+-(\lambda -1)^3$,
+for 
+$\lambda=1$
+eigenvectors are
+$\begin{bmatrix}1\\ 0\\ 0\end{bmatrix}x_1+\begin{bmatrix}0\\ -1\\ 1\end{bmatrix}x_3$ where $x_1$ and $x_3$ cannot simultaneously be zero.
+
+
+	\item 
+$-\lambda ^3+7 \lambda ^2-15 \lambda +9=
+-(\lambda -3)^2 (\lambda -1)$,
+for 
+$\lambda=3$
+eigenvectors are nonzero linear combinations of
+$\begin{bmatrix}0\\ 1\\ 1\end{bmatrix}$ and $\begin{bmatrix}1\\ 0\\ 0\end{bmatrix}$,
+for 
+$\lambda=1$
+eigenvectors are nonzero linear combinations of
+$\begin{bmatrix}0\\ -1\\ 1\end{bmatrix}$.
+
+
+	\item 
+$-\lambda ^3+4 \lambda ^2-5 \lambda +2
+-(\lambda -2) (\lambda -1)^2$,
+for 
+$\lambda=1$
+eigenvectors are nonzero linear combinations of
+$\begin{bmatrix}0\\ 0\\ 1\end{bmatrix}$ and $\begin{bmatrix}1\\ 0\\ 0\end{bmatrix}$,
+for 
+$\lambda=2$
+eigenvectors are nonzero linear combinations of
+$\begin{bmatrix}1\\ 1\\ 1\end{bmatrix}$.
+
+
+\end{enumerate}
+%\end{multicols}
+
+
+\end{enumerate}
+\end{multicols}

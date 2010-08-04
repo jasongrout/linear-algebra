@@ -1,0 +1,241 @@
+\input{06-Jordan-Form/Jordan-Form-Preparation}
+
+\section{Problems}
+
+
+\begin{multicols}{2}
+
+\begin{enumerate}
+
+\item Solve each initial value problem, find the value of $y$ at the time requested, and then interpret your results in terms of an investment problem.
+\begin{enumerate}
+	\item $y^\prime = .03 y, y(0)=2000$. Find $y(30)$.
+	\item $y^\prime = .12 y, y(0)=5000$. Find $y(20)$.
+	\item $y^\prime = -.05 y, y(0)=10000$. Find $y(2)$.
+\end{enumerate}
+\item For each system of ODEs, solve the system using the eigenvalue approach.
+\begin{enumerate}
+\item $y_1^\prime = 2y_1+4y_2, y_2^\prime = 4y_1+2y_2 , y_1(0)=1, y_2(0) = 4$
+\item $y_1^\prime = y_1+2y_2, y_2^\prime = 3y_1 , y_1(0)=6, y_2(0) = 0$
+\item $y_1^\prime = y_1+4y_2, y_2^\prime = 3y_1+2y_2 , y_1(0)=0, y_2(0) = 1$
+\item $y_1^\prime = y_2, y_2^\prime = -3y_1-4y_2 , y_1(0)=1, y_2(0) = 2$
+\end{enumerate}
+
+\item (Jordan Form) For each matrix $A$, find matrices $Q,Q^{-1},$ and $J$ so that $Q^{-1}AQ=J$ is a Jordan canonical form of $A$.
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\begin{bmatrix}1&2\\0&3\end{bmatrix}$
+	\item $\begin{bmatrix}0&1\\-1&-2\end{bmatrix}$
+	\item $\begin{bmatrix}1&2&2\\0&1&2\\0&0&1 \end{bmatrix}$
+	\item $\begin{bmatrix}1&2&2\\0&1&0\\0&0&1 \end{bmatrix}$
+\end{enumerate}
+\end{multicols}
+
+\item For each of the following matrices $A$ which are already in Jordan form, find the matrix exponential.  Note that if $t$ follows a matrix, that means you should multiply each entry by $t$.
+\begin{enumerate}
+	\begin{multicols}{2}
+	\item 
+	$
+	\begin{bmatrix}
+	2&0\\
+	0&3
+	\end{bmatrix}
+	$
+
+	\item 
+	$
+	\begin{bmatrix}
+	2&0\\
+	0&3
+	\end{bmatrix}
+	$t
+
+	\item 
+	$
+	\begin{bmatrix}
+	2&0&0\\
+	0&3&0\\
+	0&0&4
+	\end{bmatrix}
+	$
+
+	\item 
+	$
+	\begin{bmatrix}
+	2&0&0\\
+	0&3&0\\
+	0&0&4
+	\end{bmatrix}
+	$t
+%\end{multicols}
+%\begin{multicols}{2}
+	\item 
+	$
+	\begin{bmatrix}
+	0&1\\
+	0&0
+	\end{bmatrix}
+	$t
+
+	\item 
+	$
+	\begin{bmatrix}
+	4&1\\
+	0&4
+	\end{bmatrix}
+	$t
+
+
+	\item 
+	$
+	\begin{bmatrix}
+	0&1&0\\
+	0&0&1\\
+	0&0&0
+	\end{bmatrix}
+	$t
+
+	\item 
+	$
+	\begin{bmatrix}
+	5&1&0\\
+	0&5&1\\
+	0&0&5
+	\end{bmatrix}
+	$t
+\end{multicols}
+	\item 
+	$
+	\begin{bmatrix}
+	0&1&0&0&0\\
+	0&0&1&0&0\\
+	0&0&0&0&0\\
+	0&0&0&0&1\\
+	0&0&0&0&0
+	\end{bmatrix}
+	$t
+
+	\item 
+	$
+	\begin{bmatrix}
+	3&1&0&0&0\\
+	0&3&1&0&0\\
+	0&0&3&0&0\\
+	0&0&0&-2&1\\
+	0&0&0&0&-2
+	\end{bmatrix}
+	$t
+
+\end{enumerate}
+  
+  
+\item For each of the following matrices, find the matrix exponential. You will have to find the Jordan form.
+\begin{enumerate}
+	\begin{multicols}{2}
+	\item 
+	$
+	\begin{bmatrix}
+	0&1\\
+	-3&4
+	\end{bmatrix}
+	$
+
+	\item 
+	$
+	\begin{bmatrix}
+	0&1\\
+	-6&-5
+	\end{bmatrix}t
+	$
+
+	\item 
+	$
+	\begin{bmatrix}
+	0&1\\
+	-1&-2
+	\end{bmatrix}t
+	$
+
+	\item 
+	$
+	\begin{bmatrix}
+	0&1\\
+	-4&-4
+	\end{bmatrix}t
+	$
+	
+	\item 
+	$
+	\begin{bmatrix}
+	0&1\\
+	0&3
+	\end{bmatrix}t
+	$
+
+	\item 
+	$
+	\begin{bmatrix}
+	2&4\\
+	4&2
+	\end{bmatrix}t
+	$
+
+
+\end{multicols}	
+	
+\end{enumerate}
+
+\item Set up an initial value problem (a system of differential equations together with initial conditions) in matrix format for each of the following scenarios. Solve each one with the computer.
+\begin{enumerate}
+	\item Tank 1 contains 30 gal, tank 2 contains 40.  Pumps allow 5 gal per minute to flow in each direction between the two tanks.  If tank 1 initially contains 20lbs of salt, and tank 2 initially contains 120 lbs of salt, how much salt will be in each tank at any given time $t$.  Remember, you are just supposed to set up the system, not actually solve it (the eigenvalues are not very pretty).
+	\item Three tanks each contain 100 gallons of water. Tank 1 contains 400lbs of salt mixed in.  Pumps allow 5 gal/min to circulate in each direction between tank 1 and tank 2.  Another pump allows 4 gallons of water to circulate each direction between tanks 2 and 3.  How much salt is in each tank at any time $t$?
+	\item Four tanks each contain 30 gallons. Between each pair of tanks, a set of pumps allows 1 gallon per minute to circulate in each direction (so that each tank has a total of 3 gallons leaving and 3 gallons entering). Tank 1 contains 50lbs of salt, tank 2 contains 80 lbs of salt, tank 3 contains 10 lbs of salt, and tank 4 is pure water. How much salt is in each tank at time $t$?
+	\item Tank 1 contains 80 gallons of pure water, and tank 2 contains 50 gallons of pure water.  Each minute 4 gallons of pure water are added to tank 1. Pumps allow 6 gallons per minute of water to flow from tank 1 to tank 2, and 2 gallons of water to flow from tank 2 to tank 1.  A drainage pipe removes 4 gallons per minute of liquid from tank 2. How much salt is in each tank at any time $t$?
+\end{enumerate}
+
+
+\item Solve the following homogeneous systems of differential equations, with the given initial conditions.
+\begin{enumerate}
+	\item $y_1^\prime=2y_1, y_2^\prime=4y_2, y_1(0)=5, y_2(0)=6$
+	\item $y_1^\prime=2y_1+y_2, y_2^\prime=2y_2, y_1(0)=-1, y_2(0)=3$
+	\item $y_1^\prime = y_2, y_2^\prime =-3y_1 -4y_2, y(0)=0, y^\prime(0)=1$
+	\item $y_1^\prime = y_2, y_2^\prime =-y_1 -2y_2, y(0)=2, y^\prime(0)=0$
+	\item $y_1^\prime=2y_1+y_2, y_2^\prime=y_1+2y_2, y_1(0)=2, y_2(0)=1$
+	\item $y_1^\prime=y_2, y_2^\prime=-y_1, y_1(0)=1, y_2(0)=2$
+\end{enumerate}
+
+\end{enumerate}
+\end{multicols}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Projects}
+
+\begin{enumerate}
+\item
+\end{enumerate}
+
+\input{06-Jordan-Form/Jordan-Form-solutions}
