@@ -13,6 +13,8 @@
 \usepackage{pstricks}
 \usepackage{multicol}
 \usepackage{enumitem}
+\usepackage{makeidx}
+\usepackage{index}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
@@ -71,6 +73,10 @@
 \newtheorem{question}{Question}[chapter]
 \newtheorem*{prep-problems}{Preparation Problems}
 
+\newcommand{\define}[2][]{\textit{#2}\index{#1#2}}
+\newcommand{\definemargin}[2][]{\marginpar{#1}\define[#2]{#1}}
+
+
 
 % Abbreviations
 
@@ -79,6 +85,9 @@
 \newcommand{\kk}{\ensuremath{\mathbf{k}}}
 \newcommand{\vv}{\ensuremath{\mathbf{v}}}
 \newcommand{\colvec}[1]{\ensuremath{\begin{bmatrix}#1\end{bmatrix}}}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\vspan}{span}
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: t
@@ -103,7 +112,7 @@
 %------------------------------------------------------------------------------------------------------------
 
 \usepackage{hyperref}
-
+\makeindex
 
 \begin{document}
 
@@ -178,9 +187,9 @@
 
 
 
+\backmatter
 
-
-
+\printindex
 
 
 

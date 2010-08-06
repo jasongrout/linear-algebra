@@ -15,7 +15,7 @@ Most of linear algebra centers around understanding matrices and vectors. The fi
 Matrix size is
 
 row by column.} 
-A matrix of size {$m$} by {$n$} has {$m$} rows and {$n$} columns.  We normally write matrices using capital letters, and use the notation 
+A \define{matrix} of size {$m$} by {$n$} has {$m$} rows and {$n$} columns.  We normally write matrices using capital letters, and use the notation 
 $$A = 
 \begin{bmatrix}
 a_{11}&\cdots&a_{1n}\\ 
@@ -27,7 +27,7 @@ a_{m1}&\cdots&a_{mn}
 where $a_{jk}$ is the entry in the $j$th row, $k$th column. 
 
 
-We say two matrices {$A$} and {$B$} are equal if {$a_{jk}=b_{jk}$} for all $j$ and $k$. We add and subtract matrices of the same size entry wise, and perform scalar multiplication $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main diagonal of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the trace is the sum of the entries on the main diagonal ($\sum a_{jj}$). 
+We say two matrices {$A$} and {$B$} are equal if {$a_{jk}=b_{jk}$} for all $j$ and $k$. We add and subtract matrices of the same size entry wise, and perform scalar multiplication $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main \define{diagonal} of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the \define{trace} is the sum of the entries on the main diagonal ($\sum a_{jj}$). 
 \begin{example}
 If $A=\begin{bmatrix}
 1&3\\
@@ -50,7 +50,7 @@ $, then $$A-2B
 \end{bmatrix}.$$ The main diagonal of $B$ consists of the entries $b_{11} = 3$ and $b_{22}=4$, which means the trace of $B$ is $3+4=7$ (the sum of the entries on the main diagonal).
 \end{example}
 
-The transpose \marginpar{transpose} of a matrix {$A=[a_{jk}]$} is a new matrix {$A^T=[a_{kj}]$} formed by interchaning the rows and columns.
+The \definemargin{transpose} of a matrix {$A=[a_{jk}]$} is a new matrix {$A^T=[a_{kj}]$} formed by interchanging the rows and columns.
 %Notice that {$(AB)^T = B^TA^T$}, which follows immediately if you realize that the {$j$}th row of {$A$} and {$k$}th column of {$B$} become the {$k$}th row of {$B^T$} and {$j$}th column of {$A^T$}. 
 \begin{example} \label{ex transpose}
 The transpose of $A$ is illustrated below.
@@ -174,7 +174,7 @@ To subtract to vectors $\vec u-\vec v$, we use scalar multiplication and vector 
 The same parallelogram law of addition applies geometrically, however the result $\vec u-\vec v$ can be seen as the vector connecting the heads of the two vectors when their tails are both placed on the same spot, with the direction pointing towards the head of $\vec u$.  When I see a vector difference $\vec u-\vec v$, I like to think ``head  minus tail'' to help remind me that the head of $\vec u-\vec v$ is at the tip of $\vec u$ whereas the tail of the difference is at the head of $\vec v$. The difference $\left<1,2\right> - \left<3,1\right> = \left<-2,1\right>$ is illustrated to the right.
 
 \subsection{Magnitude and the Dot Product}
-The length of a vector is found using the Pythagorean theorem: $c^2=a^2+b^2$.  The magnitude (or length) of the vector $\left<2,3\right>$ is simply the hypotenuse of a triangle with side lengths 2 and 3, hence $|\left<2,3\right>|=\sqrt{2^2+3^2}=\sqrt{13}$. We denote magnitude with absolute value symbols, and compute for $\vec u = (u_1,u_2)$ the magnitude as $|\vec u| = \sqrt{u_1^2+u_2^2}$.  In higher dimensions we extend this as $$\ds |\vec u| = \sqrt{u_1^2+u_2^2+u_3^2+\cdots u_n^2} = \sqrt{\sum_{i=1}^n u_i^2}.$$ 
+The length of a vector is found using the Pythagorean theorem: $c^2=a^2+b^2$.  The \define[vector!]{magnitude} (or length) of the vector $\left<2,3\right>$ is simply the hypotenuse of a triangle with side lengths 2 and 3, hence $|\left<2,3\right>|=\sqrt{2^2+3^2}=\sqrt{13}$. We denote magnitude with absolute value symbols, and compute for $\vec u = (u_1,u_2)$ the magnitude as $|\vec u| = \sqrt{u_1^2+u_2^2}$.  In higher dimensions we extend this as $$\ds |\vec u| = \sqrt{u_1^2+u_2^2+u_3^2+\cdots u_n^2} = \sqrt{\sum_{i=1}^n u_i^2}.$$ 
 
 A unit vector is a vector with length 1. 
 \marginpar{A unit vector $\bf \hat u$ has length $|\vec u|=1$} In many books unit vectors are written with a hat above them, as $\bf{\hat u}$.
@@ -190,7 +190,7 @@ $$\vec u = |\vec u| \frac{\vec u}{|\vec u|} = \sqrt{14} \left<\frac{2}{\sqrt{14}
 \end{example}
 
 
-The dot product of two vectors $\vec u = \left<u_1,u_2,\ldots,u_n\right>$ and $\vec v =\left<v_1,v_2,\ldots,v_n\right>$ is the scalar $\vec u\cdot \vec v = u_1v_1+u_2v_2+\cdots+u_nv_n = \sum u_iv_i$. Just multiply corresponding components and then add the products.
+The \define[vector!]{dot product} of two vectors $\vec u = \left<u_1,u_2,\ldots,u_n\right>$ and $\vec v =\left<v_1,v_2,\ldots,v_n\right>$ is the scalar $\vec u\cdot \vec v = u_1v_1+u_2v_2+\cdots+u_nv_n = \sum u_iv_i$. Just multiply corresponding components and then add the products.
 \begin{example} \label{ex dot product}
 The dot product of $\begin{bmatrix}1&3&-2\end{bmatrix}$ and $\begin{bmatrix}2&-1&4\end{bmatrix}$ is
  $$\begin{bmatrix}1&3&-2\end{bmatrix}\cdot \begin{bmatrix}2&-1&4\end{bmatrix} = (1)(2)+(3)(-1)+(-2)(4)=-9.$$ 
@@ -256,7 +256,7 @@ The entries of a row or column vector are called the coordinates of the vector r
 Notice that we scaled the vectors $\vec i$ and $\vec j$, and then summed the results. 
 This is an example of a linear combination.
 
-A linear combination of vectors {$\vec v_{1},\vec v_{2},\ldots,\vec v_{n}$} is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where {$c_i$} is a constant for each $i$. 
+A \define{linear combination} of vectors {$\vec v_{1},\vec v_{2},\ldots,\vec v_{n}$} is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where {$c_i$} is a constant for each $i$. 
 A linear combination of vectors is simply a sum of scalar multiples of the vectors. 
 We start with some vectors, stretch each one by some scalar, and then sum the result. 
 Much of what we will do this semester (and in many courses to come) relates directly to understanding linear combinations.  
@@ -354,7 +354,7 @@ DC \text{ is undefined}
 \end{example}
 
 \marginpar{The identity matrix behaves like the number 1, in that $AI=IA=A$. 
-}The identity matrix is a square matrix which has only 1's along the diagonal, and zeros everywhere else. We often use $I_n$ to mean the $n$ by $n$ identity matrix. The identity matrix is like the number 1, in that $AI=A$ and $IA=A$ for any matrix $A$.  If $A$ is a 2 by 3 matrix, then $AI_3=A$ and $I_2A=A$ (notice that the size of the matrix changes based on the order of multiplication.  If $A$ is a square matrix, then $AI=IA=A$.
+}The \define{identity matrix} is a square matrix which has only 1's along the diagonal, and zeros everywhere else. We often use $I_n$ to mean the $n$ by $n$ identity matrix. The identity matrix is like the number 1, in that $AI=A$ and $IA=A$ for any matrix $A$.  If $A$ is a 2 by 3 matrix, then $AI_3=A$ and $I_2A=A$ (notice that the size of the matrix changes based on the order of multiplication.  If $A$ is a square matrix, then $AI=IA=A$.
 
 
 
@@ -451,7 +451,7 @@ $
 
 \section{Linear Systems of Equations}
 
-A linear system of equations, such as 
+A \define{linear system of equations}, such as 
 $$\begin{array}{rl}
 2x+y-z&=2\\
 x-2y &=3\\
@@ -460,8 +460,8 @@ x-2y &=3\\
 Rather than using {$x,y,z$}, we'll often use $x_1, x_2, x_3$ which allows us to generalize systems to higher dimensions. 
 If we let $\vec v_i$ be a vector whose components are the constants next to $x_i$, then every linear system can be written in terms of linear combinations, i.e. $x_1\vec v_1+ x_2\vec v_2 + x_3\vec v_3=\vec b$. 
 Similarly, we can write a linear system in terms of matrix multiplication $A\vec x = \vec b$, where the columns of $A$ are the vectors $\vec v_1, \vec v_2, \vec v_3$. 
-The matrix $A$ is called the coefficient matrix \marginpar{coefficient matrix} of the linear system of equations. 
-Adding the column vector $\vec b$ to the right of $A$ gives what we call an augmented \marginpar{augmented matrix} matrix (where often a dashed or solid line is placed in the matrix to remind us of the equal sign). 
+The matrix $A$ is called the coefficient matrix \definemargin{coefficient matrix} of the linear system of equations. 
+Adding the column vector $\vec b$ to the right of $A$ gives what we call an augmented \definemargin{augmented matrix} matrix (where often a dashed or solid line is placed in the matrix to remind us of the equal sign). 
 These four ways of representing a system are illustrated in Table \ref{systemequivalent}
 \begin{table}
 \begin{tabular}{cc}
@@ -516,11 +516,11 @@ The lines may intersect in a single point (one solution), the lines may all repr
 In 2D and 3D we can geometrically see that there will always one, infinitely many, or no solutions.
 With any system of linear equations regardless of the number of equations and number of unknowns, this pattern continues. 
 There will always be either a single solution, infinitely many solutions, or no solution.  
-Systems with solutions are called consistent,
+Systems with solutions are called \define{consistent},
 \marginpar{consistent system - has a solution}
 whereas systems without solutions are called inconsistent.
 %\marginpar{inconsistent}
-For a linear system {$A\vec x = \vec b$}, we say that the system is a homogeneous 
+For a linear system {$A\vec x = \vec b$}, we say that the system is a \define{homogeneous} 
 \marginpar{homogeneous system - $A\vec x = \vec 0$} 
 system if {$\vec b=\vec 0$}. If {$\vec b\neq 0$}, we say the system is nonhomogeneous.
 %\marginpar{nonhomogeneous} 
@@ -558,14 +558,14 @@ x_2&=-7
 \end{bmatrix} 
 \end{array}
 $$
-The matrix at the right is said to be in \textbf{row echelon form}. \marginpar{row echelon form} This means that 
+The matrix at the right is said to be in \definemargin{row echelon form}. This means that 
 \begin{itemize}
 	\item each nonzero row begins with a 1 (called a leading 1),
   \item the leading 1 in a row occurs further right than a leading 1 in the row above, and
   \item any rows of all zeros appear at the bottom.
 \end{itemize}
 The position in the matrix where the leading 1 occurs is called a pivot. 
-The column containing a pivot is called a pivot column. \marginpar{pivot column}
+The column containing a pivot is called a \definemargin{pivot column}. 
 At this point we can use ``back-substitution'' to get {$x_2=-7$} and {$x_1=4+3x_2 = 4-21=-17$}. 
 Alternatively, we can continue the elimination process by eliminating the terms above each pivot, starting on the right and working backwards. 
 This will result in a matrix where all the pivot columns contain all zeros except for the pivot. 
@@ -580,8 +580,8 @@ x_2&=-7
 \end{bmatrix} 
 \end{array}
 $$
-The matrix on the right is said to be in \textbf{reduced row echelon form} (or just rref). 
-\marginpar{reduced row echelon form - rref}
+The matrix on the right is said to be in \define{reduced row echelon form} (or just rref). 
+\marginpar{rref=reduced row echelon form}
 A matrix is in reduced row echelon form if 
 \begin{itemize}
 	\item the matrix is in echelon form, and 
@@ -830,7 +830,7 @@ x_4&=-2\\
 \end{array}
 \end{array}
 $$}We have obtained the reduced row echelon form. 
-When we write this matrix in the corresponding system form, notice that there is not a unique solution to the system. Because the third column did not contain a pivot column, we can write every variable in terms of $x_3$ (the redundant equation $x_3=x_3$ allows us to write $x_3$ in terms of $x_3$). We are free to pick any value we want for $x_3$ and still obtain a solution. For this reason, we call $x_3$ a free variable, \marginpar{Free variables correspond to non pivot columns. Solutions can be written in terms of free variables.} and write our infinitely many solutions in terms of $x_3$ as 
+When we write this matrix in the corresponding system form, notice that there is not a unique solution to the system. Because the third column did not contain a pivot column, we can write every variable in terms of $x_3$ (the redundant equation $x_3=x_3$ allows us to write $x_3$ in terms of $x_3$). We are free to pick any value we want for $x_3$ and still obtain a solution. For this reason, we call $x_3$ a \define{free variable}, \marginpar{Free variables correspond to non pivot columns. Solutions can be written in terms of free variables.} and write our infinitely many solutions in terms of $x_3$ as 
 $$
 \begin{array}{ll}
 x_1=-1-2x_3\\
@@ -917,13 +917,13 @@ Each non pivot column corresponds to one of the vectors in the sum above.
 
 \section{Rank and Linear Independence}
 
-The rank of a matrix is the number of pivot columns of the matrix. To find the rank of a matrix, you reduce the matrix using Gaussian elimination until you discover the pivot columns.
+The \define{rank} of a matrix is the number of pivot columns of the matrix. To find the rank of a matrix, you reduce the matrix using Gaussian elimination until you discover the pivot columns.
 
 Recall that a linear combination of vectors {$\vec v_{1},\vec v_{2},\ldots,\vec v_{n}$} is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where {$c_i$} is a constant for each $i$. 
 A linear combination of vectors is a sum of scalar multiples of the vectors. 
 Also recall that a linear combination of vectors is really just matrix multiplication, $A\vec c$, where the columns of $A$ are the vectors $\vec v_i$ and $\vec c= (c_1,c_2,\ldots,c_n)$. We will try to emphasis this in what follows.
 
-First we need another definition. The span of a set of vectors is all possible linear combinations of the vectors.  We often write this as span$\{\vec v_1, \vec v_2, \ldots, \vec v_n\}$.  In terms of matrices, the span of a set of vectors is all possible vectors $\vec b$ such that $A\vec x=\vec b$ for some $\vec x$ where the vectors are placed in the columns of $A$.
+First we need another definition. The \define{span} of a set of vectors is the set of all possible linear combinations of the vectors.  We often write this as $\vspan\{\vec v_1, \vec v_2, \ldots, \vec v_n\}$.  In terms of matrices, the span of a set of vectors is all possible vectors $\vec b$ such that $A\vec x=\vec b$ for some $\vec x$ where the vectors are placed in the columns of $A$.
 
 \begin{example}\label{ex span}
 \begin{enumerate}
@@ -941,7 +941,7 @@ First we need another definition. The span of a set of vectors is all possible l
 \end{example}
 Geometrically you can obtain the span of vectors by adding together all possible stretches of the given vectors. The span of a set of vectors will be a line, a plane, or some higher dimensional version of these objects (called a hyperplane) which passes through the origin. 
 
-\marginpar{linearly independent} We say that a set of vectors is linearly independent if the only solution to the homogeneous system $c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}=\vec 0$ is the trivial solution $c_1=c_2=\cdots=c_n=0$. 
+We say that a set of vectors is \definemargin{linearly independent} if the only solution to the homogeneous system $c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}=\vec 0$ is the trivial solution $c_1=c_2=\cdots=c_n=0$. 
 Otherwise we say the vectors are linearly dependent, and it is possible to write one of the vectors as a linear combination of the others. 
 We say the vectors are dependent because one of them depends on (can be obtained as a linear combination of) the others. In terms of spans, we say vectors are linearly dependent when one of them is in the span of the other vectors. 
 
@@ -1046,7 +1046,7 @@ To answer all these questions, first reduce the matrix $\begin{bmatrix}[cc|c]1&3
 
 \section{Determinants}
 For the rest of this unit, we will assume that the matrix $A$ is a square matrix (in other words we are solving a system where the number of equations and number of unknowns are the same).
-Associated with every square matrix is a number, called the determinant, which is related to length, area, and volume, and we use the determinant to generalize volume to higher dimensions. Determinants are only defined for square matrices.
+Associated with every square matrix is a number, called the \define{determinant}, which is related to length, area, and volume, and we use the determinant to generalize volume to higher dimensions. Determinants are only defined for square matrices.
 The determinant of a {$2\times 2$} and {$3\times 3$} matrix can be computed as follows: 
 \begin{align*}
 \det\begin{bmatrix}a&b\\c&d\end{bmatrix} &=\begin{vmatrix}a&b\\c&d\end{vmatrix} = ad-bc\\
@@ -1199,7 +1199,7 @@ The multiplicative inverse of $a$ is simply $1/a$, because $a\frac1a=\frac1a a=1
 We have been studying linear systems of the form {$A\vec x=\vec b$}. 
 It would be nice if we could just divide both sides by {$A$}, but there is no such thing as division by a matrix in general. 
 If we look only at square matrices, then sometimes it is possible to find a matrix {$B$} such that {$BA=AB=I$}, the identity matrix. 
-If such a matrix {$B$} exists, then multiplying both sides of {$A\vec x = \vec b$} on the left by the matrix {$B$} yields $BA\vec x = B\vec B$, or $I\vec x = \vec x = B\vec b$. The matrix {$B$} is then called the inverse of {$A$}, and we write it as $A^{-1}$, the same symbol we used with regular multiplication. \marginpar{The solution to $A\vec x= \vec b$ is $\vec x=A^{-1}\vec b$, provided $A^{-1}$ exists.}When an inverse exists, the solution to $A\vec x = \vec b$ is simply $\vec x = A^{-1}\vec b$.
+If such a matrix {$B$} exists, then multiplying both sides of {$A\vec x = \vec b$} on the left by the matrix {$B$} yields $BA\vec x = B\vec B$, or $I\vec x = \vec x = B\vec b$. The matrix {$B$} is then called the \define[matrix!]{inverse} of {$A$}, and we write it as $A^{-1}$, the same symbol we used with regular multiplication. \marginpar{The solution to $A\vec x= \vec b$ is $\vec x=A^{-1}\vec b$, provided $A^{-1}$ exists.}When an inverse exists, the solution to $A\vec x = \vec b$ is simply $\vec x = A^{-1}\vec b$.
 
 To find an inverse, we will start by considering a general 3 by 3 matrix. Once we are done, we will know how to find the inverse of any $n$ by $n$ matrix or state it does not exists.  
 If an inverse exists, then write $A^{-1} = \begin{bmatrix}
@@ -1299,14 +1299,13 @@ $\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\0\end{bmatrix} = \begi
 
 Now for some definitions. 
 Let $A$ be a square $n\times n$ matrix. 
-An eigenvector \marginpar{eigenvector}is a nonzero vector $\vec x$ such that $A\vec x =\lambda \vec x$ (matrix multiplication reduces to scalar multiplication) for some scalar {$\lambda$} called an eigenvalue.\marginpar{eigenvalue}  
+An \definemargin{eigenvector} is a nonzero vector $\vec x$ such that $A\vec x =\lambda \vec x$ (matrix multiplication reduces to scalar multiplication) for some scalar {$\lambda$} called an \definemargin{eigenvalue}.
 We avoid letting $\vec x$ be the zero vector because $A\vec 0=\lambda \vec 0$ no matter what $\lambda$ is.
 We can rewrite the equation $A\vec x = \lambda \vec x$ as $\vec 0 = A\vec x-\lambda \vec x = A\vec x-\lambda I \vec x$ and then factor to obtain $$(A-\lambda I)\vec x=\vec 0.$$ 
 In other words, we need to find a $\lambda$ so that there are nonzero solutions to the homogeneous system of equations, or equivalently we need to pick a $\lambda$ so that the columns of $A-\lambda I$ are linearly dependent. 
 With the correct $\lambda$, we know that $A-\lambda I$ has no inverse, and so it also means that $\det(A-\lambda I)=0$. 
 This last equation is the key equation we will solve, since it does not contain the vector $\vec x$ anymore. 
-The expression {$\det(A-\lambda I)$} is called the characteristic polynomial of {$A$}.
-\marginpar{characteristic polynomial}
+The expression {$\det(A-\lambda I)$} is called the \definemargin{characteristic polynomial} of {$A$}.
 It is a polynomial of degree {$n$}, and hence there are at most {$n$} eigenvalues (which correspond to the zeros of the polynomial). 
 To find the eigenvalues and eigenvectors, we 
 \begin{enumerate}
