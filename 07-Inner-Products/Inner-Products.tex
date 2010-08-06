@@ -7,14 +7,14 @@ This chapter covers the following ideas.
 \section{The Dot Product}
 
 Recall the length of a vector $\vec u = (u_1,u_2)$ in $\R^2$ is (from the Pythagorean theorem) 
-$$||\vec u|| = |\vec u| = \sqrt{u_1^2+u_2^2}.$$ 
-The notation $|\vec u|$ and $||\vec u||$ are both used to denote the length or \textbf{norm} or a vector, 
+$$\norm{\vec u} = |\vec u| = \sqrt{u_1^2+u_2^2}.$$ 
+The notation $|\vec u|$ and $\norm{\vec u}$ are both used to denote the length or \textbf{norm} or a vector, 
 \marginpar{The norm of a vector is a synonym for the magnitude or length. }
 depending on the context and author.  
 Repeated use of the Pythagorean theorem gives $$|(u_1,u_2,u_3)|=\sqrt{u_1^2+u_2^2+u_3^2}.$$ 
 It seems reasonable to generalize this to $\R^n$ by letting $$|\vec u|=|(u_1,\ldots,u_n)| = \sqrt{u_1^2+\cdots u_n^2}.$$ 
 Now that we have spent a semester looking for matrix patterns, notice that the length can be written as a matrix product  $\sqrt{\vec u^T \vec u}$
-So the square of the length of a vector is precisely the quantity $$||\vec u||^2 = \vec u^T\vec u.$$  
+So the square of the length of a vector is precisely the quantity $$\norm{\vec u}^2 = \vec u^T\vec u.$$  
 Mathematicians discovered that sometimes the quantity $\vec u^T\vec v$ appears where $\vec u$ and $\vec v$ are different vectors.  This quantity appeared so often that they gave it a name, the dot product. We'll see some applications in just a bit.
 %(The word product is used because when taking the derivative of functions of vectors, the product rule applies to the dot product. Similarly, the matrix product satisfies the product rule, as does any mathematical ``product.'')
 
@@ -22,7 +22,7 @@ Mathematicians discovered that sometimes the quantity $\vec u^T\vec v$ appears w
 Given vectors $\vec u = (u_1,u_2,\ldots, u_n)$ and $\vec v = (v_1,v_2,\ldots, v_n)$, define the dot product $\vec u \cdot \vec v$ to be the scalar 
 $$\vec u \cdot\vec v = \vec u^T\vec v = u_1v_1+u_2v_2+\cdots u_nv_n = \sum_{i=1}^n u_iv_i. $$
 \end{definition}
-If $\vec u = \vec v$, then the dot product $\vec u\cdot \vec u= ||\vec u||^2$ equals the square of the length of the vector. 
+If $\vec u = \vec v$, then the dot product $\vec u\cdot \vec u= \norm{\vec u}^2$ equals the square of the length of the vector. 
 If the length of a vector is 1, we say the vector is a \textbf{unit vector}. 
 \marginpar{Unit vectors have length 1.} 
 The standard basis vectors for $\R^n$ are unit vectors. 
@@ -169,13 +169,13 @@ $$\left<a\vec u +b\vec v,\vec w\right> = a\left<\vec u,\vec w\right> +b\left<\ve
 If $\left<\vec u,\vec v\right>$ is an inner product on a vector space $V$, then relative to this inner product we can
 \begin{enumerate}
 	\item 
-	\marginpar{When working with an abstract inner product, we normally use double bars $||\vec u||$ instead of single bar $|\vec u|$ to talk about the norm of a vector.}
-	Find the norm (length) of a vector: $\left<\vec u , \vec u\right>=||\vec u ||^2$,
-	\item Find the angle between two vectors :$\left<\vec u , \vec v\right>= ||\vec u|| ||\vec v||\cos \theta$,
+	\marginpar{When working with an abstract inner product, we normally use double bars $\norm{\vec u}$ instead of single bar $|\vec u|$ to talk about the norm of a vector.}
+	Find the norm (length) of a vector: $\left<\vec u , \vec u\right>=\norm{\vec u }^2$,
+	\item Find the angle between two vectors :$\left<\vec u , \vec v\right>= \norm{\vec u} \norm{\vec v}\cos \theta$,
 	\item Determine if two vectors are orthogonal: $\left<\vec u , \vec v\right> = 0$.
 \end{enumerate}
-In order to define angles, we need to know that $-1\leq \cos\theta \leq 1$, or $\ds -1\leq \dfrac{\left<\vec u,\vec v\right>}{||\vec u||\ ||\vec v||}\leq 1$.  The Cauchy-Swartz inequality (pg 247) verifies that $|\left<\vec u , \vec v\right>|\leq ||\vec u|| ||\vec v||$, which provides the required justification. 
-Always remember: the inner product is just a generalization of the dot product which allows us to work with vector spaces  define lengths and angles just we did with the dot product. It's time for some examples of inner products.
+In order to define angles, we need to know that $-1\leq \cos\theta \leq 1$, or $\ds -1\leq \dfrac{\left<\vec u,\vec v\right>}{\norm{\vec u}\ \norm{\vec v}}\leq 1$.  The Cauchy-Swartz inequality (pg 247) verifies that $|\left<\vec u , \vec v\right>|\leq \norm{\vec u} \norm{\vec v}$, which provides the required justification. 
+Always remember: the inner product is just a generalization of the dot product which allows us to work with vector spaces  and define lengths and angles just as we did with the dot product. It's time for some examples of inner products.
 
 \begin{example}
 The dot product is itself an inner product, as it satisfies the 4 axioms. We will often call the usual inner product on $\R^n$.
