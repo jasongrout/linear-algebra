@@ -267,10 +267,9 @@ $$\vec F_{\text{total}} = |\vec F_1|\vec T +|\vec F_2|\vec N.$$
 To understand motion, we can now focus on finding just the magnitude of each force and the tangential unit vector $\vec T$ and normal unit vector $\vec N$.  Once we understand these quantities, we can understand any force because it is a linear combination of quantities we understand.
 \end{example}
 
-%% Jason is here in the editing process.
 \subsection{Matrix Multiplication}
 
-One of the key applications of linear combinations we will make throughout the semester is matrix multiplication. Let's introduce the idea with an example.  
+One of the key applications of linear combinations we will use throughout the semester is matrix multiplication. Let's introduce the idea with an example.  
 \begin{example}
 Consider the three vectors 
 $\begin{bmatrix}1\\0\\1\end{bmatrix}$,
@@ -285,7 +284,7 @@ $$2\begin{bmatrix}1\\0\\1\end{bmatrix}
 =
 \begin{bmatrix}10\\2\\9\end{bmatrix} 
 $$
-We will define matrix multiplication so that multiplying a matrix on the right by a vector corresponds precisely to creating a linear combination of the columns of $A$. 
+We define matrix multiplication so that multiplying a matrix and a vector (with the vector on the right) corresponds precisely to creating a linear combination of the columns of $A$. 
 We now write the linear combination above in matrix form 
 $$ 
 \begin{bmatrix}1&0&2\\0&2&1\\1&-3&1\end{bmatrix}
@@ -298,9 +297,9 @@ $$
 \marginpar{Matrix multiplication $A\vec x$}
 We define the matrix product $A\vec x$ (a matrix times a vector) to be the linear combination of columns of $A$ where the components of $\vec x$ are the scalars in the linear combination. 
 For this to make sense, notice that the vector $\vec x$ must have the same number of entries as there are columns in $A$. 
-Symbolically, let $\vec v_i$ be the $i$th column of $A$ so that 
+Symbolically, let $\vec a_i$ be the $i$th column of $A$, so that 
 $A = \begin{bmatrix}\vec a_1 & \vec a_2 &\cdots &\vec a_n\end{bmatrix}$, 
-and let $\vec x = \begin{bmatrix}x_1\\x_2\\ \hdots \\ x_n\end{bmatrix}$. Then the matrix product is the linear combination 
+and let $\vec x = \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix}$. Then the matrix product is the linear combination 
 \marginpar{The product $A\vec x$ gives us linear combinations of the columns of $A$.}
 $$A\vec x 
 =\begin{bmatrix}\vec a_1 & \vec a_2 &\cdots &\vec a_n\end{bmatrix}\begin{bmatrix}x_1\\x_2\\ \hdots \\ x_n\end{bmatrix}
@@ -308,7 +307,11 @@ $$A\vec x
 
 \marginpar{Matrix multiplication $AB$}
 We can now define the product of two matrices $A$ and $B$.  
-Let $\vec b_j$ represent the $j$th column of $B$ (so $B = \begin{bmatrix}\vec b_1 & \vec b_2 &\cdots &\vec b_n\end{bmatrix}$).  The product $AB$ of two matrices {$A_{m\times n}$} and {$B_{n\times p}$} is a new matrix {$C_{m\times p}=[c_{ij}]$} where the $j$th column of $C$ is the product $A\vec b_j$.  To summarize, the matrix product $AB$ is a new matrix whose $j$th column is a linear combinations of the columns of $A$ using the entries of the $j$th column of $B$ to perform the linear combinations. We need some examples.
+Let $\vec b_j$ represent the $j$th column of $B$ (so $B = \begin{bmatrix}\vec b_1 & \vec b_2 &\cdots &\vec b_n\end{bmatrix}$).  The product $AB$ of two matrices {$A_{m\times n}$} and {$B_{n\times p}$} is a new matrix {$C_{m\times p}=[c_{ij}]$} where the $j$th column of $C$ is the product $A\vec b_j$.  To summarize, the matrix product $AB$ is a new matrix whose $j$th column is a linear combinations of the columns of $A$ using the entries of the $j$th column of $B$ to perform the linear combinations.  In math notation,\begin{equation*}
+AB 
+=A\begin{bmatrix}\vec b_1 & \vec b_2 &\cdots &\vec b_p\end{bmatrix}=\begin{bmatrix}A\vec b_1 & A\vec b_2 &\cdots & A\vec b_p\end{bmatrix}
+\end{equation*}
+
 
 
 \begin{example} A row matrix times a column matrix is equivalent to the dot product of the two when treated as vectors.
@@ -319,7 +322,7 @@ $$
 \end{example}
 
 \begin{example} 
-In this example the matrix $A$ has 3 rows, so the product should have three rows.  The matrix $B$ has 2 columns so we need to find 2 different linear combinations giving us 2 columns in the product. 
+In this example, the matrix $A$ has 3 rows, so the product should have 3 rows.  The matrix $B$ has 2 columns, so we need to find 2 different linear combinations giving us 2 columns in the product. 
 $$ 
 \begin{bmatrix}1 &2\\3&4\\5&6\end{bmatrix}
 \begin{bmatrix}-2&0\\1&3\end{bmatrix} =
@@ -344,7 +347,7 @@ B=\begin{bmatrix} 3&4\end{bmatrix}&
 AB= \begin{bmatrix} 3&4\\6&8\end{bmatrix} &
 BA = [11]\end{array}
 $$
-Even if the product $CD$ is defined, the product $DC$ does not have to be.  In this example $D$ has 3 columns but $C$ has only 2 rows, and hence the product $DC$ is not defined (as you can't form a linear combination of 3 vectors with only 2 constants).
+Even if the product $CD$ is defined, the product $DC$ does not have to be.  In this example $D$ has 3 columns, but $C$ has only 2 rows, and hence the product $DC$ is not defined (as you can't form a linear combination of 3 vectors with only 2 constants).
 $$
 \begin{array}{cccc}
 C =\begin{bmatrix} 1&2\\3&4\end{bmatrix}&
@@ -355,24 +358,26 @@ DC \text{ is undefined}
 \end{example}
 
 \marginpar{The identity matrix behaves like the number 1, in that $AI=IA=A$. 
-}The \define{identity matrix} is a square matrix which has only 1's along the diagonal, and zeros everywhere else. We often use $I_n$ to mean the $n$ by $n$ identity matrix. The identity matrix is like the number 1, in that $AI=A$ and $IA=A$ for any matrix $A$.  If $A$ is a 2 by 3 matrix, then $AI_3=A$ and $I_2A=A$ (notice that the size of the matrix changes based on the order of multiplication.  If $A$ is a square matrix, then $AI=IA=A$.
+}The \define{identity matrix} is a square matrix which has only 1's along the diagonal, and zeros everywhere else. We often use $I_n$ to mean the $n$ by $n$ identity matrix. The identity matrix is like the number 1, in that $AI=A$ and $IA=A$ for any matrix $A$ of appropriate size.  If $A$ is a 2 by 3 matrix, then $AI_3=A$ and $I_2A=A$ (notice that the size of the identity matrix changes based on the order of multiplication).  If $A$ is a square matrix, then $AI=IA=A$.
 
 
 
 
 
 \subsection{Alternate Definitions of Matrix Multiplication} 
-I have introduced matrix multiplication in terms of linear combinations of vectors. My hope is that by doing so you immediately start thinking of linear combinations whenever you encounter matrix multiplication (as this is what it was invented to do).  There are many alternate ways to think of matrix multiplication. Here are two additional methods. Table \ref{matrixmult} illustrates all three.
-\begin{enumerate}
-	\item ``Row times column approach.'' The product {$AB$} of two matrices {$A_{m\times n}$} and {$B_{n\times p}$} is a new matrix {$C_{m\times p}=[c_{ij}]$} where $c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}$ is the dot product of the of the {$i$}th row of {$A$} and the {$j$}th column of B.  Wikipedia has an excellent visual illustration of this approach.	
+Understanding matrix multiplication as linear combinations of vectors is very valuable (and we hope it is your first thought when you see matrix multiplication!)  There are many alternate ways to think of matrix multiplication. Here are two additional methods. Table \ref{matrixmult} illustrates all three.
+\begin{description}
+	\item[Row dot column.] The product {$AB$} of two matrices {$A_{m\times n}$} and {$B_{n\times p}$} is a new matrix {$C_{m\times p}=[c_{ij}]$} where $c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}$ is the dot product of the of the {$i$}th row of {$A$} and the {$j$}th column of B.  Wikipedia has an excellent visual illustration of this approach.	
 	 
-	\item Rephrase everything in terms of rows (instead of columns). We form linear combinations of rows using rows.  The matrix product $\vec x B$ (notice the order is flopped) is a linear combination of the rows of $B$ using the components of $x$ as the scalars. For the product $AB$, let $\vec a_i$ represent the $i$th row of $A$.  Then the $i$th row of $AB$ is the product $\vec a_iB$. We'll use the column definition because we use the function notation $f(x)$ from calculus, and later we will use the notation $A(\vec x)$ instead of $(\vec x)A$ to describe how matrices act as functions. 
+	\item[Linear combinations of rows of $B$.] The matrix product $\vec x B$ (notice the vector is now on the left) is a linear combination of the rows of $B$ using the components of $\vec x$ as the scalars. For the product $AB$, let $\vec a_i$ represent the $i$th row of $A$.  Then the $i$th row of $AB$ is the product $\vec a_iB$, which is a linear combination of rows of $B$.  
 \note{I'll eventually include a proof of why this works in the appendix.}
-\end{enumerate}
+\end{description}
+
+We'll use the "linear combinations of columns" view we first introduced because we eventually will want to think of a matrix $A$ as a function, and it is natural to write $A(\vec x)$ (with the vector on the right) to represent plugging the vector $\vec x$ into this function.
 
 \begin{table}
 \begin{tabular}{c}
-Linear combinations of columns of $A$ using columns of $B$.
+Linear combinations of columns of $A$ with scalars from columns of $B$.
 \\
 \\
 $ 
@@ -457,12 +462,12 @@ $$\begin{array}{rl}
 2x+y-z&=2\\
 x-2y &=3\\
 4y+2z&=1
-\end{array},$$ is a system of equations where each variable in the system appears in its own term and is multiplied by at most a constant (called a coefficient).  
-Rather than using {$x,y,z$}, we'll often use $x_1, x_2, x_3$ which allows us to generalize systems to higher dimensions. 
+\end{array}$$ is a system of equations where each variable in the system appears in its own term and is multiplied by a constant called a coefficient (which may be zero or one).  
+Rather than using {$x,y,z$} as variables, we'll often use $x_1, x_2, x_3$, which allows us to easily extend to systems in higher dimensions. 
 If we let $\vec v_i$ be a vector whose components are the constants next to $x_i$, then every linear system can be written in terms of linear combinations, i.e. $x_1\vec v_1+ x_2\vec v_2 + x_3\vec v_3=\vec b$. 
 Similarly, we can write a linear system in terms of matrix multiplication $A\vec x = \vec b$, where the columns of $A$ are the vectors $\vec v_1, \vec v_2, \vec v_3$. 
-The matrix $A$ is called the coefficient matrix \definemargin{coefficient matrix} of the linear system of equations. 
-Adding the column vector $\vec b$ to the right of $A$ gives what we call an augmented \definemargin{augmented matrix} matrix (where often a dashed or solid line is placed in the matrix to remind us of the equal sign). 
+The matrix $A$ is called the \definemargin{coefficient matrix} of the linear system of equations. 
+Adding the column vector $\vec b$ to the right of $A$ gives what we call an \definemargin{augmented matrix} (where often a dashed or solid line is placed in the matrix to remind us of the equal sign). 
 These four ways of representing a system are illustrated in Table \ref{systemequivalent}
 \begin{table}
 \begin{tabular}{cc}
@@ -493,6 +498,7 @@ $\begin{bmatrix}[ccc|c]2&1&-1 &2\\1&-2&0 &3 \\0&4&2&1\end{bmatrix}$
 \caption{Four equivalent ways to represent a system of equations.\label{systemequivalent}}
 \end{table}
 
+%% Jason is here in the editing process.
 
 Let's add some geometry to the discussion. 
 A linear equation in two variables $ax+by=c$ graphically represents a line.  
@@ -506,24 +512,24 @@ Three planes can intersect in any of the following ways.
 \item One solution - The three planes intersect in a single point.
 \item Infinitely many solutions
 \begin{enumerate}
-	\item The three planes all in a line - so there is a line of solutions.
-	\item The three equations all represent the same plane - so there is a plane of solutions.
+	\item The three planes all in a line, so there is a line of solutions.
+	\item The three equations all represent the same plane, so there is a plane of solutions.
 \end{enumerate}
 \item No solution - two of the planes are parallel and never intersect.
-\end{enumerate}
+\end{enumerate}\note{TODO: make graphics of each of these situations.}
 When we look at a 2D system of equations, we can have the same three possibilities. 
-\marginpar{A system of equations can have a unique solution, infinitely many solutions, or no solution.}
+\marginpar{A system of equations will have either a unique solution, infinitely many solutions, or no solution.}
 The lines may intersect in a single point (one solution), the lines may all represent the same line (infinitely many solutions), or the lines may be parallel and never intersect (no solution).  
 In 2D and 3D we can geometrically see that there will always one, infinitely many, or no solutions.
 With any system of linear equations regardless of the number of equations and number of unknowns, this pattern continues. 
 There will always be either a single solution, infinitely many solutions, or no solution.  
 Systems with solutions are called \define{consistent},
-\marginpar{consistent system - has a solution}
+\marginpar{consistent system: has a solution}
 whereas systems without solutions are called inconsistent.
 %\marginpar{inconsistent}
-For a linear system {$A\vec x = \vec b$}, we say that the system is a \define{homogeneous} 
-\marginpar{homogeneous system - $A\vec x = \vec 0$} 
-system if {$\vec b=\vec 0$}. If {$\vec b\neq 0$}, we say the system is nonhomogeneous.
+Two more important terms: we say the linear system {$A\vec x = 0$} is a \define{homogeneous} system (i.e., $\vec b=0$ in this case).
+\marginpar{homogeneous system: $A\vec x = \vec 0$} 
+If {$A\vec x\neq 0$ (i.e., $\vec b \neq 0$), we say the system is nonhomogeneous.
 %\marginpar{nonhomogeneous} 
 
 \subsection{Gaussian Elimination}
