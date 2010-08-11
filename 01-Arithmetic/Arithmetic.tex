@@ -7,7 +7,7 @@ This chapter covers the following ideas.
 
 
 \section{Basic Notation}
-Most of linear algebra centers around understanding matrices and vectors. The first chapter of this text contains a brief introduction to the arithmetic involved with matrices and vectors.  The second chapter will show you many of the uses of the ideas we are learning. You will be given motivation for all of the ideas learned here, as well as real world applications of these ideas, before the end of the second chapter.  For now, I want you become familiar with the arithmetic of linear algebra so that we can discuss how all of the ideas in this chapter show up throughout the course.
+Most of linear algebra centers around understanding matrices and vectors. The first chapter of this text contains a brief introduction to the arithmetic involved with matrices and vectors.  The second chapter will show you many of the uses of the ideas we are learning. You will be given motivation for all of the ideas learned here, as well as real world applications of these ideas, before the end of the second chapter.  For now, work on becoming familiar with the arithmetic of linear algebra so that we can easily discuss the ideas behind linear algebra throughout the course.
 
 
 \subsection{Matrices}
@@ -27,7 +27,7 @@ a_{m1}&\cdots&a_{mn}
 where $a_{jk}$ is the entry in the $j$th row, $k$th column. 
 
 
-We say two matrices {$A$} and {$B$} are equal if {$a_{jk}=b_{jk}$} for all $j$ and $k$. We add and subtract matrices of the same size entry wise, and perform scalar multiplication $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main \define{diagonal} of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the \define{trace} is the sum of the entries on the main diagonal ($\sum a_{jj}$). 
+We say two matrices {$A$} and {$B$} are equal if corresponding entries are equal (i.e., {$a_{jk}=b_{jk}$} for all $j$ and $k$). We add and subtract matrices of the same size entry-wise, and perform scalar multiplication $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main \define{diagonal} of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the \define{trace} is the sum of the entries on the main diagonal ($\sum a_{jj}$). \note{TODO: make picture of diagonal in the margin}
 \begin{example}
 If $A=\begin{bmatrix}
 1&3\\
@@ -50,7 +50,7 @@ $, then $$A-2B
 \end{bmatrix}.$$ The main diagonal of $B$ consists of the entries $b_{11} = 3$ and $b_{22}=4$, which means the trace of $B$ is $3+4=7$ (the sum of the entries on the main diagonal).
 \end{example}
 
-The \definemargin{transpose} of a matrix {$A=[a_{jk}]$} is a new matrix {$A^T=[a_{kj}]$} formed by interchanging the rows and columns.
+The \definemargin{transpose} of a matrix {$A=[a_{jk}]$} is a new matrix {$A^T=[a_{kj}]$} formed by interchanging the rows and columns (the first row of $A$ is the first column of $B$; first column of $A$ is the first row of $B$, etc.)
 %Notice that {$(AB)^T = B^TA^T$}, which follows immediately if you realize that the {$j$}th row of {$A$} and {$k$}th column of {$B$} become the {$k$}th row of {$B^T$} and {$j$}th column of {$A^T$}. 
 \begin{example} \label{ex transpose}
 The transpose of $A$ is illustrated below.
@@ -92,7 +92,7 @@ A^T = \begin{bmatrix} 0&1\\1&0
 
 
 \subsection{Vectors}
-Vectors represent a magnitude in a given direction. We can use vectors to model forces, acceleration, velocity, probabilities, electronic data, and more. We can use matrices to represent vectors. A row vector is a {$1\times n$} matrix. A column vector is an {$m \times 1$} matrix.   Textbooks often write vectors using bold face font. By hand (and in this book) we add an arrow above them. The notation ${\bf v} = \vec v = \left<v_1,v_2,v_3\right>$ can represent either row or column vectors. Many different ways to represent vectors are used throughout different books.  In particular, we can represent the vector $\left<2,3\right>$ in any of the following forms
+Vectors represent a magnitude in a given direction. We can use vectors to model forces, acceleration, velocity, probabilities, electronic data, and more. We can use matrices to represent vectors. A row vector is a {$1\times n$} matrix. A column vector is an {$m \times 1$} matrix.   Textbooks often write vectors using bold face font. By hand (and in this book), we write an arrow above them. The notation ${\bf v} = \vec v = \left<v_1,v_2,v_3\right>$ can represent either a row or column vector. Many different ways to represent vectors are used in different books.  For example, you may see the vector $\left<2,3\right>$ written in any of the following ways.
 $$\left<2,3\right>
 = 2{\bf i}+3{\bf j} 
 = (2,3) 
@@ -101,7 +101,8 @@ $$\left<2,3\right>
 = \begin{pmatrix}2&3\end{pmatrix} 
 = \begin{pmatrix}2\\3\end{pmatrix}
 $$ 
-The notation $(2,3)$ has other meanings as well (like a point in the plane, or an open interval), and so when you use the notation $(2,3)$, it should be clear from the context that you working with a vector. 
+The notation $(2,3)$ has other meanings as well (like a point in the plane, or an open interval).  Please make sure that when you use the notation $(2,3)$, it is clear from the context that you working with a vector. 
+
 {\marginpar{{
 \begin{tikzpicture}[scale=.5]
 \draw[help lines,step=1cm] (0,0) grid (4,4);
@@ -111,11 +112,12 @@ The notation $(2,3)$ has other meanings as well (like a point in the plane, or a
 
 Both vectors 
 represent $\left<2,-3\right>$, regardless of where we start.
-}}}To draw a vector $\left<v_1,v_2\right>$, one option is to draw an arrow from the origin (the tail) to the point $(v_1,v_2)$ (the head). 
-However, the tail does not have to be placed at the origin. 
+}}}
+To draw a vector, pick a starting point (the tail).  Then draw a line that moves $v_1$ units horizontally and $v_2$ units vertically, and put an arrow at the ending point (the head).  Many times we will put the tail of the vector at the origin $(0,0)$.
 
 
-The principles of addition and subtraction of matrices apply to vectors (which can be though of as row or column matrices). For example $\left<1,3\right>-2\left<-1,2\right>+\left<4,0\right> = \left<1-2(-1)+4,3-2(2)+0\right> = \left<7,-1\right>$. We will often write vectors using column notation as in 
+The entry-wise methods of adding, subtracting, and multiplying by a scalar that we learned for matrices apply to vectors as well (this is consistent, since a vector can be thought of as a row or column matrix). For example, $$\left<1,3\right>-2\left<-1,2\right>+\left<4,0\right> = \left<1-2(-1)+4,3-2(2)+0\right> = \left<7,-1\right>.$$ 
+Sometimes it is easier to see the arithmetic if we write the vectors as single-column matrices:
 $$
 \begin{bmatrix}1\\3\end{bmatrix}
 -2\begin{bmatrix}-1\\ 2\end{bmatrix}
@@ -166,19 +168,18 @@ Vector Subtraction
 %}}
 
 }}Vector addition is performed geometrically by placing the tail of the second vector at the head of the first. 
-The resultant vector is the vector which starts at the tail of the first and ends at the head of the second. This is called the parallelogram law of addition. The sum $\left<1,2\right> + \left<3,1\right> = \left<4,3\right>$ is illustrated to the right.
+The resultant vector is the vector which starts at the tail of the first and ends at the head of the second. This is called the parallelogram law of addition. The sum $\vec u + \vec v=\left<1,2\right> + \left<3,1\right> = \left<4,3\right>$ is illustrated in the margin.
 
-Scalar multiplication $c\vec u$ ($c$ is a scalar and $\vec u$ is a vector) is equivalent to stretching (scaling) a vector by the scalar. The product $2\vec u$ doubles the length of the vector. If the scalar is negative then the vector turns around to point in the opposite direction.  So the product $-\frac{1}{2}\vec u$ is a vector half as long as $\vec u$, and pointing in the opposite direction (as illustrated on the right).
+Scalar multiplication $c\vec u$ ($c$ is a scalar and $\vec u$ is a vector) is equivalent to stretching (scaling) a vector by the scalar without rotating the vector. The product $2\vec u$ doubles the length of the vector. If the scalar is negative, then the vector reverses to point in the opposite direction.  The product $-\frac{1}{2}\vec u$ is a vector half as long as $\vec u$ and points in the opposite direction (as illustrated in the margin).
 
-To subtract to vectors $\vec u-\vec v$, we use scalar multiplication and vector addition.  We write $\vec u-\vec v = \vec u +(-\vec v)$, which means we turn $\vec v$ around and then add it to $\vec u$. 
-The same parallelogram law of addition applies geometrically, however the result $\vec u-\vec v$ can be seen as the vector connecting the heads of the two vectors when their tails are both placed on the same spot, with the direction pointing towards the head of $\vec u$.  When I see a vector difference $\vec u-\vec v$, I like to think ``head  minus tail'' to help remind me that the head of $\vec u-\vec v$ is at the tip of $\vec u$ whereas the tail of the difference is at the head of $\vec v$. The difference $\left<1,2\right> - \left<3,1\right> = \left<-2,1\right>$ is illustrated to the right.
+To subtract to vectors $\vec u-\vec v$, we use scalar multiplication and vector addition.  We write $\vec u-\vec v = \vec u +(-\vec v)$, which means we reverse $\vec v$ and then add it to $\vec u$.  You can visualize this using the parallelogram law of addition.  You can also visualize the difference $\vec u-\vec v$ as the vector connecting the heads of the two vectors when their tails are both placed on the same spot, with the direction pointing towards the head of $\vec u$.  When you see a vector difference $\vec u-\vec v$, you might imagine an arrowhead on the subtraction sign like this: $\vec u \leftarrow \vec v$, or think ``head  minus tail'' to remind you which way the difference vector points. The difference $\vec u - \vec v=\left<1,2\right> - \left<3,1\right> = \left<-2,1\right>$ is illustrated in two vectors in the margin.
 
 \subsection{Magnitude and the Dot Product}
-The length of a vector is found using the Pythagorean theorem: $c^2=a^2+b^2$.  The \define[vector!]{magnitude} (or length) of the vector $\left<2,3\right>$ is simply the hypotenuse of a triangle with side lengths 2 and 3, hence $|\left<2,3\right>|=\sqrt{2^2+3^2}=\sqrt{13}$. We denote magnitude with absolute value symbols, and compute for $\vec u = (u_1,u_2)$ the magnitude as $|\vec u| = \sqrt{u_1^2+u_2^2}$.  In higher dimensions we extend this as $$\ds |\vec u| = \sqrt{u_1^2+u_2^2+u_3^2+\cdots u_n^2} = \sqrt{\sum_{i=1}^n u_i^2}.$$ 
+The length of a vector is found using the Pythagorean theorem: $c^2=a^2+b^2$.  The \define[vector!]{magnitude} (or length) of the vector $\left<2,3\right>$ is simply the length of the hypotenuse of a right triangle with short side lengths 2 and 3, hence $|\left<2,3\right>|=\sqrt{2^2+3^2}=\sqrt{13}$. We denote magnitude with absolute value symbols, and compute for $\vec u = \left<u_1,u_2\right>$ the magnitude as $|\vec u| = \sqrt{u_1^2+u_2^2}$.  In higher dimensions we extend this as $$\ds |\vec u| = \sqrt{u_1^2+u_2^2+u_3^2+\cdots u_n^2} = \sqrt{\sum_{i=1}^n u_i^2}.$$ 
 
 A unit vector is a vector with length 1. 
-\marginpar{A unit vector $\bf \hat u$ has length $|\vec u|=1$} In many books unit vectors are written with a hat above them, as $\bf{\hat u}$.
-Any vector that is not a unit vector can be rewritten as a scalar times a unit vector, by dividing the vector by its magnitude. This allows us to write any vector as a magnitude times a direction (unit vector).
+\marginpar{A unit vector $\bf \hat u$ has length $|\vec u|=1$} In many books, unit vectors are written with a hat above them, as $\bf{\hat u}$.
+Any vector that is not a unit vector can be rewritten as a scalar times a unit vector by dividing the vector by its magnitude. This allows us to write any vector as a magnitude times a direction (where the direction is given by a unit vector).
  
 \begin{example}
 The length of $\vec u=\left<2,1,-3\right>$ is $\sqrt{2^2+1^2+(-3)^2} = \sqrt{4+1+9}=\sqrt{14}$.  
@@ -190,7 +191,7 @@ $$\vec u = |\vec u| \frac{\vec u}{|\vec u|} = \sqrt{14} \left<\frac{2}{\sqrt{14}
 \end{example}
 
 
-The \define[vector!]{dot product} of two vectors $\vec u = \left<u_1,u_2,\ldots,u_n\right>$ and $\vec v =\left<v_1,v_2,\ldots,v_n\right>$ is the scalar $\vec u\cdot \vec v = u_1v_1+u_2v_2+\cdots+u_nv_n = \sum u_iv_i$. Just multiply corresponding components and then add the products.
+The \define[vector!]{dot product} of two vectors $\vec u = \left<u_1,u_2,\ldots,u_n\right>$ and $\vec v =\left<v_1,v_2,\ldots,v_n\right>$ is the scalar given by multiplying corresponding components and adding the products together (i.e., $\vec u\cdot \vec v = u_1v_1+u_2v_2+\cdots+u_nv_n = \sum u_iv_i$).
 \begin{example} \label{ex dot product}
 The dot product of $\begin{bmatrix}1&3&-2\end{bmatrix}$ and $\begin{bmatrix}2&-1&4\end{bmatrix}$ is
  $$\begin{bmatrix}1&3&-2\end{bmatrix}\cdot \begin{bmatrix}2&-1&4\end{bmatrix} = (1)(2)+(3)(-1)+(-2)(4)=-9.$$ 
@@ -200,7 +201,7 @@ We use the dot product to find lengths and angles in all dimensions. We will als
 Notice that if $\vec u = \left<u_1,u_2,\ldots,u_n\right>$, then we can find the length of a vector using the dot product since
 \marginpar{The dot product finds length: $$\vec u\cdot \vec u = |\vec u|^2$$}
 $$\vec u\cdot \vec u = u_1^2+u_2^2+u_3^2+\cdots u_n^2 = \sum_{i=1}^n u_i^2 = |\vec u|^2.$$
-If $\theta$ is the angle between 2 vectors $\vec u$ and $\vec v$, then we can find the angle between these two vectors using \marginpar{The dot product finds angles: $$\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$$}
+If $\theta$ is the angle between two vectors $\vec u$ and $\vec v$, then we can find the angle between these two vectors using the formula \marginpar{The dot product finds angles: $$\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$$}
 $$\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta.$$
 This follows from the law of cosines $c^2 = a^2 + b^2 -2ab \cos \theta$, where $a=|\vec u|$, $b=|\vec v|$, and $c = |\vec u-\vec v|$. 
 \marginpar{{%\normalsize
@@ -224,39 +225,37 @@ Distributing on the left gives
 $$\vec u\cdot \vec u - 2 \vec u \cdot \vec v +\vec v\cdot \vec v = \vec u\cdot \vec u +\vec v\cdot \vec v -2|\vec u||\vec v|\cos \theta.$$
 Now cancel the common terms on both sides and divide by 2 to obtain our formula $\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$.  
 This formula geometrically explains how to connect the dot product to angles in both 2 and 3 dimensions.  
-In higher dimensions we can now define the angle between two vectors using this formula.
+In higher dimensions, we can define the angle between two vectors using this formula.
 
-If two vectors meet at a 90 degree angle, then $\cos 90^\circ = 0$.  
-This means that $\vec u \cdot \vec v = |\vec u||\vec v|0=0$, so the dot product is zero. 
-Similarly, if the dot product is zero then $0=\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$, so either one of the vectors has zero length, or the angle between them is zero. 
-We say that $\vec u$ and $\vec v$ are orthogonal if their dot product is zero. 
-\marginpar{orthogonal = dot product is zero} 
-Two lines are perpendicular when the angle between then is 90 degrees. Two vectors are orthogonal when either the angle between them is zero, or one of the vectors is the zero vector.
+If two vectors meet at a right angle angle, then since $\cos 90^\circ = 0$, we see that $\vec u \cdot \vec v = |\vec u||\vec v|0=0$, so the dot product is zero. 
+Similarly, if the dot product is zero, then $0=\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$, so either one of the vectors has zero length, or the angle between them is zero. 
+We say that $\vec u$ and $\vec v$ are \define{orthogonal} if $\vec u \cdot \vec v=0$. 
+\marginpar{orthogonal = dot product is zero}Two lines are perpendicular when the angle between then is $90^\circ$. Two vectors are orthogonal when either the angle between them is $90^\circ$, or one of the vectors is the zero vector.
 
 \section{Multiplying Matrices}
 
 
 \subsection{Linear Combinations}
 
-The simplest vectors in 2D are a one unit increment in either the $x$ or $y$ direction, and we write these vectors in any of the equivalent forms 
-$\textbf{i} = \vec i = \left<1,0\right>=(1,0)$ and  
-$\textbf{j} = \vec j = \left<0,1\right>=(0,1)$. 
+\marginpar{The standard basis vectors in 3D:\\
+$i = \vec \i = \left<1,0,0\right>=(1,0,0)$\\   
+$j = \vec \j = \left<0,1,0\right>=(0,1,0)$\\ 
+$k = \vec k = \left<0,0,1\right>=(0,0,1)$   
+}The simplest vectors in 2D are (written in several different forms): 
+$\ii = \vec \i = \left<1,0\right>=(1,0)$ and  
+$\jj = \vec \j = \left<0,1\right>=(0,1)$. 
 We call these the standard basis vectors in 2D. 
-In 3D we include the vector $\textbf{k} = \vec j=\left<0,0,1\right>$ as well as add a zero to both $\vec i$ and $\vec j$ to obtain the standard basis vectors. 
-\marginpar{The standard basis vectors in 3D\\
-$\textbf{i} = \vec i = \left<1,0,0\right>=(1,0,0)$\\   
-$\textbf{j} = \vec j = \left<0,1,0\right>=(0,1,0)$\\ 
-$\textbf{k} = \vec k = \left<0,0,1\right>=(0,0,1)$   
-}
+In 3D, we include the vector $\kk = \vec k=\left<0,0,1\right>$ as well as add a zero to both $\vec \i$ and $\vec \j$ to obtain the standard basis vectors. 
+
 A similar idea is used in higher dimensions. 
-The word basis suggests that we can base other vectors on these basis vectors, and we typically write other vectors in terms of these standard basis vectors. 
+The word \emph{basis} suggests that we can base other vectors on these basis vectors, and we typically write other vectors in terms of these standard basis vectors. 
 Using only scalar multiplication and vector addition, we can obtain the other vectors in 2D from the standard basis vectors. 
 For example we can write $$\left<a,b\right> =a\left<1,0\right>+b\left<0,1\right> = a\vec i+b\vec j.$$ 
 The entries of a row or column vector are called the coordinates of the vector relative to the standard basis, or just the components of the vector. 
-Notice that we scaled the vectors $\vec i$ and $\vec j$, and then summed the results. 
+Notice that we scaled the vectors $\vec i$ and $\vec j$, and then summed the scaled vectors. 
 This is an example of a linear combination.
 
-A \define{linear combination} of vectors {$\vec v_{1},\vec v_{2},\ldots,\vec v_{n}$} is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where {$c_i$} is a constant for each $i$. 
+A \define{linear combination} of vectors $\vec v_{1}, \vec v_{2}, \ldots, \vec v_{n}$ is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where each {$c_i$} is a constant. 
 A linear combination of vectors is simply a sum of scalar multiples of the vectors. 
 We start with some vectors, stretch each one by some scalar, and then sum the result. 
 Much of what we will do this semester (and in many courses to come) relates directly to understanding linear combinations.  
@@ -265,8 +264,10 @@ Much of what we will do this semester (and in many courses to come) relates dire
 Let's look at a physical application of linear combinations that you use every day when you drive.
 When you place your foot on the accelerator of your car, the car exerts a force $\vec F_{1}$ pushing you forward. When you turn the steering wheel left, the car exerts a force $\vec F_{2}$ pushing you left. The total force acting on you is the vector sum of these forces, or a linear combination $\vec F_{\text{total}} = \vec F_1 +\vec F_2$. If $\vec T$ represents a unit vector pointing forward, and $\vec N$ represents a unit vector pointing left, then we can write the total force as the linear combination
 $$\vec F_{\text{total}} = |\vec F_1|\vec T +|\vec F_2|\vec N.$$
-To understand motion, we can now focus on finding just the tangential force $\vec T$ and normal force $\vec N$, and then we can obtain other forces by just looking at linear combinations of these two.
+To understand motion, we can now focus on finding just the magnitude of each force and the tangential unit vector $\vec T$ and normal unit vector $\vec N$.  Once we understand these quantities, we can understand any force because it is a linear combination of quantities we understand.
 \end{example}
+
+%% Jason is here in the editing process.
 \subsection{Matrix Multiplication}
 
 One of the key applications of linear combinations we will make throughout the semester is matrix multiplication. Let's introduce the idea with an example.  
