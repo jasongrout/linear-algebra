@@ -15,7 +15,9 @@ Most of linear algebra centers around understanding matrices and vectors. The fi
 Matrix size is
 
 row by column.} 
-A \define{matrix} of size {$m$} by {$n$} has {$m$} rows and {$n$} columns.  We normally write matrices using capital letters, and use the notation 
+A \define{matrix} of size ``{$m$} by {$n$}'' ($m\times n$) is a table
+with {$m$} rows and {$n$} columns.  We normally give matrices names
+using capital letters, and use the notation 
 $$A = 
 \begin{bmatrix}
 a_{11}&\cdots&a_{1n}\\ 
@@ -27,7 +29,10 @@ a_{m1}&\cdots&a_{mn}
 where $a_{jk}$ is the entry in the $j$th row, $k$th column. 
 
 
-We say two matrices {$A$} and {$B$} are equal if corresponding entries are equal (i.e., {$a_{jk}=b_{jk}$} for all $j$ and $k$). We add and subtract matrices of the same size entry-wise, and perform scalar multiplication $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main \define{diagonal} of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the \define{trace} is the sum of the entries on the main diagonal ($\sum a_{jj}$). \note{TODO: make picture of diagonal in the margin}
+We say two matrices {$A$} and {$B$} are equal if corresponding entries
+are equal (i.e., {$a_{jk}=b_{jk}$} for all $j$ and $k$). We add and
+subtract matrices of the same size entry-wise.  A \define{scalar} is a
+single number or variable.  We multiply a scalar and a matrix $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main \define{diagonal} of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the \define{trace} is the sum of the entries on the main diagonal ($\sum a_{jj}$). \note{TODO: make picture of diagonal in the margin}
 \begin{example}
 If $A=\begin{bmatrix}
 1&3\\
@@ -56,7 +61,7 @@ The \definemargin{transpose} of a matrix {$A=[a_{jk}]$} is a new matrix {$A^T=[a
 The transpose of $A$ is illustrated below.
 $$\begin{array}{ccc}
 A =\begin{bmatrix} 0&1&-1\\1&0&2
-\end{bmatrix} &
+\end{bmatrix}, &
 A^T = \begin{bmatrix} 0&1\\1&0
 \\-1&2\end{bmatrix} 
 \end{array}.$$
@@ -204,6 +209,8 @@ $$\vec u\cdot \vec u = u_1^2+u_2^2+u_3^2+\cdots u_n^2 = \sum_{i=1}^n u_i^2 = |\v
 If $\theta$ is the angle between two vectors $\vec u$ and $\vec v$, then we can find the angle between these two vectors using the formula \marginpar{The dot product finds angles: $$\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$$}
 $$\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta.$$
 This follows from the law of cosines $c^2 = a^2 + b^2 -2ab \cos \theta$, where $a=|\vec u|$, $b=|\vec v|$, and $c = |\vec u-\vec v|$. 
+Because the dot product is equal to the square of the magnitude, we have 
+$$(\vec u-\vec v)\cdot (\vec u-\vec v) = \vec u\cdot \vec u +\vec v\cdot \vec v -2|\vec u||\vec v|\cos \theta.$$
 \marginpar{{%\normalsize
 \begin{center}
 Law of Cosines
@@ -219,8 +226,6 @@ $$c^2=a^2+b^2-2ab\cos\theta$$
 \end{tikzpicture}
 \end{center}
 }}
-Because the dot product is equal to the square of the magnitude, we have 
-$$(\vec u-\vec v)\cdot (\vec u-\vec v) = \vec u\cdot \vec u +\vec v\cdot \vec v -2|\vec u||\vec v|\cos \theta.$$
 Distributing on the left gives 
 $$\vec u\cdot \vec u - 2 \vec u \cdot \vec v +\vec v\cdot \vec v = \vec u\cdot \vec u +\vec v\cdot \vec v -2|\vec u||\vec v|\cos \theta.$$
 Now cancel the common terms on both sides and divide by 2 to obtain our formula $\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$.  
