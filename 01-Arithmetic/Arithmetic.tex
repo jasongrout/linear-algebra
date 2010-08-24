@@ -97,26 +97,26 @@ A^T = \begin{bmatrix} 0&1\\1&0
 
 
 \subsection{Vectors}
-Vectors represent a magnitude in a given direction. We can use vectors to model forces, acceleration, velocity, probabilities, electronic data, and more. We can use matrices to represent vectors. A row vector is a {$1\times n$} matrix. A column vector is an {$m \times 1$} matrix.   Textbooks often write vectors using bold face font. By hand (and in this book), we write an arrow above them. The notation ${\bf v} = \vec v = \left<v_1,v_2,v_3\right>$ can represent either a row or column vector. Many different ways to represent vectors are used in different books.  For example, you may see the vector $\left<2,3\right>$ written in any of the following ways.
-$$\left<2,3\right>
-= 2{\bf i}+3{\bf j} 
-= (2,3) 
-= \begin{bmatrix}2&3\end{bmatrix} 
-= \begin{bmatrix}2\\3\end{bmatrix}
-= \begin{pmatrix}2&3\end{pmatrix} 
-= \begin{pmatrix}2\\3\end{pmatrix}
+Vectors represent a magnitude in a given direction. We can use vectors to model forces, acceleration, velocity, probabilities, electronic data, and more. We can use matrices to represent vectors. A row vector is a {$1\times n$} matrix. A column vector is an {$m \times 1$} matrix.   Textbooks often write vectors using bold face font. By hand (and in this book), we write an arrow above them. The notation ${\bf v} = \vec v = \left<v_1,v_2,v_3\right>$ can represent either a row or column vector. Many different ways to represent vectors are used in different books.  For example, you may see the vector $\left<-2,3\right>$ written in any of the following ways.
+$$\left<-2,3\right>
+= -2{\bf i}+3{\bf j} 
+= (-2,3) 
+= \begin{bmatrix}-2&3\end{bmatrix} 
+= \begin{bmatrix}-2\\3\end{bmatrix}
+= \begin{pmatrix}-2&3\end{pmatrix} 
+= \begin{pmatrix}-2\\3\end{pmatrix}
 $$ 
-The notation $(2,3)$ has other meanings as well (like a point in the plane, or an open interval).  Please make sure that when you use the notation $(2,3)$, it is clear from the context that you working with a vector. 
+The notation $(-2,3)$ has other meanings as well (like a point in the plane, or an open interval).  Please make sure that when you use the notation $(-2,3)$, it is clear from the context that you working with a vector. 
 
 {\marginpar{{
 \begin{tikzpicture}[scale=.5]
 \draw[help lines,step=1cm] (0,0) grid (4,4);
-\draw[->,>=stealth,thick] (0,4) -- (2,1);
-\draw[->,>=stealth,thick] [xshift=2cm, yshift=-1cm](0,4) -- (2,1);
+\draw[->,>=stealth,thick] (2,1) -- (0,4);
+\draw[->,>=stealth,thick] [xshift=2cm, yshift=-1cm](2,1) -- (0,4);
 \end{tikzpicture}
 
 Both vectors 
-represent $\left<2,-3\right>$, regardless of where we start.
+represent $\left<-2,3\right>$, regardless of where they start.
 }}}
 To draw a vector, pick a starting point (the tail).  Then draw a line that moves $v_1$ units horizontally and $v_2$ units vertically, and put an arrow at the ending point (the head).  Many times we will put the tail of the vector at the origin $(0,0)$.
 
