@@ -318,14 +318,6 @@ AB
 \end{equation*}
 
 
-
-\begin{example} A row matrix times a column matrix is equivalent to the dot product of the two when treated as vectors.
-$$ 
-\begin{bmatrix}1 & 2\end{bmatrix}\begin{bmatrix}5\\6\end{bmatrix} =
-\begin{bmatrix}1\cdot 5 + 2\cdot 6\end{bmatrix} = \begin{bmatrix}17\end{bmatrix}
-$$
-\end{example}
-
 \begin{example} 
 In this example, the matrix $A$ has 3 rows, so the product should have 3 rows.  The matrix $B$ has 2 columns, so we need to find 2 different linear combinations giving us 2 columns in the product. 
 $$ 
@@ -342,6 +334,16 @@ $$
 \begin{matrix}6\\12\\18\end{matrix}
 \end{bmatrix}$$
 \end{example}
+
+
+
+\begin{example} A row matrix times a column matrix is equivalent to the dot product of the two when treated as vectors.
+$$ 
+\begin{bmatrix}1 & 2\end{bmatrix}\begin{bmatrix}5\\6\end{bmatrix} =
+\begin{bmatrix}1\cdot 5 + 2\cdot 6\end{bmatrix} = \begin{bmatrix}17\end{bmatrix}
+$$
+\end{example}
+
 
 
 \begin{example} 
@@ -398,7 +400,7 @@ $
 \begin{matrix}0\\-2\\-4\end{matrix}&
 \begin{matrix}6\\12\\18\end{matrix}
 \end{bmatrix}$
-\\
+\\\hline
 \\
 Rows of $A$ dotted by columns of $B$.
 \\
@@ -424,7 +426,8 @@ $
 \begin{matrix}0\\-2\\-4\end{matrix}&
 \begin{matrix}6\\12\\18\end{matrix}
 \end{bmatrix}$
-\\\\
+\\\hline
+\\
 Use rows of $A$ to form linear combinations of rows of $B$.
 \\\\
 $
@@ -677,14 +680,14 @@ Most of the problems in this unit can be solved using Gaussian elimination, so w
 \begin{enumerate}
 \item Forward Phase (row echelon form) - The following 4 steps should be repeated until you have mentally erased all the rows or all the columns. In step 1 or 4 you will erase a column and/or row from the matrix.
 \begin{enumerate}
-	\item  
-	\marginpar{Computer algorithms place the largest (in absolute value) nonzero entry in the first row. This reduces potential errors due to rounding that can occur in later steps.}
+	\item
+	\marginpar{Computer algorithms place the largest (in absolute value) nonzero entry in the first row. This reduces potential errors due to rounding that can occur in later steps.}%
 Consider the first column of your matrix. Start by interchanging rows (if needed) to place a nonzero entry in the first row. If all the elements in the first column are zero, then ignore that column in future computations (mentally erase the column) and begin again with the smaller matrix which is missing this column. If you erase the last column, then stop.
   \item 
   Divide the first row (of your possibly smaller matrix) row by its leading entry so that you have a leading 1. This entry is a pivot, and the column is a pivot column. [When doing this by hand, it is often convenient to skip this step and do it at the very end so that you avoid fractional arithmetic. If you can find a common multiple of all the terms in this row, then divide by it to reduce the size of your computations.  ] 
 	\item Use the pivot to eliminate each nonzero entry below the pivot, by adding a multiple of the top row (of your smaller matrix) to the nonzero lower row.
 	\item 
-	\marginpar{Ignoring rows and columns is equivalent to incrementing row and column counters in a computer program.}
+	\marginpar{Ignoring rows and columns is equivalent to incrementing row and column counters in a computer program.}%
 	Ignore the row and column containing your new pivot and return to the first step (mentally cover up or erase the row and column containing your pivot). If you erase the last row, then stop.
 \end{enumerate}
 	\item Backward Phase (reduced row echelon form - often called Gauss-Jordan elimination) - At this point each row should have a leading 1, and you should have all zeros to the left and below each leading 1. If you skipped step 2 above, then at the end of this phase you should divide each row by its leading coefficient to make each row have a leading 1.
@@ -1359,3 +1362,8 @@ When $\lambda=1$, we compute $A-\lambda I =\begin{bmatrix}1&1&4\\ 1&1&4\\ 0&0&0\
 
 When $\lambda=3$, we compute $A-\lambda I =\begin{bmatrix}-1&1&4\\ 1&-1&4\\ 0&0&-2\end{bmatrix}$. Next, reducing $\begin{bmatrix}[ccc|c]-1&1&4&0\\ 1&-1&4&0\\ 0&0&-2&0\end{bmatrix}$ yields $\begin{bmatrix}[ccc|c]-1&1&0&0\\ 0&0&1&0\\ 0&0&0&0\end{bmatrix} $, which has only one free variable . The solution is $\begin{bmatrix} x_1\\x_2\\ x_3\end{bmatrix} = x_2\begin{bmatrix} 1\\1\\0\end{bmatrix}$. The eigenvectors are nonzero linear combinations of $\begin{bmatrix} 1\\1\\0\end{bmatrix}$. Because $\lambda=3$ is a single root of the characteristic polynomial, all the eigenvectors can be obtained as linear combinations of one eigenvector.
 \end{example}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../linear-algebra"
+%%% End: 
