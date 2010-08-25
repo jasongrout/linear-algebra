@@ -400,7 +400,7 @@ $
 \begin{matrix}0\\-2\\-4\end{matrix}&
 \begin{matrix}6\\12\\18\end{matrix}
 \end{bmatrix}$
-\\
+\\\hline
 \\
 Rows of $A$ dotted by columns of $B$.
 \\
@@ -426,7 +426,8 @@ $
 \begin{matrix}0\\-2\\-4\end{matrix}&
 \begin{matrix}6\\12\\18\end{matrix}
 \end{bmatrix}$
-\\\\
+\\\hline
+\\
 Use rows of $A$ to form linear combinations of rows of $B$.
 \\\\
 $
@@ -679,14 +680,14 @@ Most of the problems in this unit can be solved using Gaussian elimination, so w
 \begin{enumerate}
 \item Forward Phase (row echelon form) - The following 4 steps should be repeated until you have mentally erased all the rows or all the columns. In step 1 or 4 you will erase a column and/or row from the matrix.
 \begin{enumerate}
-	\item  
-	\marginpar{Computer algorithms place the largest (in absolute value) nonzero entry in the first row. This reduces potential errors due to rounding that can occur in later steps.}
+	\item
+	\marginpar{Computer algorithms place the largest (in absolute value) nonzero entry in the first row. This reduces potential errors due to rounding that can occur in later steps.}%
 Consider the first column of your matrix. Start by interchanging rows (if needed) to place a nonzero entry in the first row. If all the elements in the first column are zero, then ignore that column in future computations (mentally erase the column) and begin again with the smaller matrix which is missing this column. If you erase the last column, then stop.
   \item 
   Divide the first row (of your possibly smaller matrix) row by its leading entry so that you have a leading 1. This entry is a pivot, and the column is a pivot column. [When doing this by hand, it is often convenient to skip this step and do it at the very end so that you avoid fractional arithmetic. If you can find a common multiple of all the terms in this row, then divide by it to reduce the size of your computations.  ] 
 	\item Use the pivot to eliminate each nonzero entry below the pivot, by adding a multiple of the top row (of your smaller matrix) to the nonzero lower row.
 	\item 
-	\marginpar{Ignoring rows and columns is equivalent to incrementing row and column counters in a computer program.}
+	\marginpar{Ignoring rows and columns is equivalent to incrementing row and column counters in a computer program.}%
 	Ignore the row and column containing your new pivot and return to the first step (mentally cover up or erase the row and column containing your pivot). If you erase the last row, then stop.
 \end{enumerate}
 	\item Backward Phase (reduced row echelon form - often called Gauss-Jordan elimination) - At this point each row should have a leading 1, and you should have all zeros to the left and below each leading 1. If you skipped step 2 above, then at the end of this phase you should divide each row by its leading coefficient to make each row have a leading 1.
