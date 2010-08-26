@@ -506,31 +506,40 @@ $\begin{bmatrix}[ccc|c]2&1&-1 &2\\1&-2&0 &3 \\0&4&2&1\end{bmatrix}$
 \caption{Four equivalent ways to represent a system of equations.\label{systemequivalent}}
 \end{table}
 
-%% Jason is here in the editing process.
-
 Let's add some geometry to the discussion. 
 A linear equation in two variables $ax+by=c$ graphically represents a line.  
-A linear equation in 3 variables $ax+by+cz=d$ represents a plane in space. 
 A system of equations with two variables represents multiple lines in the plane. 
-A solution to such a system is the intersection of the lines.  
+A solution to such a system is a point that lies on all of the lines
+(i.e., an intersection of all of the lines).
+We can have one of the following situations:
+\begin{enumerate}
+\item No solution: no point lies on all of the lines (even if some of
+  the lines intersect).
+\item One solution: only one point lies on all the lines (i.e., all
+  the lines intersect in one point).
+\item Infinitely many solutions: the lines are actually all the same
+  line, so all points on one line are really on all the lines.
+\end{enumerate}
+
+A linear equation in 3 variables $ax+by+cz=d$ represents a plane in space.  
 In our 3D system above, a solution graphically represents the intersection of three planes. 
-Three planes can intersect in any of the following ways.
+Three planes can intersect in any of the following ways:
 \note{Add a picture here at some point}
 \begin{enumerate}
-\item One solution - The three planes intersect in a single point.
-\item Infinitely many solutions
+\item No solution: two of the planes are parallel and never intersect,
+  or the planes only intersect in pairs.
+\item One solution: the three planes intersect in a single point.
+\item Infinitely many solutions:
 \begin{enumerate}
-	\item The three planes all in a line, so there is a line of solutions.
-	\item The three equations all represent the same plane, so there is a plane of solutions.
+	\item the three planes all intersect in a line, so there is a line of solutions.
+	\item the three equations all represent the same plane, so there is a plane of solutions.
 \end{enumerate}
-\item No solution - two of the planes are parallel and never intersect.
 \end{enumerate}\note{TODO: make graphics of each of these situations.}
-When we look at a 2D system of equations, we can have the same three possibilities. 
 \marginpar{A system of equations will have either a unique solution, infinitely many solutions, or no solution.}
-The lines may intersect in a single point (one solution), the lines may all represent the same line (infinitely many solutions), or the lines may be parallel and never intersect (no solution).  
-In 2D and 3D we can geometrically see that there will always one, infinitely many, or no solutions.
-With any system of linear equations regardless of the number of equations and number of unknowns, this pattern continues. 
-There will always be either a single solution, infinitely many solutions, or no solution.  
+In 2D and 3D, we can see geometrically that there will always be either
+no solution, one solution, or infinitely many solutions.
+With any system of linear equations, regardless of the number of equations and number of unknowns, this pattern continues. 
+There will always be either no solution, a single solution, or infinitely many solutions.
 Systems with solutions are called \define{consistent},
 \marginpar{consistent system: has a solution}
 whereas systems without solutions are called inconsistent.
@@ -539,19 +548,39 @@ Two more important terms: we say the linear system {$A\vec x = 0$} is a \define{
 \marginpar{homogeneous system: $A\vec x = \vec 0$} 
 If {$A\vec x\neq 0$ (i.e., $\vec b \neq 0$), we say the system is nonhomogeneous.
 %\marginpar{nonhomogeneous} 
+\note{is there a place later where we talk about a homogeneous system
+  always having a solution, and what a nontrivial solution is?}
 
 \subsection{Gaussian Elimination}
 
-Gaussian elimination is an efficient algorithm we will use to solve systems of equations. This is the same algorithm implemented on most computers systems. The main idea is to eliminate each variable from all but one equation/row (if possible), using at the following three operations (called elementary row operations):
+Gaussian elimination is an efficient algorithm we will use to solve
+systems of linear equations. This algorithm (or a variation) is commonly used
+in practice.  The main idea is to eliminate each variable from all but
+one equation/row (if possible), using the following three operations
+(these are called \textit{elementary row operations}):
 \begin{enumerate}
   \item Multiply an equation (or row of a matrix) by a nonzero constant,
   \item Add a nonzero multiple of any equation (or row) to another equation,
   \item Interchange two equations (or rows).
 \end{enumerate}
-These three operations are the operations learned in college algebra when solving a system using a method of elimination.  Gaussian elimination streamlines elimination methods to solve generic systems of equations of any size. The process involves a forward reduction and (optionally) a backward reduction. The forward reduction creates zeros in the lower left corner of the matrix.  The backward reduction puts zeros in the upper right corner of the matrix. We eliminate the variables in the lower left corner of the matrix, starting with column 1, then column 2, and proceed column by column until all variables which can be eliminated (made zero) have been eliminated. Before formally stating the algorithm, let's look at a few examples. 
+These three operations are the operations learned in college algebra
+when solving a system using a method of elimination.  Gaussian
+elimination is a way of organizing your work so that you always arrive
+at a solution (or can determine there is no solution) in a certain
+number of steps (that's part of the reason it is a good computer
+algorithm). The process involves a forward reduction and (optionally)
+a backward reduction. The forward reduction creates zeros in the lower
+left corner of the matrix.  The backward reduction puts zeros in the
+upper right corner of the matrix. We eliminate the values (i.e., make
+them zero) in the lower left corner of the matrix, starting with
+column 1, then column 2, and proceed column by column until all
+values which can be eliminated have been
+eliminated. Before formally stating the algorithm, let's look at a few
+examples.
 
 \begin{example}
-Let's start with a system of 2 equations and 2 unknowns. I will write the augmented matrix representing the system as we proceed. To solve $$
+Let's start with a system of 2 equations and 2 unknowns. The augmented
+matrix representing the system is shown as well. To solve $$
 \begin{array}{rr}
 \begin{array}{rl}
 x_1-3x_2&=4\\
@@ -573,18 +602,20 @@ x_2&=-7
 \end{bmatrix} 
 \end{array}
 $$
-The matrix at the right is said to be in \definemargin{row echelon form}. This means that 
+Now the augmented matrix is said to be in \definemargin{row echelon form}. This means that 
 \begin{itemize}
-	\item each nonzero row begins with a 1 (called a leading 1),
-  \item the leading 1 in a row occurs further right than a leading 1 in the row above, and
+	\item in each nonzero row, the first nonzero entry is a 1 (called a ``leading 1''),
+  \item the leading 1 in a row occurs further right than the leading 1 in the row above, and
   \item any rows of all zeros appear at the bottom.
 \end{itemize}
 The position in the matrix where the leading 1 occurs is called a pivot. 
 The column containing a pivot is called a \definemargin{pivot column}. 
 At this point we can use ``back-substitution'' to get {$x_2=-7$} and {$x_1=4+3x_2 = 4-21=-17$}. 
-Alternatively, we can continue the elimination process by eliminating the terms above each pivot, starting on the right and working backwards. 
-This will result in a matrix where all the pivot columns contain all zeros except for the pivot. 
-If we add 3 times the second row to the first row, we obtain.
+Alternatively, we can continue the elimination process by eliminating
+the terms above each pivot, starting with the rightmost (and lowest) pivot and
+working towards the left and top.
+This will result in a matrix where the only nonzero entry in any pivot column is the pivot entry (i.e., the leading 1). 
+In our example, if we add 3 times the second row to the first row, we obtain
 $$\begin{array}{rr}
 \begin{array}{rl}
 x_1&=-17\\
@@ -595,12 +626,12 @@ x_2&=-7
 \end{bmatrix} 
 \end{array}
 $$
-The matrix on the right is said to be in \define{reduced row echelon form} (or just rref). 
-\marginpar{rref=reduced row echelon form}
+The matrix on the right is said to be in \define{reduced row echelon form} (or just ``rref''). 
+\marginpar{rref=reduced row echelon form}%
 A matrix is in reduced row echelon form if 
 \begin{itemize}
 	\item the matrix is in echelon form, and 
-	\item each pivot column contains all zeros except for the pivot (leading one).
+	\item the only nonzero entry in each pivot column is the pivot entry (i.e., the leading 1).
 \end{itemize}
  You can easily read solutions to systems of equations directly from a matrix which is in reduced row echelon form.
 
@@ -625,7 +656,7 @@ c_2
 $ is to let $c_1=-17$ and $c_2=-7$, which shows us that $(4,1)$ is a linear combination of the vectors $(1,2)$ and $(-3,-5)$.  In addition, the only solution to the matrix equation 
 $\begin{bmatrix}1&-3\\ 2 &-5 \end{bmatrix}\begin{bmatrix}x_1\\ x_2\end{bmatrix}=\begin{bmatrix}4\\1\end{bmatrix}$ 
 is 
-$\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}-17\\-7\end{bmatrix}$.  \marginpar{Row reduction helps us understand systems, vector equations, and matrix equations.} Notice that solving this system of equations tells us information about graphical intersections, linear combination of vectors, and multiplication of matrices. 
+$\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}-17\\-7\end{bmatrix}$.  \marginpar{Row reduction helps us understand systems, vector equations, and matrix equations.} Notice that solving this system of equations tells us information about graphical intersections, linear combination of vectors, and matrix equations.
 \end{example}
 
 
@@ -635,15 +666,20 @@ Let's now solve a nonhomogeneous (meaning the right side is not zero) system wit
 x_1-2x_2 &=3\\
 4x_2+2x_3&=1
 \end{array} \quad\quad\quad\quad\quad
- \begin{bmatrix}[ccc|c] 2&1&-1&2\\1&-2&0&3\\0&4&2&1\end{bmatrix}.$$ 
-We'll encounter some homogeneous systems later on.
-To simplify the writing, we'll just use matrices this time. 
-To keep track of each step, I will write the row operation next to the row I will replace. 
-Remember that the 3 operations are (1)multiply a row by a nonzero constant, (2)add a multiple of one row to another, (3) interchange any two rows.  
-If I write $R_2+3R1$ next to $R_2$, then this means I will add 3 times row 1 to row 2.  
-If I write $2R_2-R1$ next to $R_2$, then I have done two row operations, namely I multiplied $R_2$ by 2, and then added (-1) times $R1$ to the result (replacing $R2$ with the sum). 
-The steps below read left to right, top to bottom. 
-In order to avoid fractions, I wait to divide until the last step, only putting a 1 in each pivot at the very end.
+\begin{bmatrix}[ccc|c] 2&1&-1&2\\1&-2&0&3\\0&4&2&1\end{bmatrix}.$$
+We'll encounter some homogeneous systems later on.  To simplify the
+writing, we'll just use matrices this time.  To keep track of each
+step, we will write the row operation next to the row we will replace.
+Remember that the three operations are (1) multiply a row by a nonzero
+constant, (2) add a multiple of one row to another, and (3)
+interchange any two rows.  If we write $R_2+3R1$ next to $R_2$, then
+this means we will add 3 times row 1 to row 2.  If we write $2R_2-R1$
+next to $R_2$, then we have done two row operations, namely we
+multiplied $R_2$ by $2$, and then added $(-1)$ times $R1$ to the result
+(replacing $R2$ with the sum).  The steps below read left to right,
+top to bottom.  In order to avoid fractions in the middle of the
+computation, we wait to divide each pivot entry to make it a 1 until
+the last step.
 $$\begin{array}{rlcl}
 \Rightarrow^{(1)}&
  \begin{bmatrix}[ccc|c] 2&1&-1&2\\1&-2&0&3\\0&4&2&1\end{bmatrix}
@@ -670,7 +706,7 @@ $$\begin{array}{rlcl}
 \begin{bmatrix}[ccc|c] 1&0&0&2\\0&1&0&-1/2\\0&0&1&3/2\end{bmatrix} 
 \end{array}
 $$
-Writing the final matrix in terms of a system, we have the solution {$x_1=2, x_2=-1/2, x_3=3/2$}. Remember that this tells us (1) where three planes intersect, (2) how to write the 4th column $\vec b$ in our original augmented matrix as a linear combination of the columns of the coefficient matrix $A$, and (3) how to solve the matrix equation $A\vec x = \vec b$ for $\vec x$.
+Writing the final matrix in terms of a system of linear equations, we have the solution {$x_1=2$, $x_2=-1/2$, $x_3=3/2$}. Remember that this tells us (1) where three planes intersect, (2) how to write the 4th column $\vec b$ in our original augmented matrix as a linear combination of the columns of the coefficient matrix $A$, and (3) how to solve the matrix equation $A\vec x = \vec b$ for $\vec x$.
 \end{example}
 
 
@@ -678,22 +714,22 @@ The following steps describe the Gaussian elimination algorithm that we used abo
 Please take a moment to compare what is written below with the example above. 
 Most of the problems in this unit can be solved using Gaussian elimination, so we will practice it as we learn a few new ideas.
 \begin{enumerate}
-\item Forward Phase (row echelon form) - The following 4 steps should be repeated until you have mentally erased all the rows or all the columns. In step 1 or 4 you will erase a column and/or row from the matrix.
+\item Forward Phase (getting row echelon form): the following 4 steps should be repeated until you have mentally erased all the rows or all the columns. In step 1 or 4, you will erase a column and/or row from the matrix.
 \begin{enumerate}
 	\item
 	\marginpar{Computer algorithms place the largest (in absolute value) nonzero entry in the first row. This reduces potential errors due to rounding that can occur in later steps.}%
 Consider the first column of your matrix. Start by interchanging rows (if needed) to place a nonzero entry in the first row. If all the elements in the first column are zero, then ignore that column in future computations (mentally erase the column) and begin again with the smaller matrix which is missing this column. If you erase the last column, then stop.
   \item 
-  Divide the first row (of your possibly smaller matrix) row by its leading entry so that you have a leading 1. This entry is a pivot, and the column is a pivot column. [When doing this by hand, it is often convenient to skip this step and do it at the very end so that you avoid fractional arithmetic. If you can find a common multiple of all the terms in this row, then divide by it to reduce the size of your computations.  ] 
-	\item Use the pivot to eliminate each nonzero entry below the pivot, by adding a multiple of the top row (of your smaller matrix) to the nonzero lower row.
+  Divide the first row (of your possibly smaller matrix) by its leading entry so that you have a leading 1. This entry is a pivot, and the column is a pivot column. (When doing this by hand, it is often convenient to skip this step and do it at the very end so that you avoid fractional arithmetic. If you can find a common multiple of all the terms in this row, then divide by it to reduce the size of your computations.)
+	\item Use the pivot to eliminate each nonzero entry below the pivot by adding a multiple of the row with the pivot to the nonzero lower row.
 	\item 
 	\marginpar{Ignoring rows and columns is equivalent to incrementing row and column counters in a computer program.}%
 	Ignore the row and column containing your new pivot and return to the first step (mentally cover up or erase the row and column containing your pivot). If you erase the last row, then stop.
 \end{enumerate}
-	\item Backward Phase (reduced row echelon form - often called Gauss-Jordan elimination) - At this point each row should have a leading 1, and you should have all zeros to the left and below each leading 1. If you skipped step 2 above, then at the end of this phase you should divide each row by its leading coefficient to make each row have a leading 1.
+	\item Backward Phase (getting reduced row echelon form): at this point, each row should have a leading 1 (the pivots), and you should have all zeros to the left and below each leading 1. If you skipped step 2 above, then the pivot entries may not actually be 1, but at the end of this phase you should divide each row by its leading coefficient to make each row have a leading 1.
 \begin{enumerate}
-	\item Starting with the last pivot column. Use the pivot in that column to eliminate all the nonzero entries above it, by adding multiples of the row containing the pivot to the nonzero rows above. 
-	\item Work from right to left, using each pivot to eliminate the nonzero entries above it. Nothing to the left of the current pivot column changes.  By working right to left, you greatly reduce the number of computations needed to fully reduce the matrix.
+	\item Starting with the last pivot column. Use the pivot in that column to eliminate all the nonzero entries above it by adding multiples of the row containing the pivot to the nonzero rows above. 
+	\item Work from right to left, using each pivot in turn to eliminate the nonzero entries above it. Nothing to the left of the current pivot column will change in an elimination step.  By working right to left, you methodically work through the matrix and greatly reduce the number of computations needed to fully reduce the matrix.
 \end{enumerate}
 \end{enumerate}
 
@@ -707,7 +743,7 @@ As a final example, let's reduce
  2 & 0 & 4 & 3 & -8 \\
  -2 & 1 & -3 & 0 & 5
 \end{bmatrix}
-$} to reduced row echelon form (rref). The first step involves swapping 2 rows. We swap row 1 and row 2 because this places a 1 as the leading entry in row 1.
+$} to reduced row echelon form (rref). The first step involves swapping two rows. We swap row 1 and row 2 because this places a 1 as the leading entry in row 1.
 {\small  $$\begin{array}{rlcl}
 \multicolumn{2}{l}{\text{(1) Get a nonzero entry in upper left}}&
 \multicolumn{2}{l}{\text{(2) Eliminate entries in 1st column}}\\
@@ -797,8 +833,8 @@ $$}\begin{picture}(0,0)
 \draw[opacity=.1,fill][shift={(25.6,1.6)}] (0,0) rectangle (1.1,.8);
 
 \end{tikzpicture}
-\end{picture}At this stage we have found a row echelon form of the matrix. 
-Notice that we eliminated nonzero terms in the lower left of the matrix by starting with the first column and working our way over column by column.  Columns 1, 2, and 4 are the pivot columns of this matrix. We now use the pivots to eliminate the other nonzero entries in each pivot column (working right to left).\marginpar{Recall that a matrix is in reduced row echelon (rref) if:
+\end{picture}At this stage, we have found a row echelon form of the matrix. 
+Notice that we eliminated nonzero terms in the lower left of the matrix by starting with the first column and working our way to the right column by column.  Columns 1, 2, and 4 are the pivot columns of this matrix. We now use the pivots to eliminate the other nonzero entries in each pivot column (working right to left).\marginpar{Recall that a matrix is in reduced row echelon (rref) if:
 \begin{enumerate}
 	\item Nonzero rows begin with a leading 1. 
 	\item Leadings 1's on subsequent rows appear further right than previous rows. 
@@ -853,7 +889,7 @@ x_2=3-x_3\\
 x_3=x_3\\
 x_4=-2
 \end{array}
-\quad \text{ or by letting $x_3=t$ }\quad
+\quad \text{ or by letting $x_3=t$, }\quad
 \begin{array}{ll}
 x_1=-1-2t\\
 x_2=3-t\\
@@ -862,12 +898,12 @@ x_4=-2
 \end{array}
 .
 $$
-\marginpar{parametric form}By choosing a value (such as $t$) for $x_3$, we can write our solution in so called parametric form. We have now given a parametrization of the solution set, where $t$ is an arbitrary real number. 
+\marginpar{parametric form}By choosing a value (such as $t$) for $x_3$, we can write our solution in what we call ``parametric form.'' We have now given a parametrization of the solution set, where $t$ is an arbitrary real number.  We can also write the solution in vector form: $\vec x=\left<x_1,x_2,x_3,x_4\right>=\left< -1-2t, 3-t, t, -2\right>$, where $-\infty<t<\infty$. 
 \end{example}
 
-\subsection{Reading Reduced Row Echelon Form - rref}
+\subsection{Reading Reduced Row Echelon Form (``rref'')}
 
-From reduced row echelon form you can read the solution to a system immediately from the matrix.  Here are some typical examples of what you will see when you reduce a system that does not have a unique solution, together with their solution. The explanations which follow illustrate how to see the solution immediately from the matrix.
+From reduced row echelon form, you can read the solution to a system immediately from the augmented matrix.  Here are some typical examples of what you will see when you reduce an augmented matrix which represents a system that does not have a unique solution. The explanations which follow illustrate how to see the solution immediately from the matrix.
 $$\begin{array}{ccc}
  \begin{bmatrix}[ccc|c] 1&2&0&1\\0&0&1&3
 \\0&0&0&0\end{bmatrix} 
@@ -876,22 +912,22 @@ $$\begin{array}{ccc}
 & \begin{bmatrix}[ccc|c] 1&0&2&0\\0&1&-3&0
 \\0&0&0&1\end{bmatrix} 
 \\
-(1-2x_2,x_2,3)
-&(-5-4x_3,3+2x_3,x_3)
-&\text{no solution,} 0\neq1
+\vec x = \left<1-2x_2,x_2,3\right>
+&\vec x = \left<-5-4x_3,3+2x_3,x_3\right>
+&\text{no solution since } 0\neq1
 \end{array}
 $$
 
 \begin{example}
-In the first example, columns 1 and 3 are the pivot columns. Since column 2 is not a pivot column, we'll let $x_2$ be a free variable and write the solution in terms of $x_2$. Rewriting the first matrix in system form yields $x_1+2x_2 =1,x_3=3$, or solving for each variable in terms of $x_2$ we have $x_1=1-x_2,x_3=3$.  
+In the first example, columns 1 and 3 are the pivot columns. Since column 2 is not a pivot column, we'll let $x_2$ be a free variable and write the solution in terms of $x_2$. Rewriting the first matrix in system form yields $x_1+2x_2 =1,x_3=3$, or solving for each variable in terms of $x_2$, we have $x_1=1-x_2,x_3=3$.  
 Adding to this system the redundant equation $x_2=x_2$, we have in vector form 
 $\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} = \begin{bmatrix}1-2x_2\\x_2\\3\end{bmatrix} = \begin{bmatrix}1\\0\\3\end{bmatrix} + x_2 \begin{bmatrix}-2\\1\\0\end{bmatrix}$. 
-Sometimes it's useful to use a different variable, such as $x_2=t$, and then write the solution in parametric form as $(x_1,x_2,x_3)=(1-2t,t,3)$, where $t$ is any real number. This solution is a line in space. \note{a picture would be nice}
+Sometimes it's useful to use a different variable, such as $x_2=t$, and then write the solution in parametric form as $\left<x_1,x_2,x_3\right>=\left<1-2t,t,3\right>$, where $t$ is any real number. This solution is a line in space. \note{a picture would be nice---maybe in the Sage version of the text?}
 \end{example}
 
 \begin{example}
 In the second example, the first and second columns are pivot columns, so $x_3$ is a free variable.  The solution can be written in the form 
-$\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} = \begin{bmatrix}-5-4x_3\\3+2x_3\\x_3\end{bmatrix} = \begin{bmatrix}-5\\3\\0\end{bmatrix} + x_3 \begin{bmatrix}-4\\2\\1\end{bmatrix}$. Again the last column appears in the solution, and then the opposite of the third column together with a 1 in the third spot gives us the vector which is multiplied by $x_3$. 
+$\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} = \begin{bmatrix}-5-4x_3\\3+2x_3\\x_3\end{bmatrix} = \begin{bmatrix}-5\\3\\0\end{bmatrix} + x_3 \begin{bmatrix}-4\\2\\1\end{bmatrix}$.  Notice that the third and fourth columns of the matrix appear as parts of the vectors in the solution.
 \end{example}
 
 \begin{example}
@@ -919,7 +955,7 @@ $\begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\\x_6\end{bmatrix}
 +x_6\begin{bmatrix}0\\0\\-1\\0\\-4\\1\end{bmatrix}$
 \end{tabular}
 \end{center}
-Each non pivot column corresponds to one of the vectors in the sum above.  
+Each non-pivot column corresponds to one of the vectors in the sum above.  
 \end{example}
 
 
@@ -932,38 +968,39 @@ Each non pivot column corresponds to one of the vectors in the sum above.
 
 \section{Rank and Linear Independence}
 
-The \define{rank} of a matrix is the number of pivot columns of the matrix. To find the rank of a matrix, you reduce the matrix using Gaussian elimination until you discover the pivot columns.
+The \define{rank} of a matrix is the number of pivot columns of the matrix. To find the rank of a matrix, reduce the matrix using Gaussian elimination until you discover the pivot columns (you only need to do the forward phase for this).
 
-Recall that a linear combination of vectors {$\vec v_{1},\vec v_{2},\ldots,\vec v_{n}$} is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where {$c_i$} is a constant for each $i$. 
+Recall that a linear combination of vectors {$\vec v_{1},\vec v_{2},\ldots,\vec v_{n}$} is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where {$c_i$} is a constant scalar for each $i$. 
 A linear combination of vectors is a sum of scalar multiples of the vectors. 
-Also recall that a linear combination of vectors is really just matrix multiplication, $A\vec c$, where the columns of $A$ are the vectors $\vec v_i$ and $\vec c= (c_1,c_2,\ldots,c_n)$. We will try to emphasis this in what follows.
+Also recall that a linear combination of vectors is really just matrix multiplication, $A\vec c$, where the columns of $A$ are the vectors $\vec v_i$ and $\vec c= \left<c_1,c_2,\ldots,c_n\right>$. We will try to emphasis this in what follows.
 
-First we need another definition. The \define{span} of a set of vectors is the set of all possible linear combinations of the vectors.  We often write this as $\vspan\{\vec v_1, \vec v_2, \ldots, \vec v_n\}$.  In terms of matrices, the span of a set of vectors is all possible vectors $\vec b$ such that $A\vec x=\vec b$ for some $\vec x$ where the vectors are placed in the columns of $A$.
+First we need another definition. The \define{span} of a set of vectors is the set of all possible linear combinations of the vectors.  We often write this as $\vspan\{\vec v_1, \vec v_2, \ldots, \vec v_n\}$.  In terms of matrices, if $A$ is the matrix with columns $\vec v_1, \vec v_2, \ldots, \vec v_n$, then the span of $\vec v_1, \vec v_2, \ldots, \vec v_n$ is the set of all possible vectors $\vec b$ such that $A\vec x=\vec b$ for some $\vec x$.
 
 \begin{example}\label{ex span}
 \begin{enumerate}
-	\item The span of the vector $(1,0,0)$ is vectors of the form $a(1,0,0) = (a,0,0)$ which is the $x$ axis, a line through the origin. 
-	\item The span of the vectors $(1,0,0)$ and $(0,1,0)$ is the set of vectors in 3D of the form $a(1,0,0)+b(0,1,0)=(a,b,0)$ which is the $xy$-plane, a plane through the origin. 
-	\item The span of $(2,0,1)$ and $(-1,-2,3)$ is the set of vectors 
-	$$a(2,0,1)+b(-1,-2,3) 
-		= (2a-b,-2b,a+3b)
+	\item The span of the vector $\left<1,0,0\right>$ is the set of vectors of the form $a\left<1,0,0\right> = \left<a,0,0\right>$, which is the $x$-axis, a line through the origin. 
+	\item The span of the vectors $\left<1,0,0\right>$ and $\left<0,1,0\right>$ is the set of vectors in 3D of the form $a\left<1,0,0\right>+b\left<0,1,0\right>=\left<a,b,0\right>$, which is the $xy$-plane, a plane through the origin. 
+	\item The span of $\left<2,0,1\right>$ and $\left<-1,-2,3\right>$ is the set of vectors 
+	$$a\langle 2,0,1\rangle+b\langle-1,-2,3\rangle
+		= \langle2a-b,-2b,a+3b\rangle
 		= \begin{bmatrix} \cl{2\\0\\1}&\cl{-1\\-2\\3}\end{bmatrix}
 	\begin{bmatrix}a\\b\end{bmatrix} 
-	=\begin{bmatrix}2a-b\\-2b\\a+3b\end{bmatrix}
-	.
-		$$  This is again a plane in 3D that passes through the origin.
+	=\begin{bmatrix}2a-b\\-2b\\a+3b\end{bmatrix}.$$
+        This is again a plane in 3D that passes through the origin.
 \end{enumerate}
 \end{example}
-Geometrically you can obtain the span of vectors by adding together all possible stretches of the given vectors. The span of a set of vectors will be a line, a plane, or some higher dimensional version of these objects (called a hyperplane) which passes through the origin. 
+Geometrically you can obtain the span of vectors by adding together all possible stretches of the given vectors. The span of a set of vectors will be a line, a plane, or some higher-dimensional version of these objects (called a hyperplane) which passes through the origin. 
 
 We say that a set of vectors is \definemargin{linearly independent} if the only solution to the homogeneous system $c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}=\vec 0$ is the trivial solution $c_1=c_2=\cdots=c_n=0$. 
-Otherwise we say the vectors are linearly dependent, and it is possible to write one of the vectors as a linear combination of the others. 
-We say the vectors are dependent because one of them depends on (can be obtained as a linear combination of) the others. In terms of spans, we say vectors are linearly dependent when one of them is in the span of the other vectors. 
+Otherwise we say the set of vectors is linearly dependent, since one of the vectors depends on (can be obtained as a linear combination of) the others. In terms of spans, we say a set of vectors is linearly dependent when one of the vectors is in the span of the other vectors. 
 
 \begin{example}\label{first linearly independent example}
-The vectors $(1,0)$ and $(0,1)$ are independent, whereas the vectors $(2,4)$ and $(3,6)$ are dependent (notice that $(3,6) = \frac{3}{2}(2,4)$ is just a linear combination of $(2,4)$). The vectors $(1,2,0)$, $(2,0,3)$, and $(3,-2,6)$ are dependent because there is a nonzero linear combination of the three vectors that yields the zero vector 
-$$-1(1,2,0)+2(2,0,3)-1(3,-2,6)=(0,0,0).$$ Alternatively we know the vectors are dependent because we can write the third vector is a linear combination of the first two since $${\color{blue}-1}(1,2,0)+{\color{red}2}(2,0,3)=(3,-2,6).$$ In matrix form we need to solve the homogeneous system
-\marginpar{When solving a homogeneous system of equations, the column of zeros at the right contributes no new information, and so is often ommitted.}
+The set $\{\langle1,0\rangle, \langle0,1\rangle\}$ is linearly independent, whereas the set $\{\langle2,4\rangle, \langle3,6\rangle\}$ is linearly dependent (notice that $\langle3,6\rangle = \frac{3}{2}\langle2,4\rangle$ is a linear combination of $\langle2,4\rangle$). The set $\{\langle1,2,0\rangle, \langle2,0,3\rangle, \langle3,-2,6\rangle\}$ is linearly dependent because there is a nonzero linear combination of the three vectors that yields the zero vector:
+$$-1\langle1,2,0\rangle+2\langle2,0,3\rangle-1\langle3,-2,6\rangle=\langle0,0,0\rangle.$$ 
+Alternatively, we know the vectors are dependent because we can write the third vector as a linear combination of the first two:
+$${\color{blue}-1}\langle1,2,0\rangle+{\color{red}2}\langle2,0,3\rangle=\langle3,-2,6\rangle.$$ 
+To find this linear combination, we write the first linear combination as a homogeneous system (in matrix form) $A\vec c=\vec 0$:  
+\marginpar{When solving a homogeneous system of equations, the column of zeros at the right contributes no new information, and so is often omitted.}
 $$\begin{bmatrix}
 \cl{1\\2\\0}
 &\cl{2\\0\\3}
@@ -983,7 +1020,7 @@ c_1\\c_2\\c_3
 &\cl{3\\-2\\6}
 &\cl{0\\0\\0}
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}[ccc|c]
 \cl{1\\0\\0}
 &\cl{0\\1\\0}
@@ -991,13 +1028,16 @@ c_1\\c_2\\c_3
 &\cl{0\\0\\0}
 \end{bmatrix}
 $$
-whose reduced row echelon form tells us that column 3 is not a pivot column.  This is precisely why the third column can be written as a linear combination of the first two, and the numbers in column 3 tell us precisely what coefficients ($-1$ and $2$) to use writing the third column as a linear combination of the pivot columns. 
+The reduced row echelon form tells us that column 3 is not a pivot column.  This is precisely why the third column can be written as a linear combination of the first two, and the numbers in column 3 tell us precisely what coefficients ($-1$ and $2$) to use writing the third column as a linear combination of the pivot columns. 
 \end{example}
 
 An easy way to test if vectors are linearly independent is to create a matrix $A$ where each column represents one of the vectors. 
-The vectors are linearly independent if $A\vec c=\vec 0$ means $\vec c=0$. Row reduce the matrix to reduced row echelon form. 
-The vectors are linearly independent if and only if each column of $A$ is a pivot column (forcing $\vec c$ to be zero). 
+The vectors are linearly independent if the only solution to $A\vec c=\vec 0$ is $\vec c=0$. Row reduce the matrix to reduced row echelon form. 
+The vectors are linearly independent if and only if each column of $A$ is a pivot column (which forces $\vec c$ to be zero). 
 If a column is not a pivot column, then the vector corresponding to that column can be written as a linear combination of the preceding vectors using the coefficients in that column. 
+
+%% Jason editing stopped here
+
 \begin{example}
 The vectors 
 $[1\ 3\ 5]$,
