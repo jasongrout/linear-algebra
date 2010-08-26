@@ -92,7 +92,10 @@ Chapter 3:1-3, 68-70.
 
 
 
-\item \textbf{Interpreting RREF:} Each of the following augmented matrices requires one row operation to be in reduced row echelon form. Perform the required row operation, and then write the solution to corresponding system of equations in terms of the free variables.
+\item \textbf{Interpreting RREF:} Each of the following augmented
+  matrices requires one row operation to be in reduced row echelon
+  form. Perform the required row operation, and then write the
+  solution to the corresponding system of equations in terms of the free variables.
 \begin{multicols}{3}
 \begin{enumerate}
 	\item 
@@ -143,7 +146,7 @@ More problems are in Schaum's Outlines -
 Chapter 2:37-40
 
 
-\item \textbf{Solving Systems with Gaussian Elimination:} Solve each system of equations using Gaussian elimination, by reducing the augmented matrix to reduced row echelon form (rref).
+\item \textbf{Solving Systems with Gaussian Elimination:} Solve each system of equations using Gaussian elimination by reducing the augmented matrix to reduced row echelon form (rref).
 \begin{multicols}{3}
 \begin{enumerate}
 	\item 
@@ -225,7 +228,7 @@ Chapter 2:
 
 
 
-\item \textbf{Rank and Linear Dependence:} Compute the rank of each matrix. Use this result to determine if the columns are linearly dependent. If the vectors are dependent, write each non pivot column as a linear combination of the pivot columns.
+\item \textbf{Rank and Linear Dependence:} Compute the rank of each matrix. Use this result to determine if the columns are linearly dependent. If the vectors are dependent, write each non-pivot column as a linear combination of the pivot columns.
 \begin{multicols}{4}
 \begin{enumerate}
 	\item \label{rank1} 
@@ -298,7 +301,7 @@ Chapter 5:
 1, 3, 4, 50, 53.
 
 
-\item \textbf{Determinants:} Find the determinant of each matrix. For 3 by 3 matrices, compute the determinant in 2 different ways by using a cofactor expansion along a different row or column. 
+\item \textbf{Determinants:} Find the determinant of each matrix. For 3 by 3 matrices, compute the determinant in two different ways by using cofactor expansion along different rows or columns. 
 \begin{enumerate}
 \begin{multicols}{3}
 	\item 
@@ -503,7 +506,7 @@ $
 
 
 
-More problems are in Schaum's Oultines:
+More problems are in Schaum's Outlines:
 Chapter 3: 7-11, 77-80.
 
 
@@ -547,7 +550,9 @@ Now grab any problem from the entire unit that involves solving a system where a
 
 
 
-\item \textbf{Eigenvalues and Eigenvectors:} For each matrix, compute the characteristic polynomial and eigenvalues. For each eigenvalue, give all the corresponding eigenvectors. Remember that you can check your answer by comparing the trace to the sum of the eigenvalues, and the determinant to the product of the eigenvalues.
+\item \textbf{Eigenvalues and Eigenvectors:} For each matrix, compute
+  the characteristic polynomial and eigenvalues. For each eigenvalue,
+  give all of the corresponding eigenvectors. Remember that you can check your answer by comparing the trace to the sum of the eigenvalues, and the determinant to the product of the eigenvalues.
 \begin{multicols}{4}
 \begin{enumerate}
 	\item 
@@ -647,9 +652,7 @@ Chapter 11: 9, 10, 11, 17, 18, 20, 57, 58, 59, 60
 For a 3 by 3 matrix, the eigenvalues and eigenvectors may be hard to find by hand (so use technology).
 Use technology to check your work by hand. The first column of questions applies to all matrices (square or not), whereas the last column only makes sense when the matrix is square. For a 2 by 2 matrix, you can always compute the eigenvalues using the quadratic formula, which may result in irrational or complex eigenvalues. 
 
-Repeat this exercise a few times with various types of matrices (diagonal, triangular, symmetric, skew-symmetric). Do you notice any patterns? If you pick larger matrices, you can do everything except the eigenvalues and eigenvectors by hand. Once you feel comfortable with the computations by hand, move to a computer and start using larger matrices to find patterns. 
- 
-
+Repeat this exercise a few times with various types of matrices (e.g., \href{http://en.wikipedia.org/wiki/Diagonal_matrix}{diagonal}, \href{http://en.wikipedia.org/wiki/Triangular_matrix}{triangular}, \href{http://en.wikipedia.org/wiki/Symmetric_matrix}{symmetric}, \href{http://en.wikipedia.org/wiki/Antisymmetric_matrix}{skew-symmetric}). Do you notice any patterns? If you pick smaller matrices, you can do everything except the eigenvalues and eigenvectors by hand. Once you feel comfortable with the computations by hand, move to a computer and start using larger matrices to find patterns. 
 
 \end{enumerate}
 
@@ -663,11 +666,11 @@ The following projects require you to use technology to further explore a topic 
 	
 \begin{enumerate}
 	\item Start by choosing your own 4 by 4 matrix.  For both $A$ and $A^T$, compute the rref, rank, determinant, inverse, eigenvalues, and eigenvectors. Which are the same? 
-	\item Change your matrix to some other 4 by 4 or larger matrix and repeat the computations. 
+	\item Change your matrix to some other 4 by 4 or larger matrix and repeat part (a). 
 	\item Based on these two examples, which quantities do you think will be always be the same for $A$ and $A^T$? 
-	\item Try creating an ugly large matrix and see if your conjecture is correct. While examples are not proofs that a conjecture is true, examples do provide the foundation upon which all mathematical theorems are built.  New ideas always stem from examples.
+	\item Try creating an ugly large matrix and see if your conjecture is correct. While examples are not proofs that a conjecture is true, examples do provide the foundation upon which all mathematical theorems are built.  New ideas often stem from examples.
 	\item What happens if a matrix is not square? Select your own non square matrix (such as 3 by 4). Compute the rref of both $A$ and $A^T$, as well as the rank. 
-	\item Change the matrix and repeat this computation. What conjecture should you make?
+	\item Change the matrix and repeat part (e). Make a conjecture about the relationship between the rrefs or ranks of a non-square matrix and its transpose.
 \end{enumerate}
 \end{enumerate}
 
@@ -801,7 +804,7 @@ $, $
  1 & 9 \\
  4 & 14
 \end{bmatrix}
-$	\item  Tr$A=5$, Tr$B=6$, Tr$D=2$.	
+$	\item  $\trace A=5$, $\trace B=6$, $\trace D=2$.	
 \end{enumerate}
 %\end{multicols}
 
@@ -1581,3 +1584,9 @@ $\begin{bmatrix}1\\ 1\\ 1\end{bmatrix}$.
 
 \end{enumerate}
 \end{multicols}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../linear-algebra"
+%%% End: 

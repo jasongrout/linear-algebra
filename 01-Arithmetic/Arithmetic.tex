@@ -106,7 +106,7 @@ $$\left<-2,3\right>
 = \begin{pmatrix}-2&3\end{pmatrix} 
 = \begin{pmatrix}-2\\3\end{pmatrix}
 $$ 
-The notation $(-2,3)$ has other meanings as well (like a point in the plane, or an open interval).  Please make sure that when you use the notation $(-2,3)$, it is clear from the context that you working with a vector. 
+In this chapter, we will switch freely between these notations so that you get used to reading different notations.  In practice, it is a good idea to not switch notations as often.  Also, notice that the notation $(-2,3)$ (with parentheses) has other meanings as well (like a point in the plane, or an open interval).  Please make sure that when you use the notation $(-2,3)$ to represent a vector, it is clear from the context that you working with a vector. 
 
 {\marginpar{{
 \begin{tikzpicture}[scale=.5]
@@ -1036,8 +1036,6 @@ The vectors are linearly independent if the only solution to $A\vec c=\vec 0$ is
 The vectors are linearly independent if and only if each column of $A$ is a pivot column (which forces $\vec c$ to be zero). 
 If a column is not a pivot column, then the vector corresponding to that column can be written as a linear combination of the preceding vectors using the coefficients in that column. 
 
-%% Jason editing stopped here
-
 \begin{example}
 The vectors 
 $[1\ 3\ 5]$,
@@ -1063,15 +1061,16 @@ $ \begin{bmatrix} 1&0&2\\0&1&1\\0&0&0\end{bmatrix}$,
 and column 3 is not a pivot column. This immediately means that the third vector (of the original matrix) is a linear combination of the preceding two. Using the coefficients 2 and 1 from the third column, we can write 
 $[1\ 6\ 11] = 2 [1\ 3\ 5]+1[-1\ 0\ 1]$. 
 \end{example}
-In the preceding example, the third column was not a pivot column.  
-The numbers 2 and 1 in that column are called the \marginpar{coordinates of a vector relative to the pivot columns}coordinates of the vector $[1~6~11]$ relative to the pivot columns $[1~3~5]$ and $[-1~0~1]$. 
-You have used the language \textit{coordinates of a vector relative to other vectors} to state that the coordinates of $(2,-3,4)$ relative to $(1,0,0),(0,1,0),(0,0,1)$ are precisely $2$, $-3$, and $4$. 
-Every non pivot column of a matrix can be expressed as a linear combination of the pivot columns, where the coordinates of the non pivot column come from the corresponding column in rref.  
+In the preceding example, the coefficients in the linear combination (2 and 1) are called the \definemargin{coordinates} of $[1~6~11]$ relative to the vectors $[1~3~5]$ and $[-1~0~1]$.  We could write down the linear combination because the third column of the matrix, $[1~6~11]$, was not a pivot column.  Notice that we could have read the coordinates right out of the third column of the rref matrix.  Every non-pivot column of a matrix can be expressed as a linear combination of the pivot columns, where the coordinates of the non-pivot column come from the same non-pivot column in the rref matrix.
+
+
+We have used the concept of \textit{coordinates of a vector relative to other vectors} to state that the coordinates of $(2,-3,4)$ relative to $(1,0,0),(0,1,0),(0,0,1)$ are  $2$, $-3$, and $4$.  We will study this concept of coordinates in greater depth later.
+
 \note{This section could be improved with more examples.  I want them to see this vocabulary, especially when the linear algebra text is written.  Perhaps it could be removed from the 316 text.}
 
 
 \subsection{Linear Combinations, Spans, and RREF}
-Solving a system of equations such as $x+3y=0, 2x-y=5$ is equivalent to solving the vector equation 
+Solving a system of equations such as $x+3y=0$, $2x-y=5$ is equivalent to solving the vector equation 
 $x\begin{bmatrix} 1\\2\end{bmatrix}+y\begin{bmatrix} 3\\-1\end{bmatrix}=\begin{bmatrix} 0\\5\end{bmatrix}$. This is also equivalent to the following questions.
 \begin{itemize}
 	\item Is $\begin{bmatrix} 0\\5\end{bmatrix}$ a linear combination of the vectors $\begin{bmatrix} 1\\2\end{bmatrix}$ and $\begin{bmatrix} 3\\-1\end{bmatrix}$?
@@ -1087,13 +1086,13 @@ To answer all these questions, first reduce the matrix $\begin{bmatrix}[cc|c]1&3
  \Rightarrow 
    \begin{bmatrix}[cc|c]1&0& 15/7\\0&1&-5/7\end{bmatrix}.
 \end{align*}
-\marginpar{The following are equivalent:
+\marginpar{The following are equivalent (all are true or all are false):
 \begin{enumerate}
 	\item $A\vec x=\vec b$ has a solution.
 	\item $\vec b$ is a linear combination of the columns of $A$.
 	\item $\vec b$ is in the span of the columns of $A$.
 \end{enumerate}
-}This means that a solution to our system is $x=15/7, y=-5/7$, and we can write $\ds\begin{bmatrix} 0\\5\end{bmatrix} = \frac{15}{7}\begin{bmatrix} 1\\2\end{bmatrix}-\frac{5}{7}\begin{bmatrix} 3\\-1\end{bmatrix}$, which means that the answer to both questions is ``Yes.''  The example above generalizes to show that a system $A \vec x = \vec b$ has a solution if and only if $\vec b$ is a linear combination of the columns of $A$, if and only if $\vec b$ is in the span of the columns of $A$.
+}This means that a solution to our system is $x=15/7, y=-5/7$, and we can write $\ds\begin{bmatrix} 0\\5\end{bmatrix} = \frac{15}{7}\begin{bmatrix} 1\\2\end{bmatrix}-\frac{5}{7}\begin{bmatrix} 3\\-1\end{bmatrix}$, which means that the answer to both questions is ``Yes.''  The example above generalizes to show that a system $A \vec x = \vec b$ has a solution for $\vec x$ if and only if $\vec b$ is a linear combination of the columns of $A$, if and only if $\vec b$ is in the span of the columns of $A$.
 
 
 
@@ -1101,14 +1100,14 @@ To answer all these questions, first reduce the matrix $\begin{bmatrix}[cc|c]1&3
 
 \section{Determinants}
 For the rest of this unit, we will assume that the matrix $A$ is a square matrix (in other words we are solving a system where the number of equations and number of unknowns are the same).
-Associated with every square matrix is a number, called the \define{determinant}, which is related to length, area, and volume, and we use the determinant to generalize volume to higher dimensions. Determinants are only defined for square matrices.
+Associated with every square matrix is a number, called the \define{determinant}, which is related to length, area, and volume.  We also use the determinant to generalize volume to higher dimensions. Determinants are only defined for square matrices.
 The determinant of a {$2\times 2$} and {$3\times 3$} matrix can be computed as follows: 
 \begin{align*}
 \det\begin{bmatrix}a&b\\c&d\end{bmatrix} &=\begin{vmatrix}a&b\\c&d\end{vmatrix} = ad-bc\\
 \begin{vmatrix}a&b&c\\d&e&f\\g&h&i\end{vmatrix} &= a\det\begin{vmatrix}e&f\\h&i\end{vmatrix} -b\det\begin{vmatrix}d&f\\g&i\end{vmatrix} +c\det\begin{vmatrix}d&e\\g&h\end{vmatrix}\\
 &=a(ei-hf)-b(di-gf)+c(dh-ge)
 \end{align*}
-We use vertical bars next to a matrix to state we want the determinant. Notice the negative sign on the middle term of the {$3 \times 3$} determinant. Also, notice that we had to compute three determinants of 2 by 2 matrices in order to find the determinant of a 3 by 3.  
+We use absolute value signs (vertical bars) around a matrix to as notation for the determinant. Notice the negative sign on the middle term of the {$3 \times 3$} determinant. Also, notice that we had to compute three determinants of 2 by 2 matrices in order to find the determinant of a 3 by 3.  
 
 The determinant in general is defined recursively in terms of minors (determinants of smaller matrices) and cofactors. 
 This method is called the cofactor expansion of the determinant. 
@@ -1180,7 +1179,7 @@ Now we'll use the second column (so the first term is negative).
 \end{vmatrix} \\
 &=-(2)(-1-8) + (3)(1-0)-(-3)(4-0)=33
 \end{align*}
-The number 33 is the volume of a 3 dimensional parallelepiped created from the columns of $A$, as described in the next section.
+The number 33 is the volume of a three-dimensional parallelepiped created from the columns of $A$, as described in the next section.
 \end{example}
 
 
@@ -1207,19 +1206,19 @@ $\begin{vmatrix}{\red 3}&{\blue 1}\\{\red 0}&{\blue 2}\end{vmatrix}=6$ and $\beg
 
    The determinant gives area and direction.
     }}
-These two vectors give the edges of a parallelogram whose area is the determinant $6$.  If I swap the order of the two vectors in the matrix, then the determinant of $\begin{bmatrix}1&3\\2&0\end{bmatrix}$ is $-6$.  The reason for the difference is that the determinant not only keeps track of area, but also order. Starting at the first vector, if you can turn counterclockwise through an angle smaller than 180$^\circ$ to obtain the second vector, then the determinant is positive.  If you have to turn clockwise instead, then the determinant is negative.  This is often termed ``the right-hand rule,'' as rotating the fingers of your right hand from the first vector to the second vector will cause your thumb to point up precisely when the determinant is positive.
+These two vectors give the edges of a parallelogram whose area is the determinant ($6$).  If we swap the order of the two vectors in the matrix, then the determinant of $\begin{bmatrix}1&3\\2&0\end{bmatrix}$ is $-6$.  The absolute value of the determinant is still the area, but the sign of the determinant depends on the order of the vectors. Starting at the first vector, if you can turn counterclockwise through an angle smaller than 180$^\circ$ to obtain the second vector, then the determinant is positive.  If you have to turn clockwise instead, then the determinant is negative.  This is often termed ``the right-hand rule,'' since rotating the fingers of your right hand from the first vector to the second vector will cause your thumb to point up precisely when the determinant is positive.
 
 \marginpar{\includegraphics[width=\marginparwidth]{01-Arithmetic/support/det}
 
 The determinant of a 3 by 3 matrix gives the volume of the parallelepiped created by using the columns of the matrix as the three parallel edges.} 
-For a 3 by 3 matrix, the columns give the edges of a three dimensional parallelepiped and the determinant produces the volume of this object. The sign of the determinant is related to orientation. If you can use your right hand and place your index finger on the first vector, middle finger on the second vector, and thumb on the third vector, then the determinant is positive. 
+For a 3 by 3 matrix, the columns give the edges of a three-dimensional parallelepiped and the determinant produces the volume of this object. The sign of the determinant is related to orientation. If, using your right hand, you can place your index finger on the first vector, middle finger on the second vector, and thumb on the third vector, then the determinant is positive.  If you can't, then the determinant is negative.
 \begin{example}
 Consider the matrix $A = \begin{bmatrix}\cl{1\\0\\0}&\cl{0\\2\\0}&\cl{0\\0\\3}\end{bmatrix}$.  Starting from the origin, each column represents an edge of the rectangular box 
 $0\leq x\leq 1$, 
 $0\leq y\leq 2$, 
-$0\leq z\leq 3$ with volume (and determinant) $V=lwh=(1)(2)(3)=6$. The sign of the determinant is positive because if you place your index finger pointing in the direction (1,0,0) and your middle finger in the direction (0,2,0), then your thumb points upwards in the direction (0,0,3). 
+$0\leq z\leq 3$ with volume (and determinant) $V=lwh=(1)(2)(3)=6$. The sign of the determinant is positive because if you place your index finger pointing in the direction $(1,0,0)$ and your middle finger in the direction $(0,2,0)$, then your thumb points upwards in the direction $(0,0,3)$. 
 If you interchange two of the columns, for example 
-$B = \begin{bmatrix}\cl{0\\2\\0}&\cl{1\\0\\0}&\cl{0\\0\\3}\end{bmatrix}$, then the volume doesn't change since the shape is still the same. However, the sign of the determinant is negative because if you point your index finger in the direction (0,2,0) and your middle finger in the direction (1,0,0), then your thumb points down in the direction (0,0,-3). If you repeat this with your left hand instead of right hand, then your thumb points up.
+$B = \begin{bmatrix}\cl{0\\2\\0}&\cl{1\\0\\0}&\cl{0\\0\\3}\end{bmatrix}$, then the volume doesn't change since the shape is still the same. However, the sign of the determinant is negative because if you point your index finger in the direction $(0,2,0)$ and your middle finger in the direction $(1,0,0)$, then your thumb points down in the direction $(0,0,-3)$. If you repeat this with your left hand instead of right hand, then your thumb points up.
 \end{example}
 
 \subsection{Zero Determinants and Linear Dependence}
@@ -1231,7 +1230,7 @@ Similarly, if the determinant is zero, then the vectors must lie on the same lin
 In 3D, three vectors being linearly dependent implies that one of the vectors lies in a plane or line spanned by the other two.
 Any object in 3D that lies in a plane or line has no volume so the determinant is zero.  
 Similarly, if the determinant of a 3 by 3 matrix is zero, then the column vectors must lie in the same plane and hence are linearly dependent. 
-We now have a geometric interpretation for the key fact that
+We now have a geometric interpretation for the key fact:
 \marginpar{For a square matrix $A$, the following are equivalent:
 \begin{enumerate}
 	\item The determinant is zero.
@@ -1254,16 +1253,16 @@ The multiplicative inverse of $a$ is simply $1/a$, because $a\frac1a=\frac1a a=1
 We have been studying linear systems of the form {$A\vec x=\vec b$}. 
 It would be nice if we could just divide both sides by {$A$}, but there is no such thing as division by a matrix in general. 
 If we look only at square matrices, then sometimes it is possible to find a matrix {$B$} such that {$BA=AB=I$}, the identity matrix. 
-If such a matrix {$B$} exists, then multiplying both sides of {$A\vec x = \vec b$} on the left by the matrix {$B$} yields $BA\vec x = B\vec B$, or $I\vec x = \vec x = B\vec b$. The matrix {$B$} is then called the \define[matrix!]{inverse} of {$A$}, and we write it as $A^{-1}$, the same symbol we used with regular multiplication. \marginpar{The solution to $A\vec x= \vec b$ is $\vec x=A^{-1}\vec b$, provided $A^{-1}$ exists.}When an inverse exists, the solution to $A\vec x = \vec b$ is simply $\vec x = A^{-1}\vec b$.
+If such a matrix {$B$} exists, then multiplying both sides of {$A\vec x = \vec b$} on the left by the matrix {$B$} yields $BA\vec x = B\vec B$, or $I\vec x = \vec x = B\vec b$. The matrix {$B$} is then called the \define[matrix!]{inverse} of {$A$}, and we write it as $A^{-1}$, the same symbol we used with regular multiplication. \marginpar{The solution to $A\vec x= \vec b$ is $\vec x=A^{-1}\vec b$, if $A^{-1}$ exists.}When an inverse exists, the solution to $A\vec x = \vec b$ is simply $\vec x = A^{-1}\vec b$.
 
-To find an inverse, we will start by considering a general 3 by 3 matrix. Once we are done, we will know how to find the inverse of any $n$ by $n$ matrix or state it does not exists.  
+To find an inverse, we will start by considering a general 3 by 3 matrix. Once we are done, we will know how to find the inverse of any $n$ by $n$ matrix or determine it does not exists.  
 If an inverse exists, then write $A^{-1} = \begin{bmatrix}
 c_{11}&c_{12}&c_{13}\\ 
 c_{21}&c_{22}&c_{23}\\ 
 c_{31}&c_{32}&c_{33} 
 \end{bmatrix} $. Then the equation $AA^{-1}=I$ requires that the 3 matrix equations
-$$A\begin{bmatrix} c_{11}\\ c_{21}\\c_{31}\end{bmatrix} = \begin{bmatrix} 1\\0\\0\end{bmatrix},
-A\begin{bmatrix} c_{12}\\ c_{22}\\c_{32}\end{bmatrix} = \begin{bmatrix} 0\\1\\0\end{bmatrix},
+$$A\begin{bmatrix} c_{11}\\ c_{21}\\c_{31}\end{bmatrix} = \begin{bmatrix} 1\\0\\0\end{bmatrix},\quad
+A\begin{bmatrix} c_{12}\\ c_{22}\\c_{32}\end{bmatrix} = \begin{bmatrix} 0\\1\\0\end{bmatrix},\quad \text{ and }
 A\begin{bmatrix} c_{13}\\ c_{23}\\c_{33}\end{bmatrix} = \begin{bmatrix} 0\\ 0\\1\end{bmatrix}$$
 each have a solution, or that $(1,0,0), (0,1,0),$ and  $(0,0,1)$ are all linear combinations of the columns of $A$. This requires that we reduce all three augmented matrices
 $$
@@ -1290,25 +1289,27 @@ $$\begin{bmatrix}[ccc|ccc]
 a_{11}&a_{12}&a_{13}&1&0&0\\ 
 a_{21}&a_{22}&a_{23}&0&1&0\\ 
 a_{31}&a_{32}&a_{33}&0&0&1 
-\end{bmatrix} $$\marginpar{A matrix $A_{n\times n}$ has an inverse if
-\begin{enumerate}
-	\item The columns of $A$ are linearly independent.
-	\item The rank of $A$ is $n$
-	\item The rref of $A$ is $I$.
-	\item $|A|\neq 0$.
-\end{enumerate}
+\end{bmatrix} $$\marginpar{If $A_{n\times n}$ is a square matrix, then the following are equivalent:
+  \begin{enumerate}
+  \item $A$ has an inverse $A^{-1}$.
+  \item The columns of $A$ are linearly independent.
+  \item The rank of $A$ is $n$
+  \item The rref of $A$ is $I$.
+  \item $|A|\neq 0$.
+  \end{enumerate}
 
-It does not have an inverse if
+The following are also equivalent:
 \begin{enumerate}
-	\item The columns of $A$ are linearly dependent.
-	\item The rank is less than $n$
-	\item The rref of $A$ is not $I$ (there is a row of zeros along the bottom).
-	\item $|A|=0$.
+\item $A$ does not have an inverse  
+\item The columns of $A$ are linearly dependent.
+\item The rank is less than $n$
+\item The rref of $A$ is not $I$ (there is a row of zeros along the bottom).
+\item $|A|=0$.
 \end{enumerate}
 }or in compact form $\begin{bmatrix}[c|c]A &I\end{bmatrix}$. We now reduce this larger matrix to reduced row echelon form and obtain $\begin{bmatrix}[c|c]I &B\end{bmatrix}$, which tells us the coordinates of $(1,0,0)$, $(0,1,0),$ and  $(0,0,1)$ relative to the columns of $A$. 
 The columns of the augmented portion $B$ on the right are the solutions to the three original systems, hence are the columns of $A^{-1}$.
 To summarize, an inverse exists precisely if the augmented system $[A|I]$ reduces to $[I|A^{-1}]$. 
-The the inverse matrix appears on the right after row reduction, provided the identity matrix appears on the left.
+Then the inverse matrix appears on the right in the rref matrix if the identity matrix appears on the left.
 If the left block of the augmented matrix does not reduce to the identity matrix, then the matrix does not have an inverse.
 If the left block does not reduce to the identity, then this implies that the original columns of $A$ are dependent.  
 Later we will show that having an inverse is equivalent to having a nonzero determinant and having a rank which equals the number of columns. Remember that this is true for square matrices, or systems where we have the same number of equations as unknowns.
@@ -1324,7 +1325,7 @@ $\begin{bmatrix}[cc|cc] 1&0&-2&1\\0&1&3/2&-1/2
 The inverse is the right block  
 $ \begin{bmatrix} -2&1\\3/2&-1/2
 \end{bmatrix}$. 
-\marginpar{Examples involving larger matrices are in the homework. Remember that you can solve systems by finding an inverse of the coefficient matrix.}
+\marginpar{Examples involving larger matrices are in the homework. Remember that you can solve systems by finding an inverse of the coefficient matrix.}%
 You can always check your result by computing $AA^{-1}$ to see if it is $I$, for example
 $\begin{bmatrix} 1&2\\ 3&4\end{bmatrix} \begin{bmatrix} -2&1\\3/2&-1/2\end{bmatrix} 
 =  \begin{bmatrix} 1&0\\0&1
@@ -1333,39 +1334,40 @@ Using this inverse, the solution to the system
 $\begin{cases}1x+2y=4\\3x+4y=0\end{cases}$ is $A^{-1}\vec b 
 = \begin{bmatrix} -2&1\\3/2&-1/2\end{bmatrix}
 \begin{bmatrix}4\\0\end{bmatrix} 
-=  \begin{bmatrix}-8\\6\end{bmatrix}$.
+=  \begin{bmatrix}-8\\6\end{bmatrix}$, so $x=-8$ and $y=6$.
 \end{example}
 
+Notice that if $A$ has an inverse, then $A\vec x=\vec b$ always has exactly one solution, $\vec x=A^{-1}\vec b$.  If a square matrix $A$ does not have an inverse, then the system $A\vec x=\vec b$ can have no solutions or infinitely many solutions.
 
 \section{Eigenvalues and Eigenvectors}
-Let's start by looking at an example to motivate the language we are about to introduce.  Consider the matrix
+In this section, we also assume that we are dealing with square matrices.  We will start by looking at an example to motivate the language we are about to introduce.  Consider the matrix
 $A=\begin{bmatrix} 2&1\\1&2\end{bmatrix} $.  When we multiply this matrix by the vector 
 $\vec x = \begin{bmatrix} 1\\1\end{bmatrix} $, 
 we obtain 
-$\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\1\end{bmatrix} = \begin{bmatrix} 3\\3\end{bmatrix}=3\vec x$. Multiplication by the matrix $A$ was miraculously the same as multiplying by the number 3. Symbolically we have $A\vec x = 3\vec x$. 
-Not every vector $\vec x$ satisfies this property, for by 
+$\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\1\end{bmatrix} = \begin{bmatrix} 3\\3\end{bmatrix}=3\vec x$. Multiplication by the matrix $A$ was miraculously the same as multiplying by the number 3. Symbolically, we have $A\vec x = 3\vec x$. 
+Not every vector $\vec x$ satisfies this property, for example, multiplying by 
 $\vec x = \begin{bmatrix} 1\\0\end{bmatrix} $ 
 gives  
 $\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\0\end{bmatrix} = \begin{bmatrix} 2\\1\end{bmatrix}$, which is not a multiple of $\vec x = \begin{bmatrix} 1\\0\end{bmatrix} $. Our main goal in this section is to answer the following two questions:
 \begin{enumerate}
-	\item For which nonzero vectors $\vec x$ (eigenvectors) is it possible to write $A\vec x = \lambda \vec x$?
-	\item Which scalars $\lambda$ (eigenvalues) satisfy $A\vec x = \lambda \vec x$?
+	\item For which nonzero vectors $\vec x$ is it possible to write $A\vec x = \lambda \vec x$ for some scalar $\lambda$? (We will call these vectors eigenvectors.)
+	\item Which scalars $\lambda$ satisfy $A\vec x = \lambda \vec x$ for some vector $\vec x$? (We will call these scalars eigenvalues.)
 \end{enumerate}
 
 Now for some definitions. 
 Let $A$ be a square $n\times n$ matrix. 
-An \definemargin{eigenvector} is a nonzero vector $\vec x$ such that $A\vec x =\lambda \vec x$ (matrix multiplication reduces to scalar multiplication) for some scalar {$\lambda$} called an \definemargin{eigenvalue}.
-We avoid letting $\vec x$ be the zero vector because $A\vec 0=\lambda \vec 0$ no matter what $\lambda$ is.
+An \definemargin{eigenvector} is a nonzero vector $\vec x$ such that $A\vec x =\lambda \vec x$ (matrix multiplication is the same as scalar multiplication) for some scalar {$\lambda$}, called the \definemargin{eigenvalue} associated with the eigenvector $\vec x$.
+Zero vectors are not eigenvectors because $A\vec 0=\lambda \vec 0$ no matter what $\lambda$ is.
 We can rewrite the equation $A\vec x = \lambda \vec x$ as $\vec 0 = A\vec x-\lambda \vec x = A\vec x-\lambda I \vec x$ and then factor to obtain $$(A-\lambda I)\vec x=\vec 0.$$ 
-In other words, we need to find a $\lambda$ so that there are nonzero solutions to the homogeneous system of equations, or equivalently we need to pick a $\lambda$ so that the columns of $A-\lambda I$ are linearly dependent. 
-With the correct $\lambda$, we know that $A-\lambda I$ has no inverse, and so it also means that $\det(A-\lambda I)=0$. 
-This last equation is the key equation we will solve, since it does not contain the vector $\vec x$ anymore. 
+In other words, we need to find a scalar $\lambda$ so that there are nonzero solutions to the homogeneous system of equations $(A-\lambda I)\vec x=\vec 0$, or equivalently, we need to pick a $\lambda$ so that the columns of $A-\lambda I$ are linearly dependent. 
+Recall that if $A-\lambda I$ has an inverse, then $(A-\lambda I)\vec x=\vec 0$ has only one solution, $\vec x=(A-\lambda I)^{-1}\vec 0=\vec 0$.  So if $A-\lambda I$ has an inverse, $\vec x$ cannot be an eigenvector.  With the correct $\lambda$, we know that $A-\lambda I$ has no inverse, so $\det(A-\lambda I)=0$. 
+This last equation is the key equation we will solve since it does not contain the vector $\vec x$ anymore. 
 The expression {$\det(A-\lambda I)$} is called the \definemargin{characteristic polynomial} of {$A$}.
-It is a polynomial of degree {$n$}, and hence there are at most {$n$} eigenvalues (which correspond to the zeros of the polynomial). 
-To find the eigenvalues and eigenvectors, we 
+It is a polynomial of degree {$n$} with variable $\lambda$, and hence there are at most {$n$} eigenvalues (which correspond to the roots of the polynomial). 
+In summary, to find the eigenvalues and eigenvectors:
 \begin{enumerate}
-	\item solve $\det(A-\lambda I) = 0$ to obtain the eigenvalues, and then
-	\item for each eigenvalue, we solve $(A-\lambda I)\vec x=\vec 0$ to obtain the eigenvectors.
+	\item we solve $\det(A-\lambda I) = 0$ for $\lambda$ to obtain the eigenvalues, and then
+	\item for each eigenvalue $\lambda$, we solve $(A-\lambda I)\vec x=\vec 0$ to obtain the eigenvectors associated with $\lambda$.
 \end{enumerate}
 As a way to check your work, the following two facts can help.
 \begin{itemize}
@@ -1375,20 +1377,20 @@ As a way to check your work, the following two facts can help.
 \end{itemize}
 
 \begin{example} \label{ex eigen1}
-To find the eigenvalues of {$\begin{bmatrix} 2&1\\1&2\end{bmatrix} $}, first subtract $\lambda$ from each diagonal entry {$\begin{bmatrix} 2-\lambda&1\\1&2-\lambda\end{bmatrix} $}, and then find the determinant. Factor to get {$(2-\lambda)(2-\lambda)-1 = \lambda^2-4\lambda+3=(\lambda-1)(\lambda-3)$}. The zeros are 1 and 3, so the eigenvalues are {$\lambda=1,3$}. As a check, the trace of this matrix is $2+2=4$ and the sum of the eigenvalues is $1+3$. In addition, the determinant is $4-1=3$ which equals the product of the eigenvalues.  
+To find the eigenvalues of {$\begin{bmatrix} 2&1\\1&2\end{bmatrix} $}, first subtract $\lambda$ from each diagonal entry to get {$A-\lambda I=\begin{bmatrix} 2-\lambda&1\\1&2-\lambda\end{bmatrix} $}, and then find the determinant {$(2-\lambda)(2-\lambda)-1 = \lambda^2-4\lambda+3=(\lambda-1)(\lambda-3)$}. The roots are 1 and 3, so the eigenvalues are {$\lambda=1,3$}. As a check, the trace of this matrix is $2+2=4$ and the sum of the eigenvalues is $1+3$. Also, the determinant is $4-1=3$ which equals the product of the eigenvalues.  
 
 When {$\lambda=1$}, we compute {$A-\lambda I =\begin{bmatrix} 1&1\\1&1\end{bmatrix} $}. We solve the equation  {$(A-\lambda I )\vec x=0$} by reducing the augmented matrix $\begin{bmatrix}[cc|c] 1&1&0\\1&1&0\end{bmatrix} $ to its rref $\begin{bmatrix}[cc|c] 1&1&0\\0&0&0\end{bmatrix} $.\marginpar{Since we are solving a homogeneous system $A\vec x = \vec 0$, we could avoid writing the last column of zeros.} Since $x_2$ is a free variable, we solve $x_1+x_2=0$ for $x_1$ to obtain the equations $x_1=-x_2$, $x_2=x_2$, and then write our solution in vector form 
 $\begin{bmatrix} x_1\\x_2\end{bmatrix}= x_2\begin{bmatrix} -1\\1\end{bmatrix}$
- for some {$x_2\neq 0$} . There are infinitely many eigenvectors corresponding to $\lambda=1$. A particular eigenvector is  $\begin{bmatrix} -1\\1\end{bmatrix} $ and all the rest are a linear combination of this one. 
+ for some {$x_2\neq 0$} . There are infinitely many eigenvectors corresponding to $\lambda=1$. A particular eigenvector is  $\begin{bmatrix} -1\\1\end{bmatrix} $ and all the rest are nonzero linear combinations of this one. 
 
 When {$\lambda=3$}, we compute {$A-\lambda I =\begin{bmatrix} -1&1\\1&-1\end{bmatrix} $}. Reducing  
 $\begin{bmatrix}[cc|c] -1&1&0\\1&-1&0\end{bmatrix}$ gives
-$\begin{bmatrix}[cc|c] 1&-1&0\\0&0&0\end{bmatrix}$, which means the eigenvectors are of the form $x_2\begin{bmatrix} 1\\1\end{bmatrix} $ for some {$x_2\neq 0$}. A particular eigenvector corresponding to $\lambda=3$ is $\begin{bmatrix} 1\\1\end{bmatrix} $, and all others are a linear combination of this one.
+$\begin{bmatrix}[cc|c] 1&-1&0\\0&0&0\end{bmatrix}$, which means the eigenvectors are of the form $x_2\begin{bmatrix} 1\\1\end{bmatrix} $ for some {$x_2\neq 0$}. A particular eigenvector corresponding to $\lambda=3$ is $\begin{bmatrix} 1\\1\end{bmatrix} $, and all others are nonzero linear combinations of this one.
 \end{example}
 
-Finding eigenvalues and eigenvectors requires that we compute determinants, find zeros of polynomials, and then solve homogeneous systems of equations. You know you are doing the problem correctly if you get infinitely many solutions to the system $(A-\lambda I)\vec x=0$ for each lambda (i.e. there is at least one row of zeros along the bottom).
+Finding eigenvalues and eigenvectors requires that we compute determinants, find roots of polynomials, and then solve homogeneous systems of equations. You know you are doing the problem correctly if you get infinitely many solutions to the system $(A-\lambda I)\vec x=0$ for each $\lambda$ (i.e. there is at least one row of zeros along the bottom of the rref matrix).
 
-Eigenvalues and eigenvectors show up in many different places in engineering, computer science, physics, chemistry, and mathematics. We will be exploring how eigenvectors appear throughout linear algebra 
+Eigenvalues and eigenvectors show up in many different places in engineering, economics, computer science, physics, chemistry, mathematics, and many other fields. We will be exploring how eigenvectors appear throughout linear algebra 
 %and differential equations 
 as the semester progresses.  For now we'll just focus on being able to find them.
 
@@ -1396,7 +1398,7 @@ as the semester progresses.  For now we'll just focus on being able to find them
 Let's find the eigenvalues and eigenvectors of the matrix 
 $A=\begin{bmatrix}2&1&4\\ 1&2&4\\ 0&0&1\end{bmatrix}$. 
 Subtracting $\lambda$ from the diagonals gives 
-$\begin{bmatrix}2-\lambda&1&4\\ 1&2-\lambda&4\\ 0&0&1-\lambda\end{bmatrix}$. The determinant of this matrix is easiest to compute if you expand along the third row to get $0 - 0 + (1-\lambda) \begin{vmatrix} 2-\lambda&1\\1&2-\lambda\end{vmatrix}$. Computing the 2 by 2 determinant gives $(1-\lambda)[(2-\lambda)(2-\lambda)-1] = (1-\lambda)(\lambda-1)(\lambda-3)$,  so the eigenvalues are $1,1,3$ (1 is a repeated root). As a check, their sum is $1+1+3=5$ and the trace of $A$ is $2+2+1=5$ as well. For larger matrices, determinants are not always easy to check, so just checking the trace is a fast way to make sure you are on the right path.
+$A-\lambda I=\begin{bmatrix}2-\lambda&1&4\\ 1&2-\lambda&4\\ 0&0&1-\lambda\end{bmatrix}$. The determinant of this matrix is easiest to compute if you expand along the third row to get $0 - 0 + (1-\lambda) \begin{vmatrix} 2-\lambda&1\\1&2-\lambda\end{vmatrix}$. Computing the 2 by 2 determinant gives $(1-\lambda)(\thinspace(2-\lambda)(2-\lambda)-1) = (1-\lambda)(\lambda-1)(\lambda-3)$,  so the eigenvalues are $1,1,3$ (1 is a repeated root). As a check, their sum is $1+1+3=5$ and the trace of $A$ is $2+2+1=5$ as well. For larger matrices, determinants are not always easy to check, so just checking the trace is a fast way to make sure you are on the right path.
 
 When $\lambda=1$, we compute $A-\lambda I =\begin{bmatrix}1&1&4\\ 1&1&4\\ 0&0&0\end{bmatrix} $. Reducing the system  $(A-\lambda I )\vec x=0$ yields $\begin{bmatrix}[ccc|c]1&1&4&0\\ 0&0&0&0\\ 0&0&0&0\end{bmatrix}$, which has two free variables. The solution is $\begin{bmatrix} x_1\\x_2\\ x_3\end{bmatrix} = x_2\begin{bmatrix} -1\\1\\0\end{bmatrix}+x_3\begin{bmatrix} -4\\0\\1\end{bmatrix} $. Hence the eigenvectors are nonzero linear combinations of $\begin{bmatrix} -1\\1\\0\end{bmatrix}$ and $\begin{bmatrix} -4\\0\\1\end{bmatrix}$. Notice that all the eigenvectors can be obtained as linear combinations of two linearly independent eigenvectors, in part because $\lambda =1$ is a double root of the characteristic polynomial. 
 
