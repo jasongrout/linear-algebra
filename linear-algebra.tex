@@ -19,6 +19,13 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
+\newcommand{\marginpartop}[1]{\marginpar{\vtop{%
+  \vskip0pt
+  \hbox{%
+    #1%
+  }%
+}}}
+
 
 \newcommand{\myscale}{1}
 

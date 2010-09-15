@@ -18,7 +18,7 @@ Vectors help us understand motion, forces, acceleration, and more. Imagine that 
 Let's start with some notation. 
 When you hear that $y$ is a function of $x$, you often write $y=f(x)$ to remind yourself that when you put in $x$ you get out $y$. 
 For most of your lower-level math courses, you have always thought of $x$ and $y$ as real numbers. 
-In this case, the domain of the function (the $x$-values) is the set of all real numbers, which we denote with the symbol \RR. \marginpar{\RR means all real numbers.} 
+In this case, the domain of the function (the $x$-values) is the set of all real numbers, which we denote with the symbol \RR. \marginpar{\RR\ means all real numbers.} 
 The potential $y$ values (the range) are also real numbers.  
 If we want to pay attention to the domain and range of the function, we could write $f\colon D\to R$ \marginpar{$f\colon D\to R$ notation} where $D$ is the domain and $R$ is the range.  
 For a function such as $y=f(x)$, where both $x$ and $y$ are real numbers (written $x\in \mathbb{R}$ and $y\in \mathbb{R}$), we could write $f\colon{\mathbb{R}}\to{\mathbb{R}}$. 
@@ -201,6 +201,244 @@ Eigenvectors: $(i ,1), (-i, 1)$
 Different kinds of vector fields.  Every 2 by 2 matrix represents a vector field.  When the eigenvalues are real, the eigenvectors help determine direction of flow. Positive eigenvalues result in outward flow along the corresponding eigenvector. Negative eigenvalues result in inward flow. Pure imaginary eigenvalues yield rotational flow. When the eigenvalues involve both real and imaginary parts, the real part determines whether the flow is inward or outward, and the complex part determines rotation.
 }
 \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+\section{The Second Derivative Test}
+
+In this section, we'll explore how eigenvalues and eigenvectors of a matrix are the key tool needed to generalize the second derivative test from first semester calculus to all dimensions. The key application is that eigenvalues tell you about concavity of a function in the eigenvector directions.  If all eigenvalues are negative, then a function is concave downwards in all directions, which means that a critical point must correspond to a maximum.    
+
+Let's start with a review from first semester calculus. 
+If a function $y=f(x)$ has a relative extreme value at $x=c$, then $f^\prime(c)=0$ or the derivative is undefined. 
+The places where the derivative is either zero or undefined are called critical values of the function. 
+The first derivative test allows you to check the value of the derivative on both sides of the critical value and then interpret whether that point is a maximum or minimum using increasing/decreasing arguments.  
+The second derivative test requires you to compute the second derivative at $x=c$ and then make an observation. 
+If $f''(c)>0$ (the function is concave upwards), then the function has a minimum at $x=c$. 
+If $f''(c)<0$ (the function is concave downwards), then the function has a maximum at $x=c$. 
+If $f''(c)=0$, then the second derivative test fails. 
+\note{pictures would be good}
+
+\begin{example}
+The function $f(x) = x^3-3x$ has derivatives $f^\prime = 3x^2-3$ and $f^{\prime\prime}=6x$.  The first derivative is zero when $3(x^2-1)=3(x-1)(x+1)=0$, or $x=\pm 1$.  
+The second derivative at $x=1$ is $f''(1)=6$ (concave upwards), so there is a minimum at $x=1$.  
+The second derivative at $x=-1$ is $f''(-1)=-6$ (concave downwards),
+so there is a maximum at that point. This is all illustrated in the margin.
+\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/sage0.png}}
+\end{example}
+
+\subsection{Partial Derivatives}
+
+Before extending the second derivative test to all dimensions, we have to talk about taking derivatives.
+If a function has more than one input variable, say $f(x,y)=9-x^2+3y$ which has 2 input variables, then we have to take multiple derivatives, one with respect to each variable.  
+These derivatives (called partial derivatives) are found by holding all variables constant except the one you want the derivative with respect to, and then just computing a normal derivative.
+For the function $f(x,y)$, we define the partial derivative of $f$ with respect to $x$ as 
+$$\ds f_x(x,y)=f_x = \frac{\partial f}{\partial x}= \lim_{h\to 0}\frac{f(x+h,y)-f(x,y)}{h},$$
+and the partial derivative of $f$ with respect to $y$ as 
+$$\ds f_y(x,y)=f_y =\frac{\partial f}{\partial y}= \lim_{k\to 0}\frac{f(x,y+k)-f(x,y)}{k}.$$
+Notice that $f_x$ computes a limit as $y$ is held constant and we vary $x$. 
+
+\begin{example}
+For $f(x,y)=3x^2+4xy+\cos(xy)+y^3$, we obtain $f_x=6x+4y-y\sin(xy)+0$ and $f_y=0+4x-x\sin(xy)+3y^2$. 
+Partial derivatives are found by holding all other variables constant, and then differentiating with respect to the variable in question.
+\end{example}
+
+\subsection{The Derivative}
+The derivative of a function $\vec f\colon\mathbb{R}^n\to\mathbb{R}^m$
+is an $m\times n$ matrix written $D\vec f(\vec x)$, where the columns
+of the matrix are the partial derivatives of the function with respect
+to an input variable (the first column is the partial derivative with
+respect to the first variable, and so on). Some people call this
+derivative the ``total'' derivative instead of the derivative, to
+emphasize that the ``total'' derivative combines the ``partial''
+derivatives into a matrix. Some examples of functions and their
+derivative are in Table \ref{dertable}. Remember that each column of
+the matrix corresponds to the partial derivatives with respect to an input variable.
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Function&Derivative\\ \hline
+{$f(x)=x^2$}& {$Df(x) = \begin{bmatrix}2x\end{bmatrix} $}\\ \hline
+{$\vec r(t) = \left<3\cos(t),2\sin(t)\right>$}&  {$D\vec r(t) = \begin{bmatrix}-3\sin t\\ 2\cos t\end{bmatrix} $}\\ \hline
+{$\vec r(t) = \left<\cos(t),\sin(t),t\right>$}&  {$D\vec r(t) = \begin{bmatrix}-\sin t \\ \cos t \\ 1\end{bmatrix} $}\\ \hline
+{$f(x,y)=9-x^2-y^2$}&  {$Df(x,y) = \begin{bmatrix}-2x & -2y\end{bmatrix} $}\\ \hline
+{$f(x,y,z)=x^2+y+xz^2$}&  {$Df(x,y,z) = \begin{bmatrix}2x+z^2 & 1 &2xz\end{bmatrix} $}\\ \hline
+{$\vec F(x,y)=\left<-y,x\right>$}&  {$D\vec F(x,y) = \begin{bmatrix}0&-1\\ 1&0\end{bmatrix} $}\\ \hline
+{$\vec F(r,\theta,z)=\left<r\cos\theta,r\sin\theta,z\right>$}&  {$D\vec F(r,\theta,z) = 
+\begin{bmatrix}
+\cos \theta &-r\sin\theta&0\\ 
+\sin\theta&r\cos\theta&0\\ 
+0&0&1
+\end{bmatrix} $}\\ \hline
+{$\vec r (u,v)=\left<u,v,9-u^2-v^2\right>$}&  {$D\vec r(u,v) = \begin{bmatrix}1&0\\ 0&1\\ -2u&-2v\end{bmatrix} $}\\ \hline
+\end{tabular}
+\end{center}
+\caption{\label{dertable} Derivatives of functions are found by creating a matrix whose columns are the partial derivatives of the function.  If the function has multiple outputs, then the columns of the matrix will have one row for each output.  Hence a function with 2 inputs and 3 outputs will have 2 columns with 3 rows in each column.}
+\end{table}
+
+\subsection{The Second Derivative Test}
+We're now ready to extend the second derivative test to all dimensions. We'll focus on only functions of the form $f\colon{\mathbb{R}}^2\to{\mathbb{R}}$, as this gives you the tools needed to study optimization in all dimensions. Because the output is one-dimensional, it makes sense to talk about a largest or smallest number.
+
+The first derivative test does not work when the domain has more than one dimension because there are infinitely many ways to approach a point---you can't just look at the left and right side to decide if you are at an optimum value. 
+However, at a local extreme value the derivative is still zero, which results in solving a system of equations to find any critical points. 
+In higher dimensions, there are three classifications of critical points: maximum, minimum, or saddle point (a point where the tangent plane is horizontal, but in some directions you increase and in other directions you decrease). 
+
+The second derivative test does work when the domain has dimension greater than one. Consider the function $z=f(x,y)$. 
+Its derivative $Df(x,y) = \begin{bmatrix}f_x&f_y\end{bmatrix}$ is a function with two inputs $(x,y)$ and two outputs $(f_x,f_y)$. 
+The second derivative {$D^2f (x,y)= \begin{bmatrix}f_{xx}&f_{xy}\\f_{yx}&f_{yy}\end{bmatrix} $} is a {$2\times 2$} square matrix called the Hessian of $f$. 
+This matrix will always be symmetric, in that the transpose of the matrix equals itself (because $f_{xy}=f_{yx}$ from a theorem in multivariable calculus).  
+At a critical point (where the first derivative is zero), the eigenvalues of $D^2f$ give the directional second derivative in the direction of a corresponding eigenvector. 
+The largest eigenvalue is the largest possible value of the second derivative in any direction and the smallest eigenvalue is the smallest possible value of the second derivative in any direction. 
+
+\marginpar{the second derivative test with eigenvalues}%
+The \textbf{second derivative test} is the following. Start by finding all the critical points (places where the derivative is zero). Then find the eigenvalues of the second derivative. Each eigenvalue represents the directional 2nd derivative in the direction of a corresponding eigenvector. In every other direction, the directional 2nd derivative is between the smallest and largest eigenvalue.  
+\begin{enumerate}
+	\item If the eigenvalues are all positive at a critical point, then in every direction the function is concave upwards. The function has a minimum at that critical point.
+	\item If the eigenvalues are all negative at a critical point, then in every direction the function is concave downwards. The function has a maximum there.
+	\item If there is a positive eigenvalue and a negative eigenvalue, the function has a saddle point there.  
+	\item If either the largest or smallest eigenvalue is zero, then the second derivative test fails. 
+\end{enumerate}
+Eigenvalues are the key numbers needed to generalize optimization to all dimensions. A proof of this fact is beyond the scope of this class. 
+
+\begin{example}
+For the function {$f(x,y)=x^2+xy+y^2$}, the derivative is $Df = \begin{bmatrix}2x+y&x+2y \end{bmatrix}$, which is zero only at $x=0,y=0$ (solve the system of equations $2x+y=0,x+2y=0$). 
+\marginpar{The Hessian ($D^2f$) is always symmetric.}
+The Hessian is $D^2f = \begin{bmatrix}2&1 \\1&2\end{bmatrix}$. The eigenvalues are found by solving $0=\det \begin{bmatrix}2-\lambda &1 \\1&2-\lambda \end{bmatrix} = (2-\lambda)^2-1 = 4-4\lambda+\lambda^2 -1 = (\lambda-3)(\lambda-1)$, so $\lambda = 3,1$ are the eigenvalues.  Since both eigenvalues are positive, the function is concave upwards in all directions, so there is a minimum at $(0,0)$.  
+
+The eigenvectors of the Hessian help us understand more about the graph of the function.  An eigenvector corresponding to 3 is $(1,1)$, and corresponding to 1 is $(-1,1)$. These vectors are drawn in the graph of the function in the margin, together with two parabolas whose 2nd derivatives are precisely 3 and 1.  The parabola which opens upwards the most quickly has a 2nd derivative of 3.  The other parabola has a second derivative of 1. In every other direction, the 2nd derivative would be between 1 and 3.
+\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/2nddertest1}}
+\end{example}
+
+\begin{example}
+For the function {$f(x,y)=x^3-3x+y^2-4y$}, the derivative is $Df = \begin{bmatrix}3x^2-3&2y-4 \end{bmatrix}$, which is zero at $x=1,y=2$ or $x=-1,y=2$. Hence there are two critical points, so we have to find two sets of eigenvalues. The Hessian is $D^2f = \begin{bmatrix}6x&0 \\0&2\end{bmatrix}$. When $x=-1,y=2$, the eigenvalues of $\begin{bmatrix}-6&0 \\0&2\end{bmatrix}$ are $\lambda=-6,2$. Since one is positive and one is negative, there is a saddle point at $(-1,2)$. When $x=1,y=2$, the eigenvalues of $\begin{bmatrix}6&0 \\0&2\end{bmatrix}$ are $\lambda=6,2$. Since both are positive, there is a minimum at $(-1,2)$ (as in every direction the function is concave upwards).
+
+Again the eigenvectors help us understand how the function behaves, as illustrated in the margin.  At $(1,2)$, we have an eigenvector $(1,0)$ corresponding to 6, and $(0,1)$ corresponding to 2. In both eigenvector directions, the function is concave upwards, but opens more steeply in the $(1,0)$ direction since \mbox{$6>2$}.  At $(-1,2)$, we have an eigenvector $(1,0)$ corresponding to $-6$, and $(0,1)$ corresponding to 2. The functions opens steeply downwards in the $(1,0)$ direction, and upwards in the $(0,1)$ direction.
+\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/2nddertest2}}
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Markov Processes}
+
+Matrices can be used to model a process called a Markov process. To fit this kind of model, a process must have specific states, and the matrix which models the process is a transition matrix which specifies how each state will change through a given transition. An example of a set of states is ``open'' or ``closed'' in an electrical circuit, or ``working properly'' and ``working improperly'' for operation of machinery at a manufacturing facility. A car rental company which rents vehicles in different locations can use a Markov Process to keep track of where their inventory of cars will be in the future. Stock market analysts use Markov processes and generalizations, liked stochastic processes and hidden Markov models, to make predictions about future stock values.  The algorithm that powers Google's internet search is based on the idea that browsing the web is a Markov process.
+
+\begin{example} Let's illustrate a Markov Process related to classifying land in some region as ``Residential,'' ``Commercial,'' or ``Industrial.'' Suppose in a given region over a 5 year time span that 80\% of residential land will remain residential, 10\% becomes commercial, and 10\%  becomes industrial. For commerical land, 70\% remains commercial, 20\% becomes residential, and 10\% becomes industrial.  For industrial land, 70\% remains industrial, 30\% becomes commercial, and 0\% becomes residential.  To predict what happens to the land zoning at the end of a 5 year period, provided we know the current $R$, $C$, and $I$ values, we would compute \marginpar{Notice that the percentages go in columns. The residential percentages $(.8,.1,.1)$ become the first column. This gives us the transistion matrix
+$$ \begin{array}{rl}
+&\begin{array}{ccc} R&C&I \end{array} \\
+ \begin{array}{c} \text{to }R\\ \text{to }C\\ \text{to }I \end{array}& 
+\begin {bmatrix}  .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix} \\
+\multicolumn{2}{c}{\text{Transition Matrix}}
+\end{array}.
+$$ 
+}
+$$
+\begin{array}{rl}
+R_{\text{new}} &= .8 R+ .2 C+0 I\\ 
+C_{\text{new}} &= .1 R+ .7 C+.3 I\\ 
+I_{\text{new}} &= .1 R+ .1 C+.7 I 
+\end{array}
+\xrightarrow{\text{matrix form}}
+\begin{bmatrix}
+R_{\text{new}}\\ 
+C_{\text{new}}\\ 
+I_{\text{new}} 
+\end{bmatrix}
+=
+\begin{bmatrix}
+.8& .2 &0 \\ 
+.1& .7 &.3\\ 
+.1& .1 &.7 
+\end{bmatrix}
+\begin{bmatrix}
+R\\ 
+C\\ 
+I 
+\end{bmatrix}
+$$
+The matrix on the right above is called the transition matrix of the Markov process. 
+It is a matrix where each column relates to one of the ``states,'' and the numbers in that column are the proportions of the column state that will change to the row state through the transition (the ordering on row and column states is the same). 
+We calculate the next ``state'' by multiplying our current state by the transition matrix. If current land use is about 50\% residential, 30\% commercial, and 20\% industrial, then 5 years later the land use would be 
+$$ 
+A\vec x= \begin {bmatrix} .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix}
+ \begin {bmatrix} 50\\30\\20 \end {bmatrix}
+ =   \begin {bmatrix} 46\\ 32 \\ 22\end {bmatrix}
+$$  If the same transitions in land use continue, we can multiply the previous projection (state) by the transition matrix to obtain a 10 and 15 year projection for land use:  
+\begin{center}\begin{tabular}{cc}
+$A(A \vec x) =A^2 \vec x$&$A(A^2\vec x)=A^3\vec x$\\
+$
+\begin {bmatrix} .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix}
+\begin {bmatrix} 46\\ 32 \\ 22 \end {bmatrix}
+ =   \begin {bmatrix} 43.2\\ 33.6 \\ 23.2\end {bmatrix}
+$ 
+&
+$
+\begin {bmatrix} .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix}
+\begin {bmatrix} 43.2\\ 33.6 \\ 23.2 \end {bmatrix}
+ =   \begin {bmatrix} 41.28\\ 34.8\\ 23.92\end {bmatrix}
+$ 
+\\
+10 Year Projection 
+&15 Year Projection 
+\end{tabular}\end{center}
+Each time we multiply on the left by our transition matrix, we add 5 more years to our projection. This projection is valid as long as the same trends continue. 
+\end{example}
+
+
+
+
+
+
+
+
+
+
+\subsection{Steady State Solutions}
+
+
+Consider the land use example from above.  Let $\vec x_0$ be our initial state. If our transition matrix $A$ remains the same forever, what will eventually be the proportion of land devoted to residential, commercial, or industrial use? We can write each new state as powers of the transition matrix $A$ by writing 
+$$\vec x_{1} = A \vec x_{0}, \quad \vec x_{2}=A \vec x_{1} = AA\vec x_{0} = A^2\vec x_{0},\quad \vec x_{3}= A^3\vec x_{0},\quad \vec x_{n}= A^n\vec x_{0}.$$  What happens to the product $A^n\vec x_0$ as $n\to \infty$? Can we reach a state $\vec x = (R,C,I)$ such that $A \vec x=\vec x$, where the next state is the same as the current? If this occurs, then any future transitions will not change the state either. This state $\vec x$ is called a \emph{steady state}, since it does not change when multiplied by the transition matrix (it remains steady). 
+
+Let's look more closely at the steady state equation $$A\vec x = \vec x = 1\vec x.$$ 
+Do you see the eigenvalue-eigenvector notation $A\vec x = \lambda \vec x$? 
+\marginpar{The number $\lambda =1$ is always an eigenvalue of the transition matrix.  Steady states are eigenvectors of the transition matrix.}
+The eigenvalue is 1 and the steady state is an eigenvector. 
+Without even thinking that an eigenvalue was important, we reduced finding a steady state to an eigenvalue-eigenvector problem. 
+For any Markov process (the columns of the matrix must sum to 1), the number $\lambda = 1$ will always be an eigenvalue. All we have to do is find the eigenvectors corresponding to the eigenvalue 1. 
+The solution to $\ds\lim_{n\to\infty}A^n \vec x_0$ is this steady state, and is an eigenvector of the transition matrix.
+ 
+\begin{example}
+For the land use Markov process from the previous example, an eigenvector corresponding to 1 is $\left(\frac{3}{2},\frac32,1\right)$. 
+Since any nonzero multiple of an eigenvector is again an eigenvector, we can multiply by a constant so that the proportions sum to 100. 
+Multiplying by 2 we have $(3,3,2)$, which means that the ratio of land will be 3 acres residential to 3 acres commercial to 2 acres industrial. 
+\marginpar{Divide each entry by the sum to get percentages.}
+To write this in terms of percentages, divide each component by 8 (the sum $3+3+2$) to obtain $3/8:3/8:2/8$. Multiply by 100 to get the percentages $37.5\%:37.5\%:25\%$, the long term percentages of land use.
+\end{example}
+
+
+
+
+
+
 
 
 
@@ -451,7 +689,7 @@ Through any two points (with different $x$-values) there is a unique line of the
 Through any three points (with different $x$-values) there is a unique parabola of the form $y=ax^2+bx+c$, and you can use the three points to find the values $a$, $b$, and $c$.  
 \marginpar{For any $n+1$ points (with different $x$-values), there is a unique polynomial of degree $n$ which passes through those points.}%
 The pattern holds: for any $n+1$ points (with different $x$-values), there is a unique polynomial (called an \define{interpolating polynomial}) of degree $n$ which passes through those points. 
-In this section we will illustrate how to find interpolating polynomials from a list of points, and show how the solution requires solving a linear system.
+In this section, we will illustrate how to find interpolating polynomials from a list of points, and show how the solution requires solving a linear system.
 
 To organize our work, let's first standardize the notation.  
 Rather than writing $y=mx+b$, let's write $y=a_0+a_1 x$ (where $a_0=b$ and $a_1=m$). 
@@ -782,245 +1020,6 @@ $$ which means that our line is (after simplifying fractions) $y=\frac{37}{6}-\f
 \end{example}
 
 Least squares regression is not limited to just finding a best fit line.  We can use the same ideas to find a best fitting parabola through many points.  We would start by assuming the data fit a parabola $y=a_0+a_1x+a_2x^2$, plug in the $x$ and $y$ values to obtain a linear system with 3 unknowns, write the system in matrix form (the columns of the matrix would involve 1's, $x$ values, and $x^2$ values), multiply both sides by the transpose to obtain a 3 by 3 matrix, and then solve the system.  Most spreadsheet programs have this feature built in for any size polynomial you choose.
-
-
-
-
-
-
-
-
-
-\section{The Second Derivative Test}
-
-In this section, we'll explore how eigenvalues and eigenvectors of a matrix are the key tool needed to generalize the second derivative test from first semester calculus to all dimensions. The key application is that eigenvalues tell you about concavity of a function in the eigenvector directions.  If all eigenvalues are negative, then a function is concave downwards in all directions, which means that a critical point must correspond to a maximum.    
-
-Let's start with a review from first semester calculus. 
-If a function $y=f(x)$ has a relative extreme value at $x=c$, then $f^\prime(c)=0$ or the derivative is undefined. 
-The places where the derivative is either zero or undefined are called critical values of the function. 
-The first derivative test allows you to check the value of the derivative on both sides of the critical value and then interpret whether that point is a maximum or minimum using increasing/decreasing arguments.  
-The second derivative test requires you to compute the second derivative at $x=c$ and then make an observation. 
-If $f''(c)>0$ (the function is concave upwards), then the function has a minimum at $x=c$. 
-If $f''(c)<0$ (the function is concave downwards), then the function has a maximum at $x=c$. 
-If $f''(c)=0$, then the second derivative test fails. 
-\note{pictures would be good}
-
-\begin{example}
-The function $f(x) = x^3-3x$ has derivatives $f^\prime = 3x^2-3$ and $f^{\prime\prime}=6x$.  The first derivative is zero when $3(x^2-1)=3(x-1)(x+1)=0$, or $x=\pm 1$.  
-The second derivative at $x=1$ is $f''(1)=6$ (concave upwards), so there is a minimum at $x=1$.  
-The second derivative at $x=-1$ is $f''(-1)=-6$ (concave downwards), so there is a maximum at that point. This is all illustrated to the right.
-\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/sage0.png}}
-\end{example}
-
-\subsection{Partial Derivatives}
-
-Before extending the second derivative test to all dimensions, we have to talk about taking derivatives.
-If a function has more than one input variable, say $f(x,y)=9-x^2+3y$ which has 2 input variables, then we have to take multiple derivatives, one with respect to each variable.  
-These derivatives (called partial derivatives) are found by holding all variables constant except the one you want the derivative with respect to, and then just computing a normal derivative.
-For the function $f(x,y)$, we define the partial derivative of $f$ with respect to $x$ as 
-$$\ds f_x(x,y)=f_x = \frac{\partial f}{\partial x}= \lim_{h\to 0}\frac{f(x+h,y)-f(x,y)}{h},$$
-and the partial derivative of $f$ with respect to $y$ as 
-$$\ds f_y(x,y)=f_y =\frac{\partial f}{\partial y}= \lim_{k\to 0}\frac{f(x,y+k)-f(x,y)}{k}.$$
-Notice that $f_x$ computes a limit as $y$ is held constant and we vary $x$. 
-
-\begin{example}
-For $f(x,y)=3x^2+4xy+\cos(xy)+y^3$, we obtain $f_x=6x+4y-y\sin(xy)+0$ and $f_y=0+4x-x\sin(xy)+3y^2$. 
-Partial derivatives are found by holding all other variables constant, and then differentiating with respect to the variable in question.
-\end{example}
-
-\subsection{The Derivative}
-The derivative of a function $\vec f\colon\mathbb{R}^n\to\mathbb{R}^m$ is an $m\times n$ matrix written $D\vec f(\vec x)$, where the columns of the matrix are the partial derivatives of the function with respect to an input variable (the first column is the partial derivative with respect to the first variable, and so on). Some people call this derivative the ``total'' derivative instead of the derivative, to emphasize that the ``total'' derivative combines the ``partial'' derivatives into a matrix. Some examples of functions and their derivative are in Table \ref{dertable}. Remember that each input variable corresponds to a column of the matrix.   
-\begin{table}[htb]
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline
-Function&Derivative\\ \hline
-{$f(x)=x^2$}& {$Df(x) = \begin{bmatrix}2x\end{bmatrix} $}\\ \hline
-{$\vec r(t) = \left<3\cos(t),2\sin(t)\right>$}&  {$D\vec r(t) = \begin{bmatrix}-3\sin t\\ 2\cos t\end{bmatrix} $}\\ \hline
-{$\vec r(t) = \left<\cos(t),\sin(t),t\right>$}&  {$D\vec r(t) = \begin{bmatrix}-\sin t \\ \cos t \\ 1\end{bmatrix} $}\\ \hline
-{$f(x,y)=9-x^2-y^2$}&  {$Df(x,y) = \begin{bmatrix}-2x & -2y\end{bmatrix} $}\\ \hline
-{$f(x,y,z)=x^2+y+xz^2$}&  {$Df(x,y,z) = \begin{bmatrix}2x+z^2 & 1 &2xz\end{bmatrix} $}\\ \hline
-{$\vec F(x,y)=\left<-y,x\right>$}&  {$D\vec F(x,y) = \begin{bmatrix}0&-1\\ 1&0\end{bmatrix} $}\\ \hline
-{$\vec F(r,\theta,z)=\left<r\cos\theta,r\sin\theta,z\right>$}&  {$D\vec F(r,\theta,z) = 
-\begin{bmatrix}
-\cos \theta &-r\sin\theta&0\\ 
-\sin\theta&r\cos\theta&0\\ 
-0&0&1
-\end{bmatrix} $}\\ \hline
-{$\vec r (u,v)=\left<u,v,9-u^2-v^2\right>$}&  {$D\vec r(u,v) = \begin{bmatrix}1&0\\ 0&1\\ -2u&-2v\end{bmatrix} $}\\ \hline
-\end{tabular}
-\end{center}
-\caption{\label{dertable} Derivatives of functions are found by creating a matrix whose columns are the partial derivatives of the function.  If the function has multiple outputs, then the columns of the matrix will have one row for each output.  Hence a function with 2 inputs and 3 outputs will have 2 columns with 3 rows in each column.}
-\end{table}
-
-\subsection{The Second Derivative Test}
-We're now ready to extend the second derivative test to all dimensions. We'll focus on only functions of the form $f\colon{\mathbb{R}}^2\to{\mathbb{R}}$, as this gives you the tools needed to study optimization in all dimensions. Because the output is 1 dimensional, it makes sense to talk about a largest or smallest number.
-The first derivative test breaks down in every dimension past the first because there are infinitely many ways to approach a point - you can't just look at the left and right side. 
-However, at a local extreme value the derivative is still zero, which results in solving a system of equations to find any critical points. 
-In higher dimensions, there are three classifications of critical points: maximum, minimum, or saddle point (a point where the tangent plane is horizontal, but in some directions you increase and in other directions you decrease). 
-
-The second derivative test does not break down. Consider the function $z=f(x,y)$. 
-Its derivative $Df(x,y) = \begin{bmatrix}f_x&f_y\end{bmatrix}$ is a function with two inputs $(x,y)$ and two outputs $(f_x,f_y)$. 
-The second derivative {$D^2f (x,y)= \begin{bmatrix}f_{xx}&f_{xy}\\f_{yx}&f_{yy}\end{bmatrix} $} is a {$2\times 2$} square matrix called the Hessian of $f$. 
-This matrix will always be symmetric, in that the transpose of the matrix equals itself (because $f_{xy}=f_{yx}$ - a theorem from multivariable calculus).  
-At a critical point (where the first derivative is zero), the eigenvalues of $D^2f$ give the directional second derivative in the direction of a corresponding eigenvector. 
-The largest eigenvalue is the largest possible value of the second derivative in any direction and the smallest eigenvalue is the smallest possible value of the second derivative in any direction. 
-
-The \textbf{second derivative test} \marginpar{the second derivative test with eigenvalues} is the following. Start by finding all the critical points (places where the derivative is zero). Then find the eigenvalues of the second derivative. Each eigenvalue represents the 2nd directional derivative in the direction of a corresponding eigenvector. In every other direction, the directional 2nd derivative is between the smallest and largest eigenvalue.  
-\begin{enumerate}
-	\item If the eigenvalues are all positive at a critical point, then in every direction the function is concave upwards. The function has a minimum at that critical point.
-	\item If the eigenvalues are all negative at a critical point, then in every direction the function is concave downwards. The function has a maximum there.
-	\item If there is a positive eigenvalue and a negative eigenvalue, the function has a saddle point there.  
-	\item If either the largest or smallest eigenvalue is zero, then the second derivative test fails. 
-\end{enumerate}
-Eigenvalues are the key numbers needed to generalize optimization to all dimensions. A proof of this fact is beyond the scope of this class. 
-
-\begin{example}
-For the function {$f(x,y)=x^2+xy+y^2$}, the derivative is $Df = \begin{bmatrix}2x+y&x+2y \end{bmatrix}$, which is zero only at $x=0,y=0$ (solve the system of equations $2x+y=0,x+2y=0$). 
-\marginpar{The Hessian ($D^2f$) is always symmetric.}
-The Hessian is $D^2f = \begin{bmatrix}2&1 \\1&2\end{bmatrix}$. The eigenvalues are found by solving $0=\det \begin{bmatrix}2-\lambda &1 \\1&2-\lambda \end{bmatrix} = (2-\lambda)^2-1 = 4-4\lambda+\lambda^2 -1 = (\lambda-3)(\lambda-1)$, so $\lambda = 3,1$ are the eigenvalues.  Since both eigenvalues are positive, the function is concave upwards in all directions, so there is a minimum at $(0,0)$.  
-
-The eigenvectors of the Hessian help us understand more about the graph of the function.  An eigenvector corresponding to 3 is (1,1), and corresponding to 1 is (-1,1). These vectors are drawn to the right, together with two parabolas whose 2nd derivatives are precisely 3 and 1.  The parabola which opens upwards the most quickly has a 2nd derivative of 3.  The other parabola has a second derivative of 1. In every other direction, the 2nd derivative would be between 1 and 3. A graph of the function is given to the right.
-\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/2nddertest1}}
-\end{example}
-
-%\marginpar{{
-%\begin{figure}[ht
-%]\begin{center}
-%\includegraphics[width=2in]{02-Applications/support/2nddertest1}
-%\hspace{.5in}
-%\includegraphics[width=2in]{02-Applications/support/2nddertest2}
-%\end{center}
-%\caption{The eigenvectors of the second derivative tell you the directions in which the 2nd derivative is largest and smallest. At each critical point, two eigenvectors are drawn as well as a parabola whose second derivative (the eigenvalue) matches the second derivative of the surface in the corresponding eigenvector direction.}
-%\label{2ndder}
-%\end{figure}
-%}}
-
-
-\begin{example}
-For the function {$f(x,y)=x^3-3x+y^2-4y$}, the derivative is $Df = \begin{bmatrix}3x^2-3&2y-4 \end{bmatrix}$, which is zero at $x=1,y=2$ or $x=-1,y=2$. Hence there are two critical points, so we have to find two sets of eigenvalues. The Hessian is $D^2f = \begin{bmatrix}6x&0 \\0&2\end{bmatrix}$. When $x=-1,y=2$, the eigenvalues of $\begin{bmatrix}-6&0 \\0&2\end{bmatrix}$ are $\lambda=-6,2$. Since one is positive and one is negative, there is a saddle point at $(-1,2)$. When $x=1,y=2$, the eigenvalues of $\begin{bmatrix}6&0 \\0&2\end{bmatrix}$ are $\lambda=6,2$. Since both are positive, there is a minimum at $(-1,2)$ (as in every direction the function is concave upwards).
-
-Again the eigenvectors help us understand how the function behaves, as illustrated to the right.  At (1,2) we have an eigenvector (1,0) corresponding to 6, and (0,1) corresponding to 2. In both eigenvector directions the function is concave upwards, but opens more stepply in the (1,0) direction as 6 is bigger than 2.  At (-1,2) the we have an eigenvector (1,0) corresponding to -6, and (0,1) corresponding to 2. The functions opens steeply downwards in the (1,0) direction, and upwards in the (0,1) direction.A graph of the function is given to the right.
-\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/2nddertest2}}
-\end{example}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\section{Markov Processes}
-
-Matrices can be used to model a process called a Markov process. To fit this kind of model, a process must have specific states, and the matrix which models the process is a transition matrix which specifies how each state will change through a given transition. An example of a set of states is ``open'' or ``closed'' in an electrical circuit, or ``working properly'' and ``working improperly'' for operation of machinery at a manufacturing facility. A car rental company which rents vehicles in different locations can use a Markov Process to keep track of where their inventory of cars will be in the future. Stock market analysts use Markov processes and a generalization called stochastic processes to make predictions about future stock values.
-
-\begin{example} Let's illustrate a Markov Process related to classifying land in some region as ``Residential,'' ``Commercial,'' or ``Industrial.'' Suppose in a given region over a 5 year time span that 80\% of residential land will remain residential, 10\% becomes commercial, and 10\%  becomes industrial. For commerical land, 70\% remains commercial, 20\% becomes residential, and 10\% becomes industrial.  For industrial land, 70\% remains industrial, 30\% becomes commercial, and 0\% becomes residential.  To predict what happens to the land zoning at the end of a 5 year period, provided we know the current $R$, $C$, and $I$ values, we would compute \marginpar{Notice that the percentages go in columns. The residential percentages $(.8,.1,.1)$ become the first column. This gives us the transistion matrix
-$$ \begin{array}{rl}
-&\begin{array}{ccc} R&C&I \end{array} \\
- \begin{array}{c} \text{to }R\\ \text{to }C\\ \text{to }I \end{array}& 
-\begin {bmatrix}  .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix} \\
-\multicolumn{2}{c}{\text{Transition Matrix}}
-\end{array}.
-$$ 
-}
-$$
-\begin{array}{rl}
-R_{\text{new}} &= .8 R+ .2 C+0 I\\ 
-C_{\text{new}} &= .1 R+ .7 C+.3 I\\ 
-I_{\text{new}} &= .1 R+ .1 C+.7 I 
-\end{array}
-\xrightarrow{\text{matrix form}}
-\begin{bmatrix}
-R_{\text{new}}\\ 
-C_{\text{new}}\\ 
-I_{\text{new}} 
-\end{bmatrix}
-=
-\begin{bmatrix}
-.8& .2 &0 \\ 
-.1& .7 &.3\\ 
-.1& .1 &.7 
-\end{bmatrix}
-\begin{bmatrix}
-R\\ 
-C\\ 
-I 
-\end{bmatrix}
-$$
-The matrix on the right above is called the transition matrix of the Markov process. 
-It is a matrix where each column relates to one of the ``states,'' and the numbers in that column are the proportions of the column state that will change to the row state through the transition (the ordering on row and column states is the same). 
-We calculate the next ``state'' by multiplying our current state by the transition matrix. If current land use is about 50\% residential, 30\% commercial, and 20\% industrial, then 5 years later the land use would be 
-$$ 
-A\vec x= \begin {bmatrix} .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix}
- \begin {bmatrix} 50\\30\\20 \end {bmatrix}
- =   \begin {bmatrix} 46\\ 32 \\ 22\end {bmatrix}
-$$  If the same transitions in land use continue, we can multiply the previous projection (state) by the transition matrix to obtain a 10 and 15 year projection for land use:  
-\begin{center}\begin{tabular}{cc}
-$A(A \vec x) =A^2 \vec x$&$A(A^2\vec x)=A^3\vec x$\\
-$
-\begin {bmatrix} .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix}
-\begin {bmatrix} 46\\ 32 \\ 22 \end {bmatrix}
- =   \begin {bmatrix} 43.2\\ 33.6 \\ 23.2\end {bmatrix}
-$ 
-&
-$
-\begin {bmatrix} .8&.2&0\\.1&.7&.3\\.1&.1&.7 \end {bmatrix}
-\begin {bmatrix} 43.2\\ 33.6 \\ 23.2 \end {bmatrix}
- =   \begin {bmatrix} 41.28\\ 34.8\\ 23.92\end {bmatrix}
-$ 
-\\
-10 Year Projection 
-&15 Year Projection 
-\end{tabular}\end{center}
-As we continue to multiply on the left by our transition matrix, each time we add 5 more years to our projection. This projection is valid as long as the same trends continue. 
-\end{example}
-
-
-
-
-
-
-
-
-
-
-\subsection{Steady State Solutions}
-
-
-Consider the land use example from above.  Let $\vec x_0$ be our initial state. If our transition matrix $A$ remains the same forever, what will eventually happen to the proportion of land devoted to residential, commercial, or industrial use? We can write each new state as powers of the transition matrix $A$ by writing 
-$$\vec x_{1} = A \vec x_{0}, \quad \vec x_{2}=A \vec x_{1} = AA\vec x_{0} = A^2\vec x_{0},\quad \vec x_{3}= A^3\vec x_{0},\quad \vec x_{n}= A^n\vec x_{0}.$$  What happens to the product $A^n\vec x_0$ as $n\to \infty$? Can we reach a state $\vec x = (R,C,I)$ such that $A \vec x=\vec x$, the next state is the same as the current? If this occurs, then any future transitions will not change the state either. This state $\vec x$ is called a steady state, since it does not change when multiplied by the transition matrix (it remains steady). 
-
-Let's look more closely at the steady state equation $$A\vec x = \vec x = 1\vec x.$$ 
-Do you see the eigenvalue-eigenvector notation $A\vec x = \lambda \vec x$? 
-\marginpar{The number $\lambda =1$ is always an eigenvalue of the transition matrix.  Steady states are eigenvectors of the transition matrix.}
-The eigenvalue is 1 and the steady state is an eigenvector. 
-Without even thinking that an eigenvalue was important, we reduced finding a steady state to an eigenvalue-eigenvector problem. 
-For any Markov process (the columns of the matrix must sum to 1), the number $\lambda = 1$ will always be an eigenvalue. All we have to do is find the eigenvectors corresponding to the eigenvalue 1. 
-The solution to $\ds\lim_{n\to\infty}A^n \vec x_0$ is this steady state, and is an eigenvector of the transition matrix.
- 
-\begin{example}
-For the land use Markov process from the previous example, an eigenvector (using technology) corresponding to 1 is $\left(\frac{3}{2},\frac32,1\right)$. 
-Since any nonzero multiple of an eigenvector is again an eigenvector, we can multiply by a constant so that the proportions sum to 100. 
-Multiplying by 2 we have $(3,3,2)$, which means that the ratio of land will be 3 acres residential to 3 acres commercial to 2 acres industrial. 
-\marginpar{Divide each entry by the sum to get percentages.}
-To write this in terms of percentages, divide each component by 8 (the sum $3+3+2$) to obtain $3/8:3/8:2/8$. Multiply by 100 to get the percentages $37.5\%:37.5\%:25\%$, the long term percentages of land use.
-\end{example}
-
-
-
-
-
-
-
-
 
 
 
