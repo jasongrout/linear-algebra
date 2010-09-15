@@ -535,7 +535,7 @@ Three planes can intersect in any of the following ways:
 	\item the three equations all represent the same plane, so there is a plane of solutions.
 \end{enumerate}
 \end{enumerate}\note{TODO: make graphics of each of these situations.}
-\marginpar{A system of equations will have either a unique solution, infinitely many solutions, or no solution.}
+\marginpar{A system of equations will have either a unique solution, infinitely many solutions, or no solution.}%
 In 2D and 3D, we can see geometrically that there will always be either
 no solution, one solution, or infinitely many solutions.
 With any system of linear equations, regardless of the number of equations and number of unknowns, this pattern continues. 
@@ -544,20 +544,24 @@ Systems with solutions are called \define{consistent},
 \marginpar{consistent system: has a solution}
 whereas systems without solutions are called inconsistent.
 %\marginpar{inconsistent}
-Two more important terms: we say the linear system {$A\vec x = 0$} is a \define{homogeneous} system (i.e., $\vec b=0$ in this case).
-\marginpar{homogeneous system: $A\vec x = \vec 0$} 
-If {$A\vec x\neq 0$ (i.e., $\vec b \neq 0$), we say the system is nonhomogeneous.
-%\marginpar{nonhomogeneous} 
-\note{is there a place later where we talk about a homogeneous system
-  always having a solution, and what a nontrivial solution is?}
+A particularly important kind of linear system is of the form $A\vec x
+= \vec 0$ (i.e., $\vec b=\vec 0$)---this kind of system is called a
+\define{homogeneous} system.
+\marginpar{homogeneous system: $A\vec x = \vec \vec 0$}% 
+If $A\vec x\neq \vec 0$ (i.e., $\vec b \neq \vec 0$), we say the
+system is nonhomogeneous.  A homogeneous system is always consistent
+since $\vec x=\vec 0$ is always a solution.  This solution is called
+the \define{trivial solution}, and indicates that the graph of every equation
+passes through the origin.  The big question for homogeneous systems
+is whether they have nontrivial (nonzero) solutions.
 
 \subsection{Gaussian Elimination}
 
 Gaussian elimination is an efficient algorithm we will use to solve
 systems of linear equations. This algorithm (or a variation) is commonly used
 in practice.  The main idea is to eliminate each variable from all but
-one equation/row (if possible), using the following three operations
-(these are called \textit{elementary row operations}):
+one equation/row (if possible), using the following three operations.
+These operations are called \define{elementary row operations}.
 \begin{enumerate}
   \item Multiply an equation (or row of a matrix) by a nonzero constant,
   \item Add a nonzero multiple of any equation (or row) to another equation,
