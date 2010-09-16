@@ -4,8 +4,8 @@
 
 %% uncomment one of the following, depending if you want to include the
 %% instructor notes or not
-%\instructortrue
-\instructorfalse
+\instructortrue
+%\instructorfalse
 
 \usepackage[left=1in,right=2.75in,top=1in,bottom=1in]{geometry}
 \marginparwidth 1.75in
@@ -22,9 +22,19 @@
 \usepackage{microtype}
 \usepackage{makeidx}
 \usepackage{index}
+\usepackage{etex}
 \usepackage{tikz}
+\usetikzlibrary{positioning,matrix,arrows,calc}
+\tikzset{every picture/.style={>=latex,thick}}
+\tikzset{grid lines/.style={semithick,dotted}}
 
-\usetikzlibrary{positioning}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=1.3}
+\usepgfplotslibrary{external}
+%\tikzexternalize
+\tikzsetexternalprefix{figures/}
+
+\newcommand{\remake}{\tikzset{external/force remake}}
 
 \newcommand{\marginpartop}[1]{\marginpar{\vtop{%
   \vskip0pt

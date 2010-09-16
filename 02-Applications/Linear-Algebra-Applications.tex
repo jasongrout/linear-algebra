@@ -695,38 +695,49 @@ To organize our work, let's first standardize the notation.
 Rather than writing $y=mx+b$, let's write $y=a_0+a_1 x$ (where $a_0=b$ and $a_1=m$). 
 For a parabola, let's write $\ds y=a_0 + a_1 x+ a_2 x^2 = \sum_{k=0}^{2} a_k x^k$. 
 We can now write any polynomial in the form 
-\marginpar{Standardizing the notation makes a problem easier to generalize.}  $$\ds y = a_0 + a_1 x+ \cdots + a_n x^n = \sum_{k=0}^n a_k x^k.$$ 
+\marginpar{Standardizing the notation makes a problem easier to
+  generalize.}%
+$$\ds y = a_0 + a_1 x+ \cdots + a_n x^n = \sum_{k=0}^n a_k x^k.$$ 
 By standardizing the coefficients, we can use summation notation to express a polynomial of any degree by changing the $n$ on the top of the summation sign. 
 Now that our notation is organized, let's use it to find a polynomial through 3 points.
 
 \begin{example}\note{add in a graph}
-Let's find a parabola through the three points $(0, 1)$, $(2, 3)$, $(4, 7)$.  The polynomial is $y=a_0 +a_1 x+a_2 x^2$ and our job is to find the three constants $a_0$,  $a_1$, $a_2$.  Since we have three points, we put these points into the equation to obtain a system of three equations:
+Let's find a parabola through the three points $(0, 1)$, $(2, 4)$, $(4, 5)$.  The polynomial is $y=a_0 +a_1 x+a_2 x^2$ and our job is to find the three constants $a_0$,  $a_1$, $a_2$.  Since we have three points, we put these points into the equation to obtain a system of three equations:
 $$
 a_{{0}}=1, \quad \quad 
-a_{{0}}+2\,a_{{1}}+4\,a_{{2}}=3, \quad \quad 
-a_{{0}}+4\,a_{{1}}+16\,a_{{2}}=7.
+a_{{0}}+2\,a_{{1}}+4\,a_{{2}}=4, \quad \quad 
+a_{{0}}+4\,a_{{1}}+16\,a_{{2}}=5.
 $$
 This is a linear system with 3 equations and 3 unknowns.  We now write the system in matrix form and reduce it
 $$
 \begin{bmatrix}[ccc|c] 
 1&0&0&1\\
-1&2&4&3\\
-1&4&16&7
+1&2&4&4\\
+1&4&16&5
 \end {bmatrix}
 \xrightarrow{\text{rref}}
 \begin{bmatrix}[ccc|c]
 1&0&0&1\\
-0&1&0&1/2\\
-0&0&1&1/4
+0&1&0&2\\
+0&0&1&-1/4
 \end {bmatrix} 
 .$$
-The reduced row echelon form tells us that the coefficients are $a_0 = 1$, $a_1= 1/2$, $a_2=1/4$, which means our parabola is $y=1+\frac12 x+ \frac 14 x^2$. Cramer's rule gives $D=16$, $D_1=16$, $D_2=8$, $D_3=4$, so $a_0 = 16/16=1, a_1=8/16=1/2, a_2=4/16=1/4$, confirming our result from Gaussian elimination.
+The reduced row echelon form tells us that the coefficients are $a_0 = 1$, $a_1= 2$, $a_2=-1/4$, which means our parabola is $y=1+2 x- \frac 14 x^2$. Cramer's rule gives $D=16$, $D_1=16$, $D_2=32$, $D_3=-4$, so $a_0 = 16/16=1$, $a_1=32/16=2$, and $a_2=-4/16=-1/4$, confirming our result from Gaussian elimination.
 
+\marginpar{
+  \begin{tikzpicture}
+    \begin{axis}[ footnotesize, xmin=-1, xmax=5, axis equal =true]
+      % use TeX as calculator: 
+      \addplot+[only marks] coordinates { (0,1) (2,4) (4,5)};
+      \addplot[mark=none] {1+2*x-x^2/4};
+   \end{axis}
+  \end{tikzpicture}
+}%
 \marginpar{Check your work by plugging the points back into your solution.}%
-Once you have obtained the interpolating polynomial, you can always check your work by plugging the points into the interpolating polynomial. When $x=0$, we have $y=1+0+0=1$; when $x=2$, we have $y=1+1+1=3$; and when $x=4$, we have $y=1+2+4=7$.  In other words,  the parabola passes through the three points $(0,1)$, $(2,3)$, and $(4,7)$, as needed.  
+Once you have obtained the interpolating polynomial, you can always check your work by plugging the points into the interpolating polynomial. When $x=0$, we have $y=1+0+0=1$; when $x=2$, we have $y=1+2-1=2$; and when $x=4$, we have $y=1+8-4=5$.  In other words,  the parabola passes through the three points $(0,1)$, $(2,4)$, and $(4,5)$, as needed.  This parabola is shown in the margin.  
 \end{example}
 
-In the example above, notice that powers of $x$ appear as the coefficients of our coefficient matrix, and we augment that matrix by the $y$ values. This is the general pattern for finding an interpolating polynomial. The diagram below shows the general method for finding an interpolating polynomial through three points.  Note that each entry of the first column of the matrix is 1 since $x_1^0=1$, $x_2^0=1$, and $x_3^0=1$.
+In the example above, notice that powers of $x$ appear as the coefficients in our coefficient matrix, and we augment that matrix by the $y$ values. This is the general pattern for finding an interpolating polynomial. The diagram below shows the general method for finding an interpolating polynomial through three points.  Note that each entry of the first column of the matrix is 1 since $x_1^0=1$, $x_2^0=1$, and $x_3^0=1$.
 \begin{center}
 \begin{tabular}{c}
 $(x_1,y_1),(x_2,y_2),(x_3,y_3)$ \\
@@ -769,35 +780,39 @@ $\\
 $y=a_0+a_1x+a_2x^2+a_3x^3$
 \end{tabular}
 \end{center}
-This pattern generalizes to all dimensions (and the corresponding algorithm is coded into spreadsheet programs such as Microsoft Excel and OpenOffice Calc, as well as many mathematics and statistics software packages). Remember that the $x$-values must be different (a function requires only one output for each input). Once you have obtained your solution, remember that you can easily check if your solution is correct by plugging the points into your polynomial.
+This pattern generalizes to all dimensions (and the corresponding
+algorithm is coded into spreadsheet programs such as Microsoft Excel
+and OpenOffice Calc, as well as many mathematics and statistics
+software packages). Remember that the $x$-values must be different
+(since a function requires only one output for each input). Once you have obtained your solution, remember that you can easily check if your solution is correct by plugging the points into your polynomial.
 
 
 
-\subsection{Least Squares Regression}\note{this entire section should probably be moved down to after the motivation, rather than pulling $A^T$ out of the air}
+\subsection{Least Squares Regression}
 Interpolating polynomials give a polynomial which passes through every point in a set of data. 
-While they pass through every point in a set of data, the more points the polynomial must pass through, the more the polynomial may have to make large oscillations in order to pass through each point.\note{Graph example}  
+While they pass through every point in a set of data, the more points the polynomial must pass through, the more the polynomial may have to make large oscillations in order to pass through each point.\note{Graph Runge example}  Furthermore, often data points from real-life measurements have error associated with them, so we don't necessarily want to mandate that our function go through the data point.
 Often we just need a simple line or parabola that passes near the points and gives a good approximation of a trend. 
 
-Here's an example that saved me tons of money when buying a minivan. 
+Here's an example that saved me money when buying a minivan. 
 When I needed to purchase a minivan for my expanding family, I gathered mileage and price data for about 40 cars from the internet. 
 I plotted this data and discovered an almost linear downward trend (as mileage increased, the price dropped).  
 I created a line to predict the price of a car based on mileage.  
 I then used this data to talk the dealer into dropping the price of the car I wanted by over \$1000. 
-\note{I need to find this data on our computer and put a graph here}
+\note{I need to find this data on our computer and put a graph here, or even just construct the data from blue book values}
 
 How do you find a line that is ``closest'' to a set of points, and is the best line to approximate your data?  Finding an equation of this line, called the \define{least squares regression} line, is the content of this section.  The least squares regression line is used to find trends in many branches of science and business.   Let's introduce the idea with an example. 
 
 \begin{example}\label{regression1ex}
-Find a line that is closest to passing through the three points $(0,1)$, $(2,3)$, and $(4,6)$.  Since the points are not collinear\marginpar{collinear means lie on the same line}, there is not a line through all three.  Suppose for a moment that there was a line of the form $y=mx+b=a_0+a_1x$ that did pass through the points. Plugging our 3 points into the equation $a_0+a_1x=y$ gives the system of equations 
-$$\begin{cases}a_0=1\\a_0+2a_1=3\\a_0+4a_1=6\end{cases}
+Find a line that is closest to passing through the three points $(0,1)$, $(2,4)$, and $(4,5)$.  Since the points are not collinear\marginpar{collinear means lie on the same line}, there is not a line through all three points.  Suppose for a moment that there was a line of the form $y=mx+b=a_0+a_1x$ that did pass through the points. Plugging our 3 points into the equation $a_0+a_1x=y$ gives the system of equations 
+$$\begin{cases}a_0=1\\a_0+2a_1=4\\a_0+4a_1=5\end{cases}
 \xrightarrow{\text{augmented matrix}}
-\begin{bmatrix}[cc|c]1&0&1\\1&2&3\\1&4&6\end{bmatrix}
+\begin{bmatrix}[cc|c]1&0&1\\1&2&4\\1&4&5\end{bmatrix}
 \xrightarrow{\text{matrix eqn}}
 \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}
 \begin{bmatrix}a_0\\a_1\end{bmatrix}
-=\begin{bmatrix}3\\1\\6\end{bmatrix}.
+=\begin{bmatrix}1\\4\\5\end{bmatrix}.
 $$
-Notice that the system can be written in matrix form $A\vec x = \vec b$, where $A$ contains a column of 1's and $x$-values, and $\vec b$ is a column of $y$-values. 
+Notice that the system can be written in matrix form $A\vec x = \vec b$, where $A$ contains a column of 1's and $x$-values, $\vec x$ is the vector of coefficients $a_i$, and $\vec b$ is a column of $y$-values. 
 If you try to reduce this matrix, you will discover the system is inconsistent (has no solution), which should not be a surprise since there is no line which passes through these three points. 
 Notice that there are more equations (3 equations) than variables ($a_0$ and $a_1$), which means the system is overdetermined.
 \marginpar{Recall that if a system has more equations than variables, we say the system is overdetermined.} 
@@ -807,19 +822,31 @@ Is there a way to reduce the number of rows in our system, so that the resulting
 If we multiply on the left by a 2 by 3 matrix, we would obtain a system with 2 rows instead of 3, and the rows of the new matrix would be linear combinations of the rows of our original matrix.  
 The only 2 by 3 matrix in this problem is the transpose of A.  
 So let's multiply both sides of the matrix equation by the transpose of A, and see what happens:
-$$A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}, 
-A^T = \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix},$$$$ 
-A^T A =\begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}\begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}= \begin{bmatrix}3&6\\6&20\end{bmatrix}, 
-A^T\vec b =  \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}\begin{bmatrix}1\\3\\6\end{bmatrix} = \begin{bmatrix}10\\30\end{bmatrix}.
-$$
-\marginpar{Multiply both sides by $A^T$, the transpose of $A$, to obtain a system that has a solution.}
+\begin{gather*}
+A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}, \quad
+A^T = \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix},\\
+A^T A =\begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}\begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}= \begin{bmatrix}3&6\\6&20\end{bmatrix},\\% \quad
+A^T\vec b =  \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}\begin{bmatrix}1\\3\\6\end{bmatrix} = \begin{bmatrix}10\\28\end{bmatrix}.
+\end{gather*}
+\marginpar{Multiply both sides by $A^T$, the transpose of $A$, to obtain a system that has a solution.}%
 Multiplying both sides of the equation $A\vec x = \vec b$ on the left by $A^T$ gives us the equation 
 $A^T A \vec x = A^T\vec b$, or 
-$$\begin{bmatrix}3&6\\6&20\end{bmatrix} \begin{bmatrix}a_0\\a_1\end{bmatrix}=\begin{bmatrix}10\\30\end{bmatrix}.$$ 
+$$\begin{bmatrix}3&6\\6&20\end{bmatrix} \begin{bmatrix}a_0\\a_1\end{bmatrix}=\begin{bmatrix}10\\28\end{bmatrix}.$$ 
 This is a system of 2 equations with 2 unknowns, and it has a unique solution.  
-Reducing $\begin{bmatrix}[cc|c]3&6&10\\6&20&30\end{bmatrix}$ to $\begin{bmatrix}[cc|c]1&0&5/6\\0&1&5/4\end{bmatrix}$ means the solution is $y=\frac{5}{6}+\frac{5}{4}x.$  
-We will see exactly why this works later in this chapter, when we start looking at the columns of our matrix as a basis for a vector space and asking questions about linear combinations, spans, and projections.   
-For now, let's just use the transpose to solve least squares regression problems. I'm hoping you want to know why this works, and I promise you will get an answer. 
+Reducing $\begin{bmatrix}[cc|c]3&6&10\\6&20&28\end{bmatrix}$ to $\begin{bmatrix}[cc|c]1&0&4/3\\0&1&1\end{bmatrix}$ means the solution is $y=\frac{4}{3}+x$ (illustrated in the margin).  
+\marginpar{
+  \begin{tikzpicture}
+    \begin{axis}[ footnotesize, xmin=-1, xmax=5, axis equal =true]
+      % use TeX as calculator: 
+      \addplot+[only marks] coordinates { (0,1) (2,4) (4,5)};
+      \addplot[mark=none] {4/3+x};
+   \end{axis}
+  \end{tikzpicture}
+}
+
+
+We will see exactly why this works in Section~\ref{sec:vector-spaces-why} when we start looking at the columns of our matrix as a basis for a vector space and asking questions about linear combinations, spans, and projections.   
+For now, let's just use the transpose to solve least squares regression problems.
 \end{example}
 
 In general, a least squares regression problem requires the following:
@@ -827,13 +854,13 @@ In general, a least squares regression problem requires the following:
 	\item Assume the form of a solution, such as $y=a_0+a_1x$ for a line. 
 	\item Plug in values to get a matrix equation $A\vec x=\vec b$. 
 	\item Multiply both sides by $A^T$.
-	\item Solve the simplified system (elimination, Cramer's rule, or an inverse). 
+	\item Solve the simplified system (elimination, Cramer's rule, an inverse, or other more sophisticated methods). 
 \end{enumerate}
-When trying to find a least squares regression line, the simplified systems will be a 2 by 2 system so Cramer's rule provides an extremely quick solution. 
+When trying to find a least squares regression line, the simplified system will have a 2 by 2 coefficient matrix, so Cramer's rule provides an extremely quick solution.
 
 \begin{example}
-Let's find the least squares regression line which passes nearest the four points $(0,0)$, $(-1,2)$, $(-2,4)$, and $(0,-1)$. We are after an equation of the form $y=a_0+a_1x$.  The four points give the equations $a_0=0, a_0-a_1=2, a_0-2a_1=4, a_0=-1$. In matrix form we write 
-$$
+Let's find the least squares regression line which passes nearest the four points $(0,0)$, $(-1,2)$, $(-2,4)$, and $(0,-1)$. We are after an equation of the form $y=a_0+a_1x$.  The four points give the equations $a_0=0$, $a_0-a_1=2$, $a_0-2a_1=4$,  and $a_0=-1$. In matrix form, we write 
+\begin{gather*}
 \begin{bmatrix}
 1&0\\
 1&-1\\
@@ -851,41 +878,39 @@ a_1
 4\\
 -1
 \end{bmatrix}
-,
+, \text{ where }
 A=
 \begin{bmatrix}
 1&0\\
 1&-1\\
 1&-2\\
 1&0
-\end{bmatrix}, 
+\end{bmatrix}, \quad
 \vec b = 
 \begin{bmatrix}
 0\\
 2\\
 4\\
 -1
-\end{bmatrix}, 
-$$
-$$
+\end{bmatrix}, \\
 A^T=
 \begin{bmatrix}
 1&1&1&1\\
 0&-1&-2&0
-\end{bmatrix}, 
+\end{bmatrix}, \text{ so }
 A^TA = 
 \begin{bmatrix}
 4&-3\\
 -3&5
-\end{bmatrix}, 
+\end{bmatrix}, \quad
 A^T\vec b =
 \begin{bmatrix}
 5\\
 -10
 \end{bmatrix}. 
-$$
-We now need to solve the matrix equation 
-$
+\end{gather*}
+Now solve the matrix equation 
+$A^TA\vec x=
 \begin{bmatrix}
 4&-3\\
 -3&5
@@ -897,7 +922,7 @@ a_1
 \begin{bmatrix}
 5\\
 -10
-\end{bmatrix}. 
+\end{bmatrix}=A^T\vec b.
 $
 Cramer's rule gives the solution as
 $$
@@ -921,22 +946,18 @@ a_1
 \end{vmatrix}}
 =\dfrac{-25}{11}
 .$$
-The least square regression line is $y=-\frac{5}{11}-\frac{25}{11}x$.
+The least square regression line is $y=-\frac{5}{11}-\frac{25}{11}x$ (illustrated in the margin).
+\marginpar{
+  \begin{tikzpicture}
+    \begin{axis}[ footnotesize, xmin=-3,xmax=1,axis equal =true]
+      % use TeX as calculator: 
+      \addplot+[only marks] coordinates { (0,0) (-1,2) (-2,4) (0,-1)};
+      \addplot[mark=none] {-5/11-25/11*x};
+   \end{axis}
+  \end{tikzpicture}
+}
+
 \end{example}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \subsection{A Quick 2 by 2 Inverse}
@@ -948,8 +969,8 @@ To find the inverse of a 2 by 2 matrix $A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$,
 Cramer's rule gives the formula 
 \marginpar{To find the inverse of a 2 by 2, 
 \begin{enumerate}
-	\item switch the diagonals, 
-	\item change the sign on the off diagonals, and 
+	\item switch the diagonal entries, 
+	\item change the sign on the off-diagonals, and 
 	\item divide by the determinant.
 \end{enumerate}
 }
@@ -964,29 +985,26 @@ To find the inverse of a 2 by 2 matrix, just interchange the diagonal entries, c
 
 \begin{example}
 Let's repeat the introductory example (\ref{regression1ex}) from the last section by using an inverse to find the line closest to passing through the three points $(0,1)$, $(2,3)$, and $(4,6)$. The matrix equation and relevant matrices are
-$$\begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}
-\begin{bmatrix}a_0\\a_1\end{bmatrix}
-=\begin{bmatrix}3\\1\\6\end{bmatrix},
-A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix},
-\vec b = \begin{bmatrix}1\\3\\6\end{bmatrix}, $$$$
-A^T= \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}, 
-A^T A= \begin{bmatrix}3&6\\6&20\end{bmatrix}, 
-A^T\vec b = \begin{bmatrix}10\\30\end{bmatrix}.
-$$
+\begin{gather*}
+A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}, \quad
+A^T = \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix},\\
+A^T A =\begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}\begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}= \begin{bmatrix}3&6\\6&20\end{bmatrix},\\% \quad
+A^T\vec b =  \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}\begin{bmatrix}1\\3\\6\end{bmatrix} = \begin{bmatrix}10\\28\end{bmatrix}.
+\end{gather*}
 The inverse of $(A^TA)$ is $\ds\frac{1}{60-36}\begin{bmatrix}20&-6\\-6&3\end{bmatrix}$, which means our solution is 
 $$
 \begin{bmatrix}a_0\\a_1\end{bmatrix} 
 = (A^TA)^{-1}A^T b 
-= \ds\frac{1}{24}\begin{bmatrix}20&-6\\-6&3\end{bmatrix}\begin{bmatrix}10\\30\end{bmatrix}
-= \ds\frac{1}{24}\begin{bmatrix}20\\30\end{bmatrix}  
-= \begin{bmatrix}5/6\\5/4\end{bmatrix}. 
+= \ds\frac{1}{24}\begin{bmatrix}20&-6\\-6&3\end{bmatrix}\begin{bmatrix}10\\28\end{bmatrix}
+= \ds\frac{1}{24}\begin{bmatrix}32\\24\end{bmatrix}  
+= \begin{bmatrix}4/3\\1\end{bmatrix}. 
 $$
-We of course obtained the same solution $y=\frac{5}{6}+\frac{5}{4}x$.
+We of course obtained the same solution $y=\frac{4}{3}+x$.
 \end{example}
 
 
 One advantage of using an inverse to solve a least square regression problem is that the product $W=(A^TA)^{-1}A^T$ can be computed once, and then solutions to similar least squares regression problems are found by the simple product $\vec x=W\vec b$. 
-A different set of data points where the $x$ values remain the same but the $y$ values change can then be solved by just changing $\vec b$ and using the same results as before. 
+A different set of data points where the $x$-values remain the same but the $y$-values change can then be solved by just changing $\vec b$ and using the same results as before. 
 
 \begin{example}
 Let's find the least square regression line for the two data sets 
@@ -996,38 +1014,57 @@ Let's find the least square regression line for the two data sets
 \end{enumerate}
 Notice that both of the data sets have the same $x$ values as the previous example.  Hence we can still use 
 $$
-A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix},
-A^T= \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}, 
-A^T A= \begin{bmatrix}3&6\\6&20\end{bmatrix}, 
+A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix},\quad
+A^T= \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}, \quad
+A^T A= \begin{bmatrix}3&6\\6&20\end{bmatrix}, \quad
 (A^TA)^{-1}=\ds\frac{1}{24}\begin{bmatrix}20&-6\\-6&3\end{bmatrix}.
 $$ 
-The change occurred with the $y$ values, which means that $\vec b$ changed for each problem.  Before solving either, we compute 
+The change occurred with the $y$-values, which means that $\vec b$ changed for each problem.  Before solving either, we compute 
 $$W=(A^TA)^{-1}A^T 
 = \ds\frac{1}{24}\begin{bmatrix}20&-6\\-6&3\end{bmatrix}\begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}
-= \ds\frac{1}{24}\begin{bmatrix}20&8&-4\\-6&0&6\end{bmatrix}
+= \ds\frac{1}{24}\begin{bmatrix}20&8&-4\\-6&0&6\end{bmatrix}.
 $$
-We can now solve both problems rapidly, by multiplying $W$ and $\vec b$.
+We can now solve both problems rapidly by multiplying $W$ and $\vec b$.
 \begin{enumerate}
 	\item The $y$ values are $2,1,3$, so we compute
 $$\frac{1}{24}\begin{bmatrix}20&8&-4\\-6&0&6\end{bmatrix} \begin{bmatrix}2\\1\\3\end{bmatrix}
 = \frac{1}{24}\begin{bmatrix}36\\6\end{bmatrix}
 $$ which means that our line is (after simplifying fractions) $y=\frac{3}{2}+\frac{1}{4}x$.
+\marginpar{
+  \begin{tikzpicture}
+    \begin{axis}[ footnotesize, xmin=-1, xmax=5, axis equal =true]
+      % use TeX as calculator: 
+      \addplot+[only marks] coordinates { (0,2) (2,1) (4,3)};
+      \addplot[mark=none] {3/2+1/4*x};
+   \end{axis}
+  \end{tikzpicture}
+}%
 	\item The $y$ values are $6,3,-1$, so we compute
 $$\frac{1}{24}\begin{bmatrix}20&8&-4\\-6&0&6\end{bmatrix} \begin{bmatrix}6\\3\\-1\end{bmatrix}
 = \frac{1}{24}\begin{bmatrix}148\\-42\end{bmatrix}
 $$ which means that our line is (after simplifying fractions) $y=\frac{37}{6}-\frac{7}{4}x$.
+\marginpar{
+  \begin{tikzpicture}
+    \begin{axis}[ footnotesize, xmin=-1, xmax=5, axis equal =true]
+      % use TeX as calculator: 
+      \addplot+[only marks] coordinates { (0,6) (2,3) (4,-1)};
+      \addplot[mark=none] {37/6 - 7/4*x};
+   \end{axis}
+  \end{tikzpicture}
+}%
 \end{enumerate}
 \end{example}
 
-Least squares regression is not limited to just finding a best fit line.  We can use the same ideas to find a best fitting parabola through many points.  We would start by assuming the data fit a parabola $y=a_0+a_1x+a_2x^2$, plug in the $x$ and $y$ values to obtain a linear system with 3 unknowns, write the system in matrix form (the columns of the matrix would involve 1's, $x$ values, and $x^2$ values), multiply both sides by the transpose to obtain a 3 by 3 matrix, and then solve the system.  Most spreadsheet programs have this feature built in for any size polynomial you choose.
+Least squares regression is not limited to just finding a best fit line.  We can use the same ideas to find a best fitting parabola through many points.  To do this, we would start by assuming the data fit a parabola $y=a_0+a_1x+a_2x^2$, plug in the $x$ and $y$ values to obtain a linear system with 3 unknowns, write the system in matrix form (the columns of the matrix would involve ones, $x$ values, and $x^2$ values), multiply both sides by the transpose to obtain a system that was not overdetermined (3 by 3), and then solve the system.  Most spreadsheet programs have this feature built in for any size polynomial you choose.
 
 
 
 
 
-\section{Vector Spaces - Why Regression Works}
+\section{Vector Spaces: Why Regression Works}
+\label{sec:vector-spaces-why}
 
-One of the main goals of this section is to introduce the ideas and vocabulary needed to understand why the transpose of $A$ helps us solve the least squares regression problem. We will define the column space and null space of a matrix, and then discuss projecting vectors onto the column space by using the nullspace of the transpose.  Along the way, we will obtain geometric interpretations of these ideas in preparation for a more general approach to vectors which is coming in the next chapter.  Let's get started.
+One of the main goals of this section is to introduce the ideas and vocabulary needed to understand why the transpose of $A$ helps us solve the least squares regression problem. We will define the column space and null space of a matrix, and then discuss projecting vectors onto the column space by using the nullspace of the transpose.  Along the way, we will obtain geometric interpretations of these ideas in preparation for a more general approach to vectors which is coming in the next chapter.
 
 \subsection{The Vector Space ${\mathbb{R}}^n$}
 
