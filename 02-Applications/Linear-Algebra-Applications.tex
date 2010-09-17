@@ -1092,26 +1092,26 @@ Recall that the span of a set of vectors is the set of all possible linear combi
 \end{bmatrix}.
 \end{equation*}
 So, for example, the vector $(x,y)=(3,5)$ is the linear combination $\frac{x}{2}(2,1)+(y-\frac{x}{2})(0,1)=\frac{3}{2}(2,1)+(5-\frac{3}{2})(0,1)$.
-Notice that since the first two columns are always pivot columns (since the two vectors form a linearly independent set), the system will always have a single solution. We call the scalars in the linear combination ($\frac{x}{2}$ and $y-\frac{x}{2}$) the \define{coordinates} of the vector with respect to the basis $[(2,1),\, (1,2)]$. For example, the coordinates of $(3,5)$ with respect to the basis $[(2,1),\, (1,2)]$ are $\frac{3}{2}$ and $5-\frac{3}{2}$.  A basis gives us a way of writing any vector by writing the coordinates.
+Notice that since the first two columns are always pivot columns (since the two vectors form a linearly independent set), the system will always have a single solution. We call the scalars in the linear combination ($\frac{x}{2}$ and $y-\frac{x}{2}$) the \define{coordinates} of the vector relative to the basis $\{(2,1),\, (1,2)\}$. For example, the coordinates of $(3,5)$ relative to the basis $\{(2,1),\, (1,2)\}$ are $\frac{3}{2}$ and $5-\frac{3}{2}$.  A basis gives us a way of writing any vector by writing the coordinates.
 
 Here is the crucial point about dimension: because we were able to obtain the entire plane as the span of \emph{two} linearly independent vectors, we say the dimension of $\RR^2$ is \emph{two}. 
 
-Notice that the dimension does not depend on the particular two vectors I chose.  The only requirement was that the two vectors form a linearly independent set.  Then the first two columns in the above rref will always be pivot columns, so I will always be able to write any vector in the plane as a linear combination of my two linearly independent vectors.  We call a list of two linearly independent vectors (like $[(2,1), (0,1)]$) a \emph{basis} for $\RR^2$.
+Notice that the dimension does not depend on the particular two vectors I chose.  The only requirement was that the two vectors form a linearly independent set.  Then the first two columns in the above rref will always be pivot columns, so I will always be able to write any vector in the plane as a linear combination of my two linearly independent vectors.  We call a set of two linearly independent vectors, like $\{(2,1), (0,1)\}$, a \define{basis} for $\RR^2$.
 \end{example}
 
 \marginpar{The dimension of a vector space is the number of vectors in a basis. }%
-The \define{dimension} of a vector space (like $\RR^2$) is the number of linearly independent vectors needed to span the vector space.  A basis for a vector space is a list of vectors that are:
+The \define{dimension} of a vector space (like $\RR^2$) is the number of linearly independent vectors needed to span the vector space.  A basis for a vector space is a set of vectors that are:
 \begin{itemize}
 \item linearly independent and
 \item span the vector space.
 \end{itemize}
- If a vector space has dimension $n$, then any $n$ linearly independent vectors will be a basis for the vector space.
+If a vector space has dimension $n$, then any $n$ linearly independent vectors will be a basis for the vector space.
 
 For $\RR^n$, the \definemargin{standard basis vectors} are 
 $$\vec e_1=(1,0,0,\ldots,0),\,
 \vec e_2=(0,1,0,\ldots,0),\,\ldots,\,
 \vec e_n=(0,0,0,\ldots,1).$$ 
-Every other vector in $\RR^n$ is a linear combination of these standard basis vectors.  If not specified otherwise, we assume that any coordinates are with respect to this standard basis.  We will find that using a different basis for our coordinates can simplify various problems.  For example, we'll often use eigenvectors as some of our basis vectors.
+Every other vector in $\RR^n$ is a linear combination of these standard basis vectors.  If not specified otherwise, we assume that any coordinates are relative to this standard basis.  We will find that using a different basis for our coordinates can simplify various problems.  For example, we'll often use eigenvectors as some of our basis vectors.
 
  
 
@@ -1134,7 +1134,7 @@ A basis of vectors for a subspace $V$ is a set of linearly independent vectors w
 	\item 
 The set of vectors $V=\{(2c,3c)\st \text{where $c$ is any real number}\}$ is a vector subspace of $\RR^2$. It represents a line through the origin.  A basis for $V$ is $\{(2,3)\}$, since every vector in the subspace is a scalar multiple of $(2,3)$.  Since there is one vector in the basis, $V$ is one-dimensional.
   \item
-The set of vectors $V=\{(2c,c+d,4d)\st c,d\in \RR\}$ is a two-dimensional vector subspace of $\RR^3$. It represents a plane through the origin. We can rewrite any vector in $V$ in the form $c(2,1,0)+d(0,1,4)$, so $V=\vspan\{(2,1,0),\, (0,1,4)\}$.  Since these two vectors are linearly independent, the list $[(2,1,0)\, (0,1,4)]$ is a basis for the subspace, and the space is two-dimensional.
+The set of vectors $V=\{(2c,c+d,4d)\st c,d\in \RR\}$ is a two-dimensional vector subspace of $\RR^3$. It represents a plane through the origin. We can rewrite any vector in $V$ in the form $c(2,1,0)+d(0,1,4)$, so $V=\vspan\{(2,1,0),\, (0,1,4)\}$.  Since these two vectors are linearly independent, the set $\{(2,1,0)\, (0,1,4)\}$ is a basis for the subspace, and the space is two-dimensional.
 \item
 The set of vectors $V=\{(c+2e,2c+4e,d-2e)\st c,d,e\in \RR\}$ is a two-dimensional vector subspace of $\RR^3$. You might first think this subspace is three-dimensional because you can choose 3 different numbers ($c$, $d$, and $e$) and we can write any vector in the form $c(1,2,0)+d(0,0,1)+e(2,4,-2)$.  However, the three vectors are linearly dependent.  We can see this from the rref:
 \begin{equation*}
@@ -1150,7 +1150,7 @@ The set of vectors $V=\{(c+2e,2c+4e,d-2e)\st c,d,e\in \RR\}$ is a two-dimensiona
 \cl{2\\-2\\0}
 \end{bmatrix}.
 \end{equation*}
-Because the third column is not a pivot column, the third vector depends on the first two vectors.  Since the first two columns are pivot columns, the first two vectors form a linearly independent set, so a basis for $V$ is simply $[(1,2,0),(0,0,1)]$.  That is why the space is actually two-dimensional (it is a plane through the origin).
+Because the third column is not a pivot column, the third vector depends on the first two vectors.  Since the first two columns are pivot columns, the first two vectors form a linearly independent set, so a basis for $V$ is simply $\{(1,2,0),(0,0,1)\}$.  That is why the space is actually two-dimensional (it is a plane through the origin).
 \end{enumerate}
 \end{example}
 \begin{example}
@@ -1182,7 +1182,7 @@ $$A=\begin{bmatrix}
 &\cl{-1\\2\\0}
 \end{bmatrix}.
 $$
-Of course, every vector in the column space is already a linear combination of the three column vectors (by definition, since the column space is the span of the columns).  If the columns are linearly independent, then they would form a basis for the column space.  However, from the reduced row echelon form, we see that the third column is a linear combination of the first two. A basis for the column space is the list $[(1,2,0),\,(2,0,3)]$ (i.e., the pivot columns). 
+Of course, every vector in the column space is already a linear combination of the three column vectors (by definition, since the column space is the span of the columns).  If the columns are linearly independent, then they would form a basis for the column space.  However, from the reduced row echelon form, we see that the third column is a linear combination of the first two. A basis for the column space is $\{(1,2,0),\,(2,0,3)\}$ (i.e., the pivot columns). 
 The coordinates of $(3,-2,6)$ relative to this basis are $-1$ and $2$.  In other words, we can write $(3,-2,6)$ as the linear combination 
  $$\begin{bmatrix}3\\-2\\6\end{bmatrix}
 =-1\begin{bmatrix}1\\2\\0\end{bmatrix}+2\begin{bmatrix}2\\0\\3\end{bmatrix} 
@@ -1305,17 +1305,17 @@ A^T
  0 & 0 & 0
 \end{bmatrix}.
 $$
-\marginpar{Recall that the coordinates of a vector relative to a basis are the scalars you need to recreate the vector using a linear combination of the basis vectors. Hence the coordinates of $(0,3,6)$ relative to $[(1,2,3), (2,0,-2)]$ are $(3/2,-3/4)$ since 
+\marginpar{Recall that the coordinates of a vector relative to a basis are the scalars you need to recreate the vector using a linear combination of the basis vectors. Hence the coordinates of $(0,3,6)$ relative to the basis $\{(1,2,3), (2,0,-2)\}$ are $(3/2,-3/4)$ since 
 $$\begin{bmatrix}0\\3\\6\end{bmatrix}
 =
 \frac{3}{2}\begin{bmatrix}1\\2\\3\end{bmatrix}
 -
 \frac{3}{4}\begin{bmatrix}2\\0\\-2\end{bmatrix}
 $$.}%
-The list of pivot columns of $A^T$, $[(1,2,3),\, (2,0,-2)]$, is a basis for the column space of $A^T$ and the row space of $A$.
+The set of pivot columns of $A^T$, $\{(1,2,3),\, (2,0,-2)\}$, is a basis for the column space of $A^T$ and the row space of $A$.
 The coordinates of the third column of $A^T$ (the third row of $A$), $(0,3,6)$, relative to this basis are $(3/2,-3/4)$. 
 
-The nonzero rows of the rref of $A^T$, namely $[(1,0,3/2),\, (0,1,-3/4)]$ are a basis for the row space of $A^T$ and the column space of $A$.  Every column of $A$ can be written as a linear combination of these two vectors. The coordinates of $(1,2,0)$ relative to this basis are $(1,2)$. The coordinates of $(2,0,3)$ are $(2,0)$. The coordinates of $(3,-2,6)$ are $(3,-2)$.
+The nonzero rows of the rref of $A^T$, namely $\{(1,0,3/2),\, (0,1,-3/4)\}$ are a basis for the row space of $A^T$ and the column space of $A$.  Every column of $A$ can be written as a linear combination of these two vectors. The coordinates of $(1,2,0)$ relative to this basis are $(1,2)$. The coordinates of $(2,0,3)$ are $(2,0)$. The coordinates of $(3,-2,6)$ are $(3,-2)$.
 \end{example}
 
 In the last few examples, we have two different ways to obtain a basis for the column space and row space of a matrix. Table~\ref{column and row space table} provides graphs of all 4 bases. You can either reduce $A$ or $A^T$, and use the pivot columns and/or nonzero rows of rref to obtain a basis. Which basis is preferred?  The short answer is ``both.''  Each basis has a different use.  We'll revisit this topic more later.
@@ -1402,8 +1402,8 @@ We have already seen the null space. Finding eigenvectors requires that we solve
 Let's redo example \ref{eigenvalueexample3} related to eigenvectors, but this time use the vocabulary of null spaces.  
 The matrix 
 $A=\begin{bmatrix}2&1&4\\ 1&2&4\\ 0&0&1\end{bmatrix}$ has eigenvalues $1,1,3$. 
-When $\lambda=1$, we compute $A-\lambda I =\begin{bmatrix}1&1&4\\ 1&1&4\\ 0&0&0\end{bmatrix} $. To find the null space, we solve $(A-\lambda I )\vec x=0$. Row reduction (after augmenting the matrix) gives us the rref $\begin{bmatrix}[ccc|c]1&1&4&0\\ 0&0&0&0\\ 0&0&0&0\end{bmatrix}$, which shows we have two free variables. The solution is $\begin{bmatrix} x_1\\x_2\\ x_3\end{bmatrix} = x_2\begin{bmatrix} -1\\1\\0\end{bmatrix}+x_3\begin{bmatrix} -4\\0\\1\end{bmatrix} $. The null space is this entire solution set (called the eigenspace corresponding to $\lambda = 1$), and is a vector subspace of dimension 2. A basis for the null space is $[(-1,1,0),\,(-4,0,1)]$.
-Every nonzero vector in this null space is an eigenvector of $A$ with eigenvalue 1.  A similar computation (computing the null space for $A-3I$) shows the eigenspace for $\lambda = 3$ is a one-dimensional vector space with basis $[(1,1,0)]$. Example \ref{eigenvalueexample3} has all the details.
+When $\lambda=1$, we compute $A-\lambda I =\begin{bmatrix}1&1&4\\ 1&1&4\\ 0&0&0\end{bmatrix} $. To find the null space, we solve $(A-\lambda I )\vec x=0$. Row reduction (after augmenting the matrix) gives us the rref $\begin{bmatrix}[ccc|c]1&1&4&0\\ 0&0&0&0\\ 0&0&0&0\end{bmatrix}$, which shows we have two free variables. The solution is $\begin{bmatrix} x_1\\x_2\\ x_3\end{bmatrix} = x_2\begin{bmatrix} -1\\1\\0\end{bmatrix}+x_3\begin{bmatrix} -4\\0\\1\end{bmatrix} $. The null space is this entire solution set (called the eigenspace corresponding to $\lambda = 1$), and is a vector subspace of dimension 2. A basis for the null space is $\{(-1,1,0),\,(-4,0,1)\}$.
+Every nonzero vector in this null space is an eigenvector of $A$ with eigenvalue 1.  A similar computation (computing the null space for $A-3I$) shows the eigenspace for $\lambda = 3$ is a one-dimensional vector space with basis $\{(1,1,0)\}$. Example \ref{eigenvalueexample3} has all the details.
 \end{example}
 
 
@@ -1444,7 +1444,7 @@ u_1\\u_2\\u_3
 3\\0\\1
 \end{bmatrix}
 .$$
-The set of vectors that are orthogonal to $\vec v$ is a vector space of dimension 2 with basis $[(-2,1,0),(3,0,1)]$. This is a plane passing through the origin.
+The set of vectors that are orthogonal to $\vec v$ is a vector space of dimension 2 with basis $\{(-2,1,0),(3,0,1)\}$. This is a plane passing through the origin.
 \end{example}
 
 If you are given a set of vectors $\vec v_1,\vec v_2$, how you do find all the vectors that are orthogonal to both?  
