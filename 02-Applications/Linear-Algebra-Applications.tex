@@ -21,20 +21,20 @@ For most of your lower-level math courses, you have always thought of $x$ and $y
 In this case, the domain of the function (the $x$-values) is the set of all real numbers, which we denote with the symbol \RR. \marginpar{\RR\ means all real numbers.} 
 The potential $y$ values (the range) are also real numbers.  
 If we want to pay attention to the domain and range of the function, we could write $f\colon D\to R$ \marginpar{$f\colon D\to R$ notation} where $D$ is the domain and $R$ is the range.  
-For a function such as $y=f(x)$, where both $x$ and $y$ are real numbers (written $x\in \mathbb{R}$ and $y\in \mathbb{R}$), we could write $f\colon{\mathbb{R}}\to{\mathbb{R}}$. 
+For a function such as $y=f(x)$, where both $x$ and $y$ are real numbers (written $x\in \RR$ and $y\in \RR$), we could write $f\colon{\RR}\to{\RR}$. 
 With this notation, we can generalize the concept of functions to allow us to input vectors and output vectors.  
-If we want to input a 2D vector and get out a 3D vector, then we could write $f\colon{\mathbb{R}}^2\to{\mathbb{R}}^3$.  
-We'll use the notation ${\mathbb{R}}^n$ to represent the set of $n$ dimensional vectors. 
-Throughout this semester, we'll be studying functions of the form $f\colon{\mathbb{R}}^n\to {\mathbb{R}}^m$. In particular, we'll be studying special types of functions called linear transformations which can often be represented by matrices.\note{In this discussion, range=codomain; maybe we should use codomain and image, and mention that range could be one or the other, depending on who you talk with}
+If we want to input a 2D vector and get out a 3D vector, then we could write $f\colon{\RR}^2\to{\RR}^3$.  
+We'll use the notation ${\RR}^n$ to represent the set of $n$ dimensional vectors. 
+Throughout this semester, we'll be studying functions of the form $f\colon{\RR}^n\to {\RR}^m$. In particular, we'll be studying special types of functions called linear transformations which can often be represented by matrices.\note{In this discussion, range=codomain; maybe we should use codomain and image, and mention that range could be one or the other, depending on who you talk with}
 
 A \define{vector field} is a function where you input a vector and receive back a vector of the same dimension. 
-\marginpar{A vector field takes vectors of size $n$ to vectors of size $n$, $$f\colon{\mathbb{R}}^n\to{\mathbb{R}}^n.$$}%
-If $\vec x$ is a 2D vector, then a vector field is a function of the form $\vec F\colon{\mathbb{R}}^2\to {\mathbb{R}}^2$ (we put a vector above $\vec F$ because the output is a vector).  
+\marginpar{A vector field takes vectors of size $n$ to vectors of size $n$, $$f\colon{\RR}^n\to{\RR}^n.$$}%
+If $\vec x$ is a 2D vector, then a vector field is a function of the form $\vec F\colon{\RR}^2\to {\RR}^2$ (we put a vector above $\vec F$ because the output is a vector).  
 Any square matrix represents a vector field---if $A$ is a square matrix, then the function $\vec F(\vec x) = A\vec x$ means that the output $\vec y=A\vec x$. Let's look at an example and a graph.
 
 
 \begin{example}
-The matrix $\begin{bmatrix}2&1\\1&2\end{bmatrix}$ gives us the vector field $$\vec F(x,y)=\begin{bmatrix}2&1\\1&2\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}=(2x+y,x+2y).$$ We input the point $(x,y)\in {\mathbb{R}}^2$ and get out the vector $(2x+y,x+2y)\in {\mathbb{R}}^2$.  For example, we compute $\vec F(1,0) = (2(1)+0,(1)+2(0)) = (2,1)$. To visualize this input and output, we place the vector $(2,1)$ (the output) in the plane with its base at the point $(1,0)$ (the input). To visualize the function $\vec F$, we can pick an assortment of input points and at each input point $\vec x$, draw the output vector $\vec F(\vec x)$.  The example below shows how to place the vectors corresponding to the 9 points with $x$ or $y$ coordinate $0, \pm 1$.  
+The matrix $\begin{bmatrix}2&1\\1&2\end{bmatrix}$ gives us the vector field $$\vec F(x,y)=\begin{bmatrix}2&1\\1&2\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}=(2x+y,x+2y).$$ We input the point $(x,y)\in {\RR}^2$ and get out the vector $(2x+y,x+2y)\in {\RR}^2$.  For example, we compute $\vec F(1,0) = (2(1)+0,(1)+2(0)) = (2,1)$. To visualize this input and output, we place the vector $(2,1)$ (the output) in the plane with its base at the point $(1,0)$ (the input). To visualize the function $\vec F$, we can pick an assortment of input points and at each input point $\vec x$, draw the output vector $\vec F(\vec x)$.  The example below shows how to place the vectors corresponding to the 9 points with $x$ or $y$ coordinate $0, \pm 1$.  
 
 \begin{center}
 \begin{tikzpicture}
@@ -251,7 +251,7 @@ Partial derivatives are found by holding all other variables constant, and then 
 \end{example}
 
 \subsection{The Derivative}
-The derivative of a function $\vec f\colon\mathbb{R}^n\to\mathbb{R}^m$
+The derivative of a function $\vec f\colon\RR^n\to\RR^m$
 is an $m\times n$ matrix written $D\vec f(\vec x)$, where the columns
 of the matrix are the partial derivatives of the function with respect
 to an input variable (the first column is the partial derivative with
@@ -285,7 +285,7 @@ Function&Derivative\\ \hline
 \end{table}
 
 \subsection{The Second Derivative Test}
-We're now ready to extend the second derivative test to all dimensions. We'll focus on only functions of the form $f\colon{\mathbb{R}}^2\to{\mathbb{R}}$, as this gives you the tools needed to study optimization in all dimensions. Because the output is one-dimensional, it makes sense to talk about a largest or smallest number.
+We're now ready to extend the second derivative test to all dimensions. We'll focus on only functions of the form $f\colon{\RR}^2\to{\RR}$, as this gives you the tools needed to study optimization in all dimensions. Because the output is one-dimensional, it makes sense to talk about a largest or smallest number.
 
 The first derivative test does not work when the domain has more than one dimension because there are infinitely many ways to approach a point---you can't just look at the left and right side to decide if you are at an optimum value. 
 However, at a local extreme value the derivative is still zero, which results in solving a system of equations to find any critical points. 
@@ -1058,109 +1058,118 @@ $$ which means that our line is (after simplifying fractions) $y=\frac{37}{6}-\f
 Least squares regression is not limited to just finding a best fit line.  We can use the same ideas to find a best fitting parabola through many points.  To do this, we would start by assuming the data fit a parabola $y=a_0+a_1x+a_2x^2$, plug in the $x$ and $y$ values to obtain a linear system with 3 unknowns, write the system in matrix form (the columns of the matrix would involve ones, $x$ values, and $x^2$ values), multiply both sides by the transpose to obtain a system that was not overdetermined (3 by 3), and then solve the system.  Most spreadsheet programs have this feature built in for any size polynomial you choose.
 
 
-
-
-
-\section{Vector Spaces: Why Regression Works}
+\section{Vector Spaces}
 \label{sec:vector-spaces-why}
 
-One of the main goals of this section is to introduce the ideas and vocabulary needed to understand why the transpose of $A$ helps us solve the least squares regression problem. We will define the column space and null space of a matrix, and then discuss projecting vectors onto the column space by using the nullspace of the transpose.  Along the way, we will obtain geometric interpretations of these ideas in preparation for a more general approach to vectors which is coming in the next chapter.
+To understand why we need to use the transpose of $A$ when doing regression, we need to introduce some of the most fundamental, powerful, and far-reaching ideas in linear algebra: vector spaces.  We will study these ideas more deeply throughout the semester.
+ 
+In this section, we will define vector spaces and look at particular examples like the column space and null space of a matrix.  We will find that the solution to the linear regression problem is very naturally phrased using this language.  Along the way, we will obtain geometric interpretations of these ideas in preparation for a more general approach to vectors which is coming in the next chapter.
 
-\subsection{The Vector Space ${\mathbb{R}}^n$}
+\subsection{The Vector Space ${\RR}^n$}
 
-We have already been using 2D and 3D vectors quite a bit prior to now.  The symbol $\mathbb{R}^n$ represents the set of all vectors in $n$-dimensional space.  What does the word dimension really mean? We'll answer that now by looking at an example.
+We have already been using 2D and 3D vectors quite a bit prior to now.  The symbol $\RR^n$ represents the set of all vectors in $n$-dimensional space.  What does the word dimension really mean? We'll answer that now by looking at an example.
 
 \begin{example}
-Recall that the span of a set of vectors is all possible linear combinations of those vectors.  So the span of the vector $(2,1)$ in $\mathbb{R}^2$ is all vectors of the form $c(2,1)=(2c,c)$, which represents a line through the origin with slope $1/2$. The vector $(0,1)$ is not on the line $(2,1)$, hence the span of $\{(2,1),(0,1)\}$ is larger than the line, it is the entire plane. Every other vector in the plane is a linear combination of these two vectors. You can see this quickly using row reduction as the rref of 
-$
+Recall that the span of a set of vectors is the set of all possible linear combinations of those vectors.  So the span of the vector $(2,1)$ in $\RR^2$ is the set of all vectors of the form $c(2,1)=(2c,c)$, which represents a line through the origin with slope $1/2$.  Since $(0,1)$ is not a multiple of $(2,1)$, the vector $(0,1)$ is not in the span of $(2,1)$ (i.e., $(0,1)$ does not lie on the line $y=\frac{1}{2}x$).  In other words, the set $\{(2,1),(0,1)\}$ is linearly independent (neither vector is in the span of the other).  The span of $\{(2,1),(0,1)\}$ is larger than the line---it is the entire plane. Every other vector in the plane is a linear combination of these two vectors since they form a linearly independent set. You can check this by trying to find the linear combination to equal an arbitrary vector $(x,y)$:
+\begin{equation*}
 \begin{bmatrix}
 \cl{2\\1}&
-\cl{0\\1}&
-\cl{a\\b}
+\cl{0\\1}
 \end{bmatrix}
-$
-is 
-$
-\begin{bmatrix}
+\begin{bmatrix}c_1\\c_2\end{bmatrix}
+=\begin{bmatrix}x\\y\end{bmatrix}
+\xrightarrow{\text{augmented matrix}}
+\begin{bmatrix}[cc|c]
+\cl{2\\1}&
+\cl{0\\1}&
+\cl{x\\y}
+\end{bmatrix}
+\xrightarrow{\rref}
+\begin{bmatrix}[cc|c]
 \cl{1\\0}&
 \cl{0\\1}&
-\cl{c\\d}
-\end{bmatrix}
-$.
-Notice that since the first two columns are always pivot columns, the third can never be a pivot column (since there is no third row, there can't be more than 2 pivots). Because we were able to obtain the entire plane as the span of two linearly independent vectors, we say the dimension of $\mathbb{R}^2$ is 2. Notice that if I choose any two linearly independent vectors, then the first two columns will be the only pivot columns and every other vector in the plan will be a linear combination of these 2 vectors. For this reason we call the set of vectors $\{(2,1),(0,1)\}$ as basis for $\mathbb{R}^2$.
+\cl{\frac{x}{2}\\{y-\frac{x}{2}}}
+\end{bmatrix}.
+\end{equation*}
+So, for example, the vector $(x,y)=(3,5)$ is the linear combination $\frac{x}{2}(2,1)+(y-\frac{x}{2})(0,1)=\frac{3}{2}(2,1)+(5-\frac{3}{2})(0,1)$.
+Notice that since the first two columns are always pivot columns (since the two vectors form a linearly independent set), the system will always have a single solution. We call the scalars in the linear combination ($\frac{x}{2}$ and $y-\frac{x}{2}$) the \define{coordinates} of the vector with respect to the basis $[(2,1),\, (1,2)]$. For example, the coordinates of $(3,5)$ with respect to the basis $[(2,1),\, (1,2)]$ are $\frac{3}{2}$ and $5-\frac{3}{2}$.  A basis gives us a way of writing any vector by writing the coordinates.
+
+Here is the crucial point about dimension: because we were able to obtain the entire plane as the span of \emph{two} linearly independent vectors, we say the dimension of $\RR^2$ is \emph{two}. 
+
+Notice that the dimension does not depend on the particular two vectors I chose.  The only requirement was that the two vectors form a linearly independent set.  Then the first two columns in the above rref will always be pivot columns, so I will always be able to write any vector in the plane as a linear combination of my two linearly independent vectors.  We call a list of two linearly independent vectors (like $[(2,1), (0,1)]$) a \emph{basis} for $\RR^2$.
 \end{example}
 
-\marginpar{The dimension of a vector space is the number of vectors in a basis. } 
-The dimension of a vector space is the number of linearly independent vectors needed to span the vector space.  A basis for a vector space is a set of (1) linearly independent vectors that (2) span the vector space.  If a vector space has dimension $n$, then any $n$ linearly independent vectors will be a basis for the vector space. 
+\marginpar{The dimension of a vector space is the number of vectors in a basis. }%
+The \define{dimension} of a vector space (like $\RR^2$) is the number of linearly independent vectors needed to span the vector space.  A basis for a vector space is a list of vectors that are:
+\begin{itemize}
+\item linearly independent and
+\item span the vector space.
+\end{itemize}
+ If a vector space has dimension $n$, then any $n$ linearly independent vectors will be a basis for the vector space.
 
-For $\mathbb{R}^n$, the \marginpar{standard basis vectors}standard basis vectors are $$\vec e_1=(1,0,0,\ldots,0), \vec e_2=(0,1,0,\ldots,0),\ldots,\vec e_n=(0,0,0,\ldots,1).$$ 
-Every other vector in $\mathbb{R}^n$ is a linear combination of these vectors.  
-When we write a vector such as $(2,3,4)$, we say that the numbers 2, 3, and 4 are the coordinates of the vector relative to the standard basis.  
-This is not the only basis you can choose for $\mathbb{R}^n$, rather it is the standard basis that we assume we are using unless you have specified otherwise.
-As the semester progresses, we will find that changing the basis can simplify various problems, and we'll often use eigenvectors as some of our basis vectors.    
+For $\RR^n$, the \definemargin{standard basis vectors} are 
+$$\vec e_1=(1,0,0,\ldots,0),\,
+\vec e_2=(0,1,0,\ldots,0),\,\ldots,\,
+\vec e_n=(0,0,0,\ldots,1).$$ 
+Every other vector in $\RR^n$ is a linear combination of these standard basis vectors.  If not specified otherwise, we assume that any coordinates are with respect to this standard basis.  We will find that using a different basis for our coordinates can simplify various problems.  For example, we'll often use eigenvectors as some of our basis vectors.
 
+ 
 
+\subsection{Vector Subspaces of ${\RR}^n$}
 
-  
+The span of the vector (1,2,0) can be represented as a line through the origin in 3D.  The span of the vectors $\{(1,2,0), (0,0,1)\}$ represents a plane through the origin.  These spans are examples of vector spaces.  
 
-\subsection{Vector Subspaces of ${\mathbb{R}}^n$}
-
-The span of the vector (1,2,0) can be represented as a line through the origin in 3D.  The span of the vectors $\{(1,2,0), (0,0,1)\}$ represents a plane through the origin. The span of a collection of vectors gives you all possible vectors that you can obtain by stretching and adding vectors. Hence, any linear combination of vectors in the span will still be in the span.  For this reason, we say that the span of a set of vectors is closed under addition and scalar multiplication.  Any time you sum or stretch vectors, you'll remain in the span.  This provides us an example of a vector subspace. Vectors subspaces geometrically represent line through the origin, planes through the origin, and higher dimensional hyperplanes through the origin.  The reason they all pass through the origin is that in order to be closed under scalar multiplication, the vector $0\vec v=\vec 0$ must be in the space.
-
-A set of vectors (we'll denote this set by $V$) from $\mathbb{R}^n$ is called a vector subspace of $\mathbb{R}^n$ if the following occurs:
+A set of vectors $V$ from $\RR^n$ is called a \definemargin{vector subspace} of $\RR^n$ if any linear combination of vectors in $V$ is also in $V$.  We can break this definition down into two parts.  The set of vectors $V$ is a vector subspace of $\RR^n$ if:
 \begin{enumerate}
-	\item The sum of any two vectors in the set is still in the set. Notationally we write for any $\vec u,\vec v\in V$ the sum $\vec u+\vec v\in V$. 
-	\item Any scalar multiple of a vector is still in the set. Notationally we write for any $\vec v\in V$ and $c\in \mathbb{R}$, the vector $c\vec v\in V$. 
+	\item The sum of any two vectors in the set is still in the set. In notation, we write for any $\vec u,\vec v\in V$ the sum $\vec u+\vec v\in V$.  We say ``$V$ is closed under addition.''
+	\item Any scalar multiple of a vector is still in the set. In notation, we write for any $\vec v\in V$ and $c\in \RR$, the vector $c\vec v\in V$.  We say ``$V$ is closed under scalar multiplication.''
 \end{enumerate}
-We can simplify the above by stating ``A set of vectors is a vector subspace if it is closed under addition and scalar multiplication.'' 
 
-Because you can sum and stretch any vectors, this means that a set of vectors is a vector subspace if any linear combination of vectors in the set is still in the set.  So a vector subspace is a set of vectors that is closed under linear combinations.
-Because of this, the span of a set of vectors is always a vector subspace. The simplest way to show that a set of vectors is a subspace is to show that it is a span of some vectors.
+The span of a set of vectors is always a vector subspace. The simplest way to show that a set of vectors is a subspace is to show that it is a span of some vectors.
 
-You can build vector subspaces from a basis, just like we built $\mathbb{R}^n$ from the standard basis vectors. A basis of vectors for a subspace $V$ is a set of linearly independent vectors whose span is the set $V$.  The dimension of a subspace is the number of vectors in a basis. Lines through the origin are 1 dimensional subspaces, planes through the origin are 2 dimensional subspaces, and so on. Let's look at some examples.
+A basis of vectors for a subspace $V$ is a set of linearly independent vectors whose span is the set $V$.  The dimension of a subspace is the number of vectors in a basis. Lines through the origin are one-dimensional subspaces, planes through the origin are two-dimensional subspaces, and so on.
 
-\begin{example}Here are three examples of vector subspaces:
+\begin{example}Here are three examples of vector subspaces.
 \begin{enumerate}
 	\item 
-The set of vectors $V=\{(2c,3c) |$ where $c$ is any real number$\}$ is a vector subspace of $\mathbb{R}^2$. It represents a line through the origin.  A basis for $V$ is $\{(2,3)\}$, as every other vector is a scalar multiple of this one, hence $V$ is 1 dimensional.
+The set of vectors $V=\{(2c,3c)\st \text{where $c$ is any real number}\}$ is a vector subspace of $\RR^2$. It represents a line through the origin.  A basis for $V$ is $\{(2,3)\}$, since every vector in the subspace is a scalar multiple of $(2,3)$.  Since there is one vector in the basis, $V$ is one-dimensional.
   \item
-The set of vectors $V=\{(2c,c+d,4d)|$ where $c,d\in \mathbb{R}\}$ is a 2 dimensional vector subspace of $\mathbb{R}^3$. It represents a plane through the origin. We can rewrite any vector in $V$ in the form $c(2,1,0)+d(0,1,4)$, which means that a basis for $V$ is $\{(2,1,0),(0,1,4)\}$ as these two vectors are linearly independent.  
+The set of vectors $V=\{(2c,c+d,4d)\st c,d\in \RR\}$ is a two-dimensional vector subspace of $\RR^3$. It represents a plane through the origin. We can rewrite any vector in $V$ in the form $c(2,1,0)+d(0,1,4)$, so $V=\vspan\{(2,1,0),\, (0,1,4)\}$.  Since these two vectors are linearly independent, the list $[(2,1,0)\, (0,1,4)]$ is a basis for the subspace, and the space is two-dimensional.
 \item
-The set of vectors $V=\{(c+2e,2c+4e,d-2e)|$ where $c,d,e\in \mathbb{R}\}$ is a 2 dimensional vector subspace of $\mathbb{R}^3$. At first glance you might think this is 3 dimensional because you can choose 3 different numbers.  However, we can write any vector in the form $c(1,2,0)+d(0,0,1)+e(2,4,-2)$, but the three vectors are linearly dependent as the reduced row echelon form of 
-$
+The set of vectors $V=\{(c+2e,2c+4e,d-2e)\st c,d,e\in \RR\}$ is a two-dimensional vector subspace of $\RR^3$. You might first think this subspace is three-dimensional because you can choose 3 different numbers ($c$, $d$, and $e$) and we can write any vector in the form $c(1,2,0)+d(0,0,1)+e(2,4,-2)$.  However, the three vectors are linearly dependent.  We can see this from the rref:
+\begin{equation*}
 \begin{bmatrix}
 \cl{1\\2\\0}&
 \cl{0\\0\\1}&
 \cl{2\\4\\-2}
 \end{bmatrix}
-$
-is $
+\xrightarrow{\rref}
 \begin{bmatrix}
 \cl{1\\0\\0}&
 \cl{0\\1\\0}&
 \cl{2\\-2\\0}
-\end{bmatrix}
-$
-Because the third column does not contain a pivot, it depends on the first two columns.  Hence a basis for $V$ is simply $\{(1,2,0),(0,0,1) \}$ which is why the space is 2 dimensional. 
+\end{bmatrix}.
+\end{equation*}
+Because the third column is not a pivot column, the third vector depends on the first two vectors.  Since the first two columns are pivot columns, the first two vectors form a linearly independent set, so a basis for $V$ is simply $[(1,2,0),(0,0,1)]$.  That is why the space is actually two-dimensional (it is a plane through the origin).
 \end{enumerate}
 \end{example}
 \begin{example}
-Here are three examples of a set that is not a vector subspace:
+Here are three examples of sets that are \emph{NOT} vector subspaces.
 \begin{enumerate}
-	\item The set of vectors on the positive $x$ axis ($V=\{(a,0)|a\geq0\}$) is not a vector subspace because you cannot multiply any of them by $-1$. To be a vector subspace, once you are allowed to move in one direction, you have to be able to also move in the opposite direction.
-	\item The set of vectors in 2D whose magnitude is less than or equal to one (so any vector ending inside the unit circle) is not a vector subspace.  One reason why is that you can't multiply $(1/2,0)$ by 4, as $(2,0)$ is outside the circle.  To be a vector subspace, once you are allowed to move in one direction, you should be able to move in that direction forever.
-	\item The vectors in 2D which are on the $x$ or $y$ axis is not a vector subspace. The sum $(1,0)+(0,1) = (1,1)$ is not on either axis.  To be a vector subspace, you must be allowed to add any two vectors and still obtain a vector in the space.
+	\item The set of vectors on the positive $x$-axis, $V=\{(a,0)\st a\geq0\}$, is not a vector subspace because if you multiply vector in $V$ by $-1$, the result is not in $V$.
+	\item The set of vectors in $\RR^2$ whose magnitude is less than one (i.e., any vector from the origin to a point inside the unit circle) is not a vector subspace.  One reason why is that $(1/2,0)$ is in the set, but $4(1/2,0)=(2,0)$ is outside the circle and not in the set.  
+	\item The set of vectors in $\RR^2$ which are on either the $x$ or $y$-axis is not a vector subspace. For example, both $(1,0)$ and $(0,1)$ are in the set, but the sum $(1,0)+(0,1) = (1,1)$ is not on either axis, so is not in set.
 \end{enumerate}
 \end{example}
 
-Now let's look at some commonly studied vector subspaces.
+Now let's look at some of the most common vector subspaces that come up in practice.
 
 \subsubsection{The column and row space of a matrix}
-Remember that a matrix can be viewed as a collection of column vectors, or as a collect of row vectors.  The span of the columns of a matrix is called the column space.  The span of the rows of the matrix is called the row space.  The reduced row echelon form of a matrix tells us how to find a basis for column space, and how to find a basis for the row space.  
-Here is an example.
+Remember that a matrix can be viewed as a collection of column vectors or as a collection of row vectors.  The span of the columns of a matrix is called the \definemargin{column space} of the matrix, denoted $\col(A)$.  The span of the rows of the matrix is called the \definemargin{row space} of the matrix, denoted $\row(A)$.  The reduced row echelon form of a matrix tells us how to find a basis for column space and how to find a basis for the row space.  
+
 
 \begin{example}\label{colspace1ex}
-Let's find a basis for the column space and row space of 
+Let's find a basis for the column space of
 $$A=\begin{bmatrix}
 \cl{1\\2\\0}
 &\cl{2\\0\\3}
@@ -1173,15 +1182,15 @@ $$A=\begin{bmatrix}
 &\cl{-1\\2\\0}
 \end{bmatrix}.
 $$
-Every vector in the column space is already a linear combination of the three column vectors.  If these vectors are linearly independent, then they would form a basis for the column space.  However, from the reduced row echelon form, we note that the third column is a linear combination of the first two. A basis for the column space is  $\{(1,2,0),(2,0,3)\}$, the set of pivot columns. 
-The coordinates of $(3,-2,6)$ relative to this basis are -1 and 2, which is equivalent to writing
+Of course, every vector in the column space is already a linear combination of the three column vectors (by definition, since the column space is the span of the columns).  If the columns are linearly independent, then they would form a basis for the column space.  However, from the reduced row echelon form, we see that the third column is a linear combination of the first two. A basis for the column space is the list $[(1,2,0),\,(2,0,3)]$ (i.e., the pivot columns). 
+The coordinates of $(3,-2,6)$ relative to this basis are $-1$ and $2$.  In other words, we can write $(3,-2,6)$ as the linear combination 
  $$\begin{bmatrix}3\\-2\\6\end{bmatrix}
 =-1\begin{bmatrix}1\\2\\0\end{bmatrix}+2\begin{bmatrix}2\\0\\3\end{bmatrix} 
 =\begin{bmatrix}\cl{1\\2\\0}&\cl{2\\0\\3}\end{bmatrix}\begin{bmatrix}-1\\2\end{bmatrix} .$$ 
 \marginpar{
 \includegraphics[width=\marginparwidth]{02-Applications/support/colspace1}
 
-Each column of a matrix is a linear combination of the pivot columns.  The coordinates of each vector is found in the nonzero rows of rref.
+Each column of a matrix is a linear combination of the pivot columns.  The coordinates of each column vector are the numbers in the corresponding column of the rref (excluding zero rows).
 }
 We can write all three columns of the matrix in terms of the basis vectors as 
 \begin{align*}
@@ -1208,9 +1217,25 @@ A=\begin{bmatrix}
 &\cl{-1\\2}
 \end{bmatrix}.
 \end{align*}
-This means that we can write any matrix as the product of its pivot columns and the nonzero rows of its rref. I like to write this as $A=CR$, where $C$ is the matrix obtained from $A$ which only contains the pivot columns of $A$ and $R$ is the matrix whose rows are the nonzero rows of A's rref.
+\end{example}
 
-How can we use rref to obtain a basis for the row space. The quick answer: use the nonzero rows of rref. Using $A=CR$ as above, and remembering that multiplication can be thought of as linear combinations of rows, we can write  
+We see from the example that we can write any matrix as the product of its pivot columns and the nonzero rows of its rref. We can factor any matrix $A$ as $A=CR$, where $C$ is the matrix of pivot columns of $A$ and $R$ is the matrix whose rows are the nonzero rows from $\rref(A)$.
+
+\begin{example}\label{ex:row-space}
+Let's find a basis for the row space of the same matrix, 
+$$A=\begin{bmatrix}
+\cl{1\\2\\0}
+&\cl{2\\0\\3}
+&\cl{3\\-2\\6}
+\end{bmatrix}
+\xrightarrow{rref}
+\begin{bmatrix}
+\cl{1\\0\\0}
+&\cl{0\\1\\0}
+&\cl{-1\\2\\0}
+\end{bmatrix}.
+$$
+We will see that a basis is the nonzero rows of the rref. Using $A=CR$ as above, and remembering that multiplication can be thought of as linear combinations of rows, we can write  
 \begin{align*}
 A
 =
@@ -1237,39 +1262,35 @@ A
 \end{bmatrix}
 .
 \end{align*}
+
+This shows us that every row of the original matrix is a linear combination of the nonzero rows of rref. The row space is the span of the rows, and since the rows of $A$ depend on the nonzero rows of rref, we can span the row space using these nonzero rows. Since the nonzero rows of the rref are linearly independent (placing these rows into columns and reducing won't change the pivots), we know that the nonzero rows of rref form a basis for the row space.  
 \marginpar{
 \includegraphics[width=\marginparwidth]{02-Applications/support/rowspace2}
 
 Each row is a linear combination of the nonzero rows of rref.  The coordinates of each row are found in the pivot columns.
-}
-This shows us that every row of the original matrix is a linear combination of the nonzero rows of rref. The row space is the span of the rows, and since the rows of $A$ depend on the nonzero rows of rref, we can span the row space using these nonzero rows. Since the nonzero rows of rref are linearly independent (placing these rows into columns and reducing won't change the pivots), we know that the nonzero rows of rref form a basis for the row space.  
-\end{example}
+}\end{example}
 
+Since the number of pivots (the rank of the matrix) equals the number of nonzero rows in the rref, we can see that the size of the basis for the column space and the size of the basis for the row space are equal.  Therefore the dimensions of the column space and the row space are equal (and are equal to the rank of the matrix).
 
-
-Let's summarize what we learned in the previous example.
+Let's summarize what we learned in the previous examples.
 \begin{enumerate}
 	\item The pivot columns are a basis for the column space. 
-	\item The nonzero rows of rref are a basis for the row space.
-	\item Every matrix can be decomposed as $A=CR$, where $C$ is the pivot columns, and $R$ is the nonzero rows of rref.
+	\item The nonzero rows of the rref are a basis for the row space.
+	\item Every matrix can be decomposed as $A=CR$, where $C$ is a matrix of the pivot columns and $R$ is the nonzero rows of the rref.
 	\item The dimension of the column space equals the dimension of the row space, which equals the rank of the matrix.
 \end{enumerate}
-The last observation follows immediately from the fact that each leading 1 provides us another nonzero row from rref and a pivot column from our matrix.
 
-
-In example \ref{colspace1ex}, we reduced the matrix $A$ to its rref and used that to obtain bases for both the row and column space. Bases are not unique. The transpose of $A$ interchanges the rows and columns, so we could repeat the exact same problem from above using the transpose $A^T$ instead. In this case, the row space of $A^T$ is the same as the column space of $A$, and the column space of $A^T$ is the same as the row space of $A$.
-
-
-
+The transpose of $A$ interchanges the rows and columns, so the row space of $A^T$ is the same as the column space of $A$, and the column space of $A^T$ is the same as the row space of $A$.
+ 
 \begin{example}\label{colspace2ex}
-Let's use the transpose to find a different basis for the column space and row space of the same matrix from the previous exercise:  
+Let's use the transpose to find different bases for the column space and row space of the same matrix from the previous examples:  
 $$
 A=
 \begin{bmatrix}
 \cl{1\\2\\0}
 &\cl{2\\0\\3}
 &\cl{3\\-2\\6}
-\end{bmatrix},
+\end{bmatrix},\quad
 A^T
 =
 \begin{bmatrix}
@@ -1284,20 +1305,20 @@ A^T
  0 & 0 & 0
 \end{bmatrix}.
 $$
-\marginpar{Recall that the coordinates of a vector relative to a basis are the scalars you need to recreate the vector using a linear combination of the basis vectors. Hence the coordinates of $(0,3,6)$ relative to $\{(1,2,3), (2,0,-2)\}$ are $(3/2,-3/4)$ since 
+\marginpar{Recall that the coordinates of a vector relative to a basis are the scalars you need to recreate the vector using a linear combination of the basis vectors. Hence the coordinates of $(0,3,6)$ relative to $[(1,2,3), (2,0,-2)]$ are $(3/2,-3/4)$ since 
 $$\begin{bmatrix}0\\3\\6\end{bmatrix}
 =
 \frac{3}{2}\begin{bmatrix}1\\2\\3\end{bmatrix}
 -
 \frac{3}{4}\begin{bmatrix}2\\0\\-2\end{bmatrix}
-$$.
-}The pivot columns of $A^T$, namely $\{(1,2,3), (2,0,-2)\}$, are a basis for the row space of $A$. 
-The coordinates of the third row of $A$, $(0,3,6)$, relative to this basis are $(3/2,-3/4)$. 
+$$.}%
+The list of pivot columns of $A^T$, $[(1,2,3),\, (2,0,-2)]$, is a basis for the column space of $A^T$ and the row space of $A$.
+The coordinates of the third column of $A^T$ (the third row of $A$), $(0,3,6)$, relative to this basis are $(3/2,-3/4)$. 
 
-The nonzero rows of the rref of $A^T$, namely $(1,0,3/2), (0,1,-3/4))$ are a basis for the column space of $A$.  Every column of $A$ can be written as a linear combination of these two vectors. The coordinates of $(1,2,0)$ relative to this basis are $(1,2)$. The coordinates of $(2,0,3)$ are $(2,0)$. The coordinates of $(3,-2,6)$ are $(3,-2)$.  
+The nonzero rows of the rref of $A^T$, namely $[(1,0,3/2),\, (0,1,-3/4)]$ are a basis for the row space of $A^T$ and the column space of $A$.  Every column of $A$ can be written as a linear combination of these two vectors. The coordinates of $(1,2,0)$ relative to this basis are $(1,2)$. The coordinates of $(2,0,3)$ are $(2,0)$. The coordinates of $(3,-2,6)$ are $(3,-2)$.
 \end{example}
 
-Based on the last 2 examples, we have two different ways to obtain a basis for the column space and row space of a matrix. Table \ref{column and row space table} provides graphs of all 4 bases. You can either reduce $A$ or $A^T$, and use the pivot columns and/or nonzero rows of rref to obtain a basis. Which basis is preferred?  The short answer is ``both.'' Each basis has a different use.  Computer are often programmed to give the basis using the nonzero rows of rref($A$) for the row space, and the nonzero rows of rref($A^T$) for the column space. We'll revisit this topic more later.
+In the last few examples, we have two different ways to obtain a basis for the column space and row space of a matrix. Table~\ref{column and row space table} provides graphs of all 4 bases. You can either reduce $A$ or $A^T$, and use the pivot columns and/or nonzero rows of rref to obtain a basis. Which basis is preferred?  The short answer is ``both.''  Each basis has a different use.  We'll revisit this topic more later.
 
 \begin{table}
 
@@ -1340,28 +1361,32 @@ A^T
 $
 }
 \\ \\
-\hline\hline \multicolumn{3}{c}{Column Space Bases}\\
+\hline\hline \multicolumn{3}{c}{Bases for the column space of $A$, $\col(A)$}\\
 \hline Using Pivot Columns of $A$ & Using nonzero rows of rref$(A^T)$ & Both\\ \\
 \includegraphics[height=2in]{02-Applications/support/colspace1}
 &\includegraphics[height=2in]{02-Applications/support/colspace2}
 &\includegraphics[height=2in]{02-Applications/support/colspace3}
 \\ \\
-\hline\hline \multicolumn{3}{c}{Row Space Bases}\\
+\hline\hline \multicolumn{3}{c}{Bases for the row space of $A$, $\row(A)$}\\
 \hline Using Pivot Columns of $A^T$ & Using nonzero rows of rref$(A)$ & Both\\ \\
 \includegraphics[height=2in]{02-Applications/support/rowspace1}
 &\includegraphics[height=2in]{02-Applications/support/rowspace2}
 &\includegraphics[height=2in]{02-Applications/support/rowspace3}
 \end{tabular}
 
-\caption{\label{column and row space table} In examples \ref{colspace1ex} and \ref{colspace2ex}, we found two different bases for the column and row space. In this table, I have place graphs to help us visualize the differences between these bases.  In all the graphs, the blue vectors represent columns or rows in the matrix.  The top row of graphs show us visualizations of column space where (1) we use the pivot columns to create our basis, (2) we use the nonzero rows of the rref of $A^T$, and (3) both bases are drawn on top of each other.
+\caption{\label{column and row space table} In examples \ref{colspace1ex}, \ref{ex:row-space}, and \ref{colspace2ex}, we found two different bases for the column and row space. This table shows graphs to help us visualize the differences between these bases.  In all the graphs, the blue vectors represent columns or rows in the matrix and the red vectors represent the vectors in the basis.  
+The top row of graphs shows us visualizations of column space where (1) we use the pivot columns to create our basis, (2) we use the nonzero rows of the rref of $A^T$, and (3) both bases are drawn on top of each other.
 The bottom row of graphs repeats this visualization for the row space.}
 \end{table}
 
-
 \subsubsection{The null space of a matrix}
-The column and row spaces provide two examples of vector subspace. These two spaces are defined as the span of a set of vectors, hence are automatically closed under addition and scalar multiplication. We'll now explore another set of vectors, called the null space of a matrix, where it is not immediately obvious that the set is closed under addition and scalar multiplication.
+The column and row spaces provide two examples of vector subspaces. These two spaces are defined as the span of a set of vectors, hence are automatically closed under addition and scalar multiplication. We'll now explore another set of vectors, called the null space of a matrix, where it is not immediately obvious that the set is closed under addition and scalar multiplication.
 
-The null space of a matrix $A$ is the set of vectors $\vec x$ that satisfy the equation $A\vec x=\vec 0$. Notice that the zero vector is always in this set. If there are no other vectors in this set, then we say that null space is the trivial vector space and has dimension zero.  Let's now show that this set is closed under addition and scalar multiplication.  If both $\vec x$ and $\vec y$ are in the null space, then the satisfy $A\vec x=\vec 0$ and $A\vec y=\vec 0$. The sum $\vec x+\vec y$ satisfies 
+The \define{null space}
+\marginpar{null space=$\nullspace(A)$=$\{\vec x \st A\vec x = \vec 0\}$}%
+of a matrix $A$ is the set of vectors $\vec x$ that satisfy the equation $A\vec x=\vec 0$. Notice that the zero vector is always in this set. If there are no other vectors in this set, then we say that null space is the trivial vector space and has dimension zero.  
+
+The null space is closed under addition and scalar multiplication.  If both $\vec x$ and $\vec y$ are in the null space, then $A\vec x=\vec 0$ and $A\vec y=\vec 0$. The sum $\vec x+\vec y$ satisfies 
 \begin{align*}
 A(\vec x+\vec y)
 &= A\vec x+A\vec y &\text{(distribute)}\\
@@ -1371,98 +1396,169 @@ This shows that $\vec x+\vec y$ is also in the null space.
 To show that the null space is closed under scalar multiplication, we observe that if $\vec x$ is in the null space and $c$ is any real number, then $$A(c\vec x) = cA\vec x = c\vec 0 = \vec 0,$$
 which shows that the null space is closed under scalar multiplication.
 
-So what good is the null space? Finding eigenvectors requires that we solve $(A-\lambda I)\vec x = 0$, so eigenvectors come from the null space of $A-\lambda I$.  Any time we solve an equation of the form $A\vec x = \vec 0$, we will always obtain a vector subspace.  This means we can find a basis for the space, and compute its dimension.  Time for an example.
+We have already seen the null space. Finding eigenvectors requires that we solve $(A-\lambda I)\vec x = 0$, so eigenvectors come from the null space of $A-\lambda I$.  When we compute the null space of $A-\lambda I$, we call it the \define{eigenspace} of $A$ for eigenvalue $\lambda$.
 
 \begin{example}
 Let's redo example \ref{eigenvalueexample3} related to eigenvectors, but this time use the vocabulary of null spaces.  
 The matrix 
 $A=\begin{bmatrix}2&1&4\\ 1&2&4\\ 0&0&1\end{bmatrix}$ has eigenvalues $1,1,3$. 
-When $\lambda=1$, we compute $A-\lambda I =\begin{bmatrix}1&1&4\\ 1&1&4\\ 0&0&0\end{bmatrix} $. To find the null space, we solve $(A-\lambda I )\vec x=0$. Row reduction (after adding a column of zeros) gives us the rref $\begin{bmatrix}[ccc|c]1&1&4&0\\ 0&0&0&0\\ 0&0&0&0\end{bmatrix}$, which has two free variables. The solution is $\begin{bmatrix} x_1\\x_2\\ x_3\end{bmatrix} = x_2\begin{bmatrix} -1\\1\\0\end{bmatrix}+x_3\begin{bmatrix} -4\\0\\1\end{bmatrix} $. The null space is this entire solution set (called the eigenspace corresponding to $\lambda = 1$), and is a vector subspace of dimension 2. A basis for the null space is $\{(-1,1,0),(-4,0,1)\}$.  
-The eigenvectors are the nonzero vectors in the null space.  A similar computation for $\lambda = 3$ shows the eigenspace is a 1 dimensional vector space with basis $\{(1,1,0)\}$. Example \ref{eigenvalueexample3} has all the details.
-
+When $\lambda=1$, we compute $A-\lambda I =\begin{bmatrix}1&1&4\\ 1&1&4\\ 0&0&0\end{bmatrix} $. To find the null space, we solve $(A-\lambda I )\vec x=0$. Row reduction (after augmenting the matrix) gives us the rref $\begin{bmatrix}[ccc|c]1&1&4&0\\ 0&0&0&0\\ 0&0&0&0\end{bmatrix}$, which shows we have two free variables. The solution is $\begin{bmatrix} x_1\\x_2\\ x_3\end{bmatrix} = x_2\begin{bmatrix} -1\\1\\0\end{bmatrix}+x_3\begin{bmatrix} -4\\0\\1\end{bmatrix} $. The null space is this entire solution set (called the eigenspace corresponding to $\lambda = 1$), and is a vector subspace of dimension 2. A basis for the null space is $[(-1,1,0),\,(-4,0,1)]$.
+Every nonzero vector in this null space is an eigenvector of $A$ with eigenvalue 1.  A similar computation (computing the null space for $A-3I$) shows the eigenspace for $\lambda = 3$ is a one-dimensional vector space with basis $[(1,1,0)]$. Example \ref{eigenvalueexample3} has all the details.
 \end{example}
 
 
 
 \subsection{Why does regression require the transpose?}
-It's time to end this unit with a brief explanation of why we used the transpose to solve the least square regression problem.  We will use the column space of $A$ and the null space of $A^T$. We'll also focus on a specific example in 3D so we can draw pictures along the way.  In chapter 7 on inner products, we will revisit this idea and develop everything in full generality along with a more powerful vocabulary and theory.  Until then, we'll stick to a visual example.
+We finish this unit with a brief explanation of why we used the transpose to solve the least square regression problem.  We will use the column space of $A$ and the null space of $A^T$. We'll also focus on a specific example in 3D so we can draw pictures.  Later,  we will revisit this idea and develop everything in full generality along with a more powerful vocabulary and theory.  Until then, we'll stick to a visual example.\note{put in a reference to the right chapter}
 
+\marginpar{The two vectors $(1,1,1)$ and $(-2,3,1)$ are orthogonal because their dot product is $-2+3-1=0$.}%
 Before getting started, recall that the dot product of two vectors is 0 if and only if the vectors meet at a 90 degree angle. When this occurs, we say that the vectors are orthogonal.
-The two vectors $(1,1,1)$ and $(-2,3,1)$ are orthogonal because their dot product is $-2+3-1=0$.  How do you find all the vectors that are orthogonal to a set of vectors? The answer is ``Place all the vectors into the columns of $A$, and then find the null space of $A^T$ (the transpose of $A$).'' \marginpar{An orthogonal complement to a vector space $V$ is the set of vectors that are orthogonal to every vector in the space.  The orthogonal complement of the column space of $A$ is the null space of $A^T$.}The resulting vector subspace is called an orthogonal complement. 
-Here's an example.
+How do you find all the vectors that are orthogonal to a set of vectors $V$? The answer is ``Place all the vectors into the columns of $A$, and then find the null space of $A^T$.'' This null space is called the \define{orthogonal complement} of the set $V$. 
+\marginpar{The orthogonal complement to a vector space $V$ is the set of vectors that are orthogonal to every vector in the space.  
+
+The orthogonal complement of the column space of $A$ is the null space of $A^T$.}%
 
 \begin{example}
-Let's find all vectors that are orthogonal to $\vec v = (1,2,-3)$.  We want a vector $\vec u = (u_1,u_2,u_3)$ such that 
+Let's find all vectors that are orthogonal to $\vec v = (1,2,-3)$.  In other words, we want all vectors $\vec u = (u_1,u_2,u_3)$ such that 
 $$
-(1,2,-3)\cdot(u_1,u_2,u_3) 
+0=(1,2,-3)\cdot(u_1,u_2,u_3) 
 =
 \begin{bmatrix}1&2&-3\end{bmatrix}
 \begin{bmatrix}u_1\\u_2\\u_3\end{bmatrix}
-=\vec v^T \vec u.
+=\vec v^T \vec u
 $$
-This is the same as finding the null space of $\begin{bmatrix}1&2&-3\end{bmatrix}$. Since the free variables are $y$ and $z$, we have the solution 
+(where $\vec v^T$ is the row matrix with the single row $\vec v$).  This is the same problem as finding the null space of the matrix $v^T=\begin{bmatrix}1&2&-3\end{bmatrix}$. Since the free variables are $u_2$ and $u_3$, we have the solution 
 $$
 \begin{bmatrix}
-x\\y\\z
+u_1\\u_2\\u_3
 \end{bmatrix}
 =
 \begin{bmatrix}
--2y+3z\\y\\z
+-2u_2+3u_3\\u_2\\u_3
 \end{bmatrix}
-=y
+=u_2
 \begin{bmatrix}
 -2\\1\\0
 \end{bmatrix}
-+z\begin{bmatrix}
++u_3\begin{bmatrix}
 3\\0\\1
 \end{bmatrix}
 .$$
-The set of vectors that are orthogonal to $\vec v$ is a vector space of dimension 2 with basis $\{(-2,1,0),(3,0,1)\}$. This is a plane of vectors.
+The set of vectors that are orthogonal to $\vec v$ is a vector space of dimension 2 with basis $[(-2,1,0),(3,0,1)]$. This is a plane passing through the origin.
 \end{example}
 
 If you are given a set of vectors $\vec v_1,\vec v_2$, how you do find all the vectors that are orthogonal to both?  
-If you let $A = [\vec v_1\ \vec v_2]$, then a vector $\vec x$ is orthogonal to both $\vec v_1$ and $\vec v_2$ if $A^T\vec x=\vec 0$.
-Hence the null space of the transpose of $A$ is the set of vectors that are orthogonal to the columns of $A$.  
-We're now ready for regression.
+If you let $A = [\vec v_1\ \vec v_2]$ (columns of $A$ are the vectors), then a vector $\vec x$ is orthogonal to both $\vec v_1$ and $\vec v_2$ if $A^T\vec x=\vec 0$.
+Hence the null space of the transpose of $A$ is the set of vectors that are orthogonal to the columns of $A$.
+
+We're now ready to understand linear regression.
 
 
 \begin{example}
-Recall example \ref{regression1ex} which asked us to find the line closest to passing through the three points $(0,1)$, $(2,3)$, and $(4,6)$.
-The matrix equation and relevant matrices are
-$$
-A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix},
-\vec b = \begin{bmatrix}1\\3\\6\end{bmatrix}, 
-A^T= \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}, 
-\vec x = \begin{bmatrix}a_0\\a_1\end{bmatrix}  
-= \begin{bmatrix}5/6\\5/4\end{bmatrix} .
-$$
-The solution to this problem was $y=\frac56 +\frac54 x$.  
-One way to rephrase the regression problem is to ask the following question: 
-\begin{quote}
-Is the vector $\vec b=(1,3,6)$ a linear combination of $(1,1,1)$ and $(0,2,4)$, the columns of $A$? Alternatively, is $\vec b$ in the columns space of $A$?
-\end{quote}
-Because there is no solution to $A\vec x = \vec b$, we know the answer to the question above is ``No.''  So now we ask a different question:
-\begin{quote}
-Since $\vec b$ is not in the column space of $A$, what vector $\vec w=A\vec x$ in the column space of $A$ is the closest vector to $\vec b$. 
-\end{quote}
-The vector $\vec w=A\vec x$ is in the plane spanned by the columns of $A$. Because we already know the solution, in this example we can compute the vector $\vec w$ as
-$$
-\vec w = A \vec x = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}\begin{bmatrix}5/6\\5/4\end{bmatrix} = \begin{bmatrix}5/6\\10/3\\35/6  \end{bmatrix},
-$$
-where $5/6$ and $5/4$ are the coordinate of $\vec w$ relative to the pivot columns of $A$ (here we used the pivot columns for our basis). In the picture on the right, the vector $\vec w$ is the vector in the gray plane that starts at the origin and head to the end of the gray plane.  The gray plane was formed by stretching (1,1,1) by $5/6$ and (0,2,4) by $5/4$.  
-\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/regressionpic1}
+Recall example \ref{regression1ex}, in which we found the line closest to passing through the three points $(0,1)$, $(2,4)$, and $(4,5)$.  The first question is, ``Is there a line that passes through all three points?''  If there is a line $y=a_0+a_1x$ that passes through all of the points, then we have a system of equations
+\begin{equation*}
+\begin{matrix}a_0=1\\a_0+2a_1=4\\a_0+4a_1=5\end{matrix}
+\xrightarrow{\text{augmented matrix}}
+\begin{bmatrix}[cc|c]1&0&1\\1&2&4\\1&4&5\end{bmatrix}
+\xrightarrow{\text{matrix eqn}}
+\begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}
+\begin{bmatrix}a_0\\a_1\end{bmatrix}
+=\begin{bmatrix}1\\4\\5\end{bmatrix}.
+\end{equation*}
+Notice that the system can be written in matrix form $A\vec x = \vec b$, where $A$ contains a column of 1's and $x$-values, $\vec x$ is the vector of coefficients $a_i$, and $\vec b$ is a column of $y$-values.  
+\marginpar{Recall that the system $A\vec x=b$ is consistent if $b$ is a linear combination of columns of $A$.}%
+The line $y=a_0+a_1x$ passes through the points if there is a solution to $A\vec x=\vec b$ (i.e., the system of equations is consistent).  This will happen if $(1,4,5)$ is in the column space of $A$.  The question ``Is there a line that passes through all of the points?'' is the equivalent to asking ``Is $\vec b$ in the column space of $A$?''
 
-Because $\vec b$ is not in the column space of $A$, we find the vector $\vec w$ closest to $\vec b$ in the columns space of $A$.  The difference $\vec b-\vec w$ is a vector $\vec n$ that is orthogonal to the column space.}
+However, in this example, $A\vec x=\vec b$ is not consistent since the rref is
+\begin{equation*}
+\begin{bmatrix}[cc|c]1&0&1\\1&2&4\\1&4&5\end{bmatrix}
+\xrightarrow{\rref}
+\begin{bmatrix}[cc|c]1&0&0\\0&1&0\\0&0&1\end{bmatrix}.
+\end{equation*}
+So the answer is ``No, $\vec b$ is not in the column space of $A$.''  Since $\vec b$ is not in the column space of $A$, we ask for the next best thing: ``What vector in the column space of $A$ is closest to $\vec b$?''  In fact, if $\vec b$ is in the column space of $A$, then the answer to the last question is $\vec b$ itself.  So really, the second question is the question we want to answer.  
 
-To be closest to $\vec b$, a vector $\vec n$ with base at $\vec w$ and head at $\vec b$ must meet the plane at a 90 degree angle.  So the vector $\vec n = \vec b-\vec w$ is orthogonal to every column of $A$, hence is in the null space of $A^T$ (so $A^T\vec n=\vec 0$). Solving for $\vec w$ gives us $\vec w = \vec b-\vec n$.  Multiplying both sides on the left by $A^T$ and remembering $A\vec x = \vec w$ gives us the regression equation
-$$A^TA\vec x=A^T(\vec b-\vec n) 
-= A^T\vec b - A^T\vec n 
+The key to linear regression is answering the question
+\begin{quote}
+  What vector $\vec w=A\vec x$ in the column space of $A$ is the closest vector to $\vec b$?
+\end{quote}
+If $\vec b$ is in the column space of $A$, then the answer is $\vec b$, the system of equation is consistent, we can find $a_0$ and $a_1$, and the line passes through all of the points.  If $\vec b$ is not in the column space of $A$, then we have to do more work.
+
+To be closest to $\vec b$, a vector $\vec r$ with base at $\vec w$ and head at $\vec b$ must meet the plane at a 90 degree angle.  So the vector $\vec r = \vec b-\vec w$ is orthogonal to every column of $A$, hence is in the null space of $A^T$ (so $A^T\vec r=\vec 0$). Solving for $\vec w$ gives us $\vec w = \vec b-\vec r$.  Multiplying both sides on the left by $A^T$ and remembering $A\vec x = \vec w$ gives us the regression equation
+$$A^TA\vec x=A^T(\vec b-\vec r) 
+= A^T\vec b - A^T\vec r 
 = A^T\vec b - \vec 0 =
 A^T\vec b.$$
-The vector $\vec x$ is precisely the coordinates of $\vec w$ relative to the columns of $A$. Regression is really a problem about projecting vectors onto vector spaces.  In this example, we have 
+The vector $\vec x$ is precisely the coordinates of $\vec w$ relative to the columns of $A$. Regression is really a problem about projecting vectors onto vector spaces. 
+
+The vector $\vec w=A\vec x$ is in the plane spanned by the columns of $A$. Because we already know the solution, in this example we can compute the vector $\vec w$ as
+$$
+\vec w = A \vec x = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}\begin{bmatrix}4/3\\1\end{bmatrix} = \begin{bmatrix}4/3\\10/3\\16/3  \end{bmatrix},
+$$
+where $4/3$ and $1$ are the coordinate of $\vec w$ relative to the pivot columns of $A$ (here we used the pivot columns for our basis). In the picture on the right, the vector $\vec w$ is the vector in the gray plane that starts at the origin and head to the end of the gray plane.  The gray plane was formed by stretching (1,1,1) by $4/3$ and (0,2,4) by $1$.  
+\marginpar{ \begin{center} \begin{tikzpicture}[x={(0.3cm,0.7cm)},y={(1cm,-0.2cm)},z={(-.5cm,1cm)}]
+      \coordinate (origin) at (0,0,0);
+      \coordinate (u) at  (1,1,1);
+      \coordinate (v) at  (0,2,4);
+      \coordinate (b) at  (1,4,5);
+      \coordinate (w) at  ($4/3*(u)+(v)$);
+      \coordinate (bprime) at ($3*(b)-3*(w)$); % exaggerated b
+      \coordinate (r) at ($(b)-(w)$);
+    
+      \fill[->,fill=lightgray] (origin) -- ($4/3*(u)$) -- (w) -- (v) -- cycle;
+      \draw[->] (origin) -- (u);
+      \draw[->] (origin) -- (v);
+      \draw[->] (origin) -- node[below right, pos=0.9] {$\vec b$} (b) ;
+      \draw[->] (origin) -- (u);
+      \draw[->] (origin) -- node[left,pos=0.7] {$\vec w$} (w);
+      \draw[->] (w) -- node[above right] {$\vec r$} (b);
+      
+
+      %right angle
+      \draw[thin] ($0.95*(w)$) -- ($0.95*(w)+0.2*(r)$) -- ($(w)+0.2*(r)$);
+      % coordinate axes
+      %\draw[->,ultra thick] (origin) -- (1,0,0);
+      %\draw[->,ultra thick] (origin) -- (0,1,0);
+      %\draw[->,ultra thick] (origin) -- (0,0,1);
+ \end{tikzpicture}
+\end{center}%
+%\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/regressionpic1}
+
+Because $\vec b$ is not in the column space of $A$, we find the vector $\vec w$ closest to $\vec b$ in the columns space of $A$.  The difference $\vec b-\vec w$ is a vector $\vec r$ that is orthogonal to the column space.}%
+
+% a pgfplots version of the regression vector picture
+ % \begin{tikzpicture}
+ %    \begin{axis}[ axis equal =true,xlabel=$x$,ylabel=$y$,view={-10}{30}]
+ %      \coordinate (origin) at (axis cs:0,0,0);
+ %      \coordinate (u) at  (axis cs:1,1,1);
+ %      \coordinate (v) at  (axis cs:0,2,4);
+ %      \coordinate (b) at  (axis cs:1,4,5);
+ %      \coordinate (w) at  ($4/3*(u)+(v)$);
+ %      \coordinate (bprime) at ($3*(b)-3*(w)$);
+ %      \addplot3+[arrows=->,mark=none] coordinates {(0,0,0) (1,4,5)};
+     
+ %      \fill[->,fill=lightgray] (origin) -- ($4/3*(u)$) -- (w) -- (v) -- cycle;
+ %      \draw[->] (origin) -- (u);
+ %      \draw[->] (origin) -- (v);
+ %      \draw[->] (origin) -- node[left, pos=0.9] {$\vec b$} (b) ;
+ %      \draw[->] (origin) -- (u);
+ %      \draw[->] (origin) -- (w);
+ %      \draw[->] (w) -- node[above] {$\vec r$} (b);
+      
+ %  \end{axis}
+ %  \end{tikzpicture}
 
 \end{example}
 
+
+The matrix equation and relevant matrices are
+$$
+A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix},\quad
+\vec b = \begin{bmatrix}1\\4\\5\end{bmatrix}, \quad
+A^T= \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}, \quad
+\vec x = \begin{bmatrix}a_0\\a_1\end{bmatrix}  
+= \begin{bmatrix}4/3\\1\end{bmatrix}.
+$$
+The line closest to the points was $y=\frac{4}{3} + x$. 
 
 
 
