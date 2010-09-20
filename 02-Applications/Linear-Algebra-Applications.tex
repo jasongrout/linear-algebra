@@ -1455,7 +1455,10 @@ We're now ready to understand linear regression.
 
 
 \begin{example}
-Recall example \ref{regression1ex}, in which we found the line closest to passing through the three points $(0,1)$, $(2,4)$, and $(4,5)$.  The first question is, ``Is there a line that passes through all three points?''  If there is a line $y=a_0+a_1x$ that passes through all of the points, then we have a system of equations
+Recall example \ref{regression1ex}, in which we found the line closest
+to passing through the three points $(0,1)$, $(2,4)$, and $(4,5)$.  
+
+In order to find the closest line to several points, the first question is, ``Is there a line that passes through all three points?''  If there is a line $y=a_0+a_1x$ that passes through all of the points, then we have a system of equations
 \begin{equation*}
 \begin{matrix}a_0=1\\a_0+2a_1=4\\a_0+4a_1=5\end{matrix}
 \xrightarrow{\text{augmented matrix}}
@@ -1467,7 +1470,7 @@ Recall example \ref{regression1ex}, in which we found the line closest to passin
 \end{equation*}
 Notice that the system can be written in matrix form $A\vec x = \vec b$, where $A$ contains a column of 1's and $x$-values, $\vec x$ is the vector of coefficients $a_i$, and $\vec b$ is a column of $y$-values.  
 \marginpar{Recall that the system $A\vec x=b$ is consistent if $b$ is a linear combination of columns of $A$.}%
-The line $y=a_0+a_1x$ passes through the points if there is a solution to $A\vec x=\vec b$ (i.e., the system of equations is consistent).  This will happen if $(1,4,5)$ is in the column space of $A$.  The question ``Is there a line that passes through all of the points?'' is the equivalent to asking ``Is $\vec b$ in the column space of $A$?''
+The line $y=a_0+a_1x$ passes through the points if there is a solution to $A\vec x=\vec b$ (i.e., the system of equations is consistent).  This will happen if $(1,4,5)$ is in the column space of $A$.  The question ``Is there a line that passes through all of the points?'' is equivalent to asking ``Is $\vec b$ in the column space of $A$?''
 
 However, in this example, $A\vec x=\vec b$ is not consistent since the rref is
 \begin{equation*}
@@ -1483,18 +1486,6 @@ The key to linear regression is answering the question
 \end{quote}
 If $\vec b$ is in the column space of $A$, then the answer is $\vec b$, the system of equation is consistent, we can find $a_0$ and $a_1$, and the line passes through all of the points.  If $\vec b$ is not in the column space of $A$, then we have to do more work.
 
-To be closest to $\vec b$, a vector $\vec r$ with base at $\vec w$ and head at $\vec b$ must meet the plane at a 90 degree angle.  So the vector $\vec r = \vec b-\vec w$ is orthogonal to every column of $A$, hence is in the null space of $A^T$ (so $A^T\vec r=\vec 0$). Solving for $\vec w$ gives us $\vec w = \vec b-\vec r$.  Multiplying both sides on the left by $A^T$ and remembering $A\vec x = \vec w$ gives us the regression equation
-$$A^TA\vec x=A^T(\vec b-\vec r) 
-= A^T\vec b - A^T\vec r 
-= A^T\vec b - \vec 0 =
-A^T\vec b.$$
-The vector $\vec x$ is precisely the coordinates of $\vec w$ relative to the columns of $A$. Regression is really a problem about projecting vectors onto vector spaces. 
-
-The vector $\vec w=A\vec x$ is in the plane spanned by the columns of $A$. Because we already know the solution, in this example we can compute the vector $\vec w$ as
-$$
-\vec w = A \vec x = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}\begin{bmatrix}4/3\\1\end{bmatrix} = \begin{bmatrix}4/3\\10/3\\16/3  \end{bmatrix},
-$$
-where $4/3$ and $1$ are the coordinate of $\vec w$ relative to the pivot columns of $A$ (here we used the pivot columns for our basis). In the picture on the right, the vector $\vec w$ is the vector in the gray plane that starts at the origin and head to the end of the gray plane.  The gray plane was formed by stretching (1,1,1) by $4/3$ and (0,2,4) by $1$.  
 \marginpar{ \begin{center} \begin{tikzpicture}[x={(0.3cm,0.7cm)},y={(1cm,-0.2cm)},z={(-.5cm,1cm)}]
       \coordinate (origin) at (0,0,0);
       \coordinate (u) at  (1,1,1);
@@ -1524,6 +1515,29 @@ where $4/3$ and $1$ are the coordinate of $\vec w$ relative to the pivot columns
 %\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/regressionpic1}
 
 Because $\vec b$ is not in the column space of $A$, we find the vector $\vec w$ closest to $\vec b$ in the columns space of $A$.  The difference $\vec b-\vec w$ is a vector $\vec r$ that is orthogonal to the column space.}%
+To be closest to $\vec b$, a vector $\vec r$ (the ``residual'' vector) with base at $\vec w$ and
+head at $\vec b$ must meet the column space of $A$ (a plane) at a 90 degree angle.  So the vector $\vec r = \vec b-\vec w$ is orthogonal to every vector in the column space, or every column of $A$, hence is in the null space of $A^T$ (so $A^T\vec r=\vec 0$). Solving for $\vec w$ gives us $\vec w = \vec b-\vec r$.  Multiplying both sides on the left by $A^T$ and remembering $A\vec x = \vec w$ gives us the regression equation
+$$A^TA\vec x=A^T\vec w
+=A^T(\vec b-\vec r) 
+= A^T\vec b - A^T\vec r 
+= A^T\vec b - \vec 0 =
+A^T\vec b.$$
+
+Solving for $\vec x$, as before, gives us $\vec x = (a_0,a_1)=(4/3,1)$.
+The line closest to the points was $y=\frac{4}{3} + x$. 
+
+
+The vector $\vec w=A\vec x$ is in the plane spanned by the columns of $A$. Because we already know the solution, in this example we can compute the vector $\vec w$ as
+$$
+\vec w = A \vec x = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix}\begin{bmatrix}4/3\\1\end{bmatrix} = \begin{bmatrix}4/3\\10/3\\16/3  \end{bmatrix}.
+$$
+We can also compute the residual vector $\vec r=\vec b - \vec w=(-1/3,2/3,-1/3)$, and check that $\vec w \cdot \vec r = (1/9)(-4+20-16)=0$.  The magnitude of the residual vector tells us how close $\vec b$ is to $\vec w$, which gives us an idea of how closely the line fits the points.  In this case, $|\vec r|=\sqrt{2/3}\approx 0.864$.
+
+Note that the vector $\vec x$, $(4/3,1)$, is the vector of coordinates of $\vec w$ relative to the pivot columns of $A$ (here we used the pivot columns of $A$ for our basis).  In the picture in the margin above, the gray parallelogram (part of the plane that is the column space of $A$) was formed by stretching (1,1,1) by $4/3$ and (0,2,4) by $1$, illustrating the linear combination that gives $\vec w$.  
+
+You can think of $\vec w$ as the projection of $\vec b$ onto the column space of $A$.  The solution to the least squares problem, $\vec x$, is the just the vector of coordinates of the projection of $\vec b$ onto the column space of $A$.
+Regression is really a problem about projecting a vector onto a vector space, then writing a vector in coordinates relative to a specific basis.
+
 
 % a pgfplots version of the regression vector picture
  % \begin{tikzpicture}
@@ -1550,46 +1564,6 @@ Because $\vec b$ is not in the column space of $A$, we find the vector $\vec w$ 
 \end{example}
 
 
-The matrix equation and relevant matrices are
-$$
-A = \begin{bmatrix}1&0\\1&2\\1&4\end{bmatrix},\quad
-\vec b = \begin{bmatrix}1\\4\\5\end{bmatrix}, \quad
-A^T= \begin{bmatrix}1&1&1\\0&2&4\end{bmatrix}, \quad
-\vec x = \begin{bmatrix}a_0\\a_1\end{bmatrix}  
-= \begin{bmatrix}4/3\\1\end{bmatrix}.
-$$
-The line closest to the points was $y=\frac{4}{3} + x$. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Summary}
 We have used matrix multiplication in all 3 ways:
 \begin{enumerate}
@@ -1598,13 +1572,6 @@ We have used matrix multiplication in all 3 ways:
 \item linear combination of rows (electrical networks and curve fitting)
 \end{enumerate}
 We have seen how Gaussian elimination helps solve problems.  We have seen how the inverse and determinants (Cramer's rule) can rapidly help us find solutions.  We have used eigenvalues and eigenvectors to understand geometric properties like flow in vector fields and maxima and minima of surfaces, as well as find steady state solutions in stochastic processes.  This is a small sample of the beginning of the applications of linear algebra. We also started learning the vocabulary of vector spaces, finding bases and dimensions, which will be the key to extending what we have learned to many more places.  The next unit will help us learn to discover patterns and show us how to use definitions and theorems to explicitly state the patterns we find.  
-
-
-
-
-
-
-
 
 %%% Local Variables: 
 %%% mode: latex
