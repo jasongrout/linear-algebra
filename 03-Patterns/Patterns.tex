@@ -1,21 +1,21 @@
 \chapter{Patterns}
 
 
-The purpose of this chapter is to help you learn to create examples of patterns that you have noticed. Vector spaces are the most important pattern we will explore in this chapter.
+The purpose of this chapter is to help you learn to create examples of patterns that others before you have noticed. Vector spaces are the most important pattern we will explore in this chapter.
 
 \input{03-Patterns/Patterns-objectives}
 
 \section{Recognizing and Naming Patterns}
 
-Have you ever noticed while reading a mathematical textbook that the book is filled with the following four things: (1) examples, (2) definitions, (3) theorems, and (4) proofs? This pattern follows throughout most of the sciences.  One of the main goals of mathematics is to describe the world around us, and these four things are precisely the tools used to do so.  Every new idea starts with an example.  After working with lots of examples, you start to notice recurring patterns. Once you pinpoint exactly what that pattern is, you create a definition to explicitly describe the pattern. When you can describe exactly when and how a patterns appear, or if you can describe how different patterns relate to each other, you create a theorem. Proofs provide logical backbone to the theorems. Everything in this process starts with examples.  
+Have you ever noticed while reading a mathematical textbook that the book is filled with the following four things: (1) examples, (2) definitions, (3) theorems, and (4) proofs? This pattern follows throughout most of the sciences.  One of the main goals of mathematics is to describe the world around us, and these four things are precisely the tools used to do so.  Most of the time, recognizing a pattern starts with an example.  After working with lots of examples, you start to notice recurring patterns. Once you pinpoint exactly what that pattern is, you create a definition to explicitly describe the pattern. When you can describe exactly when and how a patterns appear, or if you can describe how different patterns relate to each other, you create a theorem. Proofs provide logical backbone to the theorems. Everything in this process starts with examples.  
 
-Learning mathematics requires learning to work with examples. The main goal of this chapter is to learn how to create examples to understand the definitions and theorems that others have discovered.  If you encounter a new idea in any scientific area, start by looking at examples.  After you have studied several simple examples, you will discover patterns that help you understand the new idea.  Sometimes, your exploration of simple examples will result in new discoveries (theorems). This is the idea behind mathematical research.  It all starts with examples, so learning to create and look at examples is crucial.
+Learning mathematics requires learning to work with examples. The main goal of this chapter is to learn how to create examples to understand the definitions and theorems that others have discovered.  If you encounter a new idea in any scientific area, start by looking at examples.  After you have studied several simple examples, you will discover patterns that help you understand the new idea.  Sometimes, your exploration of simple examples will result in new discoveries (theorems). Examining, understanding, and generalizing from examples is one of the main tools of mathematical and scientific research.  Learning to create and look at examples is crucial.
 
-The biggest pattern in linear algebra is the notion of a vector space. This is an abstract space that came from studying the properties of vectors in $\mathbb{R}^n$, and then realizing that these same properties hold in other places (like polynomials, functions, waves, and more). Before we formally define a vector space in general, we will practice creating examples to understand definition and theorems.  Most of what follows is a summary of the ideas introduced in the first 2 chapters. As you encounter each new definition or theorem, your homework will be to create an example which illustrates the new idea.  Once we have done this, we'll be ready to formally define vector spaces. Then the real power of linear algebra begins.
+The most important pattern in linear algebra is the notion of a vector space. This is an abstract space that came from studying the properties of vectors in $\mathbb{R}^n$, and then realizing that these same properties hold in other places (like polynomials, functions, waves, and more). Before we formally define a vector space in general, we will practice creating examples to understand definition and theorems.  Most of what follows is a summary of the ideas introduced in the first 2 chapters. As you encounter each new definition or theorem, your homework will be to create an example which illustrates the new idea.  Once we have done this, we'll be ready to formally define vector spaces. Then the real power of linear algebra begins.
 
 
 %
-%Mathematical discoveries begin with examples. However, mathematical writing often begins with definitions. Those definitions are followed by theorems and proofs. If space permits, examples are often given to illustrate the definitions and theorems.  If appropriate, an application (example) is also given to show why a theorem is important. Those who write mathematical papers and textbooks around the nation have become accustomed to writing papers for peers in journals. Most of the time, these papers assume a lot of knowledge from the reader, and because of space limitations the papers are missing lots of examples. In order to read this king of mathematics, you have to learn how to create examples to illustrate definitions and theorems whenever you see them.
+%Mathematical discoveries begin with examples. However, mathematical writing often begins with definitions. Those definitions are followed by theorems and proofs. If space permits, examples are often given to illustrate the definitions and theorems.  If appropriate, an application (example) is also given to show why a theorem is important. Those who write mathematical papers and textbooks around the nation have become accustomed to writing papers for peers in journals. Most of the time, these papers assume a lot of knowledge from the reader, and because of space limitations the papers are missing lots of examples. In order to read this kind of mathematics, you have to learn how to create examples to illustrate definitions and theorems whenever you see them.
 
 %In this section, most of the definitions and theorems you have already seen and used in the previous chapters. The next three subsections present definitions, theorems, and then proofs. In the definitions and theorems section, I will provide examples of some of the ideas (or point you to examples from previous chapters). Your homework is to create examples to illustrate the definitions and theorems. In the proofs section, I will illustrate a few common techniques that are used to prove theorems.  The proofs in linear algebra are often shorter and easier to follow than proofs in other branches of mathematics. Those of you who plan to pursue any type of graduate study in engineering, physics, computer science, economics, statistics, and more will be expected to give proofs of the ideas you discover. In this book I will provide only some of the proofs and let you seek other references to find complete proofs to all the ideas. 
 
@@ -23,81 +23,84 @@ The biggest pattern in linear algebra is the notion of a vector space. This is a
 
 \subsection{Definitions}
 
-Whenever you see a new definition, one of the most important things you can do is create an example which illustrates that definition. As you read each definition below, create an example which illustrates that definition. Most of these words are review, a few are new.  Make sure you know these definitions.
+Whenever you see a new definition, one of the most important things you can do is create an example which illustrates that definition. As you read each definition below, create an example which illustrates that definition. Most of these words are review, but a few are new.  Make sure you know these definitions.
 
 This first definition is a formal statement of what we mean when we write $\mathbb{R}^n$.  It is the foundation for the formal vector space definition we'll see later.
 \begin{definition} The symbol $\mathbb{R}$ is used to represent the real numbers.  
-The {\bf real vector space} $\mathbb{R}^n$ is a set together with a way of adding two elements (called {\bf vector addition}) and a way of multiplying an element by a real number (called scalar multiplication).  
+The \define{real vector space} $\mathbb{R}^n$ is a set together with a way of adding two elements (called \define{vector addition}) and a way of multiplying an element by a real number (called \define{scalar multiplication}).  
 The set we use is the set of $n$-tuples $(v_1,v_2,\ldots, v_n)$ where each $v_i$ is an element of $\mathbb{R}$. 
 We write this symbolically as 
 $$
-\{ (v_1,v_2,\ldots, v_n)|v_i\in \mathbb{R} \text{ for } 1\leq i\leq n\}.$$
+\{ (v_1,v_2,\ldots, v_n)\st v_i\in \mathbb{R} \text{ for } 1\leq i\leq n\}.$$
 Each $n$-tuple $\vec v = (v_1,v_2,\ldots, v_n)$ is called a vector. 
-The entries of the vector are called the \textbf{components} of the vector.  Vector addition is performed by adding the components of the vectors. Scalar multiplication is done by multiplying each component by the scalar. 
+The entries of the vector are called the \define[vector!components]{components} of the vector.  Vector addition is performed by adding the components of the vectors. Scalar multiplication is done by multiplying each component by the scalar. 
 \end{definition}
 
 
 \begin{definition} 
 \marginpar{See example \ref{ex dot product}.}
 \label{def dot product}
-The \textbf{dot product} of two vectors $\vec u = \left<u_1,u_2,\ldots,u_n\right>$ and $\vec v =\left<v_1,v_2,\ldots,v_n\right>$ is the scalar $\vec u\cdot \vec v = u_1v_1+u_2v_2+\cdots+u_nv_n = \sum u_iv_i$. We say that two vectors are \textbf{orthogonal} if their dot product is zero.
+The \define{dot product} of two vectors $\vec u = \left<u_1,u_2,\ldots,u_n\right>$ and $\vec v =\left<v_1,v_2,\ldots,v_n\right>$ is the scalar $\vec u\cdot \vec v = u_1v_1+u_2v_2+\cdots+u_nv_n = \sum u_iv_i$. We say that two vectors are \define{orthogonal} if their dot product is zero.
 \end{definition}
 
 \begin{definition} \label{def matrix product} 
-A (real) \textbf{matrix} is a rectangular grid of real numbers.
+A (real) \define{matrix} is a rectangular grid of real numbers.
 We use the notation $a_{ij}$ to represent the entry in the $i$th row and $j$th column.  
-If a matrix $A$ has $m$ rows and $n$ columns, we say the matrix has \textbf{size} $m$ by $n$ and write $A_{mn}$. 
-The \textbf{sum of two matrices} of the same size is performed by adding corresponding entries.  
-The \textbf{product of two matrices} $A_{m n} = \left\{a_{ij}\right\}$ and $B_{np} =\left\{b_{jk}\right\}$ is a new matrix $AB=C$ where the $i$th row and $k$th column of $C$ is $c_{ik}=\sum_{j=1}^n a_{ij}b_{jk}$ (the dot product of the $i$th row of $A$ and the $k$th column of $B$).
+If a matrix $A$ has $m$ rows and $n$ columns, we say the matrix has \define[matrix!size]{size} $m$ by $n$ and write $A_{mn}$. 
+The \define[matrix!sum]{sum} of two matrices of the same size is performed by adding corresponding entries.  
+The \define[matrix!product]{product} of two matrices $A_{m n} = \left\{a_{ij}\right\}$ and $B_{np} =\left\{b_{jk}\right\}$ is a new matrix $C=AB$ where the $ik$th entry of $C$ is $c_{ik}=\sum_{j=1}^n a_{ij}b_{jk}$ (the dot product of the $i$th row of $A$ and the $k$th column of $B$).
 \end{definition}
 
 \begin{definition} \label{def rref}
-\marginpar{See example \ref{ex rref last}. Every matrix we obtain in the row reduction process is row equivalent to all the other matrices.  Each of these matrices is row equivalent to the reduced row echelon form of the matrix. Each of the matrices in example \ref{ex rref last} is row equivalent to all the other matrices.}
-We say that two matrices are \textbf{row equivalent} if one can be obtained from the other by a finite sequence of these three row operations: (1) interchange two rows, (2) multiply one row by a nonzero constant, and (3) add to a row a multiple of a different row. 
+\marginpar{See example \ref{ex rref last}. Every matrix we obtain in the row reduction process of $A$ is row equivalent to all the other matrices obtained from $A$ by doing row operations, and to the reduced row echelon form of $A$. Each of the matrices in example \ref{ex rref last} is row equivalent to all the other matrices in the example.}
+We say that two matrices are \define[matrix!row equivalent]{row equivalent} if one can be obtained from the other by a finite sequence of these three row operations: (1) interchange two rows, (2) multiply one row by a nonzero constant, and (3) add to a row a multiple of a different row. 
 
-A matrix is said to be in \textbf{row echelon form} (ref) if 
-(1) each nonzero row begins with a 1 (called a \textbf{leading 1}), 
+A matrix is said to be in \define{row echelon form} (ref) if 
+(1) each nonzero row begins with a 1 (called a \define{leading 1}), 
 (2) the leading 1 in a row occurs further right than a leading 1 in the row above, and
 (3) any rows of all zeros appear at the bottom.
-The location in the matrix of each leading 1 is called a \textbf{pivot}, and the column containing the pivot is called a \textbf{pivot column}.
-A matrix is said to be in \textbf{reduced row echelon form} (rref) if 
-the matrix is in row echelon form, and each pivot column contains all zeros except for the pivot (leading one).
+The location in the matrix of each leading 1 is called a \define{pivot}, and the column containing the pivot is called a \define{pivot column}.
+A matrix is said to be in \define{reduced row echelon form} (rref) if 
+the matrix is in row echelon form, and each pivot column contains all zeros except for the pivot (the leading one).
 
 \end{definition}
 
-\begin{definition}
-A linear system $A\vec x=\vec b$ is said to be (1) \textbf{homogeneous} if $\vec b=\vec 0$, (2) \textbf{non homogeneous} if $\vec b\neq \vec 0$, (3) \textbf{consistent} if it has at least one solution, and (4) \textbf{inconsistent} if it has no solutions.  
+\begin{definition}[Homogeneous]
+A linear system $A\vec x=\vec b$ is said to be either \define{homogeneous} if $\vec b=\vec 0$ or \define{non homogeneous} if $\vec b\neq \vec 0$.  
+\end{definition}
+\begin{definition}[Consistent]
+A linear system is said to be \define{consistent} if it has at least one solution and  \define{inconsistent} if it has no solutions.
 \end{definition}
 
 
 
-\begin{definition}\marginpar{See example \ref{ex span}.}
-A \textbf{linear combination of vectors} $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a sum $$c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n = \sum_{i=1}^n c_i\vec v_i$$ where each scalar $c_1,c_2,\ldots, c_n$ is a real number. 
-The \textbf{span of a set of vectors} $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is all possible linear combinations of those vectors.
+\begin{definition}[Linear combination]\marginpar{See example \ref{ex span}.}%
+A \define{linear combination of vectors} $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a sum $$c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n = \sum_{i=1}^n c_i\vec v_i$$ where each scalar $c_1,c_2,\ldots, c_n$ is a real number. 
+The \define{span} of a set of vectors $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is the set of all possible linear combinations of those vectors.
 \end{definition}
 
-\begin{definition} \marginpar{See example \ref{first linearly independent example}. }
-We say a set $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ of vectors is \textbf{linearly independent} if the only solution to the homogeneous equation $c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n=\vec 0$ is the trivial solution $c_1=c_2=\cdots=c_n=0$. If there is a nonzero solution to this homogeneous equation, then we say the set of vectors is \textbf{linearly dependent}, or we just say the vectors are linearly dependent (leave off ``set of'').
+\begin{definition}[Linear independence] \marginpar{See example \ref{first linearly independent example}. }%
+We say a set $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ of vectors is \define{linearly independent} if the only solution to the homogeneous equation $c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n=\vec 0$ is the trivial solution $c_1=c_2=\cdots=c_n=0$. If there is a nonzero solution to this homogeneous equation, then we say the set of vectors is \define{linearly dependent}, or we just say the vectors are linearly dependent (leave off ``set of'').
 \end{definition}
 
-\begin{definition}
-A \textbf{basis} for $\mathbb{R}^n$ is a set of vectors that are (1) linearly independent and (2) span all of $\mathbb{R}^n$.
-The \textbf{standard basis} for $\mathbb{R}^n$ is the set 
+\begin{definition}[Basis]
+A \define{basis} for $\mathbb{R}^n$ is a set of vectors that are (1) linearly independent and (2) span all of $\mathbb{R}^n$.
+The \define{standard basis} for $\mathbb{R}^n$ is the set 
 $$\{\vec e_1 = (1,0,0,\ldots,0,0) , 
 \vec e_2 = (0,1,0,\ldots,0,0) , 
 \ldots, 
 \vec e_n = (0,0,0,\ldots,0,1)\}.$$
 \end{definition}
 
-\begin{definition} \marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}
-The \textbf{column space} of a matrix is the span of the column vectors. 
-A \textbf{basis for the column space} is a set of linearly independent vectors whose span is the column space. 
-The \textbf{dimension} of the column space is the number of vectors in a basis for the column space. 
-The \textbf{rank} of a matrix is the dimension of the column space.
+\begin{definition}[Column space] \marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}
+The \define{column space} of a matrix is the span of the column vectors. 
+A \define[column space!basis]{basis for the column space} of a matrix is a set of linearly independent vectors whose span is the column space. 
+The \define[column space!dimension]{dimension} of the column space is the number of vectors in a basis for the column space. 
+The \define{rank} of a matrix is the dimension of the column space.
 \end{definition}
 
 
-\begin{definition} 
+\begin{definition}[Row space] 
 \marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}
 The \textbf{row space} of a matrix is the span of the row vectors. 
 A \textbf{basis for the row space} is a set of linearly independent vectors whose span is the row space. 
