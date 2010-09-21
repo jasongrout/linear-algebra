@@ -7,11 +7,13 @@ The purpose of this chapter is to help you learn to create examples of patterns 
 
 \section{Recognizing and Naming Patterns}
 
-Have you ever noticed while reading a mathematical textbook that the book is filled with the following four things: (1) examples, (2) definitions, (3) theorems, and (4) proofs? This pattern follows throughout most of the sciences.  One of the main goals of mathematics is to describe the world around us, and these four things are precisely the tools used to do so.  Most of the time, recognizing a pattern starts with an example.  After working with lots of examples, you start to notice recurring patterns. Once you pinpoint exactly what that pattern is, you create a definition to explicitly describe the pattern. When you can describe exactly when and how a patterns appear, or if you can describe how different patterns relate to each other, you create a theorem. Proofs provide logical backbone to the theorems. Everything in this process starts with examples.  
+Have you ever noticed while reading a mathematics or other science textbook that the book is filled with the following four things: (1) examples, (2) definitions, (3) theorems, and (4) proofs? One of the main goals of mathematics is to describe the patterns in the world around us, and these four things are often the ways a pattern is found and communicated.  
+
+Most of the time, recognizing a pattern starts with an example.  After working with lots of examples, you start to notice recurring patterns. Once you pinpoint exactly what the pattern is, you create a definition to explicitly describe the pattern. When you can describe exactly when and how a patterns appear, or if you can describe how different patterns relate to each other, you create a theorem. Proofs provide the logical backbone to the theorems. Everything in this process starts with examples.  
 
 Learning mathematics requires learning to work with examples. The main goal of this chapter is to learn how to create examples to understand the definitions and theorems that others have discovered.  If you encounter a new idea in any scientific area, start by looking at examples.  After you have studied several simple examples, you will discover patterns that help you understand the new idea.  Sometimes, your exploration of simple examples will result in new discoveries (theorems). Examining, understanding, and generalizing from examples is one of the main tools of mathematical and scientific research.  Learning to create and look at examples is crucial.
 
-The most important pattern in linear algebra is the notion of a vector space. This is an abstract space that came from studying the properties of vectors in $\mathbb{R}^n$, and then realizing that these same properties hold in other places (like polynomials, functions, waves, and more). Before we formally define a vector space in general, we will practice creating examples to understand definition and theorems.  Most of what follows is a summary of the ideas introduced in the first 2 chapters. As you encounter each new definition or theorem, your homework will be to create an example which illustrates the new idea.  Once we have done this, we'll be ready to formally define vector spaces. Then the real power of linear algebra begins.
+The most important pattern in linear algebra is the notion of a vector space. This is an abstract space that came from studying the properties of vectors in $\mathbb{R}^n$, and then realizing that these same properties hold in other places (like polynomials, functions, waves, and more). Before we formally define a vector space in general, we will practice creating examples to understand definition and theorems.  Most of what follows is a summary of the ideas introduced in the previous chapters. As you encounter each new definition or theorem, your homework will be to create an example which illustrates the new idea.  Once we have done this, we'll be ready to formally define vector spaces. Then the real power of linear algebra begins.
 
 
 %
@@ -26,7 +28,8 @@ The most important pattern in linear algebra is the notion of a vector space. Th
 Whenever you see a new definition, one of the most important things you can do is create an example which illustrates that definition. As you read each definition below, create an example which illustrates that definition. Most of these words are review, but a few are new.  Make sure you know these definitions.
 
 This first definition is a formal statement of what we mean when we write $\mathbb{R}^n$.  It is the foundation for the formal vector space definition we'll see later.
-\begin{definition} The symbol $\mathbb{R}$ is used to represent the real numbers.  
+\begin{definition}[Real Vector Space]
+The symbol $\mathbb{R}$ is used to represent the real numbers.  
 The \define{real vector space} $\mathbb{R}^n$ is a set together with a way of adding two elements (called \define{vector addition}) and a way of multiplying an element by a real number (called \define{scalar multiplication}).  
 The set we use is the set of $n$-tuples $(v_1,v_2,\ldots, v_n)$ where each $v_i$ is an element of $\mathbb{R}$. 
 We write this symbolically as 
@@ -38,21 +41,21 @@ The entries of the vector are called the \define[vector!components]{components} 
 
 
 \begin{definition} 
-\marginpar{See example \ref{ex dot product}.}
+\marginpar{See example \ref{ex dot product}.}%
 \label{def dot product}
 The \define{dot product} of two vectors $\vec u = \left<u_1,u_2,\ldots,u_n\right>$ and $\vec v =\left<v_1,v_2,\ldots,v_n\right>$ is the scalar $\vec u\cdot \vec v = u_1v_1+u_2v_2+\cdots+u_nv_n = \sum u_iv_i$. We say that two vectors are \define{orthogonal} if their dot product is zero.
 \end{definition}
 
 \begin{definition} \label{def matrix product} 
 A (real) \define{matrix} is a rectangular grid of real numbers.
-We use the notation $a_{ij}$ to represent the entry in the $i$th row and $j$th column.  
+We use the notation $a_{ij}$ to represent the entry in the $i$th row and $j$th column of the matrix $A$.  
 If a matrix $A$ has $m$ rows and $n$ columns, we say the matrix has \define[matrix!size]{size} $m$ by $n$ and write $A_{mn}$. 
 The \define[matrix!sum]{sum} of two matrices of the same size is performed by adding corresponding entries.  
-The \define[matrix!product]{product} of two matrices $A_{m n} = \left\{a_{ij}\right\}$ and $B_{np} =\left\{b_{jk}\right\}$ is a new matrix $C=AB$ where the $ik$th entry of $C$ is $c_{ik}=\sum_{j=1}^n a_{ij}b_{jk}$ (the dot product of the $i$th row of $A$ and the $k$th column of $B$).
+The \define[matrix!product]{product} of two matrices $A_{m n} = \left\{a_{ij}\right\}$ and $B_{np} =\left\{b_{jk}\right\}$\note{braces?  I thought square brackets were more normal.} is a new matrix $C=AB$ where the $ik$th entry of $C$ is $c_{ik}=\sum_{j=1}^n a_{ij}b_{jk}$ (the dot product of the $i$th row of $A$ and the $k$th column of $B$).
 \end{definition}
 
 \begin{definition} \label{def rref}
-\marginpar{See example \ref{ex rref last}. Every matrix we obtain in the row reduction process of $A$ is row equivalent to all the other matrices obtained from $A$ by doing row operations, and to the reduced row echelon form of $A$. Each of the matrices in example \ref{ex rref last} is row equivalent to all the other matrices in the example.}
+\marginpar{See example \ref{ex rref last}. Every matrix we obtain in the row reduction process of $A$ is row equivalent to all the other matrices obtained from $A$ by doing row operations, and to the reduced row echelon form of $A$. Each of the matrices in example \ref{ex rref last} is row equivalent to all the other matrices in the example.}%
 We say that two matrices are \define[matrix!row equivalent]{row equivalent} if one can be obtained from the other by a finite sequence of these three row operations: (1) interchange two rows, (2) multiply one row by a nonzero constant, and (3) add to a row a multiple of a different row. 
 
 A matrix is said to be in \define{row echelon form} (ref) if 
@@ -66,7 +69,7 @@ the matrix is in row echelon form, and each pivot column contains all zeros exce
 \end{definition}
 
 \begin{definition}[Homogeneous]
-A linear system $A\vec x=\vec b$ is said to be either \define{homogeneous} if $\vec b=\vec 0$ or \define{non homogeneous} if $\vec b\neq \vec 0$.  
+A linear system $A\vec x=\vec b$ is said to be either \define{homogeneous} if $\vec b=\vec 0$ or \define{nonhomogeneous} if $\vec b\neq \vec 0$.  
 \end{definition}
 \begin{definition}[Consistent]
 A linear system is said to be \define{consistent} if it has at least one solution and  \define{inconsistent} if it has no solutions.
@@ -74,12 +77,14 @@ A linear system is said to be \define{consistent} if it has at least one solutio
 
 
 
-\begin{definition}[Linear combination]\marginpar{See example \ref{ex span}.}%
-A \define{linear combination of vectors} $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a sum $$c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n = \sum_{i=1}^n c_i\vec v_i$$ where each scalar $c_1,c_2,\ldots, c_n$ is a real number. 
+\begin{definition}[Linear combination, Span]
+\marginpar{See example \ref{ex span}.}%
+A \define[vectors!linear combination]{linear combination} of vectors $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a sum $$c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n = \sum_{i=1}^n c_i\vec v_i$$ where each scalar $c_1,c_2,\ldots, c_n$ is a real number. 
 The \define{span} of a set of vectors $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is the set of all possible linear combinations of those vectors.
 \end{definition}
 
-\begin{definition}[Linear independence] \marginpar{See example \ref{first linearly independent example}. }%
+\begin{definition}[Linear independence] 
+\marginpar{See example \ref{first linearly independent example}. }%
 We say a set $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ of vectors is \define{linearly independent} if the only solution to the homogeneous equation $c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n=\vec 0$ is the trivial solution $c_1=c_2=\cdots=c_n=0$. If there is a nonzero solution to this homogeneous equation, then we say the set of vectors is \define{linearly dependent}, or we just say the vectors are linearly dependent (leave off ``set of'').
 \end{definition}
 
@@ -92,34 +97,35 @@ $$\{\vec e_1 = (1,0,0,\ldots,0,0) ,
 \vec e_n = (0,0,0,\ldots,0,1)\}.$$
 \end{definition}
 
-\begin{definition}[Column space] \marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}
+\begin{definition}[Column space, Rank] 
+\marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}%
 The \define{column space} of a matrix is the span of the column vectors. 
-A \define[column space!basis]{basis for the column space} of a matrix is a set of linearly independent vectors whose span is the column space. 
-The \define[column space!dimension]{dimension} of the column space is the number of vectors in a basis for the column space. 
+A \definestyle{basis for the column space} of a matrix is a set of linearly independent vectors whose span is the column space. 
+The \definestyle{dimension} of the column space is the number of vectors in a basis for the column space. 
 The \define{rank} of a matrix is the dimension of the column space.
 \end{definition}
 
 
 \begin{definition}[Row space] 
-\marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}
-The \textbf{row space} of a matrix is the span of the row vectors. 
-A \textbf{basis for the row space} is a set of linearly independent vectors whose span is the row space. 
-The \textbf{dimension} of the row space is the number of vectors in a basis for the row space.
+\marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}%
+The \define{row space} of a matrix is the span of the row vectors. 
+A \definestyle{basis for the row space} is a set of linearly independent vectors whose span is the row space. 
+The \definestyle{dimension} of the row space is the number of vectors in a basis for the row space.
 \end{definition}
 
-\begin{definition}
-\marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}
+\begin{definition}[Coordinates]
+\marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}%
 If $\beta=\{\vec b_1,\vec b_2,\ldots,\vec b_n\}$ is a basis for a vector space, and a vector $\vec v$ equals the linear combination 
-$$ \vec v = c_1\vec b_1+c_2\vec v_2 + \cdots c_n\vec v_n, $$ then we call the scalars $c_1,c_2,\ldots, c_n$ the  coordinates of $\vec v$ relative to the basis $\beta$. We may write $\vec v = (c_1,c_2,\ldots, c_n)_\beta$ to represent the vector $\vec v$, or if the basis $\beta$ is understood, we may just write $\vec v = (c_1,c_2,\ldots, c_n)$.
+$$ \vec v = c_1\vec b_1+c_2\vec v_2 + \cdots c_n\vec v_n, $$ then we call the scalars $c_1,c_2,\ldots, c_n$ the  \define{coordinates} of $\vec v$ relative to the basis $\beta$. We may write $\vec v = (c_1,c_2,\ldots, c_n)_\beta$ to represent the vector $\vec v$, or if the basis $\beta$ is understood, we may just write $\vec v = (c_1,c_2,\ldots, c_n)$.
 \end{definition}
 
-\begin{definition} 
-A \textbf{diagonal matrix} is a square matrix where the entries off the main diagonal are zero ($a_{ij}=0$ if $i\neq j$). The \textbf{identity matrix} is a diagonal matrix where each entry on the main diagonal is 1 ($a_{ii}=1$). We often write $I$ to represent the identity matrix, and $I_n$ to represent the $n\times n$ identity matrix when specifying the size is important. An \textbf{upper triangular matrix} is a square matrix where every entry below the main diagonal is zero. A \textbf{lower triangular matrix} is a square matrix where every entry above the main diagonal is zero.
+\begin{definition}[Diagonal, Identity, Triangular matrices]
+A \define[matrix types!diagonal]{diagonal matrix} is a square matrix where the entries off the main diagonal are zero ($a_{ij}=0$ if $i\neq j$). The \define[matrix types!identity]{identity matrix} is a diagonal matrix where each entry on the main diagonal is 1 ($a_{ii}=1$). We often write $I$ to represent the identity matrix, and $I_n$ to represent the $n\times n$ identity matrix when specifying the size is important. An \define[matrix types!upper triangular]{upper triangular matrix} is a square matrix where every entry below the main diagonal is zero. A \define[matrix types!lower triangular]{lower triangular matrix} is a square matrix where every entry above the main diagonal is zero.
 $$\begin{array}{cccc}
 \begin{bmatrix} 3&0&0\\0&-2&0\\0&0&8\end{bmatrix} 
 &\begin{bmatrix} 1&0&0\\0&1&0\\0&0&1\end{bmatrix} 
-&\begin{bmatrix} 1&3&2\\0&4&0\\0&0&-1\end{bmatrix}
-&\begin{bmatrix} 1&0&0\\3&4&0\\2&0&-1\end{bmatrix} 
+&\begin{bmatrix} 0&3&2\\0&4&0\\0&0&-1\end{bmatrix}
+&\begin{bmatrix} 0&0&0\\3&4&0\\2&0&-1\end{bmatrix} 
 \\
 \text{diagonal}
 &\text{identity}
@@ -130,24 +136,27 @@ $$\begin{array}{cccc}
 
 
 
-\begin{definition} \marginpar{See example \ref{ex det}.}
-The \textbf{determinant} of a $1\times 1$ matrix is the entry $a_{11}$. A \textbf{minor} $M_{ij}$ of an $n\times n$ matrix is the determinant of the $(n-1)\times (n-1)$ submatrix obtained by removing the $i$th row and $j$th column. A \textbf{cofactor} of a matrix is the product $C_{ij}=(-1)^{i+j}M_{ij}$. The determinant of an $n\times n$ matrix ($n\geq 2$) is found by multiplying each entry $a_{1i}$ on the first row of the matrix by its corresponding cofactor, and then summing the result. Symbolically we write  $$\det A = |A| = a_{11}C_{11}+a_{12}C_{12}+\cdots+a_{1n}C_{1n} = \sum_{j=1}^n a_{1j}C_{1j}.$$ 
+\begin{definition}[Determinant] 
+\marginpar{See example \ref{ex det}.}%
+The \define{determinant} of a $1\times 1$ matrix is the entry $a_{11}$. A \define{minor} $M_{ij}$ of an $n\times n$ matrix is the determinant of the $(n-1)\times (n-1)$ submatrix obtained by removing the $i$th row and $j$th column. A \define{cofactor} of a matrix is the product $C_{ij}=(-1)^{i+j}M_{ij}$. The determinant of an $n\times n$ matrix ($n\geq 2$) is found by multiplying each entry $a_{1i}$ on the first row of the matrix by its corresponding cofactor, and then summing the result. Symbolically we write  $$\det A = |A| = a_{11}C_{11}+a_{12}C_{12}+\cdots+a_{1n}C_{1n} = \sum_{j=1}^n a_{1j}C_{1j}.$$ 
 \end{definition}
 
 
-\begin{definition} \marginpar{See example \ref{ex inverse}}
-The \textbf{inverse} of a square matrix $A$ is a matrix $B$ such that $AB=I$ and $BA=I$, where $I$ is the identity matrix. If a square matrix does not have an inverse, we say the matrix is \textbf{singular}.
+\begin{definition}[Inverse] 
+\marginpar{See example \ref{ex inverse}}%
+The \define{inverse} of a square matrix $A$ is a matrix $B$ such that $AB=I$ and $BA=I$, where $I$ is the identity matrix. If a square matrix does not have an inverse, we say the matrix is \define{singular} or \define{noninvertible}. 
 \end{definition}
 
-\begin{definition}  
-\marginpar{See example \ref{ex transpose}.}
-The \textbf{transpose} of a matrix $A_{m\times n}=\{a_{ij}\}$ is a new matrix $A^T_{n\times m}$ where the $i$th column of $A$ is the $i$th row of $A^T$.  A \textbf{symmetric matrix} is a matrix such that $A=A^T$.
+\begin{definition}[Transpose]
+\marginpar{See example \ref{ex transpose}.}%
+The \define[matrix!transpose]{transpose} of a matrix $A_{m\times n}=\{a_{ij}\}$ is a new matrix $A^T_{n\times m}$ where the $i$th column of $A$ is the $i$th row of $A^T$.  A \define[matrix types!symmetric]{symmetric matrix} is a matrix $A$ such that $A=A^T$.
 \end{definition}
 
 
-\begin{definition} \marginpar{See examples \ref{ex eigen1} and \ref{ex eigen2} .
-Note that $\vec x=\vec 0$ is never an eigenvector.}
-An \textbf{eigenvector} of a square matrix $A$ is a nonzero vector $\vec x$ with the property that $A\vec x = \lambda \vec x$ for some scalar $\lambda$.  We say that $\vec x$ is an \textbf{eigenvector} corresponding to the \textbf{eigenvalue} $\lambda$. 
+\begin{definition}[Eigenvector, Eigenvalue] 
+\marginpar{See examples \ref{ex eigen1} and \ref{ex eigen2.}
+  Note that $\vec x=\vec 0$ is never an eigenvector.}%
+An \define{eigenvector} of a square matrix $A$ is a nonzero vector $\vec x$ with the property that $A\vec x = \lambda \vec x$ for some scalar $\lambda$.  We say that $\vec x$ is an \define{eigenvector} corresponding to the \define{eigenvalue} $\lambda$. 
 \end{definition}
 
 
@@ -204,7 +213,7 @@ The words if and only if create two if then statements, namely (1) if $p$ then $
 	\item If the columns are linearly independent then every column is a pivot column.
 	\item If every column is a pivot column then the columns are linearly independent.
 \end{enumerate}
-Every time you see the words ``if and only if,'' remember that this means you have two if-then statements.  
+Every time you see the words ``if and only if,'' remember that this means you have two if-then statements.  That means that you need at least two examples to illustrate such a theorem (one for each if-then statement).
 
 
 
@@ -215,7 +224,7 @@ Vector addition and scalar multiplication in $\mathbb{R}^n$ satisfy the followin
 	\item[($A_1$)] Vector addition is associative: $(\vec u+\vec v)+\vec w = \vec u +(\vec v+\vec w)$.
 	\item[($A_2$)] Vector addition is commutative: $\vec u+\vec v= \vec v+\vec u$.
 	\item[($A_3$)] The zero vector $\vec 0$ satisfies $\vec 0+\vec v = \vec v+\vec 0=\vec v$.
-	\item[($A_4$)] The additive inverse of $\vec v$ is the $-\vec v$ which satisfies $\vec v+(-\vec v)=0$.
+	\item[($A_4$)] The additive inverse of $\vec v$, denoted $-\vec v$, is the vector which satisfies $\vec v+(-\vec v)=0$.
 	\item[($M_1$)] Scalar multiplication distributes across vector addition: $c(\vec u+\vec v)= c\vec u + c\vec v$.
 	\item[($M_2$)] Scalar multiplication distributes across scalar addition: $(c+d)\vec v= c\vec v+ d\vec v$.
 	\item[($M_3$)] Scalar multiplication is associative: $(cd)\vec v = c(d\vec v)$
@@ -226,7 +235,7 @@ Vector addition and scalar multiplication in $\mathbb{R}^n$ satisfy the followin
 \subsubsection{System Properties}
  
 \begin{theorem}\label{thm unique rref}
-Every matrix has a unique reduced row echelon form. This implies that for any matrix, the location of the pivot columns is unique. 
+Every matrix has a unique reduced row echelon form (rref). This implies that for any matrix, the location of the pivot columns is unique (they do not depend on how the matrix is reduced to rref). 
 \end{theorem}
 
 \begin{theorem}\label{thm row equivalent}
@@ -239,23 +248,22 @@ A linear system of equations $A\vec x=\vec b$ has a solution if and only if the 
 \end{theorem}
 
 \begin{theorem}\label{thm no, one, or infinitely many solutions}
-If a linear system of equations has more than one solution, it has infinitely many.  This means that for a linear system, there are three possible types of solutions: (1) no solution, (2) exactly one solution, or (3) infinitely many solutions. 
+If a linear system of equations has more than one solution, it has infinitely many.  Solving a linear system has three possible outcomes: (1) no solution, (2) exactly one solution, or (3) infinitely many solutions. 
 \end{theorem}
 
 \begin{theorem}[Removing non pivot columns does not alter the row operations involved in obtaining rref.] Let $A$ be a matrix whose rref is $R$.  Let $B$ be the matrix obtained from $A$ by removing the $k$th column.  If the $k$th column of $A$ is not a pivot column, then the rref of $B$ is found by removing the $k$th column from $R$. 
 \end{theorem}
 
 \begin{theorem}\label{thm n-k free variables}
-If a consistent linear system of equations $A\vec x=\vec b$ has $n$ unknowns and $k$ pivot columns, then it has $n-k$ free variables. 
+If a consistent linear system of equations $A\vec x=\vec b$ has $n$ variables and $k$ pivot columns, then it has $n-k$ free variables. 
 \end{theorem}
-
 
 \begin{theorem}[Superposition Principle] \label{thm superposition}\label{thm homogeneous}
-For a homogeneous system $A\vec x = \vec 0$, any linear combination of solutions is again a solution.
+For a homogeneous system $A\vec x = \vec 0$, any linear combination of solutions is also a solution.
 \end{theorem}
 
-\begin{theorem}\label{thm non homogeneous}
-For a non homogeneous system $A\vec x=\vec b$, the difference $\vec x_1-\vec x_2$ between any two solutions is a solution to the homogeneous system $A\vec x=\vec 0$. 
+\begin{theorem}\label{thm nonhomogeneous}
+For a nonhomogeneous system $A\vec x=\vec b$, the difference $\vec x_1-\vec x_2$ between any two solutions is a solution to the homogeneous system $A\vec x=\vec 0$. 
 \end{theorem}
 
 
@@ -367,7 +375,7 @@ If $A$ is invertible, then the solution to $A\vec x=\vec b$ is $\vec x=A\inv \ve
 
 \subsubsection{Determinant Properties}
 \begin{theorem}
-The determinant can be computed by using a cofactor expansion along any row or any column. Symbolically, we can write this as $\ds |A| = \sum_{i=1}^n a_{ij} C_{ij}$ for any column $j$,  or $\ds |A| = \sum_{j=1}^n a_{ij} C_{ij}$ for any $i$.
+The determinant can be computed by using a cofactor expansion along any row or any column. Symbolically, we can write this as $\ds |A| = \sum_{i=1}^n a_{ij} C_{ij}$ for any column $j$,  or $\ds |A| = \sum_{j=1}^n a_{ij} C_{ij}$ for any row $i$.
 \end{theorem}
 
 
@@ -376,7 +384,7 @@ The determinant of a triangular matrix is the product of its entries along the m
 \end{theorem}
 
 \begin{theorem}\label{thm det product}
-The determinant of $AB$ is $|AB|=|A||B|$. (Postpone the proof of this one.) This implies that $|cA|=c^n|A|$ and $|A\inv|=|A|\inv$. 
+The determinant of $AB$ is $|AB|=|A||B|$.\note{Postpone the proof of this one.} This implies that $|cA|=c^n|A|$ and $|A\inv|=|A|\inv$. 
 \end{theorem}
 
 \begin{theorem}\label{thm det transpose}
@@ -542,7 +550,7 @@ We now repeat the previous argument on the transpose of $A$. Write $A^T = C^\pri
 
 
 
-\section{A huge equivalence - Connecting all the ideas}
+\section{A huge equivalence: Connecting all the ideas}
 
 \begin{theorem}\label{huge equivalence}
  For an $n$ by $n$ matrix $A$, the following are all equivalent (meaning you can put an if and only if between any two of these statements):
@@ -777,11 +785,11 @@ The dimension of the column space is the number of vectors in a basis for the co
 The example above illustrates the key ideas we need to work with any finite dimensional vector spaces.  Let's now give the formal definitions.
 
 \begin{definition}
-A \textbf{basis for a vector space} is a set of vectors that are 
+A \define{basis for a vector space} is a set of vectors that are 
 (1) linearly independent and (2) span the vector space.
-The \textbf{dimension of a vector space} is the number of vectors in a basis for the vector space. 
+The \define{dimension of a vector space} is the number of vectors in a basis for the vector space. 
 We say the dimension of the zero vector space (the vector space consisting of only the zero vector) is zero. 
-If $\beta=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis and $\vec v = c_1\vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n$, then we call $(c_1,c_2,\ldots,c_n)_\beta$ the \textbf{coordinates of $\vec v$ relative to the basis $\beta$}. 
+If $\beta=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis and $\vec v = c_1\vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n$, then we call $(c_1,c_2,\ldots,c_n)_\beta$ the \define{coordinates of $\vec v$ relative to the basis $\beta$}. 
 If the basis is understood, we just leave off the subscript $\beta$.
 \end{definition}
 

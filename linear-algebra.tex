@@ -99,10 +99,19 @@
 \newtheorem*{prep-problems}{Preparation Problems}
 
 \usepackage{xifthen}% provides \isempty test
-\newcommand{\define}[2][]{\textit{#2}\ifthenelse{\isempty{#1}}{\index{#2}}{\index{#1}}}
+\newcommand{\definestyle}[1]{\textit{#1}}
+\newcommand{\define}[2][]{\definestyle{#2}\ifthenelse{\isempty{#1}}{\index{#2}}{\index{#1}}}
 \newcommand{\definemargin}[2][]{\marginpar{#2}\define[#1]{#2}}
 
 
+%% seealso command from TUGboat, Volume 12 (1991), No. 2
+\def\subsee#1#2{{\em see also\/} #1} 
+% the #2 consumes a comma 
+\def\nosee#1{} 
+% consume the page number 
+\def\seealso#1#2{%
+  \index{#1!zzzzz@\subsee{#2}|nosee}}
+%% to use, do something like \seealso{index entry}{see also entry}
 
 % Abbreviations
 
