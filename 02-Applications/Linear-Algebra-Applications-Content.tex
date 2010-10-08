@@ -1129,7 +1129,8 @@ The span of a set of vectors is always a vector subspace. The simplest way to sh
 
 A basis of vectors for a subspace $V$ is a set of linearly independent vectors whose span is the set $V$.  The dimension of a subspace is the number of vectors in a basis. Lines through the origin are one-dimensional subspaces, planes through the origin are two-dimensional subspaces, and so on.
 
-\begin{example}Here are three examples of vector subspaces.
+\begin{example}\label{RR subspace examples}
+Here are three examples of vector subspaces.
 \begin{enumerate}
 	\item 
 The set of vectors $V=\{(2c,3c)\st \text{where $c$ is any real number}\}$ is a vector subspace of $\RR^2$. It represents a line through the origin.  A basis for $V$ is $\{(2,3)\}$, since every vector in the subspace is a scalar multiple of $(2,3)$.  Since there is one vector in the basis, $V$ is one-dimensional.
@@ -1153,7 +1154,8 @@ The set of vectors $V=\{(c+2e,2c+4e,d-2e)\st c,d,e\in \RR\}$ is a two-dimensiona
 Because the third column is not a pivot column, the third vector depends on the first two vectors.  Since the first two columns are pivot columns, the first two vectors form a linearly independent set, so a basis for $V$ is simply $\{(1,2,0),(0,0,1)\}$.  That is why the space is actually two-dimensional (it is a plane through the origin).
 \end{enumerate}
 \end{example}
-\begin{example}
+\begin{example}\label{RR subspace nonexamples}
+
 Here are three examples of sets that are \emph{NOT} vector subspaces.
 \begin{enumerate}
 	\item The set of vectors on the positive $x$-axis, $V=\{(a,0)\st a\geq0\}$, is not a vector subspace because if you multiply vector in $V$ by $-1$, the result is not in $V$.

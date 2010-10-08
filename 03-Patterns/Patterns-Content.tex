@@ -13,8 +13,11 @@ Most of the time, recognizing a pattern starts with an example.  After working w
 
 Learning mathematics requires learning to work with examples. The main goal of this chapter is to learn how to create examples to understand the definitions and theorems that others have discovered.  If you encounter a new idea in any scientific area, start by looking at examples.  After you have studied several simple examples, you will discover patterns that help you understand the new idea.  Sometimes, your exploration of simple examples will result in new discoveries (theorems). Examining, understanding, and generalizing from examples is one of the main tools of mathematical and scientific research.  Learning to create and look at examples is crucial.
 
-The most important pattern in linear algebra is the notion of a vector space. This is an abstract space that came from studying the properties of vectors in $\mathbb{R}^n$, and then realizing that these same properties hold in other places (like polynomials, functions, waves, and more). Before we formally define a vector space in general, we will practice creating examples to understand definition and theorems.  Most of what follows is a summary of the ideas introduced in the previous chapters. As you encounter each new definition or theorem, your homework will be to create an example which illustrates the new idea.  Once we have done this, we'll be ready to formally define vector spaces. Then the real power of linear algebra begins.
+The most important pattern in linear algebra is the notion of a vector space. This is an abstract space that came from studying the properties of vectors in $\mathbb{R}^n$, and then realizing that these same properties hold in other places (like polynomials, functions, waves, and more). Before we formally define a vector space in general, we will practice creating examples to understand definition and theorems.  Most of what follows is a summary of the ideas introduced in the previous chapters. Once we have done this, we'll be ready to formally define general vector spaces. Then the real power of linear algebra begins.
 
+As you encounter each new definition or theorem, your homework will be to create an example which illustrates the new idea.  To illustrate a definition, create several examples which satisfy the definition.  Make some of the examples simple examples, and make some examples wild and crazy examples of the definition.  Then make several examples that do not quite satisfy the definition (but are close).  Making examples of what a term means and what it does not mean will solidify the definition in your mind.
+
+To illustrate a theorem, make a few examples that satisfy the conditions in the theorem and show that the result of the theorem is satisfied.  Again, make some examples that are simple and some that are wild and crazy.  Then make some examples that do not quite satisfy the conditions in the theorem and do not have the result hold (for example, you might make examples that satisfy all but one of the conditions in the theorem).
 
 %
 %Mathematical discoveries begin with examples. However, mathematical writing often begins with definitions. Those definitions are followed by theorems and proofs. If space permits, examples are often given to illustrate the definitions and theorems.  If appropriate, an application (example) is also given to show why a theorem is important. Those who write mathematical papers and textbooks around the nation have become accustomed to writing papers for peers in journals. Most of the time, these papers assume a lot of knowledge from the reader, and because of space limitations the papers are missing lots of examples. In order to read this kind of mathematics, you have to learn how to create examples to illustrate definitions and theorems whenever you see them.
@@ -25,12 +28,12 @@ The most important pattern in linear algebra is the notion of a vector space. Th
 
 \subsection{Definitions}
 
-Whenever you see a new definition, one of the most important things you can do is create an example which illustrates that definition. As you read each definition below, create an example which illustrates that definition. Most of these words are review, but a few are new.  Make sure you know these definitions.
+Whenever you see a new definition, one of the most important things you can do is create a few examples which illustrate that definition.  Most of these words are review, but a few are new.  Make sure you know these definitions.
 
 This first definition is a formal statement of what we mean when we write $\mathbb{R}^n$.  It is the foundation for the formal vector space definition we'll see later.
-\begin{definition}[Real Vector Space]
+\begin{definition}
 The symbol $\mathbb{R}$ is used to represent the real numbers.  
-The \define{real vector space} $\mathbb{R}^n$ is a set together with a way of adding two elements (called \define{vector addition}) and a way of multiplying an element by a real number (called \define{scalar multiplication}).  
+The real vector space $\mathbb{R}^n$ is a set together with a way of adding two elements (called \define{vector addition}) and a way of multiplying an element by a real number (called \define{scalar multiplication}).  
 The set we use is the set of $n$-tuples $(v_1,v_2,\ldots, v_n)$ where each $v_i$ is an element of $\mathbb{R}$. 
 We write this symbolically as 
 $$
@@ -56,7 +59,7 @@ The \define[matrix!product]{product} of two matrices $A_{m n} = \left\{a_{ij}\ri
 
 \begin{definition} \label{def rref}
 \marginpar{See example \ref{ex rref last}. Every matrix we obtain in the row reduction process of $A$ is row equivalent to all the other matrices obtained from $A$ by doing row operations, and to the reduced row echelon form of $A$. Each of the matrices in example \ref{ex rref last} is row equivalent to all the other matrices in the example.}%
-We say that two matrices are \define[matrix!row equivalent]{row equivalent} if one can be obtained from the other by a finite sequence of these three row operations: (1) interchange two rows, (2) multiply one row by a nonzero constant, and (3) add to a row a multiple of a different row. 
+ We say that two matrices are \define[matrix!row equivalent]{row equivalent} if one can be obtained from the other by a finite sequence of these three row operations: (1)~interchange two rows, (2) multiply one row by a nonzero constant, and (3) add to a row a multiple of a different row. 
 
 A matrix is said to be in \define{row echelon form} (ref) if 
 (1) each nonzero row begins with a 1 (called a \define{leading 1}), 
@@ -91,9 +94,9 @@ We say a set $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ of vectors is \define{linea
 \begin{definition}[Basis]
 A \define{basis} for $\mathbb{R}^n$ is a set of vectors that are (1) linearly independent and (2) span all of $\mathbb{R}^n$.
 The \define{standard basis} for $\mathbb{R}^n$ is the set 
-$$\{\vec e_1 = (1,0,0,\ldots,0,0) , 
-\vec e_2 = (0,1,0,\ldots,0,0) , 
-\ldots, 
+$$\{\vec e_1 = (1,0,0,\ldots,0,0),\, 
+\vec e_2 = (0,1,0,\ldots,0,0),\, 
+\ldots,\, 
 \vec e_n = (0,0,0,\ldots,0,1)\}.$$
 \end{definition}
 
@@ -116,11 +119,11 @@ The \definestyle{dimension} of the row space is the number of vectors in a basis
 \begin{definition}[Coordinates]
 \marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}%
 If $\beta=\{\vec b_1,\vec b_2,\ldots,\vec b_n\}$ is a basis for a vector space, and a vector $\vec v$ equals the linear combination 
-$$ \vec v = c_1\vec b_1+c_2\vec v_2 + \cdots c_n\vec v_n, $$ then we call the scalars $c_1,c_2,\ldots, c_n$ the  \define{coordinates} of $\vec v$ relative to the basis $\beta$. We may write $\vec v = (c_1,c_2,\ldots, c_n)_\beta$ to represent the vector $\vec v$, or if the basis $\beta$ is understood, we may just write $\vec v = (c_1,c_2,\ldots, c_n)$.
+$$ \vec v = c_1\vec b_1+c_2\vec v_2 + \cdots c_n\vec v_n, $$ then we call the scalars $c_1,\,c_2,\,\ldots,\, c_n$ the  \define{coordinates} of $\vec v$ relative to the basis $\beta$. We may write $\vec v = (c_1,c_2,\ldots, c_n)_\beta$ to represent the vector $\vec v$, or if the basis $\beta$ is understood, we may just write $\vec v = (c_1,c_2,\ldots, c_n)$.
 \end{definition}
 
 \begin{definition}[Diagonal, Identity, Triangular matrices]
-A \define[matrix types!diagonal]{diagonal matrix} is a square matrix where the entries off the main diagonal are zero ($a_{ij}=0$ if $i\neq j$). The \define[matrix types!identity]{identity matrix} is a diagonal matrix where each entry on the main diagonal is 1 ($a_{ii}=1$). We often write $I$ to represent the identity matrix, and $I_n$ to represent the $n\times n$ identity matrix when specifying the size is important. An \define[matrix types!upper triangular]{upper triangular matrix} is a square matrix where every entry below the main diagonal is zero. A \define[matrix types!lower triangular]{lower triangular matrix} is a square matrix where every entry above the main diagonal is zero.
+A \define[matrix types!diagonal]{diagonal matrix} is a square matrix in which the entries off the main diagonal are zero ($a_{ij}=0$ if $i\neq j$). The \define[matrix types!identity]{identity matrix} is a diagonal matrix in which each entry on the main diagonal is 1 ($a_{ii}=1$). We often write $I$ to represent the identity matrix and $I_n$ to represent the $n\times n$ identity matrix when specifying the size is important. An \define[matrix types!upper triangular]{upper triangular matrix} is a square matrix in which every entry below the main diagonal is zero. A \define[matrix types!lower triangular]{lower triangular matrix} is a square matrix in which every entry above the main diagonal is zero.
 $$\begin{array}{cccc}
 \begin{bmatrix} 3&0&0\\0&-2&0\\0&0&8\end{bmatrix} 
 &\begin{bmatrix} 1&0&0\\0&1&0\\0&0&1\end{bmatrix} 
@@ -138,25 +141,25 @@ $$\begin{array}{cccc}
 
 \begin{definition}[Determinant] 
 \marginpar{See example \ref{ex det}.}%
-The \define{determinant} of a $1\times 1$ matrix is the entry $a_{11}$. A \define{minor} $M_{ij}$ of an $n\times n$ matrix is the determinant of the $(n-1)\times (n-1)$ submatrix obtained by removing the $i$th row and $j$th column. A \define{cofactor} of a matrix is the product $C_{ij}=(-1)^{i+j}M_{ij}$. The determinant of an $n\times n$ matrix ($n\geq 2$) is found by multiplying each entry $a_{1i}$ on the first row of the matrix by its corresponding cofactor, and then summing the result. Symbolically we write  $$\det A = |A| = a_{11}C_{11}+a_{12}C_{12}+\cdots+a_{1n}C_{1n} = \sum_{j=1}^n a_{1j}C_{1j}.$$ 
+The \define{determinant} of a $1\times 1$ matrix is the entry $a_{11}$. A \define{minor} $M_{ij}$ of an $n\times n$ matrix is the determinant of the $(n-1)\times (n-1)$ submatrix obtained by removing the $i$th row and $j$th column. A \define{cofactor} of a matrix is the product $C_{ij}=(-1)^{i+j}M_{ij}$. The determinant of an $n\times n$ matrix ($n\geq 2$) is found by multiplying each entry $a_{1i}$ on the first row of the matrix by its corresponding cofactor, and then summing the result. Symbolically, we write  $$\det A = |A| = a_{11}C_{11}+a_{12}C_{12}+\cdots+a_{1n}C_{1n} = \sum_{j=1}^n a_{1j}C_{1j}.$$ 
 \end{definition}
 
 
 \begin{definition}[Inverse] 
 \marginpar{See example \ref{ex inverse}}%
-The \define{inverse} of a square matrix $A$ is a matrix $B$ such that $AB=I$ and $BA=I$, where $I$ is the identity matrix. If a square matrix does not have an inverse, we say the matrix is \define{singular} or \define{noninvertible}. 
+The \define{inverse} of a square matrix $A$ is a matrix $B$ such that $AB=I$ and $BA=I$, where $I$ is the identity matrix.   If a square matrix has an inverse, we say the matrix is \define{nonsingular} or \define{invertible}.  If a square matrix does not have an inverse, we say the matrix is \define{singular} or \define{noninvertible}.
 \end{definition}
 
-\begin{definition}[Transpose]
+\begin{definition}[Transpose, Symmetric]
 \marginpar{See example \ref{ex transpose}.}%
-The \define[matrix!transpose]{transpose} of a matrix $A_{m\times n}=\{a_{ij}\}$ is a new matrix $A^T_{n\times m}$ where the $i$th column of $A$ is the $i$th row of $A^T$.  A \define[matrix types!symmetric]{symmetric matrix} is a matrix $A$ such that $A=A^T$.
+The \define[matrix!transpose]{transpose} of a matrix $A_{m\times n}=\{a_{ij}\}$ is a new matrix $A^T_{n\times m}$ in which the $i$th column of $A$ is the $i$th row of $A^T$.  A \define[matrix types!symmetric]{symmetric matrix} is a matrix $A$ such that $A=A^T$.
 \end{definition}
 
 
 \begin{definition}[Eigenvector, Eigenvalue] 
-\marginpar{See examples \ref{ex eigen1} and \ref{ex eigen2.}
+\marginpar{See examples \ref{ex eigen1} and \ref{ex eigen2}. 
   Note that $\vec x=\vec 0$ is never an eigenvector.}%
-An \define{eigenvector} of a square matrix $A$ is a nonzero vector $\vec x$ with the property that $A\vec x = \lambda \vec x$ for some scalar $\lambda$.  We say that $\vec x$ is an \define{eigenvector} corresponding to the \define{eigenvalue} $\lambda$. 
+An \define{eigenvector} of a square matrix $A$ is a nonzero vector $\vec x$ with the property that $A\vec x = \lambda \vec x$ for some scalar $\lambda$.  We say that $\vec x$ is an eigenvector corresponding to the \define{eigenvalue} $\lambda$. 
 \end{definition}
 
 
@@ -208,10 +211,10 @@ We could write this statement symbolically by writing ``$p$ if and only if $q$.'
 	\item if $q$ then $p$.
 \end{enumerate}
 }
-The words if and only if create two if then statements, namely (1) if $p$ then $q$ and (2) if $q$ then $p$. This gives us the two statments:
+The words ``if and only if'' create two if-then statements, namely (1) if $p$ then $q$ and (2) if $q$ then $p$. This gives us the two statments:
 \begin{enumerate}
-	\item If the columns are linearly independent then every column is a pivot column.
-	\item If every column is a pivot column then the columns are linearly independent.
+	\item \emph{If} the columns are linearly independent \emph{then} every column is a pivot column.
+	\item \emph{If} every column is a pivot column \emph{then} the columns are linearly independent.
 \end{enumerate}
 Every time you see the words ``if and only if,'' remember that this means you have two if-then statements.  That means that you need at least two examples to illustrate such a theorem (one for each if-then statement).
 
@@ -235,7 +238,7 @@ Vector addition and scalar multiplication in $\mathbb{R}^n$ satisfy the followin
 \subsubsection{System Properties}
  
 \begin{theorem}\label{thm unique rref}
-Every matrix has a unique reduced row echelon form (rref). This implies that for any matrix, the location of the pivot columns is unique (they do not depend on how the matrix is reduced to rref). 
+Every matrix has a unique reduced row echelon form (rref). This implies that for any matrix, the location of the pivot columns is unique (the locations do not depend on how the matrix is reduced to rref). 
 \end{theorem}
 
 \begin{theorem}\label{thm row equivalent}
@@ -244,14 +247,14 @@ Two matrices are row equivalent if and only if they have the same reduced row ec
 
 
 \begin{theorem} \label{pivot columns iff} \label{thm solution iff augmented not pivot}
-A linear system of equations $A\vec x=\vec b$ has a solution if and only if the number of pivot columns of $A$ equals the number of pivot columns of the augmented matrix $[A|b]$.
+A linear system of equations $A\vec x=\vec b$ has a solution if and only if the number of pivot columns of $A$ equals the number of pivot columns of the augmented matrix $[A\mid b]$.
 \end{theorem}
 
 \begin{theorem}\label{thm no, one, or infinitely many solutions}
 If a linear system of equations has more than one solution, it has infinitely many.  Solving a linear system has three possible outcomes: (1) no solution, (2) exactly one solution, or (3) infinitely many solutions. 
 \end{theorem}
 
-\begin{theorem}[Removing non pivot columns does not alter the row operations involved in obtaining rref.] Let $A$ be a matrix whose rref is $R$.  Let $B$ be the matrix obtained from $A$ by removing the $k$th column.  If the $k$th column of $A$ is not a pivot column, then the rref of $B$ is found by removing the $k$th column from $R$. 
+\begin{theorem}[Removing non-pivot columns does not alter the row operations involved in obtaining rref] Let $A$ be a matrix whose rref is $R$.  Let $B$ be the matrix obtained from $A$ by removing the $k$th column.  If the $k$th column of $A$ is not a pivot column, then the rref of $B$ is found by removing the $k$th column from $R$. 
 \end{theorem}
 
 \begin{theorem}\label{thm n-k free variables}
@@ -292,7 +295,7 @@ The transpose of a product is found by multiplying the transposes in the reverse
 $$(AB)^T=B^T A^T.$$
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}\label{linearcombcol}
 The product $A\vec x$ of a matrix $A$ and column vector $\vec x$ is a linear combination of the columns of $A$. 
 \end{theorem}
 
@@ -319,7 +322,7 @@ The columns of a matrix are linearly independent if and only if every column is 
 \end{theorem}
 
 \begin{theorem}\label{dependentiff}
-A set (of 2 or more vectors) is linearly dependent if and only if at least one of the vectors can be written as a linear combination of the others. In particular, two vectors are linearly dependent if and only if one is a multiple of the other.
+A set (of two or more vectors) is linearly dependent if and only if at least one of the vectors can be written as a linear combination of the others. In particular, two vectors are linearly dependent if and only if one is a multiple of the other.
 \end{theorem}
 
 
@@ -329,19 +332,18 @@ The system $A\vec x=\vec b$ is consistent if and only if $\vec b$ is in the colu
 
 
 \begin{theorem}\label{rankrowcolumn}
-The dimension of the column space (the rank) equals the dimension of the row space.
-%In particular, the pivot columns of a matrix form a basis for the column space and the nonzero row vectors in reduced row echelon form form a basis for the row space.
+The dimension of the column space (the rank) of a matrix equals the dimension of the row space of the matrix.
 \end{theorem}
 
 
 \begin{theorem}\label{thm colsp basis}
 Consider a matrix $A$ whose columns are $\vec v_1,\vec v_2,\ldots,\vec v_n$. A basis for the column space is the set of pivot columns of $A$.  Let $R$ be the reduced row echelon form of $A$ with any rows of zeros removed. For each column $\vec v_k$ of $A$, the $k$th column of $R$ gives the coordinates of $\vec v_k$ relative to the basis of pivot columns.
   
-In terms of matrix multiplication, if $C$ is the matrix obtained from $A$ by erasing the non pivot columns, and $\vec r_k$ is the $k$th column of $R$, then $C\vec r_k=v_k$. The columns of $R$ tell us how to linearly combine the pivot columns of $A$ to obtain all columns of $A$.
+In terms of matrix multiplication, if $C$ is the matrix obtained from $A$ by erasing the non-pivot columns, and $\vec r_k$ is the $k$th column of $R$, then $C\vec r_k=v_k$. The columns of $R$ tell us how to linearly combine the pivot columns of $A$ to obtain all columns of $A$.
 \end{theorem}
 
 \begin{theorem}\label{thm rowsp basis}
-Consider a matrix $A$ whose rows are $\vec v_1,\vec v_2,\ldots,\vec v_m$. Let $R$ be the reduced row echelon form of $A$ with any rows of zeros removed. A basis for the row space is the set of nonzero rows of $R$.  Let $C$ be the matrix obtained from $A$ by erasing the non pivot columns of $A$. For each row $\vec v_k$ of $A$, the $k$th row of $C$ gives the coordinates of $\vec v_k$ relative to the basis of nonzero rows of $R$.
+Consider a matrix $A$ whose rows are $\vec v_1,\vec v_2,\ldots,\vec v_m$. Let $R$ be the reduced row echelon form of $A$ with any rows of zeros removed. A basis for the row space is the set of nonzero rows of $R$.  Let $C$ be the matrix obtained from $A$ by erasing the non-pivot columns of $A$. For each row $\vec v_k$ of $A$, the $k$th row of $C$ gives the coordinates of $\vec v_k$ relative to the basis of nonzero rows of $R$.
   
 In terms of matrix multiplication, if $\vec r_k$ is the $k$th row of $C$, then $\vec r_k R=v_k$. The rows of $C$ tell us how to linearly combine the rows of $R$ to obtain all rows of $A$.
 \end{theorem}
@@ -351,6 +353,10 @@ In terms of matrix multiplication, if $\vec r_k$ is the $k$th row of $C$, then $
 
 
 \subsubsection{Inverse Properties}
+
+The following theorems hold for invertible (square) matrices.
+
+
 \begin{theorem}\label{invunique}
 The inverse of a matrix is unique.
 \end{theorem}
@@ -364,8 +370,10 @@ The inverse of the transpose is the transpose of the inverse: $(A^T)\inv = (A\in
 \end{theorem}
 
 \begin{theorem}[Socks-Shoes property]\label{invprod}
-The inverse of a product is $(AB)\inv = B\inv A\inv$. Notice that the order of multiplication is reversed. You put on your socks and then your shoes. To undo this, you first take off your shoes, then your socks.
+The inverse of a product is $(AB)\inv = B\inv A\inv$. 
 \end{theorem}
+
+In the previous theorem, notice that the order of multiplication is reversed. You put on your socks and then your shoes. To undo this, you first take off your shoes, then your socks.
 
 \begin{theorem}
 If $A$ is invertible, then the solution to $A\vec x=\vec b$ is $\vec x=A\inv \vec b$.
@@ -374,17 +382,20 @@ If $A$ is invertible, then the solution to $A\vec x=\vec b$ is $\vec x=A\inv \ve
 
 
 \subsubsection{Determinant Properties}
+
+The following theorems hold for square matrices.
+
 \begin{theorem}
 The determinant can be computed by using a cofactor expansion along any row or any column. Symbolically, we can write this as $\ds |A| = \sum_{i=1}^n a_{ij} C_{ij}$ for any column $j$,  or $\ds |A| = \sum_{j=1}^n a_{ij} C_{ij}$ for any row $i$.
 \end{theorem}
 
 
 \begin{theorem}\label{thm det triangular}
-The determinant of a triangular matrix is the product of its entries along the main diagonal.
+The determinant of a triangular matrix is the product of the entries along its main diagonal.
 \end{theorem}
 
 \begin{theorem}\label{thm det product}
-The determinant of $AB$ is $|AB|=|A||B|$.\note{Postpone the proof of this one.} This implies that $|cA|=c^n|A|$ and $|A\inv|=|A|\inv$. 
+The determinant of $AB$ is $|AB|=|A||B|$.\note{Postpone the proof of this one.} This implies that $|cA|=c^n|A|$ and $|A\inv|=\frac{1}{|A|}$. 
 \end{theorem}
 
 \begin{theorem}\label{thm det transpose}
@@ -396,12 +407,12 @@ A matrix is invertible if and only if its determinant is not zero.
 \end{theorem}
 
 \begin{theorem}\label{thm det multiple columns}
-If one column is a multiple of another column, then the determinant is zero. 
-If one row is a multiple of another row, then the determinant is zero. 
+If one column of a matrix is a multiple of another column, then the determinant of the matrix is zero. 
+If one row of a matrix is a multiple of another row, then the determinant of the matrix is zero. 
 \end{theorem}
 
 \begin{theorem}\label{thm adjoint}
-Let $A$ be a square matrix. Define the adjoint of $A$, written $\text{adj}(A)$ to be the matrix whose $ij$th entry is the $ji$th cofactor of $A$ (the transpose of matrix of cofactors).  
+Let $A$ be a square matrix. Define the adjoint of $A$, written $\adjoint(A)$, to be the matrix whose $ij$th entry is the $ji$th cofactor of $A$ (the transpose of matrix of cofactors).  
 The product of the adjoint and the original matrix is $\text{adj}(A) A = |A|I$, a multiple of the identity matrix. 
 If the determinant of $A$ is nonzero, this implies that the inverse of $A$ is $A^{-1}=\frac{1}{|A|}\text{adj}(A)$.
 \end{theorem}
@@ -410,8 +421,10 @@ If the determinant of $A$ is nonzero, this implies that the inverse of $A$ is $A
 
 
 \subsubsection{Eigenvalues and Eigenvectors}
+The following theorems hold for square matrices.
+
 \begin{theorem}[How to compute eigenvalues and eigenvectors] \label{thm compute eigen}
-The vector $\vec x$ is an eigenvector of $A$ corresponding to $\lambda$ if and only if $(A-\lambda I)\vec x=\vec 0$ and $\det(A-\lambda I)=0$.
+The nonzero vector $\vec x$ is an eigenvector of $A$ corresponding to the eigenvalue $\lambda$ if and only if $(A-\lambda I)\vec x=\vec 0$ and $\det(A-\lambda I)=0$.
 \end{theorem}
 
 \begin{theorem}\label{thm characteristic degree n}
@@ -429,7 +442,7 @@ The eigenvalues of $A^T$ are the same as the eigenvalues of $A$.
 \begin{theorem}\label{thm eigenvalues and sums}
 If the sum of every row of $A$ is the same, then that sum is an eigenvalue corresponding to the eigenvector $(1,1,\ldots,1)$. 
 If the sum of every column of $A$ is the same, then that sum is an eigenvalue of $A$ as well (because it is an eigenvalue of $A^T$). 
-A Markov process always has 1 as an eigenvalue because the columns sum to 1. 
+A stochastic matrix (e.g., a transition matrix for a Markov process) always has 1 as an eigenvalue because the columns sum to 1. 
 \end{theorem}
 
 \begin{theorem}\label{thm spectral}
@@ -457,12 +470,12 @@ In this section I'll illustrate various methods of justifying a theorem (giving 
 \subsubsection{Prove by using a definition}
 To prove theorem \ref{invprod} ($(AB)\inv=B\inv A \inv$), we just use the definition of an inverse. It often helps to rewrite a definition, perhaps changing the names of variables if needed. The inverse of a matrix $C$ is a matrix $D$ such that $CD=DC=I$ (multiplying on either side gives the identity). To show that the inverse of $AB$ is $B\inv A\inv$, we need to show that multiplying $AB$ on both the left and right by $B\inv A\inv$ results in the identity. We multiply $AB$ on the left by $B\inv A\inv$ and compute 
 $$(B\inv A\inv)(AB) = B\inv (A\inv A)B = B\inv IB = BB\inv=I.$$
-Similarly we multiply $AB$ on the right by $B\inv A\inv$ and compute 
+Similarly, we multiply $AB$ on the right by $B\inv A\inv$ and compute 
 $$(AB)(B\inv A\inv) = A(BB\inv) A\inv = AIA\inv = AA\inv=I.$$
  Because multiplying $AB$ on both the left and right by $B\inv A\inv$ gives us the identity matrix, we know $B\inv A\inv$ is the inverse of $AB$. All we did was use the definition of an inverse.
 
 \subsubsection{Proving something is unique}
-To show something is unique, one common approach is to assume there are two and then show they must be the same.  
+To show something is unique, one common approach is to assume there are two things and then show the two things must be the same.  
 We'll do this to show that inverses are unique (Theorem \ref{invunique}).  
 Suppose that $A$ is a square matrix with an inverse $B$ and another inverse $C$.  
 Using the definition, we know that $AB=BA=I$, and $AC=CA=I$.  
@@ -476,7 +489,7 @@ Since $C$ is an inverse for $A$, we know $CA=I$, which means $IB=C$, or $B=C$, w
 \subsubsection{Prove by using another theorem}
 Sometimes using other theorems can quickly prove a new theorem.  
 Theorem \ref{linearcombrow} says that the product $\vec x A$ is a linear combination of the rows of $A$.  
-The two theorems right before this one state that $A\vec x$ is a linear combination of the columns of $A$, and that $(AB)^T=B^TA^T$.  
+The two theorems right before this one (Theorems~\ref{thm transpose of product} and \ref{linearcombcol}) state that $(AB)^T=B^TA^T$ and that $A\vec x$ is a linear combination of the columns of $A$.  
 Rather than prove Theorem \ref{linearcombrow} directly, we are going to use these other two theorems.  
 The transpose of $\vec x A$ is $A^T\vec x^T$, which is a linear combination of the columns of $A^T$.  
 However, the columns of $A^T$ are the rows of $A$, so $A^T\vec x^T$ is a linear combination of the rows of $A$.  
@@ -485,16 +498,20 @@ Theorems which give information about columns often immediately give information
 
 
 \subsubsection{If and only if}
-The words ``if and only if'' require that an ``if-then'' statement work in both directions.  The following key theorem (\ref{dependentiff}) has an if and only if statement in it. A set of 2 or more vectors is linearly dependent if and only if one of the vectors is a linear combination of others.  To prove this, we need to show 2 things.
+The words ``if and only if'' require that an ``if-then'' statement work in both directions.  The following key theorem (Theorem~\ref{dependentiff}) has an if and only if statement in it. 
+\begin{quote}
+A set of two or more vectors is linearly dependent if and only if one of the vectors is a linear combination of others.  
+\end{quote}
+To prove this, we need to show two things:
 \begin{enumerate}
 	\item If the vectors are linearly dependent, then one is a linear combination of the others.
-	\item If one of the vectors is a linear combination of the others, then the vectors are linearly independent.
+	\item If one of the vectors is a linear combination of the others, then the vectors are linearly dependent.
 \end{enumerate}
 We'll start by proving the first item.  If the vectors are dependent, then there is a nonzero solution to the equation $$c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n=\vec 0.$$ Pick one of the nonzero constants, say $c_k$. Subtract $c_k\vec v_k$ from both sides and divide by $-c_k$ (which isn't zero) to obtain 
 $$\frac{c_1}{-c_1}\vec v_1+\cdots+\frac{c_{k-1}}{-c_k}\vec v_{k+1}+\frac{c_{k+1}}{-c_k}\vec v_{k+1}+\cdots+\frac{c_n}{-c_k}\vec v_n=\vec v_k,$$
 which means that $v_k$ is a linear combination of the other vectors.
 
-Now let's prove the reverse condition. Suppose one of the vectors is a linear combination of the others (say the $k$th). 
+Now let's prove the second item. Suppose one of the vectors is a linear combination of the others (say the $k$th). 
 Write 
 $$v_k=c_1\vec v_1+\cdots+c_{k-1}\vec v_{k+1}+c_{k+1}\vec v_{k+1}+\cdots+c_n\vec v_n.$$  
 Subtracting $v_k$ from both sides gives a nonzero solution ($c_k=-1$) to the equation $\vec 0=c_1\vec v_1+\cdots+c_{k-1}\vec v_{k+1}-v_k+c_{k+1}\vec v_{k+1}+\cdots+c_n\vec v_n$, which means the vectors are linearly dependent.
@@ -503,35 +520,35 @@ Subtracting $v_k$ from both sides gives a nonzero solution ($c_k=-1$) to the equ
 
 
 \subsubsection{Proof by contradiction}
-Sometimes in order to prove a theorem, we make a contradictory assumption and then show that this assumption lead to an error (which means the assumption cannot be correct).  
+Sometimes in order to prove a theorem, we make a contradictory assumption and then show that this assumption leads to an error (which means the assumption cannot be correct).  
 We will do this to show that if $A$ is invertible, then $|A|\neq 0$. 
 We will also use the fact that the determinant of a product is the product of the determinants, $|AB|=|A||B|$, a fact we will verify in a later chapter. 
 Let's start with a matrix $A$ which has an inverse and then assume that the determinant is $|A|=0$.  
 The inverse of $A$ is $A\inv$ and the product $AA\inv=I$ is the identity. 
-Taking determinants of both sides gives $|AA\inv|=1$, or $|A||A\inv|=1$, since the identity matrix has determinant 1.  
-If $|A|=0$, then $0|A\inv|=0=1$, which is absurd. 
+Taking determinants of both sides gives $|AA\inv|=|I|=1$, or $|A||A\inv|=1$ (remember the identity matrix has determinant 1).  
+Since we assumed that $|A|=0$, we have $0|A\inv|=0=1$, which is absurd. 
 Our assumption that $|A|=0$ must be incorrect. 
 We must have $|A|\neq 0$.    
 
 \subsubsection{Prove $a=b$ by showing $a\leq b$ and $b\leq a$}
 If $a\leq b$ and $b\leq a$, then $a=b$. 
 Sometimes it is easier to show an inequality between two numbers than it is to show the numbers are equal.  
-We will use this to show that the rank of a matrix (the dimension of the column space - number of pivot columns) equals the dimension of the row space.
-Let the rank of $A$ equal $r$, and let the dimension of the row space equal $s$. 
-Write $A=CR$ where $C$ is the pivot columns of $A$ and $R$ is the nonzero rows of the RREF of $A$. 
-The rank $r$ equals the number of columns in $C$. 
+We will use this to show that the rank of a matrix (the dimension of the column space, which is the number of pivot columns) equals the dimension of the row space.
+Let the rank of $A$ be $r$, and let the dimension of the row space equal $s$. 
+Write $A=CR$ where the columns of $C$ are the pivot columns of $A$ and the rows of $R$ are the nonzero rows of the rref of $A$. 
+We know that the rank $r$ equals the number of columns in $C$. 
 Since every row of $A$ can be written as a linear combination of the rows of $R$, the rows of $R$ span the rows space. 
 We know that a basis for the row space cannot contain more than $r$ vectors since there are $r$ rows in $R$. 
-This means that the dimension $s$ of the row space must statisfy $s\leq r$.
+This means that the dimension $s$ of the row space must satisfy $s\leq r$.
  
-We now repeat the previous argument on the transpose of $A$. Write $A^T = C^\prime R^\prime$ where $C^\prime$ is the pivot columns of $A^T$ and $R^\prime$ is the nonzero rows of the RREF of $A^T$. The columns of $C^\prime$ are linearly independent rows of $A$, so $C^\prime$ has $s$ columns, and $R^\prime$ has $s$ rows. Since every row of $A^T$ can be written as a linear combination of the rows of $R^\prime$, a basis for the row space of $A^T$ (i.e. the column space of $A$) cannot have more than $s$ vectors, or $r\leq s$. Combining both inequalities, since $r\leq s$ and $s\leq r$, we have $r=s$.
+We now repeat the previous argument on the transpose of $A$. Write $A^T = C^\prime R^\prime$ where the columns of $C^\prime$ are the pivot columns of $A^T$ and the rows of $R^\prime$ are the nonzero rows of the rref of $A^T$. The columns of $C^\prime$ are linearly independent rows of $A$, so $C^\prime$ has $s$ columns, and $R^\prime$ has $s$ rows. Since every row of $A^T$ can be written as a linear combination of the rows of $R^\prime$, a basis for the row space of $A^T$ (i.e. the column space of $A$) cannot have more than $s$ vectors, or $r\leq s$. Combining both inequalities, since $r\leq s$ and $s\leq r$, we have $r=s$.
 
 %\subsubsection{Proofs involving $n$ elements}
-%We have been using the idea that a non pivot column is a linear combination of the pivot columns preceding it (Theorem \ref{pivotcol}). To prove this, we need to work with summation notation. I'll start by repeating what we are trying to prove. Consider a matrix $A$ whose columns are $\vec v_1,\vec v_2,\ldots,\vec v_n$. Let $R$ be the reduced row echelon form of $A$ with any rows of zeros removed. If $\vec v_k$ is not a pivot column, then $\vec v_k$ is a linear combination of the preceding vectors. In particular, if $C$ is the matrix obtained from $A$ by erasing the non pivot columns, and $\vec r_k$ is the $k$th column of $R$, then $C\vec r_k=v_k$. In other words, the columns of $R$ tell us how to linearly combine the pivot columns of $A$ to obtain columns of $A$.
+%We have been using the idea that a non-pivot column is a linear combination of the pivot columns preceding it (Theorem \ref{pivotcol}). To prove this, we need to work with summation notation. I'll start by repeating what we are trying to prove. Consider a matrix $A$ whose columns are $\vec v_1,\vec v_2,\ldots,\vec v_n$. Let $R$ be the reduced row echelon form of $A$ with any rows of zeros removed. If $\vec v_k$ is not a pivot column, then $\vec v_k$ is a linear combination of the preceding vectors. In particular, if $C$ is the matrix obtained from $A$ by erasing the non-pivot columns, and $\vec r_k$ is the $k$th column of $R$, then $C\vec r_k=v_k$. In other words, the columns of $R$ tell us how to linearly combine the pivot columns of $A$ to obtain columns of $A$.
 %
 %Consider the equation $c_1 \vec v_1 +c_2 \vec v_2 +\cdots \vec c_n \vec v_n=0$ (in matrix form, just list the vectors and augment by zero). Since $v_k$ is not a pivot column, $c_k$ is a free variable. Let $c_k=-1$ and all other free variables equal zero. This allows us to write $c_1 \vec v_1 +c_2 \vec v_2 +\cdots+(-1)\vec v_k+\cdots+ \vec c_n \vec v_n=0$ or $$\vec v_k=c_1 \vec v_1 +c_2 \vec v_2 +\cdots+c_{k-1}\vec v_{k-1}+c_{k+1}\vec v_{k+1}+\cdots+ \vec c_n \vec v_n,$$ which means that $\vec v_k$ is a linear combination of the other vectors. Since every free variable is zero, we see that $v_k$ is a linear combination of the pivot columns of $A$. Because each free variable other that $c_k$ is zero, for all $i>k$ we have $c_i=0$ (non free variables only depend on the free variables which follow them).  This means that $v_k$ is linear combination of the vectors which precede it. To simplify notation below, let $C = \begin{bmatrix}\vec u_1 & \cdots &\vec u_m\end{bmatrix}$ be the matrix whose columns are the pivot columns of $A$.  Rename the constants above to obtain $\vec v_k = d_1\vec u_1 + \cdots +\d_m\vec u_m$, which corresponds to the augmented system $\begin{bmatrix}\vec u_1& \cdots &\vec u_m & \vec v_k\end{bmatrix}$ whose reduced row echelon form has all pivot columns except has $(d_1,\ldots,d_n)$ in the augmented system. 
 %
-%I need more here.  I will add some soon.  The connection between non pivot columns, linear combinations, and reduced row echelon form are crucial.
+%I need more here.  I will add some soon.  The connection between non-pivot columns, linear combinations, and reduced row echelon form are crucial.
 
 
 
@@ -557,34 +574,34 @@ We now repeat the previous argument on the transpose of $A$. Write $A^T = C^\pri
 \begin{enumerate}
 	\item The system $A\vec x=\vec 0$ has only the trivial solution.
 	\item The system $A\vec x=\vec b$ has a unique solution for every $\vec b$.
-	\item The reduced row echelon form of $A$ is the identity matrix.
+	\item The rref of $A$ is the identity matrix.
 	\item Every column of $A$ is a pivot column. 
-	\item The columns of $A$ are linearly independent. (The dimension of the column space is $n$, and the span of the columns of $A$ is ${\mathbb{R}}^n$.)
+	\item The columns of $A$ are linearly independent. (The dimension of the column space is $n$ and the span of the columns of $A$ is ${\mathbb{R}}^n$.)
 	\item The rank of $A$ is $n$.
-	\item The rows of $A$ are linearly independent. (The dimension of the row space is $n$, and the span of the rows of $A$ is ${\mathbb{R}}^n$.)
-	\item The vectors $\vec e_1 = (1,0,0,\ldots,0), \vec e_2 = (0,1,0,\ldots,0),\ldots, \vec e_n = (0,0,0,\ldots,1)$ are in the column space of $A$.
-	\item $A$ has an inverse.
+	\item The rows of $A$ are linearly independent. (The dimension of the row space is $n$ and the span of the rows of $A$ is ${\mathbb{R}}^n$.)
+	\item The vectors $\vec e_1 = (1,0,0,\ldots,0),\, \vec e_2 = (0,1,0,\ldots,0),\,\ldots,\, \vec e_n = (0,0,0,\ldots,1)$ are in the column space of $A$.
+	\item $A$ is invertible.
 	\item $|A|\neq 0$.
-	\item The eigenvalues of $A$ are nonzero.	
+	\item The eigenvalues of $A$ are all nonzero.	
 \end{enumerate}
 \end{theorem}
 
-We have been using this theorem periodically without knowing it. Because this theorem is true, there is an if and only if between any pair of items.  In addition, because there is an if and only if between every item, we can also negate every single statement and obtain an equivalence as well:
-\begin{theorem}
-	There is more than one solution to  $A\vec x=0$ if and only if the system $A\vec x=\vec b$ does not have a unique solution (it may not have one at all), if and only if the reduced row echelon form of $A$ is not the identity matrix,  if and only if at least one column is not a pivot column,  if and only if the columns are linearly dependent (the dimension of the column space is less than $n$),  if and only if the rank is less than $n$,  if and only if the rows are linearly dependent,  if and only if there is no inverse ($A$ is singular),  if and only if the determinant is zero, and  if and only if zero is an eigenvalue.
+We have been using this theorem periodically without knowing it. Because this theorem is true, there is an if and only if between any pair of items.  In addition, because there is an if and only if between every item, we can also negate every single statement and obtain an equivalence as well.  In this negated equivalence, we use the symbol $\iff$ to represent the words ``if and only if.''
+\begin{theorem}\label{huge equivalence negated}
+	There is more than one solution to  $A\vec x=0$ $\iff$ the system $A\vec x=\vec b$ does not have a unique solution (it may not have one at all) $\iff$ $\rref(A)\neq I$  $\iff$ at least one column is not a pivot column  $\iff$ the columns are linearly dependent (the dimension of the column space is less than $n$)  $\iff$ the rank of $A$ is less than $n$  $\iff$ the rows are linearly dependent  $\iff$ $A$ is not invertible $\iff$ $\det(A)=0$  $\iff$ zero is an eigenvalue.
 \end{theorem}
 
-The results of this theorem involve 2 results (an if and only if) between every pair of statements (making 110 different theorems altogether). We can prove the theorem much more quickly.  If we want to show 4 things are equivalent, then we can show that (1) implies (2), (2) implies (3), (3) implies (4), and (4) implies (1). Then we will have shown that (1) also implies (3) and (4) because we can follow a circle of implications to obtain an implication between any two statements.  To prove the theorem above we need to show a chain of 11 implications that eventually circles back on itself.
+The results of these two theorems involve two if-then statements (an if and only if) between every pair of statements in the same theorem, making 110 different theorems altogether. We can prove the theorem much more quickly than writing out 110 different proofs, though.  For example, if we want to show four statements are equivalent, then we can show that (1) implies (2), (2) implies (3), (3) implies (4), and (4) implies (1). Then we will have shown that (1) also implies (3) and (4) because we can follow a circle of implications to obtain an implication between any two statements.  To prove the theorem above, we need to show a chain of 11 implications that eventually circles back on itself.
 
 \begin{proof}
 
-[(1) implies (2)] If the system $A\vec x=\vec 0$ has only the trivial solution, then the reduced row echelon form of $[A|\vec 0]$ is $[I|\vec 0]$. The row operations used to reduce this matrix will be the same as the row operations used to reduce $[A|\vec b]$. Hence the RREF of $[A|\vec b]$ will be $[I|\vec x]$, where $A\vec x=\vec b$, so there will be a unique solution.  
+[(1) implies (2)] If the system $A\vec x=\vec 0$ has only the trivial solution, then the reduced row echelon form of $[A\mid \vec 0]$ is $[I\mid \vec 0]$. The row operations used to reduce this matrix will be the same as the row operations used to reduce $[A\mid\vec b]$. Hence the rref of $[A\mid\vec b]$ will be $[I\mid \vec x]$, where $A\vec x=\vec b$, so there will be a unique solution.  
 
-[(2)implies (3)]  With a unique solution to $A\vec x =\vec b$ for any $\vec b$, the solution to $A\vec x = \vec 0$ is $\vec x = \vec 0$.  This means that the RREF of $[A|\vec 0]$ is $[I|\vec 0]$. Since removing the last column of zeros won't change any row operations, the RREF of $A$ is $I$. 
+[(2) implies (3)]  With a unique solution to $A\vec x =\vec b$ for any $\vec b$, the solution to $A\vec x = \vec 0$ is $\vec x = \vec 0$.  This means that the rref of $[A|\vec 0]$ is $[I|\vec 0]$. Since removing the last column of zeros won't change any row operations, the rref of $A$ is $I$. 
 
 [(3) implies (4)] Since the reduced row echelon form of $A$ is $I$, then each column contains a leading 1, and hence is a pivot column
 
-[(4) implies (5)] Since each column is a pivot column, the only solution to $c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n=\vec 0$ (where $\vec v_i$ is the $i$th column of $A$) is the trivial solution $c_1=c_2=\cdots=c_n=0$. This is because in order for each column of $A$ to be a pivot column, each row of $A$ must have a leading 1 (since there are $n$ rows as well as $n$ columns).  Notice that we have just shown (4) implies (1) as well, which means that (1) through (4) are all equilvalent.
+[(4) implies (5)] Since each column is a pivot column, the only solution to $c_1 \vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n=\vec 0$ (where $\vec v_i$ is the $i$th column of $A$) is the trivial solution $c_1=c_2=\cdots=c_n=0$. This is because in order for each column of $A$ to be a pivot column, each row of $A$ must have a leading 1 (since there are $n$ rows as well as $n$ columns).  Notice that we have just shown (4) implies (1) as well, which means that (1) through (4) are all equivalent.
 
 [(5) implies (6)] The definition of rank is the dimension of the column space. Since there are $n$ pivot columns, the rank is $n$.
 
@@ -592,7 +609,7 @@ The results of this theorem involve 2 results (an if and only if) between every 
 
 [(7) implies (8)] Since (7) is equivalent to (5), we know that the span of the column space is all of ${\mathbb{R}}^n$. This means in particular that the vectors listed are in the span of the columns of $A$.
 
-[(8) implies (9)]  To find the inverse of $A$, we need to solve $A B = I$ or $[A\vec b_1\ A\vec b_2\ \ldots A\vec b_n]=[\vec e_1\ \vec e_2\ \ldots \vec e_n]$. This means we need to solve the equation $A\vec b_i=\vec e_i$ for $\vec b_i$ for each $i$, and this can be done because each $\vec e_i$ is in the column space of $A$. The inverse of $A$ is thus $[\vec b_1 \ \vec b_2 \ \ldots \vec b_n]$.
+[(8) implies (9)]  To find the inverse of $A$, we need to solve $A B = I$ or $[A\vec b_1\ A\vec b_2\ \cdots\ A\vec b_n]=[\vec e_1\ \vec e_2\ \cdots\ \vec e_n]$. This means we need to solve the equation $A\vec b_i=\vec e_i$ for $\vec b_i$ for each $i$, and this can be done because each $\vec e_i$ is in the column space of $A$. The inverse of $A$ is thus $[\vec b_1 \ \vec b_2\ \cdots\ \vec b_n]$.
 
 [(9) implies (10)] We already showed that if a matrix has an inverse, then the determinant is not zero (otherwise $|A||A\inv|=|I|$ gives $0=1$).
 
@@ -604,26 +621,25 @@ The results of this theorem involve 2 results (an if and only if) between every 
 At this point, if we want to say that (10) implies (9) (determinant nonzero implies there is an inverse), then the proof above shows that (10) implies (11) which implies (1) which implies (2) and so on until it implies (9) as well.  By creating a circle of implications, all of the ideas above are equivalent.
 
 
-In the homework, I ask you to illustrate this theorem with a few matrices.  Your job is to show that the matrix satisfies every single one of the statements above, or to show that it satisfies the opposite of every single statement above. 
+In the homework, I ask you to illustrate this theorem with a few matrices.  Your job is to show that your example matrix either satisfies every single one of the statements in Theorem~\ref{huge equivalence}, or satisfies every single one of the statements in Theorem~\ref{huge equivalence negated}.
 
 
 
 
 \section{Vector Spaces}
 
-The notion of a vector space is the foundational tool upon which we will build for the rest of the semester. Vectors in the plane, vectors in space, and planes in space through the origin are all examples of vector spaces. We have looked at the column space, row space, null space, and eigenspace of a matrix as other examples of vector spaces.  In all of the examples we have looked at, we were able to create the vector space by considering a basis and using the span of that basis to obtain the vector space.  This is the fundamental idea we need to abstract vector spaces to a more general setting.  \marginpar{Vector spaces are spans of sets of vectors.}
-Continuous and differentiable functions form vector spaces. Matrices of the same size form a vector space. Radio waves, light waves, electromagnetic waves, and more all form vector spaces. Mathematicians discovered some common properties about all of these kinds of objects, and created a definition of `Vector Space'' to allow them to focus on the key commonalities. The results which sprang from the following definition created linear algebra as we know it today. 
+The notion of a vector space is the foundational tool upon which we will build for the rest of the semester. Vectors in the plane, vectors in space, and planes in space through the origin are all examples of vector spaces. We have looked at the column space, row space, null space, and eigenspaces of a matrix as other examples of vector spaces.  In all of the examples we have looked at, we were able to create the vector space by considering a basis and using the span of that basis to obtain the vector space.  This is the fundamental idea we need to abstract vector spaces to a more general setting.  \marginpar{Vector spaces are spans of sets of vectors.}
+Continuous and differentiable functions form vector spaces. Matrices of the same size form a vector space. Radio waves, light waves, electromagnetic waves, and more all form vector spaces. Mathematicians discovered some common properties about all of these kinds of objects, and created a definition of of the term ``vector space'' to allow them to focus on the key commonalities. The results which sprang from the following definition created linear algebra as we know it today. 
 
-\begin{definition}\marginpar{We use the word ``real'' to emphasize that the scalars are real numbers. For those of you who know about fields, you can replace ``real'' with any field, such as the complex numbers or finite fields used in public key encryption. Scalar multiplication does not have to be done over the real numbers. For simplicity we will stick to the real numbers for now.
-}
-A (real) vector space is a set $V$ together with two operations:
+\begin{definition}\marginpar{We use the word ``real'' to emphasize that the scalars are real numbers. For those of you who know about fields, you can replace ``real'' with any field, such as the complex numbers or finite fields used in computers or cryptography. For simplicity, we will stick to scalars being real numbers for now.}%
+A (real) \define{vector space} is a set $V$ of things (which we will call ``vectors'') together with two operations:
 \begin{enumerate}
-	\item[(C1)] $+$ vector addition, which assigns to any pair $\vec u, \vec v\in V$ another vector $\vec u+\vec v\in V$,
-	\item[(C2)] $\cdot$ scalar multiplication, which assigns to any $\vec v \in V$ and $c\in {\mathbb{R}}$ another vector $c\vec v$.
+	\item[(C1)] \define{vector addition} ($+$), which assigns to any pair $\vec u, \vec v\in V$ another vector $\vec u+\vec v\in V$,
+	\item[(C2)] \define{scalar multiplication} ($\cdot$), which assigns to any $\vec v \in V$ and $c\in {\mathbb{R}}$ another vector $c\vec v\in V$.
 \end{enumerate}
-We say that the set is closed under the operations of vector addition and scalar multiplication because adding vectors and scaling vectors produces vectors in the set. 
-These two operations satisfy the following axioms ($c,d\in {\mathbb{R}}$ and $u,v,w\in V$):
-\marginpar{Compare this to theorems \ref{rn vector space properties} and \ref{matrix vector space properties}.}
+\marginpar{We say that the set $V$ is closed under the operations of vector addition and scalar multiplication because adding vectors and scaling vectors produces other vectors in $V$.}%
+These two operations must satisfy the following axioms ($c,d\in {\mathbb{R}}$ and $\vec u,\vec v,\vec w\in V$):
+\marginpar{Compare these properties to Theorems~\ref{rn vector space properties} and \ref{matrix vector space properties}.}%
 \begin{enumerate}
 	\item[($A_1$)] Vector addition is associative: $(\vec u+\vec v)+\vec w = \vec u +(\vec v+\vec w)$.
 	\item[($A_2$)] Vector addition is commutative: $\vec u+\vec v= \vec v+\vec u$.
@@ -635,30 +651,31 @@ These two operations satisfy the following axioms ($c,d\in {\mathbb{R}}$ and $u,
 	\item[($M_4$)] Scalar multiplication by 1 does nothing: $1\vec v=\vec v$
 \end{enumerate}
 \end{definition}
-The definition above is the formal definition of a vector space. The definition generalizes the properties we already use about vectors in 2 and 3 dimensions. This definition essentially means you can add and multiply as you would normally expect, no surprises will occur. 
+The definition above is the formal definition of a vector space. The definition generalizes the properties we already use about vectors in $\RR^2$ and $\RR^3$. This definition essentially means you can add and multiply as you would normally expect---no surprises will occur. 
  However, you can work with this definition if you think 
 \begin{quote}
-A vector space is a set of vectors where vector addition and scalar multiplication are closed, these operations obey the usual rules of addition and multiplication, and the span of any collection of vectors is also in the space.
+A vector space is a set of things (``vectors'') closed under vector addition and scalar multiplication, and these operations obey the usual rules of addition and multiplication.
 \end{quote}
 
 
-With vector addition and scalar multiplication properly defined, the span of any set of vectors will always be a vector space. Every linear combination of the vectors in that space must also be in the space. This means that lines and planes in 3D which pass through the origin are examples of vector spaces. As the semester progresses, we will discover that our intuition about what happens in 2D and 3D generalizes to all dimensions, and can help us understand any kind of vector space.  For now, let's look at some examples of vector spaces, and explain why they are vector spaces.
+With vector addition and scalar multiplication properly defined, the span of any set of vectors from the vector space will always be a vector space. In other words, every linear combination of the vectors in that space must also be in the space. This means that lines and planes in $\RR^3$ which pass through the origin are examples of vector spaces. As the semester progresses, we will discover that our intuition about what happens in $\RR^2$ and $\RR^3$ generalizes to all dimensions and can help us understand any kind of vector space.  For now, let's look at some examples of vector spaces, and explain why they are vector spaces.
 
-\begin{example} Examples of vector spaces:
+\begin{example}[Examples of vector spaces]
+Here are some examples of sets (and corresponding vector addition and scalar multiplication operations) that are vector spaces.
 \begin{enumerate}
-	\item Both ${\mathbb{R}}^2$ and ${\mathbb{R}}^3$ are vector spaces. The collection of all $n$ dimensional vectors, ${\mathbb{R}}^n$, is a vector space.  Vector addition is defined component wise. Addition is associative, commutative, the zero vector is $(0,0,\ldots,0)$, and $(v_1,v_2,\ldots,v_n)+(-v_1,-v_2,\ldots,-v_n)=\vec 0$. Also, scalar multiplication distributes across vector and scalar addition, it is associative, and $1\vec v=\vec v$.  The definition of a vector space was defined to capture the properties of ${\mathbb{R}}^n$ which are useful in other settings.
-	\item The set of $m$ by $n$ matrices, written $M_{mn}$, with matrix addition is a vector space.
-	\item The set of all polynomials, written $P(x)$, is a vector space.
-	\item The set of continuous functions on an interval $[a,b]$, written $C[a,b]$, where vector addition is function addition, is a vector space.
-	\item The set of continuously differentiable functions on an interval $(a,b)$, written $C^1(a,b)$, where vector addition is function addition, is a vector space.
+	\item Both ${\mathbb{R}}^2$ and ${\mathbb{R}}^3$ are vector spaces. The set of all lists of real numbers of length $n$, ${\mathbb{R}}^n$, is a vector space.  Vector addition is defined component-wise. Addition is associative, commutative, the zero vector is $(0,0,\ldots,0)$, and $(v_1,v_2,\ldots,v_n)+(-v_1,-v_2,\ldots,-v_n)=\vec 0$. Also, scalar multiplication distributes across vector and scalar addition, it is associative, and $1\vec v=\vec v$.  The definition of a vector space was defined to capture the properties of ${\mathbb{R}}^n$ which are useful in other settings.
+	\item The set of $m$ by $n$ matrices, written $M_{mn}$, with ``vector addition'' being normal matrix addition and ``scalar multiplication'' being normal matrix-scalar multiplication, is a vector space.
+	\item The set of all polynomials, written $P(x)$, with ``vector addition'' being the normal sum of polynomials, and ``scalar multiplication'' being the normal number-times-polynomial operation, is a vector space.
+	\item The set of continuous functions on an interval $[a,b]$, written $C[a,b]$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
+	\item The set of continuously differentiable functions on an interval $(a,b)$, written $C^1(a,b)$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
 \end{enumerate}
 \end{example}
-\begin{example}
-Examples that are not vector spaces:
+\begin{example}[Examples that are \emph{NOT} vector spaces] 
+Here are some examples of sets that are not vector spaces along with an explanation of one of the properties they do not satisfy.
 \begin{enumerate}
 	\item A line that does not pass through the origin. The zero vector is not on the line.
 	\item Polynomials of degree $n$.  There is no zero vector.
-	\item Invertible Matrices. There is no zero matrix.
+	\item Invertible Matrices. There is no zero matrix since it is not invertible.
 	\item The nonnegative $x$ axis. There is no additive inverse for $(1,0)$, as $(-1,0)$ is not in the space.
 	\item The line segment from $(-1,0)$ to $(1,0)$. The product $2(1,0)=(2,0)$ is not in the space.
 \end{enumerate}	
@@ -669,10 +686,12 @@ Examples that are not vector spaces:
 To illustrate how to verify that a set is a vector space, let's formally verify that one of the examples above is indeed a vector space. Let's work with the set of all polynomials $P(x)$. Our vectors are polynomials, which are functions of the form
 $$a(x) = a_0 +a_1 x+a_2 x^2 + \cdots + a_n x^n = \sum_{i=0}^n a_i x^i.$$
 We must define vector addition and scalar multiplication.  
-If $\ds a(x) =  \sum_{i=0}^n a_i x^i$ and $\ds b(x) =  \sum_{i=0}^m b_i x^i$ are two polynomials, define their sum to be a new polynomial $c(x)$ where $c_i = a_i+b_i$ for each $i$ (where $a_i=0$ if $i> n$ and $b_i=0$ if $i> m$). 
-For example, we compute the sum $(1+4x+3x^2)+(x-x^3) = (1+0)+(4+1)x+(3+0)x^2+(0-1)x^3$. If $c$ is a real number, then scalar multiplication $c\ a(x)$ is a new polynomial $b(x)$ where $b_i=ca_i$ for each $i$.   
+If $\ds a(x) =  \sum_{i=0}^n a_i x^i$ and $\ds b(x) =  \sum_{i=0}^m b_i x^i$ are two polynomials, define their sum to be a new polynomial $c(x)$ where $c_i = a_i+b_i$ for each $i$ (where $a_i=0$ if $i> n$ and $b_i=0$ if $i> m$). This is just normal polynomial addition.
+For example, we compute the sum $(1+4x+3x^2)+(x-x^3) = (1+0)+(4+1)x+(3+0)x^2+(0-1)x^3$. If $c$ is a real number, then scalar multiplication $c\cdot a(x)$ is a new polynomial $b(x)$ where $b_i=ca_i$ for each $i$.  This is just the normal number-times-polynomial operation
 
-We now need to illustrate the 8 axioms hold:
+First, we need to check that the ``vector addition'' of two polynomials is also in our set (i.e., the result is a polynomial).  This is clear from the definition.  We also need to check that the ``scalar product'' of a number and a polynomial is also a polynomial.  This again is clear from the definition of scalar multiplication.
+
+Finally, we need to show the 8 axioms hold:
 \begin{enumerate}
 	\item[($A_1$)] Polynomial addition is associative: $(a(x)+b(x))+c(x) = a(x) +(b(x)+c(x))$. To verify this, we look at each coefficient of the sum.  The coefficients are $(a_i+b_i)+c_i = a_i+(b_i+c_i)$, and equality holds because addition of real numbers is associative.
 	\item[($A_2$)] Polynomial addition is commutative: $a(x)+b(x)=b(x)+a(x)$. Again this follows because addition of real numbers is commutative. In particular, $a_i+b_i=b_i+a_i$ for each $i$.
@@ -687,13 +706,17 @@ We have now shown that the set of polynomials is a vector space.
 \end{example}
 
 \subsection{Subspaces}
-The formal definition of a vector space is rather long. Trying to show that a set is a vector space can be a tedious computation. Once we have taken the time to show that a set is a vector space, we can use this result to find many subspaces inside the vector space that are themselves vector spaces.  We have done this already when we looked at the column space, row space, null space, and eigenspaces of a matrix. The notion of a subspace allows us to quickly find new vector spaces inside of some we already understand.
+The formal definition of a vector space is rather long. Trying to show that a set is a vector space can be a long and tedious process. Once we have taken the time to show that a set is a vector space, we can use this result to find many subspaces inside the vector space that are themselves vector spaces.  We have done this already when we looked at the column space, row space, null space, and eigenspaces of a matrix. The notion of a subspace allows us to quickly find new vector spaces inside of vector spaces we already understand.
 
 \begin{definition}
-Suppose $V$ is a vector space. If $U$ is a set of vectors in $V$ such that $U$ is a vector space itself (using the addition and multiplication in $V$), then we say that $U$ is a subspace of $V$ and write $U\subset V$.   
+Suppose $V$ is a vector space. If $U$ is a set of vectors in $V$ such that $U$ is a vector space itself (using the addition and multiplication in $V$), then we say that $U$ is a \define{vector subspace} of $V$ and write $U\subset V$.   
 \end{definition}
 
-As an example, we know that the vectors in the plane form a vector space. Every line through the origin forms a vector subspace of the plane. Every line and plane in 3D which passes through the origin forms a vector subspace of ${\mathbb{R}}^3$. We now state a key theorem which allows us to quickly verify that a set of vectors in a vector space is a vector subspace.
+\begin{example}
+We know that the vectors in a plane in $\RR^3$ form a vector space. Each line through the origin that lies in the plane is a vector subspace of the plane. Each  line and plane in $\RR^3$ which passes through the origin is a vector subspace of $\RR^3$. 
+\end{example}
+
+We have also seen lots of examples of sets of vectors in a vector space that are \emph{not} vector subspaces.  We now state a key theorem which allows us to quickly verify that a set of vectors in a vector space is a actually vector subspace.
 
 \begin{theorem}\label{thm subspace iff closed}
 Suppose $U$ is a set of vectors in a vector space $V$ and the following three conditions hold:
@@ -714,20 +737,19 @@ Let's start with some examples, and then we'll end with a proof.
 
 \begin{example} Here are some examples of vector subspaces.
 \begin{enumerate}
-	\item  The span of a set of vectors is always a subspace of the larger vector space. This is because every linear combination is by definition in the subspace.  Hence the row space and column space are subspaces (as they are defined as spans or columns and rows).
-	\item  The set of upper triangular $m$ by $n$ matrices, is a subspace of $M_{mn}$. The zero matrix is in $M_{mn}$. The sum of two upper triangular matrices is upper triangular.  Multiplying each entry of an upper triangular matrix will still be upper triangular. 
-	\item  The set of polynomials of degree less than or equal to $n$, written $P_n(x)$, is a subspace of $P(x)$. The zero polynomial (degree zero) is in the set.  If two polynomials start out with degree less than or equal to $n$, then their sum cannot increase in degree.  In addition, multiplying a polynomial by a constant cannot increase the degree.
-	\item  More examples are given in Schaum's outlines on page 160 (examples 4.4, 4.5, 4.6). 
+	\item  The span of a set of vectors in a vector space $V$ is always a subspace of $V$. This is because every linear combination is by definition in the span, so it is in the subspace.  Hence, if $M$ is an $m$ by $n$ matrix, the row space (the span of the rows) is a subspace of $\RR^n$ and the column space is a subspace of $\RR^m$.
+	\item  The set of upper triangular $m$ by $n$ matrices is a subspace of $M_{mn}$. The zero matrix is in $M_{mn}$. The sum of two upper triangular matrices is upper triangular.  Multiplying each entry of an upper triangular matrix by a scalar will still result in an upper triangular matrix.
+	\item  The set of polynomials of degree less than or equal to $n$, written $P_n(x)$, is a subspace of $P(x)$. The zero polynomial ($p(x)=0$, which has degree 0) is in the set.  If two polynomials each have degree less than or equal to $n$, then their sum also has degree less than or equal to $n$.  Also, multiplying a polynomial by a constant cannot increase the degree, so the set is closed under scalar multiplication.
+	\item  More examples are given in Schaum's outlines on page 160 (examples 4.4, 4.5, and 4.6).
+        \item See Example~\ref{RR subspace examples} for some examples we've seen before of sets which are vector subspaces of $\RR^n$.
 \end{enumerate}
 \end{example}
 
 \begin{example}
-Here are some examples of a set that is not a vector subspace. To show something is not a vector subspace, find one example that shows the set is not closed under addition or scalar multiplication.
+Here are some examples of sets that are \emph{NOT} vector subspaces. To show a set of vectors in a vector space is not a vector subspace, you just need to find one example that shows the set is not closed under addition or scalar multiplication (or show that the set is empty).
 \begin{enumerate}
-	\item The set of vectors on the positive $x$ axis ($V=\{(a,0)|a\geq0\}$) is not a vector subspace because you cannot multiply any of them by $-1$ (not closed under scalar multiplication). To be a vector subspace, once you are allowed to move in one direction, you have to be able to also move in the opposite direction.
-	\item The set of vectors in 2D whose magnitude is less than or equal to one (so any vector ending inside the unit circle) is not a vector subspace.  One reason why is that you can't multiply $(1/2,0)$ by 4, as $(2,0)$ is outside the circle (not closed under scalar multiplication).  To be a vector subspace, once you are allowed to move in one direction, you should be able to move in that direction forever.
-	\item The vectors in 2D which are on the $x$ or $y$ axis is not a vector subspace. The sum $(1,0)+(0,1) = (1,1)$ is not on either axis (not closed under vector addition).  To be a vector subspace, you must be allowed to add any two vectors and still obtain a vector in the space.
-	\item The set of polynomials of degree 2 is not a vector subspace of the set of polynomials, because the zero polynomial is not in this set. Also, the sum of $x^2$ and $1-x^2$ is $(x^2)+(1-x^2)=1$, which is a polynomial of degree zero instead of degree 2 (not closed under addition).
+        \item See Example~\ref{RR subspace nonexamples} for some examples we've seen before of sets which are not vector subspaces.
+	\item The set of polynomials of degree two (each polynomial \emph{must} have an $x^2$ term) is not a vector subspace of the set of polynomials because the zero polynomial is not in this set. Also, the sum of $x^2$ and $1-x^2$ is $(x^2)+(1-x^2)=1$, which is a polynomial of degree zero instead of degree 2 (so the set is not closed under addition).
 \end{enumerate}
 \end{example}
 
@@ -736,11 +758,11 @@ Here are some examples of a set that is not a vector subspace. To show something
 
 
 \begin{proof}
-The proof of this theorem is rather quick. Let $V$ be the larger vector space, and $U$ the subset of vectors that satisfy the 3 properties.  We are assuming that vector addition and scalar multiplication give us vectors in $U$. Because every vector in $U$ is also a vector in $V$, we immediately know that vector addition is associative ($A_1$) and commutative ($A_2$), and that scalar multiplication distributes across vectors ($M_1$) and scalar addition ($M_2$), is associative ($M_3$), and multiplication by 1 does nothing ($M_4$). The first property assumes there is a zero vector ($A_3$). So all we need to show is that there are additive inverses ($A_4$). If $\vec u\in U$, then because $c\vec u\in U$ for every $c\in \mathbb{R}$ we can pick $c=-1$ to obtain $-1 \vec u\in U$. This means that $u+(-1\vec u) = (1-1)\vec u = 0\vec u = \vec 0$, which means every $u\in U$ has an additive inverse $-1\vec u\in U$ ($A_4$). We have now verified that $U$ satisfies all the axioms required to be a vector space, so this complete the proof. 
+The proof of this theorem is rather quick. Let $V$ be the larger vector space, and $U$ the subset of vectors that satisfy the 3 properties.  From the conditions in the theorem, we know that $U$ is nonempty and closed under vector addition and scalar multiplication. Because every vector in $U$ is also a vector in $V$, we immediately know that vector addition is associative ($A_1$) and commutative ($A_2$), scalar multiplication distributes across vector addition ($M_1$) and distributes across scalar addition ($M_2$), scalar multiplication is associative ($M_3$), and multiplication by 1 does nothing ($M_4$). The first condition in the theorem shows that $U$ has a zero vector ($A_3$). So all we need to show is that the additive inverse ($A_4$) of any vector in $U$ is also in $U$. If $\vec u\in U$, then because $c\vec u\in U$ for every $c\in \mathbb{R}$, we can pick $c=-1$ to obtain $-1 \vec u\in U$. This means that $u+(-1\vec u) = (1-1)\vec u = 0\vec u = \vec 0$, which means every $u\in U$ has an additive inverse $-1\vec u\in U$ ($A_4$). We have now verified that $U$ satisfies all the axioms required to be a vector space.
 \end{proof}
 
 
-The first example we looked at of a vector subspace involved looking at the span of a set of vectors. Because column and row spaces are defined as spans of vectors, they are vector subspaces. Because any vector subspace is closed under linear combinations, the span of the vector subspace is itself. This means that every vector subspace is the span of a set of vectors. This pattern will be used so often that we will call it a theorem.  
+The first example of a vector subspace that we examined involved looking at the span of a set of vectors. Because any vector subspace is closed under linear combinations, the span of all vectors in the subspace is the subspace itself. This means that every vector subspace is the span of a set of vectors. This pattern will be used so often that we will state it as a theorem.
 
 \begin{theorem}\label{thm subspace iff span}
 If $W$ is a subset of vectors in a vector space $V$, then $W$ is a subspace of $V$ if and only if $W$ is the span of a set of vectors.
@@ -748,12 +770,11 @@ If $W$ is a subset of vectors in a vector space $V$, then $W$ is a subspace of $
 
 
 \begin{example}
-Let's use this theorem to show that some sets are vector subspaces. \marginpar{If you can show a set is spanned by a set of vectors, then the set must be a vector space.}
+Let's use the previous theorem to show that some sets are vector subspaces. 
 \begin{enumerate}
 	\item The set of 2 by 2 diagonal matrices is spanned by 
-	$\begin{bmatrix}1&0\\0&0\end{bmatrix}$ and $\begin{bmatrix}0&0\\0&1\end{bmatrix}$, hence a vector subspace of $M_{22}$.
-	\item We already know that $P(x)$ is a vector space. The span of $\{1,x,x^2,x^3,x^4\}$ is the set of polynomials of the form $a+bx+cx^2+dx^3+ex^4$, which is all polynomials of degree 4 or less, $P_4(x)$. Since $P_4(x)$ is the span of set of vectors, it is a vector subspace of $P(x)$. 
-	\item  
+	$\begin{bmatrix}1&0\\0&0\end{bmatrix}$ and $\begin{bmatrix}0&0\\0&1\end{bmatrix}$, and so is a vector subspace of $M_{22}$.
+	\item We already know that $P(x)$ is a vector space. The span of $\{1,x,x^2,x^3,x^4\}$ is the set of polynomials of the form $a+bx+cx^2+dx^3+ex^4$, which is the set of all polynomials of degree 4 or less, $P_4(x)$. Since $P_4(x)$ is the span of set of vectors, it is a vector subspace of $P(x)$. 
 \end{enumerate}
 \end{example}
 
