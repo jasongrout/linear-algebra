@@ -92,7 +92,7 @@ We say a set $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ of vectors is \define{linea
 \end{definition}
 
 \begin{definition}[Basis]
-A \define{basis} for $\mathbb{R}^n$ is a set of vectors that are (1) linearly independent and (2) span all of $\mathbb{R}^n$.
+A \define[basis!$\RR^n$]{basis} for $\mathbb{R}^n$ is a set of vectors that are (1) linearly independent and (2) span all of $\mathbb{R}^n$.
 The \define{standard basis} for $\mathbb{R}^n$ is the set 
 $$\{\vec e_1 = (1,0,0,\ldots,0,0),\, 
 \vec e_2 = (0,1,0,\ldots,0,0),\, 
@@ -789,28 +789,28 @@ $\begin{bmatrix}[ccc] 1&-1&1\\3&0&6\\5&1&11\end{bmatrix}$
 is 
 $\begin{bmatrix}[ccc] 1&0&2\\0&1&1\\0&0&0\end{bmatrix}$. 
 The column space is the vector space spanned by the column vectors 
-$\vec u_1= (1,3,5))$, 
+$\vec u_1= (1,3,5)$, 
 $\vec u_2= (-1,0,1)$, and 
 $\vec u_3= (1,6,11)$.
-The reduced row echelon form tells us that the third column is 2 times the first plus the second.   
+The reduced row echelon form tells us that the third column is 2 times the first ($u_1$) plus the second ($u_2$).   
 Since the third column is already a linear combination of the first two columns, it does not contribute any new vectors to the span of just the first two vectors.  
 Hence, the column space is the span of $\vec u_1$ and $\vec u_2$ (we can remove the dependent vector without shrinking the number of vectors in the span). 
-Because the first two columns are linearly independent, we cannot remove either without reducing the number of vectors in their span.
+Because the first two columns are linearly independent, we cannot remove either vector without reducing the number of vectors in their span.
 
 A basis for the column space is a linearly independent set of vectors whose span is the the column space. 
-Because $\vec u_1$ and $\vec u_2$ are linearly independent, and they span the column space, they form a basis for the column space. 
+Because $\vec u_1$ and $\vec u_2$ are linearly independent and they span the column space, they form a basis for the column space. 
 The coordinates of the third vector relative to this basis are $(2,1)$, the numbers in the third column of the rref.  
-The dimension of the column space is the number of vectors in a basis for the column space, so here the dimension of the column space is 2.  The column space is a plane of vectors in space.
+The dimension of the column space is the number of vectors in a basis for the column space, so here the dimension of the column space is 2.  The column space is a plane of vectors in $\RR^3$.
 \end{example}
 
 The example above illustrates the key ideas we need to work with any finite dimensional vector spaces.  Let's now give the formal definitions.
 
-\begin{definition}
-A \define{basis for a vector space} is a set of vectors that are 
+\begin{definition}[Basis, Dimension, Coordinates]
+A \define[basis!vector space]{basis} for a vector space is a set of vectors that are 
 (1) linearly independent and (2) span the vector space.
-The \define{dimension of a vector space} is the number of vectors in a basis for the vector space. 
+The \define{dimension} of a vector space is the number of vectors in a basis for the vector space. 
 We say the dimension of the zero vector space (the vector space consisting of only the zero vector) is zero. 
-If $\beta=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis and $\vec v = c_1\vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n$, then we call $(c_1,c_2,\ldots,c_n)_\beta$ the \define{coordinates of $\vec v$ relative to the basis $\beta$}. 
+If $\beta=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis and $\vec v = c_1\vec v_1+c_2\vec v_2+\cdots+c_n\vec v_n$, then we call $(c_1,c_2,\ldots,c_n)_\beta$ the \define{coordinates} of $\vec v$ relative to the basis $\beta$. 
 If the basis is understood, we just leave off the subscript $\beta$.
 \end{definition}
 
@@ -826,16 +826,16 @@ Consider the set of polynomials $\{1, x, x^2\}$. The span of these polynomials i
 To show that this set forms a basis for $P_2(x)$, we only need to show that these polynomials are linearly independent.  
 To show this, we must show that $$a_0(1)+a_1(x)+a_2(x^2) = 0 \text{ implies } a_0=a_1=a_2=0$$ (the only linear combination which results in the zero polynomial is the trivial combination).  
 Since the equation above holds for every real number $x$, we can simply plug in 3 different $x$ values to obtain 3 different equations. Letting $x=0,1,-1$ gives us the three equations $a_0=0$, $a_0+a_1+a_2=0$, and $a_0-a_1+a_2=0$. Solving this system yields $a_0=a_1=a_2=0$. Hence, the three polynomials $1, x, x^2$ are linearly independent.  
-These three polynomials form a basis for $P_2(x)$, and we call this the standard basis for $P_2$.  Using this basis, the coordinate of $a_0+a_1x+a_2x^2$ relative to the standard basis are $(a_0,a_1,a_2)$.
-Notice that dimension of $P_2(x)$ is 3 (one more than the degree of the polynomial). 
-\marginpar{In general, the set $\{1, x, x^2, x^3, \ldots, x^n\}$ is called the standard basis for $P_n(x)$.} 
+These three polynomials form a basis for $P_2(x)$, and we call this the standard basis for $P_2(x)$.  Using this basis, the coordinates of $a_0+a_1x+a_2x^2$ relative to the standard basis are $(a_0,a_1,a_2)$.
+Notice that dimension of $P_2(x)$ is 3 (one more than the maximum degree of the polynomials). 
+\marginpar{In general, the set $\{1, x, x^2, x^3, \ldots, x^n\}$ is called the standard basis for $P_n(x)$.}%
 \end{example}
 
 
 For vector spaces that are not ${\mathbb{R}}^n$, a simple way to work with vectors is to start by finding a basis. Once you have a basis, you can give the coordinates of every vector in the space relative to that basis.  These coordinates can then be thought of as vectors in ${\mathbb{R}}^n$. Questions about the vector space can then be reduced to questions about vectors in $\mathbb{R}^n$.  As seen in the last example, the vector space $P_2(x)$ consists of all polynomials of the form $a_0+a_1x+a_2x^2$. If we use the standard basis for polynomials, then the coordinates are simply $(a_0,a_1,a_2)$. We can now use these coordinates to ask other questions about the vectors in $P_2(x)$. Here are two examples.
 
 \begin{example}
-Let $V$ be the vector space spanned by $1+x,x+x^2, 4+x-3x^2$. We'll show it is a 2 dimensional vector subspace of $P_2(x)$, and provide a basis for this space in 2 different ways. The coordinates of these 3 polynomials relative to the standard basis are $(1,1,0)$, $(0,1,1)$, and $(4,1,-3)$. 
+Let $V$ be the vector space spanned by $1+x,x+x^2, 4+x-3x^2$. We'll show it is a 2-dimensional vector subspace of $P_2(x)$, and provide a basis for this space in two different ways. The coordinates of these three polynomials relative to the standard basis are $(1,1,0)$, $(0,1,1)$, and $(4,1,-3)$. 
 To study the span of the polynomials, we instead look at the column space of 
 $$
 A=
@@ -844,13 +844,13 @@ A=
  1 & 1 & 1\\
  0 & 1 & -3
 \end{bmatrix} 
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 4\\
  0 & 1 & -3\\
  0 & 0 & 0
 \end{bmatrix} 
-.$$
+.$$\note{write $A$ as $CR$}
 Row reduction of $A$ shows us that the first two columns of $A$ are pivot columns, 
 hence basis vectors for the column space of $A$. 
 This tells us that the corresponding set of polynomials $\{1+x, x+x^2\}$ is a basis for $V$. 
@@ -864,14 +864,14 @@ $$A^T
  0 & 1 & 1 \\
  4 & 1 & -3
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & -1 \\
  0 & 1 & 1 \\
  0 & 0 & 0
 \end{bmatrix}
-.$$ 
-Row reduction tell us that $(1,0,-1)$ and $(0,1,1)$ are basis vectors for the row space of $A^T$ (hence column space of $A$).  The corresponding polynomials $1-x^2$ and $x+x^2$ are basis vectors for $V$. The coordinates of $4+x-3x^2$ relative to this basis are $(4,1)$.
+.$$ \note{write $A^T$ as $CR$}
+Row reduction tell us that $(1,0,-1)$ and $(0,1,1)$ are basis vectors for the row space of $A^T$ (hence the column space of $A$).  The corresponding polynomials $1-x^2$ and $x+x^2$ are basis vectors for $V$. The coordinates of $4+x-3x^2$ relative to this basis are $(4,1)$.
   
 \end{example}
 
@@ -883,22 +883,22 @@ $$\begin{bmatrix}
  0 & 1 & 1 & 3 \\
  0 & 0 & 1 & -4
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 0 & -1 \\
  0 & 1 & 0 & 7 \\
  0 & 0 & 1 & -4
 \end{bmatrix}.$$ 
 Since the first 3 columns are pivot columns, they are linearly independent. 
-This implies that the polynomials represented by these vectors are linearly independent. Since the three sets of coordinates span all of $\mathbb{R^3}$, the three polynomials must span all of $P_2(x)$.
-The last column of rref tells us that the coordinates of $(2,3,-4)$ relative to $\beta=\{(1,0,0),(1,1,0),(1,1,1)\}$ are $(-1,7,-4)_\beta$. In terms of polynomials we write $2+3x-4x^2 = -1(1)+7(1+x)-4(1+x+x^2)$. To emphasize the vocabulary, we can now state two things:
+This implies that the polynomials represented by these vectors are linearly independent. Since the three sets of coordinates span all of $\RR^3$, the three polynomials must span all of $P_2(x)$.
+The last column of the rref tells us that the coordinates of $(2,3,-4)$ relative to $\beta=\{(1,0,0),(1,1,0),(1,1,1)\}$ are $(-1,7,-4)_\beta$. In terms of polynomials we write $2+3x-4x^2 = -1(1)+7(1+x)-4(1+x+x^2)$. To emphasize the vocabulary, we can now state two things:
 \begin{enumerate}
 	\item The coordinates of $2+3x-4x^2$ relative to $\{1,x,x^2\}$ are $(2,3,-4)$.
 	\item The coordinates of $2+3x-4x^2$ relative to $\{1,1+x,1+x+x^2\}$ are $(-1,7,-4)$.
 \end{enumerate}
 \end{example}
 
-We'll often start by using a standard basis to represent vectors, and then change the basis to a different one if the need arises.  In chapter 5 we will explore this idea in more depth.  For now we'll focus on finding a basis and coordinates relative to that basis.
+We'll often start by using a standard basis to represent vectors, and then change the basis to a different one if the need arises.  Later we will explore this idea in more depth.  For now we'll focus on finding a basis and coordinates relative to that basis.
 
 \begin{example}
 As a final example, let's introduce the standard basis for the vector space of $m$ by $n$ matrices. We'll focus on 2 by 2 matrices, though this example generalizes to any size matrix. The set of matrices 
