@@ -3,19 +3,19 @@
 \section{Problems}
 
 Much of the point to this section is to learn to read mathematics and create examples to illustrate definitions and theorems.  
-For this reason, each problem below requires reading and working with different definitions and theorems. The common theme to the problems is that you are to create examples.  The latter half of the problems are in you Schaum's Outlines  ``Beginning Linear Algebra'' book.
+For this reason, each problem below requires reading and working with different definitions and theorems. The common theme to the problems is that you are to create examples.  The latter half of the problems are in the Schaum's Outlines  ``Beginning Linear Algebra'' book.
 
 
 \begin{enumerate}
 
 
 \item \textbf{Illustrating Definitions:} \label{definition problems}
-For this problem you are creating examples to illustrate a definition. If actual vectors or matrices are given, use them to illustrate the definition. Then create your own example using your own vectors and/or matrices.
+For this problem, you are creating examples to illustrate a definition. If actual vectors or matrices are given, use them to illustrate the definition. Then create your own example using your own vectors and/or matrices.
 
 \begin{enumerate}
 	\item Give an example of a pair of nonzero vectors that are orthogonal. Also give an example of a pair of vectors that are not orthogonal. Draw your vectors to show that the angles meet at a 90 degree angle.
 	\item Give an example of a matrix that is in row echelon form but not reduced row echelon form. Then give the reduced row echelon form of the matrix. 
-	\item Show that the set of vectors $\{(1,1,0),(1,0,1),(0,1,1)\}$ is linearly independent by showing that the only solution to $c_1(1,1,0)+c_2(1,0,1)+c_3(0,1,1)=(0,0,0)$ is the trivial solution. Then select your own 3 vectors in 3D and determine if they are independent or dependent.  
+	\item Show that the set of vectors $\{(1,1,0),(1,0,1),(0,1,1)\}$ is linearly independent by showing that the only solution to $c_1(1,1,0)+c_2(1,0,1)+c_3(0,1,1)=(0,0,0)$ is the trivial solution. Then select your own 3 vectors in $\RR^3$ and determine if they are independent or dependent.  
 	\item Consider the matrix 
 	$A=\begin{bmatrix}
 	1 & 2 & 0 & 3 \\
@@ -38,16 +38,14 @@ $B=
  11 & -18 & 1 \\
  -1 & 2 & 0
 \end{bmatrix}
-$ by computing both $AB$ and $BA$. Now select your own 3 by 3 matrix $A$ and use software to find the inverse $B$ as well as compute $AB$ and $BA$ to verify that $B$ is the inverse.
+$ by computing both $AB$ and $BA$. Now select your own 3 by 3 matrix
+$A$ and use software to find the inverse $B=A\inv$ as well as compute $AB$ and $BA$ to verify that $B$ is the inverse.
 
 	\item 
 Consider the matrix $A=\begin{bmatrix}2&1&4\\ 1&2&4\\ 0&0&1\end{bmatrix}$. Compute $A\vec x$ for each of the 4 vectors 
 $\vec x_1 =(-1,1,0)$, $\vec x_2=(2,0,3)$, $\vec x_3=(1,1,0)$, and $\vec x_4=( -4,0,1)$ to determine which are eigenvectors. 
 If a vector is an eigenvector, state the corresponding eigenvalue. 
-Now select your own 3 by 3 matrix $A$ and use software to find a basis for the eigenspace (you may have to play with the numbers a little to get simple vectors - or grab an example from earlier in the text where you know the answer). For each vector in the eigenspace, compute $A\vec x$ and verify that $A\vec x = \lambda \vec x$. 
-
-
-
+Now select your own 3 by 3 matrix $A$ and use software to find a basis for the eigenspace (you may have to play with the numbers a little to get simple vectors, or grab an example from earlier in the text where you know the answer). For each vector in the eigenspace, compute $A\vec x$ and verify that $A\vec x = \lambda \vec x$. 
 \end{enumerate}
 
 
@@ -64,13 +62,13 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	1 & 1 & 5 \\
 	2 & 3 & 13\\
 	1 & 2 & 8
-	\end{bmatrix}
+	\end{bmatrix},\quad
 	B = 
 	\begin{bmatrix}
 	1 & -1 & -2 \\
 	3 & -2 & -3 \\
-	-1& 0  & -1
-	\end{bmatrix}
+ 	-1& 0  & -1
+	\end{bmatrix},\quad
 	C = 
 	\begin{bmatrix}
 	1 & -1 & -1 \\
@@ -78,11 +76,11 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	3 & -1 & 3	
 	\end{bmatrix}.
 	$$
-	By row reducing each matrix, use theorem \ref{thm row equivalent} to make your decision. 
+	By row reducing each matrix, use Theorem~\ref{thm row equivalent} to make your decision. 
 	
 	Now try problem 4.22 on page 172 in Schaum's outlines.  
 	 
-	\item Consider the non homogeneous system of equations $x+2y+4w=4, 2x+3y-z=-1, 3x+5y-z+4w=3$, written in matrix form as 
+	\item Consider the nonhomogeneous system of equations $x+2y+4w=4, 2x+3y-z=-1, 3x+5y-z+4w=3$, written in matrix form as 
 	$
 	\begin{bmatrix}
 	1 & 2 & 0 & 4 \\
@@ -98,8 +96,8 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	 3	
 	\end{bmatrix}
 	$.  
-	Use theorem \ref{thm solution iff augmented not pivot} to decide if there is a solution to this equation. 
-	How many free variables are there based on theorem \ref{thm n-k free variables}? 
+	Use Theorem\ref{thm solution iff augmented not pivot} to decide if there is a solution to this equation. 
+	How many free variables are there based on Theorem\ref{thm n-k free variables}? 
 	Find two different solutions $\vec x_1$ and $\vec x_2$ to this system (let $z=1,w=0$ and $z=0,w=1$).  
 	Compute $A(\vec x_1 - \vec x_2)$ and use your result to verify \ref{thm non homogeneous}. 
 	
@@ -121,9 +119,9 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	 0	
 	\end{bmatrix}
 	$.  
-	How many free variables are there based on theorem \ref{thm n-k free variables}?
+	How many free variables are there based on Theorem\ref{thm n-k free variables}?
 	Find two different solutions $\vec x_1$ and $\vec x_2$ to this system (let $z=1,w=0$ and $z=0,w=1$).  
-	Illustrate theorem \ref{thm homogeneous} by computing $A(\vec x_1 + \vec x_2)$. 
+	Illustrate Theorem\ref{thm homogeneous} by computing $A(\vec x_1 + \vec x_2)$. 
 	
 	Now create your own homogeneous system and repeat this problem. 	
 	
@@ -137,12 +135,12 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	B=
 	\begin{bmatrix}
 	 2\\-1\\3
-	\end{bmatrix}$. Verify theorem \ref{thm transpose of product}  by computing $AB$, $(AB)^T$, $A^TB^T$ and $B^TA^T$ (notice that $A^TB^T$ doesn't even make sense). 
+	\end{bmatrix}$. Verify Theorem\ref{thm transpose of product}  by computing $AB$, $(AB)^T$, $A^TB^T$ and $B^TA^T$ (notice that $A^TB^T$ doesn't even make sense). 
 	
 	Now repeat this problem with two matrices such that the product $AB$ makes sense.
 	
 	
-	\item Use the same two matrices from the previous problem to illustrate theorem \ref{matrix multiplication two ways}. Table \ref{matrixmult} on page \pageref{matrixmult} contains another example.  
+	\item Use the same two matrices from the previous problem to illustrate Theorem\ref{matrix multiplication two ways}. Table \ref{matrixmult} on page \pageref{matrixmult} contains another example.  
 	
 	Now select two matrices of your own and repeat this problem.
 	
@@ -152,7 +150,7 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	1 & 2 & 0 & 4 \\
 	2 & 3 & -1 & 0\\
 	3 & 5 & -1 & 4	
-	\end{bmatrix}$. Find the rref of $A$. Use theorem \ref{thm rank equal pivot columns} to determine the rank of $A$. Use theorem \ref{every column pivot iff independent} to determine if the columns are linearly independent. Use theorem \ref{thm colsp basis} to give a basis for the column space as well as the coordinates of each column of $A$ relative to this basis.  Use theorem \ref{thm rowsp basis} to give a basis for the row space of $A$ as well as the coordinates of each row of $A$ relative to this basis. Are the dimensions of the column and row space the same (as theorem \ref{rankrowcolumn} suggests)? 
+	\end{bmatrix}$. Find the rref of $A$. Use Theorem~\ref{thm rank equal pivot columns} to determine the rank of $A$. Use Theorem~\ref{every column pivot iff independent} to determine if the columns are linearly independent. Use Theorem~\ref{thm colsp basis} to give a basis for the column space as well as the coordinates of each column of $A$ relative to this basis.  Use Theorem~\ref{thm rowsp basis} to give a basis for the row space of $A$ as well as the coordinates of each row of $A$ relative to this basis. Are the dimensions of the column and row space the same (as Theorem~\ref{rankrowcolumn} suggests)? 
 	
 	Now repeat this problem with a matrix of your own. 
 	
@@ -162,8 +160,8 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	3 & 5
 	\end{bmatrix}$.  
 	Find the inverse of $A$ by row reducing $[A|I]$.  
-	Then find the inverse of $A\inv$ by row reducing $[A\inv|I]$ to illustrate theorem \ref{thm inverse of inverse}.  
-	Now compute $(A^T)\inv$ and $(A\inv)^T$ to illustrate theorem \ref{thm inverse of transpose}.
+	Then find the inverse of $A\inv$ by row reducing $[A\inv|I]$ to illustrate Theorem~\ref{thm inverse of inverse}.  
+	Now compute $(A^T)\inv$ and $(A\inv)^T$ to illustrate Theorem~\ref{thm inverse of transpose}.
 	
   Repeat this problem with a 2 by 2 or 3 by 3 matrix of your own.
   
@@ -177,7 +175,7 @@ Follow the instructions for each problem.  For most of the problems below, you w
 	3 & 2 \\
 	4 & 3
 	\end{bmatrix}$.
-	Illustrate theorem \ref{invprod} by computing $A\inv$, $B\inv$, $(AB)\inv$, and $B\inv A\inv$. 
+	Illustrate Theorem~\ref{invprod} by computing $A\inv$, $B\inv$, $(AB)\inv$, and $B\inv A\inv$. 
   
   Repeat this on a pair of 2 by 2 or 3 by 3 matrices of your own.
 
@@ -201,9 +199,9 @@ Follow the instructions for each problem.  For most of the problems below, you w
 \end{bmatrix}
 $. 
   Find the determinant of $A$ by using a cofactor expansion along row 1. 
-  Now find the determinant of $A^T$ by using a cofactor expansion along column 1. Why does your work verify  theorem \ref{thm det transpose}? 
+  Now find the determinant of $A^T$ by using a cofactor expansion along column 1. Why does your work verify  Theorem~\ref{thm det transpose}? 
   Show that the characteristic polynomial of $A$ and $A^T$ is the same by computing the determinants of $A-\lambda I$ and $A^T-\lambda I$ using the first row and first column.
-  Why does this imply theorem \ref{thm eigen transpose}. Notice that without even computing the eigenvalues, we can conclude that they are the same for $A$ and $A^T$ because the characteristic polynomials are the same.
+  Why does this imply Theorem~\ref{thm eigen transpose}. Notice that without even computing the eigenvalues, we can conclude that they are the same for $A$ and $A^T$ because the characteristic polynomials are the same.
 
 Repeat this problem on a different 3 by 3 matrix.
   
@@ -214,7 +212,7 @@ Repeat this problem on a different 3 by 3 matrix.
 -1&3&-3\\
 2&4&6
 \end{bmatrix}
-$. Compute the determinant of $A$.  Now use theorem \ref{thm det multiple columns} to explain why the determinant is zero. Use theorem \ref{thm det zero} to explain why $A$ has no inverse.
+$. Compute the determinant of $A$.  Now use Theorem~\ref{thm det multiple columns} to explain why the determinant is zero. Use Theorem~\ref{thm det zero} to explain why $A$ has no inverse.
   
   Create a 4 by 4 matrix in which one row is a multiple of another row. Then repeat this problem. 
   
@@ -226,7 +224,7 @@ $. Compute the determinant of $A$.  Now use theorem \ref{thm det multiple column
 4&-1&2
 \end{bmatrix}
 $. 
-Compute each of the cofactors of $A$. Find the adjoint of $A$ (place the $C_{ij}$ cofactor in the $i$th column, $j$th row). Let $B=\frac{1}{|A|}\text{adj}(A)$. Show by computing $AB$ that $B$ is the inverse of $A$ (theorem \ref{thm adjoint}).
+Compute each of the cofactors of $A$. Find the adjoint of $A$ (place the $C_{ij}$ cofactor in the $i$th column, $j$th row). Let $B=\frac{1}{|A|}\text{adj}(A)$. Show by computing $AB$ that $B$ is the inverse of $A$ (Theorem~\ref{thm adjoint}).
 
 Pick another 3 by 3 matrix that has an inverse, and repeat this problem.
 	
@@ -239,7 +237,7 @@ Pick another 3 by 3 matrix that has an inverse, and repeat this problem.
 0&3&-4&3
 \end{bmatrix}
 $. 
-What is the sum of each row of $A$? Show that $\vec x = (1,1,1,1)$ is an eigenvector of $A$ by computing $A\vec x$. What is the corresponding eigenvalue (it should be the sum of each row)? You have essentially showed why theorem \ref{thm eigenvalues and sums} is true. Use theorem \ref{thm eigen transpose} to decide if $\lambda=2$ is an eigenvalue of $A^T$. [This problem is why $\lambda =1 $ is an eigenvalue of the transition matrices in a Markov process.]
+What is the sum of each row of $A$? Show that $\vec x = (1,1,1,1)$ is an eigenvector of $A$ by computing $A\vec x$. What is the corresponding eigenvalue (it should be the sum of each row)? You have essentially showed why Theorem~\ref{thm eigenvalues and sums} is true. Use Theorem~\ref{thm eigen transpose} to decide if $\lambda=2$ is an eigenvalue of $A^T$. [This problem is why $\lambda =1 $ is an eigenvalue of the transition matrices in a Markov process.]
 	
 	Create a 4 by 4 matrix where each row sums to the same number.  Repeat the computations above.
 	
@@ -251,7 +249,7 @@ What is the sum of each row of $A$? Show that $\vec x = (1,1,1,1)$ is an eigenve
 0&0&4
 \end{bmatrix}
 $. 
-Find the 3 distinct eigenvalues of $A$, and a basis vector for each corresponding eigenspace. Find the dot product of each pair of vectors and compare your result to theorem \ref{thm spectral}.  Show that the three eigenvectors are linearly independent  as theorem \ref{thm independent eigenvectors} suggests (rref a matrix with these eigenvectors as column vectors).
+Find the 3 distinct eigenvalues of $A$, and a basis vector for each corresponding eigenspace. Find the dot product of each pair of vectors and compare your result to Theorem~\ref{thm spectral}.  Show that the three eigenvectors are linearly independent  as Theorem~\ref{thm independent eigenvectors} suggests (rref a matrix with these eigenvectors as column vectors).
 
 	Repeat this problem with another symmetric matrix. 
 \end{enumerate}
@@ -282,7 +280,7 @@ Find the 3 distinct eigenvalues of $A$, and a basis vector for each correspondin
 
 
 \item \textbf{A Huge Equivalence:}  
-Illustrate Theorem \ref{huge equivalence} \label{equivalence problems} (the huge equivalence) with the following matrices.  First determine if the matrix is singular or nonsingular, and then verify the 11 items from the theorem. Feel free to use a computer to do your computations.
+Illustrate Theorem~\ref{huge equivalence} \label{equivalence problems} (the huge equivalence) with the following matrices.  First determine if the matrix is singular or nonsingular, and then verify the 11 items from the theorem. Feel free to use a computer to do your computations.
 \begin{enumerate}
 \begin{multicols}{4}
 	\item $\begin{bmatrix} 2&1\\3&4\end{bmatrix}$
@@ -297,7 +295,7 @@ Illustrate Theorem \ref{huge equivalence} \label{equivalence problems} (the huge
 
 
 \item \textbf{Vector Spaces:}  \label{vector space problems}
-See chapter 4 problems 1-6, 38. Complete at least 6, 38. 
+See chapter 4 problems 1--6, 38. Complete at least 6, 38. 
 
 
 \begin{enumerate}
@@ -327,7 +325,7 @@ See chapter 4 problems 1-6, 38. Complete at least 6, 38.
 \end{enumerate}
 
 \item \textbf{Vector Subspaces:}  \label{subspace problems}
-See chapter 4 problems 13-15, 45-46. Complete at least 13, 15, 46.
+See chapter 4 problems 13--15, 45--46. Complete at least 13, 15, 46.
 
 \begin{enumerate}
 	\item Which of the following subsets of $\mathbb{R}^2$ are subspaces?  Explain.
@@ -344,13 +342,13 @@ See chapter 4 problems 13-15, 45-46. Complete at least 13, 15, 46.
 	\item Show that the set $P(x)$ of polynomials is a vector subspace of the vector space of real valued function defined on the entire reals.
 	\item Show that the set $P_3(x)$ of polynomials of degree 3 or less together with the zero polynomial is a vector subspace of $P(x)$ in two ways:
 \begin{enumerate}
-	\item Use Theorem \ref{thm subspace iff closed}
-	\item Use Theorem \ref{thm subspace iff span}
+	\item Use Theorem~\ref{thm subspace iff closed}
+	\item Use Theorem~\ref{thm subspace iff span}
 \end{enumerate}
 	\item Let $V$ be the set of 3 by 3 upper triangular matrices.  Show that $V$ is a subspace of the vector space $M_{33}$ of 3 by 3 matrices in 2 ways:
 \begin{enumerate}
-	\item Use Theorem \ref{thm subspace iff closed}
-	\item Use Theorem \ref{thm subspace iff span}
+	\item Use Theorem~\ref{thm subspace iff closed}
+	\item Use Theorem~\ref{thm subspace iff span}
 \end{enumerate}
 	\item Which of the following subsets of $M_{22}$, the vector space of 2 by 2 matrices, are vector subspaces?
 		\begin{enumerate}
@@ -371,7 +369,7 @@ See chapter 4 problems 13-15, 45-46. Complete at least 13, 15, 46.
 
 
 \item \textbf{Spans:} \label{span problems} \hypertarget{span problems target}{\hyperlink{span solutions target}{(solutions link)}}
-See chapter 4 problems 18, 19, 21-23, 51-53, 58-61. 
+See chapter 4 problems 18, 19, 21--23, 51--53, 58--61. 
 Complete at least 22, 53.
 
 \begin{enumerate}
@@ -574,16 +572,16 @@ $\begin{bmatrix}
 
 \item \textbf{Basis and Dimension:} 
 
-See chapter 5 problems 9-11, 14-18, 59, 60, 66, 67, 70-72. 
+See chapter 5 problems 9--11, 14--18, 59, 60, 66, 67, 70--72. 
 Complete at least 10, 18, 60, 67, 71.
 
 The rest of the problems in this unit I will have to ask you to do from Schaum's.  The main point to each of the remaining problems is to first start by converting each vector to its coordinates relative to a standard basis, and then row reducing.  While completing the problem is as simple as row reducing a matrix, coming up with the problems is incredibly time consuming. I'll eventually make sufficient problems here, but for now you need to refer to Schaum's.
 
 \begin{enumerate}
-	\item Find a basis and the dimension of the column space, row space, and null space.
-		\begin{enumerate}
-			\item 
-		\end{enumerate}
+	% \item Find a basis and the dimension of the column space, row space, and null space.
+	% 	\begin{enumerate}
+	% 		\item 
+	% 	\end{enumerate}
 
 	\item Find a basis and dimension for the subspace spanned by the polynomials.
 		\begin{enumerate}
@@ -593,10 +591,10 @@ The rest of the problems in this unit I will have to ask you to do from Schaum's
 			%The third is -3/2 the first plus 1/2 the second. Basis $=\{2+x, 6-3x+2x^2\}$, $\dim =2$
 		\end{enumerate}
 
-	\item Find a basis and dimension for the subspace spanned by the polynomials.
-		\begin{enumerate}
-			\item 
-		\end{enumerate}
+	% \item Find a basis and dimension for the subspace spanned by the polynomials.
+	% 	\begin{enumerate}
+	% 		\item 
+	% 	\end{enumerate}
 
 	\item Find a basis and dimension for the subspace spanned by the matrices.
 		\begin{enumerate}
@@ -604,83 +602,83 @@ The rest of the problems in this unit I will have to ask you to do from Schaum's
 			%By placing coordinates in columns: Basis $= \left\{\bm{1&2\\3&4}\right\}$. 
 			%By placing coordinates in rows: 
 			%In either case, $\dim =1$. 
-			\item 
+			%\item 
 			
 		\end{enumerate}
 
-	\item Find a basis and dimension for the subspace spanned by the matrices.
-		\begin{enumerate}
-			\item 
-		\end{enumerate}
+	% \item Find a basis and dimension for the subspace spanned by the matrices.
+	% 	\begin{enumerate}
+	% 		\item 
+	% 	\end{enumerate}
 \end{enumerate}
 
 \item \textbf{Coordinates of vectors:}  \label{coordinates problems}
-See chapter 6 problems 1-7, 22-26. Complete at least 6, 25. 
+See chapter 6 problems 1--7, 22--26. Complete at least 6, 25. 
 
-Additional problems related to this idea (but without using the vocabulary ``coordinates of a vector'') are in chapter 4 problems 8-12, 40-44.
+Additional problems related to this idea (but without using the vocabulary ``coordinates of a vector'') are in chapter 4 problems 8--12, 40--44.
 
 \begin{enumerate}
-	\item Find the coordinates of $\vec v$ relative to the given basis:
-		\begin{enumerate}
-			\item 
-			\item 
-		\end{enumerate}
-	\item Find the coordinates of the polynomial $p(x)$ relative to the given basis:
-		\begin{enumerate}
-			\item 
-			\item 
-		\end{enumerate}
-	\item Find the coordinates of the polynomial $p(x)$ relative to the given basis:
-		\begin{enumerate}
-			\item 
-			\item 
-		\end{enumerate}
+	% \item Find the coordinates of $\vec v$ relative to the given basis:
+	% 	\begin{enumerate}
+	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
+	% \item Find the coordinates of the polynomial $p(x)$ relative to the given basis:
+	% 	\begin{enumerate}
+	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
+	% \item Find the coordinates of the polynomial $p(x)$ relative to the given basis:
+	% 	\begin{enumerate}
+	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
 	\item Find the coordinates of the matrix $A$ relative to the given basis:
 		\begin{enumerate}
 			\item $A=\bm{2&0\\-1&3};\left\{\bm{1&1\\1&-1},\bm{1&1\\-1&1},\bm{1&-1\\1&1},\bm{-1&1\\1&1}\right\}$
-			\item 
-		\end{enumerate}
-	\item Find the coordinates of the matrix $A$ relative to the given basis:
-		\begin{enumerate}
-			\item 
-			\item 
-		\end{enumerate}
+			%\item 
+                  \end{enumerate}
+	% \item Find the coordinates of the matrix $A$ relative to the given basis:
+	% 	\begin{enumerate}
+	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
 	
 \end{enumerate}
 
 \item \textbf{Linear Independence:} \label{independence problems}
-See chapter 6 problems 8-10, 27-28.  
+See chapter 6 problems 8--10, 27--28.  
 Complete at least 8,9.	
 
-Additional problems related to this topic are in chapter 5 problems 1-5, 7, 48-51. These problems do not utilize the vocabulary of coordinates of a vector relative to a basis, and hence require a more difficult approach.  Try one of these problems so that you see how the language of bases and coordinates can greatly simplify our work.
+Additional problems related to this topic are in chapter 5 problems 1--5, 7, 48--51. These problems do not utilize the vocabulary of coordinates of a vector relative to a basis, and hence require a more difficult approach.  Try one of these problems so that you see how the language of bases and coordinates can greatly simplify our work.
 
 	
 \begin{enumerate}
-	\item Which sets of vectors are linearly independent?
-		\begin{enumerate}
-			\item 
-			\item 
-		\end{enumerate}
-	\item Which sets of polynomials are linearly independent?
-		\begin{enumerate}
-			\item 
-			\item 
-		\end{enumerate}
-	\item Which sets of polynomials are linearly independent?
-		\begin{enumerate}
-			\item 
-			\item 
-		\end{enumerate}
+	% \item Which sets of vectors are linearly independent?
+	% 	\begin{enumerate}
+	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
+	% \item Which sets of polynomials are linearly independent?
+	% 	\begin{enumerate}
+	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
+	% \item Which sets of polynomials are linearly independent?
+	% 	\begin{enumerate}
+	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
 	\item Which sets of matrices are linearly independent?
 		\begin{enumerate}
 			\item $\bm{1&1\\1&-1}$, $\bm{1&1\\-1&1}$, $\bm{1&-1\\1&1}$, $\bm{-1&1\\1&1}$
-			\item 
+			%\item 
 		\end{enumerate}
-	\item Which sets of matrices are linearly independent?
-		\begin{enumerate}
- 			\item 
-			\item 
-		\end{enumerate}
+	% \item Which sets of matrices are linearly independent?
+	% 	\begin{enumerate}
+ 	% 		\item 
+	% 		\item 
+	% 	\end{enumerate}
 
 \end{enumerate}
 	
@@ -748,8 +746,6 @@ In summary, picking the right basis to solve a problem can make the problem triv
 	\item We can quickly determine if two sets of vectors span the same space by placing the vectors into the rows of two matrices and row reducing. The standard basis for each space is the nonzero rows of rref. The two vector spaces are equal if and only if these nonzero rows are identical. 
 \end{itemize}
 Much of what we do throughout the rest of this semester is directly related to learning to pick the right basis in which to solve a problem. Much of upper level mathematics, statistics, engineering, and physics are directly related to picking the right basis in which to solve a problem. With the right basis, problems become trivial.
-	
-
 	
 \end{enumerate}
 \input{03-Patterns/Patterns-solutions}
