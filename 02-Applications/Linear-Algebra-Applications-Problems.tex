@@ -479,10 +479,17 @@ $. Because both matrices have the same columns (just in a different order), the 
 	\item Interchange the columns of $A$ in some other way.  Row reduce the transpose of your matrix to obtain a basis for the column space of $A$.
 	\item Joe claims that a basis for the column space is 
 	$\{(-5,3,1,12),(0,7,-1,8)\}$.  Is he correct?  To answer this, place his vectors in the columns of a matrix and then row reduce the transpose.  
+
+      \item This basis is the basis Sage gives you when you ask for the column
+space of a matrix.  Using Sage, compute the column space of $A$ and
+$B$ using the \verb|column_space()| method (i.e., \verb|A.column_space()|).
+
 \end{enumerate}
 
-The basis obtained above is called the standard basis for the column space of $A$. Any time someone gives you a basis for a vector subspace of $\mathbb{R}^n$, you can obtain the standard basis using the ideas above.  Just place the  vectors into the columns of matrix, and then reduce the transpose. Alternatively, just place the vectors into the rows of a matrix, and then reduce the matrix. 
-
+The basis obtained above is called the standard basis for the column
+space of $A$. Because the rref of a matrix is unique, the standard
+basis for a vector space will always be the same, no matter how the
+vector space is described.  Any time someone gives you a basis for a vector subspace of $\mathbb{R}^n$, you can obtain the standard basis using the ideas above.  Just place the  vectors into the columns of matrix, and then reduce the transpose. Alternatively, just place the vectors into the rows of a matrix, and then reduce the matrix. 
 
 
 
