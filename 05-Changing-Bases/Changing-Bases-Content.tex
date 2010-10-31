@@ -561,7 +561,44 @@ The last fact we will develop in this section relates to choosing a basis for bo
 \begin{theorem}
 If $\vec x_1,\vec x_2,\ldots,\vec x_n$ are $n$ eigenvectors corresponding to $n$ distinct eigenvalues $\lambda_1, \lambda_2,\ldots, \lambda_n$, then the vectors $\vec x_1,\vec x_2,\ldots,\vec x_n$ are linearly independent.
 \end{theorem}
+
+\note{This is what I took out of chapter 4 about this theorem:
+
+An important fact is that eigenvectors corresponding to different eigenvalues will always be linearly independent.  Let's first discuss why this works if we have two eigenvectors associated with two different eigenvalues.  Suppose $\vec x_1,\vec x_2$ correspond to distinct eigenvalues $\lambda_1,\lambda_2$.  Suppose in addition that $\vec x_1,\vec x_2$ are linearly dependent, which means one is a linear combination of the other $\vec x_1=c\vec x_2$.  Multiplying both sides by $A$ gives $\lambda_1 \vec x_1 = c\lambda_2\vec x_2 = \lambda_2 (c\vec x_2) = \lambda_2\vec x_1.$ This means that $\lambda_1=\lambda_2$, contrary to our assumption. Hence the two vectors must be linearly independent.  This is important enough of a fact that we will formalize it as a theorem as well.
+
+\begin{theorem}
+  If $A$ is an $n$ by $n$ matrix, and $\vec x_1,\vec x_2,...,\vec x_k$ are eigenvectors corresponding to different eigenvalues $\lambda_1, \lambda_2,...,\lambda_k$ ($\lambda_i\neq \lambda_j$ for $i\neq j$), then $\{\vec x_1,\vec x_2,...,\vec x_k\}$ is a linearly independent set.
+\end{theorem}
+
+To illustrate why this works in general, let's show it is true for three eigenvectors $\vec x_1,\vec x_2,\vec x_3$ associated with three different eigenvalues $\lambda_1,\lambda_2,\lambda_3$.  To do this, we'll build on the fact that it is true for two eigenvectors.  This method of showing a general statement is true by first showing it for a small case, then iteratively building on that small case by showing that each case implies the statement is true for the next larger case, is a very powerful technique called induction.  It is studied and used quite a bit in later math classes.
+
+To proceed, let's consider what happens if a linear combination of the eigenvectors equals zero:
+\begin{align}
+  \vec 0=c_1\vec x_1+c_2\vec x_2+c_3\vec x_3.\label{eq:evec-lin-indep}
+\end{align}
+Now we multiply equation~\eqref{eq:evec-lin-indep} by $\lambda_3$ and by $A$ and take the difference:
+\begin{align*}
+  \vec 0&=\lambda_3(c_1\vec x_1+c_2\vec x_2+c_3\vec x_3)-A(c_1\vec x_1+c_2\vec x_2+c_3\vec x_3)\\
+  &=\lambda_3(c_1\vec x_1+c_2\vec x_2+c_3\vec x_3)-c_1A\vec x_1-c_2A\vec x_2-c_3A\vec x_3\\
+  &=c_1\lambda_3\vec x_1+c_2\lambda_3\vec x_2+c_3\lambda_3\vec x_3-c_1\lambda_1\vec x_1-c_2\lambda_2\vec x_2-c_3\lambda_3\vec x_3\\
+  &= c_1(\lambda_3-\lambda_1)\vec x_1+c_2(\lambda_3-\lambda_2)\vec x_2+c_3(\lambda_3-\lambda_3)\vec x_3\\
+  &=  c_1(\lambda_3-\lambda_1)\vec x_1+c_2(\lambda_3-\lambda_2)\vec x_2+\vec 0\\
+  &=  c_1(\lambda_3-\lambda_1)\vec x_1+c_2(\lambda_3-\lambda_2)\vec x_2
+\end{align*}
+
+Here is the key step.  We already showed that for two eigenvectors associated with two different eigenvalues are linearly independent.  We'll use that fact to show that the next larger case is true (3 eigenvectors associated with 3 different eigenvalues).
+
+Since $x_1$ and $x_2$ are linearly independent, we know that $c_1(\lambda_3-\lambda_1)=0$ and $c_2(\lambda_3-\lambda_2)=0$ (see Definition~\ref{def linear independence}).  Since $\lambda_3\neq \lambda_1$ and $\lambda_3\neq \lambda_2$, this means that $c_1=0$ and $c_2=0$.  Thus equation~\eqref{eq:evec-lin-indep} is actually
+\begin{align*}
+  \vec 0=\vec 0 + \vec 0+c_3\vec x_3,
+\end{align*}
+so $c_3$ must actually be zero too.  Since each of $c_1,c_2,c_3$ must be zero in Equation~\eqref{eq:evec-lin-indep}, the vectors $\vec x_1$, $\vec x_2$, and $\vec x_3$ are linearly independent by Definition~\ref{def linear independence}.
+
+Now an analogous line of reasoning will use the truth of the statement for the case with three eigenvectors to prove the case with four eigenvectors, and so on.
+}
 For a proof, see problem 11.44. The key reason we want to use this theorem is that if the domain $V$ and range $V$ of a linear transformation $T:V\to V$ has dimension $n$, and there are $n$ distinct eigenvalues, then we can form a basis for $V$ by selecting an eigenvector corresponding to each eigenvalue. This creates a basis for $V$ by using eigenvectors. A basis chosen in this fashion will always contain a basis for the null space (as vectors in the null space are eigenvectors corresponding to the eigenvalue $\lambda = 0$). Choosing your basis vectors to be eigenvectors will greatly simplify how we view a linear transformation.
+
+
  
 \begin{example}
 The matrix 
