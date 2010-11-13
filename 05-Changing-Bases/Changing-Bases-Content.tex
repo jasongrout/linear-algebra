@@ -13,123 +13,110 @@ This chapter covers the following ideas. The purpose of this chapter is to help 
 
 
 \subsection{Coordinates relative to a basis}
-When we write the vector $\vec u=(2,4,7)$, we are giving the coordinates of the vector relative to the standard basis $E=\{(1,0,0),(0,1,0),(0,0,1)\}=\{\vec e_1,\vec e_2,\vec e_3\}$. We could write $(2,4,7)$ as a linear combination of these basis vectors by writing $2\vec e_1+4\vec e_2+7\vec e_3$. The numbers $2,4,7$ are called the coordinates of $\vec u$ relative to the standard basis vectors, and they form a vector $[\vec u]_E=(2,4,7)_E$ called the coordinate vector of $\vec u$ relative to $E$.  We use the subscript $E$ to emphasize that the vector $(2,4,7)$ is really just the coordinate vector whose components are the coordinates relative to $E$.  
+When we write the vector $\vec u=(2,4,7)$, we are giving the coordinates of the vector relative to the standard basis $E=\{(1,0,0),\,(0,1,0),\,(0,0,1)\}=\{\vec e_1,\vec e_2,\vec e_3\}$. We could write $(2,4,7)$ as a linear combination of these basis vectors by writing $(2,4,7)=2\vec e_1+4\vec e_2+7\vec e_3$. The numbers $2,4,7$ are called the \define{coordinates} of $\vec u$ relative to the standard basis vectors, and they form a vector $[\vec u]_E=(2,4,7)_E$ called the coordinate vector of $\vec u$ relative to the basis $E$.  We use the subscript $E$ to emphasize that the vector $(2,4,7)$ is really just the coordinate vector whose components are the coordinates relative to $E$.  
 
-If instead we use the basis vectors $S=\{(1,1,1),(0,1,1),(0,0,1)\}$, then since $(2,4,7)=2(1,1,1)+2(0,1,1)+3(0,0,1)$, we write $[\vec u]_S=(2,2,3)_S$ as the coordinate vector of $\vec u$ relative to $S$. We use brackets around a vector instead of parentheses when writing coordinate vectors, just to remind us that we are working with the coordinates of a vector instead of the vector. We will write $[(2,4,7)]_S = (2,2,3)_S$ to emphasize that the coordinates (denoted by []) of $(2,4,7)_E$ relative to $S$ are $(2,2,3)_S$. The subscript $S$ at the end reminds us which basis vectors we are using. 
+If instead we use the basis vectors $S=\{(1,1,1),\,(0,1,1),\,(0,0,1)\}$, then since $(2,4,7)=2(1,1,1)+2(0,1,1)+3(0,0,1)$, we write $[\vec u]_S=(2,2,3)_S$ as the coordinate vector of $\vec u$ relative to $S$. We will write $[(2,4,7)]_S = (2,2,3)_S$ to say that the coordinates of $(2,4,7)$ relative to $S$ are $(2,2,3)_S$. The subscript $S$ reminds us which basis vectors we are using for the coordinates.
 
 When we work with polynomials in $P_3(x)$ with standard basis $E=\{1,x,x^2,x^3\}$, the coordinates of $2+4x-5x^2+3x^3$ relative to this basis are $[2+4x-5x^2+3x^3]_E = (2,4,-5,3)_E$. 
-If the basis is understood from context, then often we will omit the subscript. The coordinates of the matrix $\bm{1&2&3\\4&-2&0}$ relative to the standard basis $$S = \left\{ \bm{1&0&0\\0&0&0} ,\bm{0&1&0\\0&0&0} ,\bm{0&0&1\\0&0&0} ,\bm{0&0&0\\1&0&0} ,\bm{0&0&0\\0&1&0} ,\bm{0&0&0\\0&0&1} \right\}$$ are simply $\left[\bm{1&2&3\\4&-2&0}\right]_S = (1,2,3,4,-2,0)$ without the subscript.
+If the basis is understood from context, then often we will omit the subscript. The coordinates of the matrix $\bm{1&2&3\\4&-2&0}$ relative to the standard basis $$S = \left\{ \bm{1&0&0\\0&0&0} ,\bm{0&1&0\\0&0&0} ,\bm{0&0&1\\0&0&0} ,\bm{0&0&0\\1&0&0} ,\bm{0&0&0\\0&1&0} ,\bm{0&0&0\\0&0&1} \right\}$$ are simply $\left[\bm{1&2&3\\4&-2&0}\right]_S = (1,2,3,4,-2,0)$ (we didn't put a subscript on the last coordinate vector because the basis was clear from context).
 
-How do you find the coordinates of a vector relative to a basis? We've been doing it in every chapter up till now every time we find reduced row echelon form.  The coordinates of a vector relative to pivot columns are found in the non-pivot columns of rref.  Let's remind ourselves of why this works.
-To find the coordinates of $(1,0)$ relative to the basis $S=\{(1,2),(3,5)\}$, we need to find coefficients $(x,y)$ such that $$x\bm{1\\2}+y\bm{3\\5} = \bm{1\\0}, \quad \text{or in matrix form} \quad \bm{\cl{1\\2}&\cl{3\\5}}\bm{x\\y}=\bm{1\\0}.$$ 
+How do you find the coordinates of a vector relative to a basis? We've been doing it in every chapter up till now every time we find reduced row echelon form.  The coordinates of a vector relative to pivot columns are found in the non-pivot columns of rref.  The new thing so far in this chapter is the notation $[\vec u]_S$ for the coordinate vector relative to the basis $S$.  Let's remind ourselves of why row reducing gives the coordinate vector.
+\begin{example}
+To find the coordinates of $(1,0)$ relative to the basis $S=\{(1,2),\,(3,5)\}$, we need to find coefficients $(x,y)$ such that $$x\bm{1\\2}+y\bm{3\\5} = \bm{1\\0}, \quad \text{or in matrix form} \quad \bm{\cl{1\\2}&\cl{3\\5}}\bm{x\\y}=\bm{1\\0}.$$ 
 To solve this system we simply reduce the matrix $\bm{\cl{1\\2}&\cl{3\\5}&\cl{1\\0}}$ to $\bm{\cl{1\\0}&\cl{0\\1}&\cl{-5\\2}}$.
-This shows us that the coordinates of $(1,0)$ relative to $S$ are simply $[(1,0)]_S = (-5,2)_S$. We are giving a name (coordinates of $\vec u$ relative to $S$) to the idea of writing a column vector as a linear combination of the column vectors which precede it, as well as providing symbolic notation $[\vec u]_S$ for describing this idea.
+This shows us that the coordinates of $(1,0)$ relative to $S$ are simply $[(1,0)]_S = (-5,2)_S$. 
+\end{example}
 
-\begin{example} Consider the basis $S=\{(1,2),(3,5)\}$. 
+Notice that the matrix form in the last example showed that if $B$ is a matrix with the basis vectors as columns, then $B[\vec x]_S=\vec x$.
+\marginpar{$B[\vec x]_s = \vec x$}
+
+\begin{example} Consider the basis $S=\{(1,2),\,(3,5)\}$. 
 \begin{enumerate}
-	\item Find the coordinates of $(1,0),(0,1),(3,6),(10,-7)$, and $(a,b)$ relative to this basis.
+	\item Find the coordinates of $(1,0)$, $(0,1)$, $(3,6)$, $(10,-7)$, and $(a,b)$ relative to this basis.
 	\item What vector has coordinates $(3,-2)_S$?
 	\item How does the inverse of $B = \begin{bmatrix}1 & 3 \\ 2 & 5\end{bmatrix}$ help find the coordinates of $(a,b)$?
 \end{enumerate}
- To answer the first part, we insert the basis vectors as the first two columns of a matrix, augment by the other vectors, and then reduce: 
+ To answer the first question, we could do five different row reductions.  However, we can do them all simultaneously by inserting the basis vectors as the first two columns of a matrix, augmenting by all of the other vectors, and then reducing: 
 $$\begin{bmatrix}
  1 & 3 & 1 & 0 & 3 & 10 & a \\
  2 & 5 & 0 & 1 & 6 & -7 & b
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & -5 & 3 & 3 & -71 & -5 a+3b \\
  0 & 1 & 2 & -1 & 0 & 27 & 2 a-b
 \end{bmatrix}.$$
 The coordinates of each vector relative to $S$ are $[(1,0)]_S = (-5,2)_S$, $[(0,1)]_S=(3,-1)_S$, $[(3,6)]_S=(3,0)_S$, $[(10,-7)]_S=(-71,27)_S$, and $[(a,b)]_S=(-5a+3b,2a-b)_S$. 
-The columns of reduced row echelon form gives us precisely the coordinates of each vector relative to our basis.
+The columns of the rref give us the coordinates of each vector relative to our basis.
 
-The coordinates $(3,-2)_S$ represent the vector $3(1,2)-2(3,5)=(-3,-4)$. So $[(-3,-4)]_S = (3,-2)_S$.
+The coordinates $(3,-2)_S$ represent the vector $3(1,2)-2(3,5)=(-3,-4)$. We can write this fact as $[(-3,-4)]_S = (3,-2)_S$.
 
-Notice that we already augmented by $(1,0)$ and $(0,1)$ prior to reducing.  This means that columns 3 and 4 contain the inverse $B\inv  = \bm{-5 & 3\\ 2 & -1}$.  Also notice that $$B\inv \bm{a\\b} = \bm{-5 & 3\\ 2 & -1}\bm{a\\b} = \bm{-5a+3b\\2a-b}$$ which is precisely the coordinates of $(a,b)$ relative to $S$.  In other words, the product $B\inv \vec x$ gives the coordinates of $\vec x$ relative to $S$, i.e. $[\vec x]_S = B\inv \vec x$.
+Notice that in our answer for the first question, we already augmented by $(1,0)$ and $(0,1)$ prior to reducing.  This means that columns 3 and 4 of the rref contain the inverse $B\inv  = \bm{-5 & 3\\ 2 & -1}$.  Also notice that $$B\inv \bm{a\\b} = \bm{-5 & 3\\ 2 & -1}\bm{a\\b} = \bm{-5a+3b\\2a-b}$$ which is precisely the coordinates of $(a,b)$ relative to $S$.  
 \end{example}
+Notice in the last answer in this example, we see that $B\inv \vec x$ gives the coordinates of $\vec x$ relative to $S$, i.e., $[\vec x]_S = B\inv \vec x$.
+\marginpar{$[\vec x]_s = B\inv \vec x$}
 
 The two methods above (using row reduction or inverses) will always give you the coordinates of $\vec u$ relative to the basis $S=\{\vec u_1,\vec u_2,\ldots,\vec u_n\}$ (where $S$ is a basis for ${\mathbb{R}}^n$). 
 We will focus on using inverse matrices for the remainder of this chapter, as we need inverse matrices in what follows.  
 Much of the work in this chapter involves using inverse matrices to discover new ideas. 
+
 %In summary, if we want to write the vector $\vec v$ as a linear combination of the vectors in $S$, then we need to write $$c_1\vec u_1+c_2\vec u_2+\cdots+c_n\vec u_n = \vec v.$$ In matrix form we write $$\begin{bmatrix}\vec u_1 & \vec u_2&\cdots&\vec u_n\end{bmatrix} \begin{bmatrix}c_1&c_2&\cdots&c_n\end{bmatrix}^T=\vec v\quad \text{or} \quad P[\vec v]_S = \vec v,$$ where $P$ is the matrix whose columns are the basis vectors in $S$. Multiplying both sides on the left by $P^{-1}$ gives us the formula $[\vec v]_S=P^{-1}\vec v$. So we find the coordinates of $\vec v$ relative to $S$ by multiplying the inverse of $P$ on the right by $\vec v$.
 
 \begin{example} 
-Given the basis $S=\{(1,2),(3,4)\}$, find the coordinate of $(3,6),(10,-7)$, and $(a,b)$ relative to this basis by using an inverse matrix.  First, the inverse of 
-$B=
-\begin{bmatrix}
- 1 & 3 \\
- 2 & 4
-\end{bmatrix}
-$ 
-is 
-$B^{-1}=
-\ds\frac{1}{-2}\begin{bmatrix}
- 4 & -3 \\
- -2 & 1
-\end{bmatrix}
-$.  The coordinates relative to $S$ are 
-$$[(3,6)]_S=B^{-1}\bm{3\\6} = \bm{3\\0}_S, 
-[(10,-7)]_S = B^{-1}\bm{10\\-7}=\bm{-61/2\\27/2}_S,$$ $$
-[(a,b)]_S = B^{-1}\bm{a\\b}=\bm{-2 a+\frac{3 b}{2} \\ a-\frac{b}{2}}_S.$$
+Given the basis $S=\{(1,2),\,(3,4)\}$, we will find the coordinate of $(3,6)$, $(10,-7)$, and $(a,b)$ relative to this basis by using an inverse matrix.  First, the matrix $B$ and $B\inv$ are
+\marginpar{Remember the trick from Section~\ref{sec:quick-2-2-inverse} to easily find the inverse of a 2 by 2 matrix: 
 
-\end{example}
-     
-Whenever you encounter a 3 by 3 or larger matrix, please use software to find the inverse.  For a 2 by 2 matrix, Cramer's rule provides a simple formula for finding the inverse. Remember, just interchange the diagonal entries, change the sign on the off diagonal entries, and then divide by the determinant:
-$$
+$
 \begin{bmatrix}
 a&b \\ c&d
 \end{bmatrix}^{-1} 
 = \frac{1}{ad-bc}
 \begin{bmatrix}
 d&-b \\ -c&a
-\end{bmatrix}.
-$$
-
-\begin{example} 
-%We compute
+\end{bmatrix}
 $
+}
+$$B=
 \begin{bmatrix}
  1 & 3 \\
  2 & 4
-\end{bmatrix}\inv =
+\end{bmatrix},\quad
+B^{-1}=
 \ds\frac{1}{-2}\begin{bmatrix}
  4 & -3 \\
  -2 & 1
-\end{bmatrix}
-$, and $
-\begin{bmatrix}
- 13 & 3 \\
- -7 & 2
-\end{bmatrix}\inv
-=
-\ds\frac{1}{47}\begin{bmatrix}
- 2 & -3 \\
- 7 & 13
-\end{bmatrix}
-$.
+\end{bmatrix}.$$
+  The coordinates relative to $S$ are 
+\begin{align*}
+[(3,6)]_S&=B^{-1}\bm{3\\6} = \bm{3\\0}_S, \\
+[(10,-7)]_S &= B^{-1}\bm{10\\-7}=\bm{-61/2\\27/2}_S,\\
+[(a,b)]_S &= B^{-1}\bm{a\\b}=\bm{-2 a+\frac{3 b}{2} \\ a-\frac{b}{2}}_S.
+\end{align*}
+
 \end{example}
+
 
 
 \subsection{Change of Basis}
 
-If we are given the coordinates $[\vec u]_S$ of a vector $\vec u$ relative to a basis $S$, how do we find the coordinates $[\vec u]_{S'}$ of $\vec u$ relative to a different basis $S'$? 
+If we are given the coordinates $[\vec u]_S$ of a vector $\vec u$ relative to a basis $S$, how do we find the coordinates $[\vec u]_{R}$ of $\vec u$ relative to a different basis $R$? 
 We can start by writing everything in terms of a single basis (often the standard basis).
 Let $B$ be the matrix whose columns are the basis vectors of $S$ (relative to the standard basis $E$). 
-Let $B'$ be the matrix whose columns are the basis vectors of $S'$ (relative to the standard basis $E$). 
-For any vector $\vec u$, whose coordinates relative to the standard basis are $[\vec u]_E$, we write the two equations $$B[\vec u]_S=[\vec u]_E\quad \text {and}\quad B'[\vec u]_{S'}=[\vec u]_E.$$ 
-We equate the left hand side	 of each equation to obtain the matrix equation 
-$$B[\vec u]_S=B'[\vec u]_{S'}.$$ 
-Multiplication on the left by $B'^{-1}$ gives $$B'^{-1}B[\vec u]_S=P[\vec u]_S=[\vec u]_{S'}.$$  
-The matrix $P=B'^{-1}B$ is often called the change-of-basis matrix from $S$ to $S'$. To transform from the old basis $S$ to the new basis $S'$, we compute $P[\vec u]_S=[\vec u]_{S'}$. We call it the change of basis matrix from $S$ to $S'$ because if you know the old coordinates $[\vec u]_S$ relative to $S$, then you multiply by $P$ to get the new coordinates $[\vec u]_{S'}$ relative to $S'$. 
-The change-of-coordinate matrix $Q$ from $S'$ to $S$ inverts this process, hence it is precisely $Q=P^{-1}$. 
+Let $C$ be the matrix whose columns are the basis vectors of $R$ (relative to the standard basis $E$). 
+For any vector $\vec u$, whose coordinates relative to the standard basis are $[\vec u]_E$, we write the two equations $$B[\vec u]_S=[\vec u]_E\quad \text {and}\quad C[\vec u]_{R}=[\vec u]_E.$$ 
+We equate the left side	of each equation to obtain the matrix equation 
+$$B[\vec u]_S=C[\vec u]_{R}.$$ 
+Multiplication on the left by $C^{-1}$ gives $$C^{-1}B[\vec u]_S=P[\vec u]_S=[\vec u]_{R}.$$  
+You can think of this transformation $P$ as a composition of transformations, $P[\vec u]_S=C\inv (B[\vec u]_S)=C\inv [\vec u]_E=[\vec u]_R$, or in words, first convert $[\vec u]_S$ to standard coordinates $[\vec u]_E$, and then convert to coordinates relative to $R$, $[\vec u]_R$.
+
+The matrix $P=C^{-1}B$ is often called the change-of-basis matrix from $S$ to $R$. To transform from the old basis $S$ to the new basis $R$, we just multiply by $P$: $P[\vec u]_S=[\vec u]_{R}$. The change-of-coordinate matrix $Q$ from $R$ to $S$ inverts this process, hence it is precisely $Q=P^{-1}=B\inv C$.
 
 
 \begin{example}
-Consider the two bases for the plane $\mathbb{R}^2$: $$S=\{(2,1),(3,-2)\}\quad \text{and}\quad S'=\{(1,0),(2,-1)\}.$$ 
+Consider the two bases for the plane $\mathbb{R}^2$: $$S=\{(2,1),\,(3,-2)\}\quad \text{and}\quad R=\{(1,0),\,(2,-1)\}.$$ 
 \begin{enumerate}
-	\item Find the coordinates of $(-1,3)_S$ relative to the basis $S'$ by finding the change-of-coordinates matrix $P$ from $S$ to $S'$, 
-	\item Find the coordinates of $(-1,3)_{S'}$ relative to the basis $S$ by finding the change of coordinate matrix $Q$ from $S'$ to $S$, and 
+	\item Find the coordinates of $(-1,3)_S$ relative to the basis $R$ by finding the change-of-coordinates matrix $P$ from $S$ to $R$, 
+	\item Find the coordinates of $(-1,3)_{R}$ relative to the basis $S$ by finding the change of coordinate matrix $Q$ from $R$ to $S$, and 
 	\item Verify that $Q=P^{-1}$.
 \end{enumerate}
 \begin{enumerate}
@@ -141,77 +128,80 @@ Consider the two bases for the plane $\mathbb{R}^2$: $$S=\{(2,1),(3,-2)\}\quad \
 \end{bmatrix}
 $
 and 
-	$B'=
+	$C=
 \begin{bmatrix}
  1 & 2 \\
  0 & -1
 \end{bmatrix}
-$ (the matrices whose columns are the basis vectors).  We know that $B \bm{-1\\3}_S = \bm{7\\-7}=\vec u$ is the actual vector we are trying to represent in terms of the basis $S'$.  To find the coordinates relative to $S'$, we write $B \bm{-1\\3}_S = B'[\vec u]_{S'}$, or $B'^{-1}B \bm{-1\\3}_S= [\vec u]_{S'}$, where 
-$B'^{-1} = 
+$ (the matrices whose columns are the basis vectors $S$ and $R$, respectively).  We know that $B \bm{-1\\3}_S = \bm{7\\-7}=\vec u$ is the actual vector we are trying to represent in terms of the basis $R$.  To find the coordinates relative to $R$, we write $B \bm{-1\\3}_S = C[\vec u]_{R}$, or $C^{-1}B \bm{-1\\3}_S= [\vec u]_{R}$, where 
+$C^{-1} = 
 \begin{bmatrix}
  1 & 2 \\
  0 & -1
 \end{bmatrix}
 $. 
-The change-of-coordinate matrix $P$ from $S$ to $S'$ is 
-$B'^{-1}B =  
+The change-of-coordinate matrix $P$ from $S$ to $R$ is 
+$C^{-1}B =  
 \begin{bmatrix}
  4 & -1 \\
  -1 & 2
 \end{bmatrix}
-$ which means that $[\vec u]_{S'}= P\bm{-1\\3} = \bm{-7\\7}_{S'}$. So the vector with coordinates $(-1,3)_S$ relative to $S$ is $(7,-7)$ which has coordinates $(-7,7)_{S'}$ relative to $S'$.
+$ which means that $[\vec u]_{R}= P\bm{-1\\3} = \bm{-7\\7}_{R}$. So the vector with coordinates $(-1,3)_S$ relative to $S$ is $(7,-7)$ which has coordinates $(-7,7)_{R}$ relative to $R$.
 
 \item
-We know that $B' \bm{-1\\3}_{S'} = \bm{5\\-3} =\vec u$ is the actual vector we are trying to represent in terms of the basis $S$. To find the coordinates relative to $S'$, we write $B' \bm{-1\\3}_{S'} = B[\vec u]_{S}$, or $B^{-1}B'  \bm{-1\\3}_{S'}= [\vec u]_{S}$, where 
+We know that $C \bm{-1\\3}_{R} = \bm{5\\-3} =\vec u$ is the actual vector we are trying to represent in terms of the basis $S$. To find the coordinates relative to $R$, we write $C \bm{-1\\3}_{R} = B[\vec u]_{S}$, or $B^{-1}C  \bm{-1\\3}_{R}= [\vec u]_{S}$, where 
 $B^{-1} = 
 \begin{bmatrix}
  \frac{2}{7} & \frac{3}{7} \\
  \frac{1}{7} & -\frac{2}{7}
 \end{bmatrix}
 $. 
-The change-of-coordinate matrix $Q$ from $S'$ to $S$  is 
-$B^{-1}B' =  
+The change-of-coordinate matrix $Q$ from $R$ to $S$  is 
+$B^{-1}C =  
 \begin{bmatrix}
  \frac{2}{7} & \frac{1}{7} \\
  \frac{1}{7} & \frac{4}{7}
 \end{bmatrix}
-$ which means that $[\vec u]_{S'}= Q\bm{-1\\3}_S = \bm{\frac{1}{7}\\\frac{11}{7}}_{S}$.
-So the vector with coordinates $(-1,3)_{S'}$ relative to $S'$ is $(5,-3)$ which has coordinates $(1/7,11/7)_{S}$ relative to $S$. 
-\item Because $P=B'^{-1}B$ and $Q=B^{-1}B'$, we know that $P^{-1} = (B'^{-1}B)^{-1} = B^{-1}(B'^{-1})^{-1} = B^{-1}B'=Q$ (remember that inverting matrices requires that we invert each matrix and reverse the order). Hence $P\inv = Q$.
+$ which means that $[\vec u]_{R}= Q\bm{-1\\3}_S = \bm{\frac{1}{7}\\\frac{11}{7}}_{S}$.
+So the vector with coordinates $(-1,3)_{R}$ relative to $R$ is $(5,-3)$ which has coordinates $(1/7,11/7)_{S}$ relative to $S$. 
+\item Because $P=C^{-1}B$ and $Q=B^{-1}C$, we know that $P^{-1} = (C^{-1}B)^{-1} = B^{-1}(C^{-1})^{-1} = B^{-1}C=Q$ (remember that inverting matrices requires that we invert each matrix and reverse the order). Hence $P\inv = Q$.
 
 \end{enumerate}
 \end{example}
 
-\subsubsection{Changing bases from $S$ to $S'$ and from $S'$ to $S$.}
+
+\subsubsection{Changing bases from $S$ to $R$ and from $R$ to $S$.}
 Different authors disagree on the use of the term ``change of basis matrix.'' 
-We call $P$ the change of basis matrix from $S$ to $S'$ to refer to the fact that multiplying $[\vec u]_S$ by $P$ transforms coordinates relative to $S$ into coordinates relative to $S'$.  
-However, when working with an abstract problem we can quickly switch from the new coordinates $[\vec u]_{S'}$ to the old coordinates $[\vec u]_S$ by replacing each instance of $[\vec u]_{S'}$ with $P[\vec u]_S$.  
-In this case, the matrix $P$ is the matrix needed to change from the new basis $S'$ to the old basis $S$.
-\marginpar{In the equation $P[\vec u]_S = [\vec u]_{S'}$, do we say $P$ is a change of basis matrix from $S$ to $S'$ or from $S'$ to $S$? Both can be considered correct, so make sure you know what the author means by the words ``change of basis matrix.''}
-Hence, some people call the change of basis matrix $P$ in the equation $P[\vec u]_S = [\vec u]_{S'}$ the change of basis matrix \textit{from $S$ to $S'$}, while, some call it the change of basis matrix \textit{from $S'$ to $S$}.  Both phrases appear in different places and both can be considered correct. The difference lies in the context of the problem, and how you plan to use the matrix. Are you focusing on what the transformation does to vectors, or what the transformation does to equations? 
+We call $P$ the change of basis matrix \emph{from $S$ to $R$}, referring to the fact that multiplying $[\vec u]_S$ by $P$ transforms coordinates relative to $S$ into coordinates relative to $R$: $P[\vec u]_S=[\vec u]_R$.  
+When working with an equation, for example, another point of view is that we can quickly convert an equation using $R$ coordinates $[\vec u]_{R}$ to an equation using $S$ coordinates $[\vec u]_S$ by replacing each instance of $[\vec u]_{R}$ with $P[\vec u]_S$.  For example, if we know that $[\vec u]_R+[\vec v]_R-2[\vec w]_R=[\vec x]_R$, then we can transform this equation to an equation involving coordinates relative to $S$ by multiplying each coordinate vector by $P$: $P[\vec u]_S+P[\vec v]_S-2P[\vec w]_S=P[\vec x]_S$.  Hence some people call $P$ the change of basis matrix \emph{from $R$ to $S$} (instead of \emph{from $S$ to $R$}).
+\marginpar{In the equation $P[\vec u]_S = [\vec u]_{R}$, do we say $P$ is a change of basis matrix from $S$ to $R$ or from $R$ to $S$? Both can be considered correct, so make sure you know what the author means by the words ``change of basis matrix.''}
+Both phrases appear in different places and both can be considered correct. The difference lies in the context of the problem and how you plan to use the matrix. Are you focusing on what the transformation does to individual vectors, or what the transformation does to equations? 
 
-\begin{example}
-We'll use polar coordinates to illustrate the vocabulary difference. The transformation $x=r\cos\theta, y=r\sin\theta$, written in vector form as $ T (r,\theta)_P = (x,y)_C$, is a (non linear) transformation between two coordinate systems: the Cartesian and polar coordinate systems. You input vectors in polar form, and get out vectors in Cartesian form. The transformation tells us how to describe all points in the plane in either Cartesian or polar form. The transformation also tells us how to convert equations from one system to the other.  The way we use the transformation (as a transformation from polar to Cartesian, or Cartesian to polar) depends on whether we are transforming vectors or equations.    
-\begin{enumerate}
-	\item Consider the polar vector $(r,\theta)_P = (2,\pi/6)_P$. 
-	\marginpar{We say $T$ transforms from $S$ to $S'$ when we focus on what $T$ does to individual vectors.}
-	We obtain the Cartesian coordinates $(x,y)_C$ by applying the transformation 
-	$$T(2,\pi/6)_P = (2\cos(\pi/6),2\sin(\pi/6))_C = (\sqrt{3},1)_C,$$ 
-	replacing each $r$ with $2$ and each $\theta$ with $\pi/6$. 
-	We transform a vector from polar coordinates to a vector in Cartesian coordinates. 
+% \begin{example}
+% We'll use polar coordinates to illustrate the vocabulary difference. The transformation $x=r\cos\theta, y=r\sin\theta$, written in vector form as $ T (r,\theta)_P = (x,y)_C$, is a (nonlinear) transformation between two coordinate systems: the Cartesian and polar coordinate systems. You input vectors in polar form, and get out vectors in Cartesian form. The transformation tells us how to describe all points in the plane in either Cartesian or polar form. The transformation also tells us how to convert equations from one system to the other.  The way we use the transformation (as a transformation from polar to Cartesian, or Cartesian to polar) depends on whether we are transforming vectors or equations.    
+% \begin{enumerate}
+% 	\item Consider the polar vector $(r,\theta)_P = (2,\pi/6)_P$. 
+% 	\marginpar{We say $T$ transforms from $S$ to $R$ when we focus on what $T$ does to individual vectors.}
+% 	We obtain the Cartesian coordinates $(x,y)_C$ by applying the transformation 
+% 	$$T(2,\pi/6)_P = (2\cos(\pi/6),2\sin(\pi/6))_C = (\sqrt{3},1)_C,$$ 
+% 	replacing each $r$ with $2$ and each $\theta$ with $\pi/6$. 
+% 	We transform a vector from polar coordinates to a vector in Cartesian coordinates. 
 	
-	\item Consider the Cartesian equation $x^2+y^2=9$ which represents a circle of radius 3 (or a collection of vectors). 
-	\marginpar{We say $T$ transforms from $S'$ to $S$ when we focus of what $T$ does to an equation (or collection of vectors).}
-	We convert this equation to polar coordinates by replacing each $x$ with $r\cos \theta$ and each $y$ with $r\sin\theta$.
-	The transformed equation is $(r\cos\theta)^2+(r\sin\theta)^2 = 9$, or $r^2(\cos^2\theta+\sin^2\theta)=r^2=9$, or just $r=3$. 
-	We transform an equation from Cartesian coordinates to an equation in polar coordinates. 
-\end{enumerate}
-	Let's emphasize the two ways of using the transformation $T[\vec u]_P=[\vec u]_C$.  
-\begin{itemize}
-	\item $T$ transforms a vector \textit{from polar to Cartesian}. You can put in polar coordinates $(r,\theta) = [\vec u]_P$ and use $T$ to obtain Cartesian coordinates $(r\cos\theta,r\sin\theta) = [\vec u]_C$.  
-	\item $T$ transforms equations \textit{from Cartesian to polar}. In any equation, you can replace each Cartesian coordinate of $(x,y)=[\vec u]_C$ with the corresponding polar form in $(r\cos\theta,r\sin\theta) = T[\vec u]_P$ to obtain an equation in polar coordinates. 
-\end{itemize}
-\end{example}
+% 	\item Consider the Cartesian equation $x^2+y^2=9$ which represents a circle of radius 3 (or a collection of vectors). 
+% 	\marginpar{We say $T$ transforms from $R$ to $S$ when we focus of what $T$ does to an equation (or collection of vectors).}
+% 	We convert this equation to polar coordinates by replacing each $x$ with $r\cos \theta$ and each $y$ with $r\sin\theta$.
+% 	The transformed equation is $(r\cos\theta)^2+(r\sin\theta)^2 = 9$, or $r^2(\cos^2\theta+\sin^2\theta)=r^2=9$, or just $r=3$. 
+% 	We transform an equation from Cartesian coordinates to an equation in polar coordinates. 
+% \end{enumerate}
+% 	Let's emphasize the two ways of using the transformation $T[\vec u]_P=[\vec u]_C$.  
+% \begin{itemize}
+% 	\item $T$ transforms a vector \textit{from polar to Cartesian}. You can put in polar coordinates $(r,\theta) = [\vec u]_P$ and use $T$ to obtain Cartesian coordinates $(r\cos\theta,r\sin\theta) = [\vec u]_C$.  
+% 	\item $T$ transforms equations \textit{from Cartesian to polar}. In any equation, you can replace each Cartesian coordinate of $(x,y)=[\vec u]_C$ with the corresponding polar form in $(r\cos\theta,r\sin\theta) = T[\vec u]_P$ to obtain an equation in polar coordinates. 
+% \end{itemize}
+% \end{example}
+
+%%%%%%%%%%% JASON STOPPED EDITING HERE %%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{example}
 Let's look at a linear transformation from one coordinate system to another. How do we find the equation of an ellipse whose major axis is not on the $x$ or $y$ axis?  
@@ -226,25 +216,25 @@ This problem involves looking at two different coordinate systems for the plane.
 One coordinate system has the standard basis $S = \{(1,0),(0,1)\}$, which we will call the $xy$ coordinate system.  
 The other coordinate system involves the directions $(1,1)$ and $(-1,1)$. 
 To preserve distances in this alternate coordinate system, we'll divide each vector by its length so that each vector has length one.  
-This gives us a second basis $S'=\{(1/\sqrt2,1/\sqrt{2}), (-1/\sqrt{2},1/\sqrt{2})\}$. 
+This gives us a second basis $R=\{(1/\sqrt2,1/\sqrt{2}), (-1/\sqrt{2},1/\sqrt{2})\}$. 
 We have changed the $x$ axis to the line $y=x$ which we will call the $x'$ axis, and similarly the $y'$ axis is now the line $y=-x$.  
 Let's pause to summarize.  We have the following two coordinate systems.
 \begin{enumerate}
 	\item The standard $xy$ coordinate system with basis $$S=\{(1,0),(0,1)\}$$ represented by the $x$ and $y$ axes. 
 	Consider the vector $\vec u = (a,b)$.  The coordinates $(x,y)_S$ of $\vec u$ relative to $S$ satisfy the matrix equation $\bm{1&0\\0&1}\bm{x\\y}_{S}=\bm{a\\b}$, 
 	or $B\bm{x\\y}_{S}=\bm{a\\b}$, where $B$ is the matrix whose columns are the vectors in $S$ (so the identity matrix).
-	\item The alternate $x'y'$ coordinate system with basis $$S'=\{(1/\sqrt2,1/\sqrt{2}), (-1/\sqrt{2},1/\sqrt{2})\}$$ represented by the $x'$ ($y=x$) and $y'$ ($y=-x$) axes.
-	Consider again the vector $\vec u = (a,b)$.  The coordinates $(x',y')_{S'}$ of $(a,b)$ relative to $S'$ (so $[\vec u]_{S'} = (x',y')_S$) satisfy the matrix equation 
-	$\bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\bm{x'\\y'}_{S'}=\bm{a\\b}$,
-	or $B'\bm{x'\\y'}_{S'}=\bm{a\\b}$ where $B'$ is the matrix whose columns are the vectors in $S'$.
+	\item The alternate $x'y'$ coordinate system with basis $$R=\{(1/\sqrt2,1/\sqrt{2}), (-1/\sqrt{2},1/\sqrt{2})\}$$ represented by the $x'$ ($y=x$) and $y'$ ($y=-x$) axes.
+	Consider again the vector $\vec u = (a,b)$.  The coordinates $(x',y')_{R}$ of $(a,b)$ relative to $R$ (so $[\vec u]_{R} = (x',y')_S$) satisfy the matrix equation 
+	$\bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\bm{x'\\y'}_{R}=\bm{a\\b}$,
+	or $C\bm{x'\\y'}_{R}=\bm{a\\b}$ where $C$ is the matrix whose columns are the vectors in $R$.
 \end{enumerate}
 
 Our goal is to find an equation of the ellipse in the $xy$ coordinate system. We know that in the $x'y'$ coordinate system an equation is $\ds \frac{(x')^2}{4}+(y')^2=1$. 
-To transform an equation from $S'$ to $S$, we need to replace each coordinate $(x',y')=[\vec u]_{S'}$ with the its corresponding coordinate $P[\vec u]_{S} = P(x,y)$.  
-We need a matrix $P$ that takes $xy$ coordinates in $S$ to $x'y'$ coordinates in $S'$ (notice the order reversed).  
-We seek $P$ such that $P[\vec u]_{S} = [\vec u]_{S'}$. 
-For every vector $\vec u =(a,b)$, we already have the equations $$A[\vec u]_{S} = B[\vec u]_{S'}\quad \quad \text{or}\quad \quad A\bm{x\\y}=B\bm{x'\\y'}.$$ 
-To find $P$, we simply solve for $[\vec u]_{S'}$ which gives us $B\inv A[\vec u]_{S} = [\vec u]_{S'}$, or $P=B\inv A$.   
+To transform an equation from $R$ to $S$, we need to replace each coordinate $(x',y')=[\vec u]_{R}$ with the its corresponding coordinate $P[\vec u]_{S} = P(x,y)$.  
+We need a matrix $P$ that takes $xy$ coordinates in $S$ to $x'y'$ coordinates in $R$ (notice the order reversed).  
+We seek $P$ such that $P[\vec u]_{S} = [\vec u]_{R}$. 
+For every vector $\vec u =(a,b)$, we already have the equations $$A[\vec u]_{S} = B[\vec u]_{R}\quad \quad \text{or}\quad \quad A\bm{x\\y}=B\bm{x'\\y'}.$$ 
+To find $P$, we simply solve for $[\vec u]_{R}$ which gives us $B\inv A[\vec u]_{S} = [\vec u]_{R}$, or $P=B\inv A$.   
 To find the change of basis matrix $P$ we multiply 
 $$P=B\inv A = \bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\inv \bm{1&0\\0&1} = \bm{1/\sqrt2 &1/\sqrt2\\-1/\sqrt2&1/\sqrt2}.$$
 We now have the transformation 
@@ -256,7 +246,7 @@ The ellipse we started with had equation $\frac{(x')^2}{4}+(y')^2=1$ in the $x'y
 We replace each $x'$ and $y'$ with $x'=x/\sqrt2+y/\sqrt2$ and $y'=-x/\sqrt2+y/\sqrt2$ to obtain  $$\frac{(x/\sqrt2+y/\sqrt2)^2}4+(-x/\sqrt2+y/\sqrt2)^2=1.$$
 \end{example}
 
-Any time you encounter a problem that would be simpler in a new coordinate system, there is a change of basis matrix in the background that can solve the problem. Whether you call it a change of basis matrix from $S$ to $S'$ or from $S'$ to $S$ is irrelevant.  Your job is to create matrices which relate the different coordinate systems, and then appropriately use them to solve the problem at hand. Mastering the the vocabulary surrounding a change of basis matrix is crucial, as learning to interpret the use of this term requires that you fully understand the surrounding context (especially since different authors use the term differently and appropriately). 
+Any time you encounter a problem that would be simpler in a new coordinate system, there is a change of basis matrix in the background that can solve the problem. Whether you call it a change of basis matrix from $S$ to $R$ or from $R$ to $S$ is irrelevant.  Your job is to create matrices which relate the different coordinate systems, and then appropriately use them to solve the problem at hand. Mastering the the vocabulary surrounding a change of basis matrix is crucial, as learning to interpret the use of this term requires that you fully understand the surrounding context (especially since different authors use the term differently and appropriately). 
 
 
 
@@ -280,26 +270,26 @@ For example, the linear transformation $T:{\mathbb{R}}^2 \to {\mathbb{R}}^2$ def
 $A= \begin{bmatrix}2&1\\3&4\end{bmatrix}$. 
 We compute $T(\vec x)$ by computing the matrix product $A\vec x$.  We replaced the linear transformation with matrix multiplication. We now examine how the matrix $A$ changes if we use a different basis to represent the domain and range.
 
-Consider a linear transformation $T:V \to V'$ (where both $V$ and $V'$ are finite dimensional) with corresponding bases $S$ and $S'$. 
+Consider a linear transformation $T:V \to V'$ (where both $V$ and $V'$ are finite dimensional) with corresponding bases $S$ and $R$. 
 How do we construct the matrix representation of $T$ relative to these basis?  
-We need a matrix $A$ so that we can input coordinates relative to $S$ and get out coordinates relative to $S'$.  
-Notationally this matrix is written as $[T]_{S,S'}$ and satisfies the equation $$[T]_{S,S'}[\vec v]_S=[T(\vec v)]_{S'}.$$ 
+We need a matrix $A$ so that we can input coordinates relative to $S$ and get out coordinates relative to $R$.  
+Notationally this matrix is written as $[T]_{S,R}$ and satisfies the equation $$[T]_{S,R}[\vec v]_S=[T(\vec v)]_{R}.$$ 
 To find our matrix, we first consider everything relative to a standard basis. 
 \begin{itemize}
 	\item Let $A$ be the standard matrix representation of the transformation. So $$A\vec v = T(\vec v).$$
 	\item Let $B$ be the matrix whose columns are the basis vectors of $S$. So $$B[\vec v]_S=[\vec v]_E=\vec v.$$
-	\item Let $B'$ be the matrix whose columns are the basis vectors of $S'$. So $$B'[\vec v]_{S'}=[\vec v]_E=\vec v, \quad \text{or}\quad B'[T(\vec v)]_{S'}=[T(\vec v)]_E=T(\vec v).$$
+	\item Let $C$ be the matrix whose columns are the basis vectors of $R$. So $$C[\vec v]_{R}=[\vec v]_E=\vec v, \quad \text{or}\quad C[T(\vec v)]_{R}=[T(\vec v)]_E=T(\vec v).$$
 \end{itemize}
-On the left of $A\vec v = T(\vec v)$ we replace $\vec v$ with $B[\vec v]_S$, and on the right we replace $T(\vec v)$ with $B'[T(\vec v)]_{S'}$. We obtain the key equation 
-$$AB[\vec v]_S=B'[T(\vec v)]_{S'}.$$
-Multiplying both sides on the left by $B'^{-1}$ gives $$[T]_{S,S'}[\vec v]_S=B'^{-1}AB[\vec v]_S=[T(\vec v)]_{S'}.$$ This last equation requires that we input the coordinates of a vector relative to $S$, and then we get out the coordinates of the transformed vector relative to the basis $S'$. This is precisely what we were looking for, which means that the matrix representation relative to $S$ and $S'$ is $[T]_{S,S'} = B'^{-1}AB$. Time for some examples.
+On the left of $A\vec v = T(\vec v)$ we replace $\vec v$ with $B[\vec v]_S$, and on the right we replace $T(\vec v)$ with $C[T(\vec v)]_{R}$. We obtain the key equation 
+$$AB[\vec v]_S=C[T(\vec v)]_{R}.$$
+Multiplying both sides on the left by $C^{-1}$ gives $$[T]_{S,R}[\vec v]_S=C^{-1}AB[\vec v]_S=[T(\vec v)]_{R}.$$ This last equation requires that we input the coordinates of a vector relative to $S$, and then we get out the coordinates of the transformed vector relative to the basis $R$. This is precisely what we were looking for, which means that the matrix representation relative to $S$ and $R$ is $[T]_{S,R} = C^{-1}AB$. Time for some examples.
 
 
 
 
 
 \begin{example}
-Consider the linear transformation $T:{\mathbb{R}}^2\to {\mathbb{R}}^3$ defined by $T(x,y)=(x+y,x-y,2x+3y)$. Find a matrix representation using the bases $S=\{(2,3),(-1,1)\}$ and $S'=\{(1,0,0),(1,1,0),(3,2,1)\}$.  To start with, the standard matrix representation and basis matrices are 
+Consider the linear transformation $T:{\mathbb{R}}^2\to {\mathbb{R}}^3$ defined by $T(x,y)=(x+y,x-y,2x+3y)$. Find a matrix representation using the bases $S=\{(2,3),(-1,1)\}$ and $R=\{(1,0,0),(1,1,0),(3,2,1)\}$.  To start with, the standard matrix representation and basis matrices are 
 $$
 A=
 \begin{bmatrix}
@@ -313,7 +303,7 @@ B=
  3 & 1
 \end{bmatrix}
 ,
-B'=
+C=
 \begin{bmatrix}
  1 & 1 & 3 \\
  0 & 1 & 2 \\
@@ -321,9 +311,9 @@ B'=
 \end{bmatrix}
 .$$
 Any vector $\vec u$ in the domain can be written as of coordinates relative to $S$ using the product $ B[\vec u]_S=\vec u$.
-Any vector in the image can be written as coordinates relative to $S'$ using the product $B'[T(\vec u)]_{S'} = T(\vec u)$.  Since $A\vec u = T(\vec u)$, we replace $\vec u$ with $B[\vec u]_S$, and we replace $T(\vec u)$ with $B'[T(\vec u)]_{S'}$ to obtain $AB[\vec u]_S = B'[T(\vec u)]_{S'}$ or $B'^{-1}AB[\vec u]_S=[T(\vec u)]_{S'}$.  The inverse of $B'$ is (use software) 
+Any vector in the image can be written as coordinates relative to $R$ using the product $C[T(\vec u)]_{R} = T(\vec u)$.  Since $A\vec u = T(\vec u)$, we replace $\vec u$ with $B[\vec u]_S$, and we replace $T(\vec u)$ with $C[T(\vec u)]_{R}$ to obtain $AB[\vec u]_S = C[T(\vec u)]_{R}$ or $C^{-1}AB[\vec u]_S=[T(\vec u)]_{R}$.  The inverse of $C$ is (use software) 
 $
-B'^{-1}=
+C^{-1}=
 \begin{bmatrix}
  1 & -1 & -1 \\
  0 & 1 & -2 \\
@@ -331,7 +321,7 @@ B'^{-1}=
 \end{bmatrix}
 $.  
 We can compute our matrix representation as 
-$$B'^{-1}AB = 
+$$C^{-1}AB = 
 \begin{bmatrix}
  1 & -1 & -1 \\
  0 & 1 & -2 \\
@@ -351,7 +341,7 @@ $$B'^{-1}AB =
  5 & 0 \\
  -1 & -2 \\
  13 & 1
-\end{bmatrix}=[T]_{S,S'}.
+\end{bmatrix}=[T]_{S,R}.
 $$
 \end{example}
 
@@ -694,8 +684,8 @@ $. A basis for the domain and range which contains eigenvectors (and one other) 
 %\fixthis I want to illustrate this section with graphics.  I want to show how you start with the standard basis vectors, you switch them to a different basis prior to mapping across (this just means you place different axes on the domain)  Then the transformation takes things nicely over to a different space, and the you take that space back to the standard basis.  This could be done with a sequence of 4 pictures (where you see where the unit square gets mapped).
 
 We have already seen there are many different ways of using a matrix to represent the same transformation. 
-If $B$ and $B'$ are invertible matrices, and $A$ is the standard matrix representation of $T$, then $B'^{-1} A B$ is a matrix representation of $T$ relative to the bases $S$ and $S'$ formed from the columns of $B$ and $B'$.  
-Which bases $S$ and $S'$ provide the best bases, or the simplest matrix representation? 
+If $B$ and $C$ are invertible matrices, and $A$ is the standard matrix representation of $T$, then $C^{-1} A B$ is a matrix representation of $T$ relative to the bases $S$ and $R$ formed from the columns of $B$ and $C$.  
+Which bases $S$ and $R$ provide the best bases, or the simplest matrix representation? 
 There is not really a correct answer here, as simplest is a relative term, but there are some nice bases you can choose to simplify computations.  
 The kernel and image of a transformation provide us with a starting point to obtain key basis vectors needed to represent a transformation in an extremely simple way.
 
@@ -731,11 +721,11 @@ $
  0 & 0 & 1 & 6
 \end{bmatrix}
 $, which means that $S=\{(7,-6,1),(1,0,0),(0,1,0)\}$ is a basis for the domain. Using $E=\{(1,0),(0,1)\}$ as a basis for the range, we compute the matrix representation of $T$ relative to the bases $S$ and $E$ by noting 
-$$B'=
+$$C=
 \begin{bmatrix}
 1 & 0\\
 0 & 1
-\end{bmatrix}=B'^{-1},
+\end{bmatrix}=C^{-1},
 A=
 \begin{bmatrix}
  1 & 1 & -1 \\
@@ -747,7 +737,7 @@ B=
  -6 & 0 & 1 \\
  1 & 0 & 0
 \end{bmatrix},
-B'^{-1}AB= 
+C^{-1}AB= 
 \begin{bmatrix}
  0 & 1 & 1 \\
  0 & 2 & 3
@@ -760,7 +750,7 @@ Notice how this made the entire first column of the matrix zero. If we rearrange
 \end{example}
 
 After picking a basis for the domain which contains the kernel, let's carefully construct a basis for the range to make our matrix representation extremely nice.  
-If $k$ is the dimension of the kernel and $S=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis for the domain (whose last $k$ vectors are in the kernel - they were moved to the end), then consider the $n-k$ vectors $\{T(\vec v_{1}),\ldots,T(\vec v_{n-k})\}$ which are nonzero vectors in the image.  Since the image has to have dimension $n-k$, these $n-k$ vectors form a basis for the image. We can extend them to a basis $S'$ for the range (augmenting by the identity and reducing). The matrix representation of $T$ relative to the bases $S$ and $S'$ will always be a matrix which consists of all zeros and $n-k$ 1's (what can be simpler than zeros and 1's).  This representation of $T$ illustrates how the kernel and image can be use to obtain an extremely nice form for our matrix representation.  Mathematicians who work with maps in high dimensions often start by placing things in ``general position'' which is very similar to picking nice bases so that their maps consist of identity and zero transformations, precisely what we are doing now.  Let's look at examples.
+If $k$ is the dimension of the kernel and $S=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis for the domain (whose last $k$ vectors are in the kernel - they were moved to the end), then consider the $n-k$ vectors $\{T(\vec v_{1}),\ldots,T(\vec v_{n-k})\}$ which are nonzero vectors in the image.  Since the image has to have dimension $n-k$, these $n-k$ vectors form a basis for the image. We can extend them to a basis $R$ for the range (augmenting by the identity and reducing). The matrix representation of $T$ relative to the bases $S$ and $R$ will always be a matrix which consists of all zeros and $n-k$ 1's (what can be simpler than zeros and 1's).  This representation of $T$ illustrates how the kernel and image can be use to obtain an extremely nice form for our matrix representation.  Mathematicians who work with maps in high dimensions often start by placing things in ``general position'' which is very similar to picking nice bases so that their maps consist of identity and zero transformations, precisely what we are doing now.  Let's look at examples.
 
 
 
@@ -770,14 +760,14 @@ $[T]_{S,E} = \begin{bmatrix}
  1 & 1 &0\\
  2 & 3 &0
 \end{bmatrix}$. 
-Let's pick a different basis for the range.  A basis for the image is $S' = \{(1,2),(1,3)\}$, the nonzero columns of $[T]_{S,E}$. 
-The matrix representation of $T$ relative to the bases $S$ and $S'$ is then found using 
-$$B'=
+Let's pick a different basis for the range.  A basis for the image is $R = \{(1,2),(1,3)\}$, the nonzero columns of $[T]_{S,E}$. 
+The matrix representation of $T$ relative to the bases $S$ and $R$ is then found using 
+$$C=
 \begin{bmatrix}
 1 & 1\\
 2 & 3
 \end{bmatrix},
-B'^{-1} = 
+C^{-1} = 
 \frac{1}{1}
 \begin{bmatrix}
 3 & -1\\
@@ -797,7 +787,7 @@ B=
 $$
 $$
 \quad \text {and so} \quad 
-[T]_{S,S'} =B'^{-1}AB= 
+[T]_{S,R} =C^{-1}AB= 
 \begin{bmatrix}
  1 & 0 & 0 \\
  0 & 1 & 0
@@ -845,7 +835,7 @@ $$
 $$. 
 A basis for the domain is $S=\{(1,0,0,0),(0,1,0,0),(0,0,1,0),(-1,-2,2,1)\}$, where we placed the vector in the kernel at the end. 
 Using the standard basis for the range, we compute the matrix representation of $T$ relative to the bases $S$ and $E$ by noting 
-$$B'=I=B'^{-1},
+$$C=I=C^{-1},
 A=
 \begin{bmatrix}
  2 & -1 & 0 & 0 \\
@@ -883,8 +873,8 @@ $$\begin{bmatrix}
  0 & 0 & 0 & 1 & 1 & -1 & 0
 \end{bmatrix}.
 $$ 
-We select the pivot columns $S' = \{(2,0,2,1),(-1,1,0,0),(0,1,1,0),(1,0,0,0)\}$ as a basis for the range. 
-The matrix representation of $T$ relative to the bases $S$ and $S'$ is then found using 
+We select the pivot columns $R = \{(2,0,2,1),(-1,1,0,0),(0,1,1,0),(1,0,0,0)\}$ as a basis for the range. 
+The matrix representation of $T$ relative to the bases $S$ and $R$ is then found using 
 $$C=
 \begin{bmatrix}
  2 & -1 & 0 & 1 \\
@@ -906,7 +896,7 @@ B=
  0 & 0 & 1 & 2 \\
  0 & 0 & 0 & 1
 \end{bmatrix},$$
-$$[T]_{S,S'} = C^{-1}AB= 
+$$[T]_{S,R} = C^{-1}AB= 
 \begin{bmatrix}
  1 & 0 & 0 & 0 \\
  0 & 1 & 0 & 0 \\
@@ -916,14 +906,14 @@ $$[T]_{S,S'} = C^{-1}AB=
 This is perhaps the simplest form you can obtain.
 \end{example}
 
-Every linear transformation $T:V\to V'$ of rank $r$ can be represented by a matrix of the form $[T]_{S,S'}=\bm{I&0\\0&0}$, where the only nonzero entries are $r$ 1's, located in the upper left corner. To obtain this basis require the following steps: 
+Every linear transformation $T:V\to V'$ of rank $r$ can be represented by a matrix of the form $[T]_{S,R}=\bm{I&0\\0&0}$, where the only nonzero entries are $r$ 1's, located in the upper left corner. To obtain this basis require the following steps: 
 \begin{enumerate}
 	\item Find a basis for the kernel.
 	\item Extend the basis for the kernel to a basis $S$ for the domain, placing the vectors in the kernel at the end.
 	\item Find the images each basis vector for the domain. The nonzero vectors form a basis for the image.
-	\item Extend the basis for the image to a basis $S'$ for the range, placing the vectors in the image at the front.  
+	\item Extend the basis for the image to a basis $R$ for the range, placing the vectors in the image at the front.  
 \end{enumerate}
-Along the way, there are infinitely many choices you can make at each step.  The interesting thing is that regardless of the choices we make, we will always obtain the exact same form $[T]_{S,S'}=\bm{I&0\\0&0}$. In the next section we will focus on what happens if $T:V\to V$ has the same domain and range, and we use the same basis $S$ for both the domain and range. 
+Along the way, there are infinitely many choices you can make at each step.  The interesting thing is that regardless of the choices we make, we will always obtain the exact same form $[T]_{S,R}=\bm{I&0\\0&0}$. In the next section we will focus on what happens if $T:V\to V$ has the same domain and range, and we use the same basis $S$ for both the domain and range. 
 
 
 %As a side note, I would like to include Fourier Coefficients here (just as a brief 3 minute illustration in class).
@@ -1223,4 +1213,9 @@ We just obtained the matrix which represents our vector field. All we needed to 
 As time permits, I will add one other application related to computer graphics. Stay tuned.
 
 
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../linear-algebra"
+%%% End: 
 
