@@ -109,14 +109,13 @@ $$B[\vec u]_S=C[\vec u]_{R}.$$
 Multiplication on the left by $C^{-1}$ gives $$C^{-1}B[\vec u]_S=P[\vec u]_S=[\vec u]_{R}.$$  
 You can think of this transformation $P$ as a composition of transformations, $P[\vec u]_S=C\inv (B[\vec u]_S)=C\inv [\vec u]_E=[\vec u]_R$, or in words, first convert $[\vec u]_S$ to standard coordinates $[\vec u]_E$, and then convert to coordinates relative to $R$, $[\vec u]_R$.
 
-The matrix $P=C^{-1}B$ is often called the change-of-basis matrix from $S$ to $R$. To transform from the old basis $S$ to the new basis $R$, we just multiply by $P$: $P[\vec u]_S=[\vec u]_{R}$. The change-of-coordinate matrix $Q$ from $R$ to $S$ inverts this process, hence it is precisely $Q=P^{-1}=B\inv C$.
-
+The matrix $P=C^{-1}B$ is often called the ``change of basis matrix from $S$ to $R$,'' or the ``change of coordinate matrix from $S$ to $R$.''  To transform from the old basis $S$ to the new basis $R$, we just multiply by $P$: $P[\vec u]_S=[\vec u]_{R}$. The change of basis matrix $Q$ from $R$ to $S$ inverts this process, so it is $Q=P^{-1}=B\inv C$.
 
 \begin{example}
 Consider the two bases for the plane $\mathbb{R}^2$: $$S=\{(2,1),\,(3,-2)\}\quad \text{and}\quad R=\{(1,0),\,(2,-1)\}.$$ 
 \begin{enumerate}
-	\item Find the coordinates of $(-1,3)_S$ relative to the basis $R$ by finding the change-of-coordinates matrix $P$ from $S$ to $R$, 
-	\item Find the coordinates of $(-1,3)_{R}$ relative to the basis $S$ by finding the change of coordinate matrix $Q$ from $R$ to $S$, and 
+	\item Find the coordinates of $(-1,3)_S$ relative to the basis $R$ by finding the change of basis matrix $P$ from $S$ to $R$, 
+	\item Find the coordinates of $(-1,3)_{R}$ relative to the basis $S$ by finding the change of basis matrix $Q$ from $R$ to $S$, and 
 	\item Verify that $Q=P^{-1}$.
 \end{enumerate}
 \begin{enumerate}
@@ -140,7 +139,7 @@ $C^{-1} =
  0 & -1
 \end{bmatrix}
 $. 
-The change-of-coordinate matrix $P$ from $S$ to $R$ is 
+The change of basis matrix $P$ from $S$ to $R$ is 
 $C^{-1}B =  
 \begin{bmatrix}
  4 & -1 \\
@@ -156,7 +155,7 @@ $B^{-1} =
  \frac{1}{7} & -\frac{2}{7}
 \end{bmatrix}
 $. 
-The change-of-coordinate matrix $Q$ from $R$ to $S$  is 
+The change of basis matrix $Q$ from $R$ to $S$  is 
 $B^{-1}C =  
 \begin{bmatrix}
  \frac{2}{7} & \frac{1}{7} \\
@@ -209,24 +208,24 @@ Suppose we have an ellipse in the $xy$ plane centered at $(0,0)$ whose major axi
 The distance from the center to the ellipse along the line $y=x$ is 2 units.  
 The distance from the center to the ellipse along the line $y=-x$ is $1$ unit.  
 If we rotated the ellipse 45 degrees clockwise, this would place the major axis on the $x$ axis and the corresponding Cartesian equation would be $\ds \frac{x^2}{4}+y^2=1$. 
-What is a Cartesian equation of the ellipse? 
-This is a problem in which a change of basis is needed.
+What is a Cartesian equation of the original ellipse? 
+This is a problem in which viewing it as a change of basis greatly simplifies things.
 
 This problem involves looking at two different coordinate systems for the plane.  
-One coordinate system has the standard basis $S = \{(1,0),(0,1)\}$, which we will call the $xy$ coordinate system.  
+One coordinate system has the standard basis $S = \{(1,0),\,(0,1)\}$, which we will call the $xy$ coordinate system.  
 The other coordinate system involves the directions $(1,1)$ and $(-1,1)$. 
 To preserve distances in this alternate coordinate system, we'll divide each vector by its length so that each vector has length one.  
-This gives us a second basis $R=\{(1/\sqrt2,1/\sqrt{2}), (-1/\sqrt{2},1/\sqrt{2})\}$. 
+This gives us a second basis $R=\{(1/\sqrt2,1/\sqrt{2}),\, (-1/\sqrt{2},1/\sqrt{2})\}$. 
 We have changed the $x$ axis to the line $y=x$ which we will call the $x'$ axis, and similarly the $y'$ axis is now the line $y=-x$.  
 Let's pause to summarize.  We have the following two coordinate systems.
 \begin{enumerate}
-	\item The standard $xy$ coordinate system with basis $$S=\{(1,0),(0,1)\}$$ represented by the $x$ and $y$ axes. 
-	Consider the vector $\vec u = (a,b)$.  The coordinates $(x,y)_S$ of $\vec u$ relative to $S$ satisfy the matrix equation $\bm{1&0\\0&1}\bm{x\\y}_{S}=\bm{a\\b}$, 
-	or $B\bm{x\\y}_{S}=\bm{a\\b}$, where $B$ is the matrix whose columns are the vectors in $S$ (so the identity matrix).
-	\item The alternate $x'y'$ coordinate system with basis $$R=\{(1/\sqrt2,1/\sqrt{2}), (-1/\sqrt{2},1/\sqrt{2})\}$$ represented by the $x'$ ($y=x$) and $y'$ ($y=-x$) axes.
+	\item The standard $xy$ coordinate system with basis $$S=\{(1,0),\,(0,1)\}$$ represented by the $x$ and $y$ axes. 
+	Consider the vector $\vec u = (a,b)$.  The coordinates $(x,y)_S$ of $\vec u$ relative to $S$ satisfy the matrix equation 
+        $$\bm{1&0\\0&1}\bm{x\\y}_{S}=\bm{a\\b},\quad \text{ or } \quad B\bm{x\\y}_{S}=\bm{a\\b},$$
+        where $B$ is the matrix whose columns are the vectors in $S$ (so $B$ is the identity matrix).
+	\item The alternate $x'y'$ coordinate system with basis $$R=\{(1/\sqrt2,1/\sqrt{2}),\, (-1/\sqrt{2},1/\sqrt{2})\}$$ represented by the $x'$ ($y=x$) and $y'$ ($y=-x$) axes.
 	Consider again the vector $\vec u = (a,b)$.  The coordinates $(x',y')_{R}$ of $(a,b)$ relative to $R$ (so $[\vec u]_{R} = (x',y')_S$) satisfy the matrix equation 
-	$\bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\bm{x'\\y'}_{R}=\bm{a\\b}$,
-	or $C\bm{x'\\y'}_{R}=\bm{a\\b}$ where $C$ is the matrix whose columns are the vectors in $R$.
+	$$\bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\bm{x'\\y'}_{R}=\bm{a\\b}, \quad \text{ or }\quad C\bm{x'\\y'}_{R}=\bm{a\\b},$$ where $C$ is the matrix whose columns are the vectors in $R$.
 \end{enumerate}
 
 Our goal is to find an equation of the ellipse in the $xy$ coordinate system. We know that in the $x'y'$ coordinate system an equation is $\ds \frac{(x')^2}{4}+(y')^2=1$. 
@@ -246,7 +245,7 @@ The ellipse we started with had equation $\frac{(x')^2}{4}+(y')^2=1$ in the $x'y
 We replace each $x'$ and $y'$ with $x'=x/\sqrt2+y/\sqrt2$ and $y'=-x/\sqrt2+y/\sqrt2$ to obtain  $$\frac{(x/\sqrt2+y/\sqrt2)^2}4+(-x/\sqrt2+y/\sqrt2)^2=1.$$
 \end{example}
 
-Any time you encounter a problem that would be simpler in a new coordinate system, there is a change of basis matrix in the background that can solve the problem. Whether you call it a change of basis matrix from $S$ to $R$ or from $R$ to $S$ is irrelevant.  Your job is to create matrices which relate the different coordinate systems, and then appropriately use them to solve the problem at hand. Mastering the the vocabulary surrounding a change of basis matrix is crucial, as learning to interpret the use of this term requires that you fully understand the surrounding context (especially since different authors use the term differently and appropriately). 
+Any time you encounter a problem that would be simpler in a new coordinate system, there is a change of basis matrix in the background that can solve the problem. Whether you call it a change of basis matrix from $S$ to $R$ or from $R$ to $S$ is irrelevant.  Your job is to create matrices which relate the different coordinate systems, and then appropriately use them to solve the problem at hand. Mastering the vocabulary surrounding a change of basis matrix is crucial, as learning to interpret the use of this term requires that you fully understand the surrounding context (especially since different authors use the term differently and appropriately). 
 
 
 
@@ -266,11 +265,11 @@ Any time you encounter a problem that would be simpler in a new coordinate syste
  
 \section{Matrix Representations of Linear Transformations}
 We showed in the last chapter that every linear transformation between two finite dimensional vector has a standard matrix representation.  
-For example, the linear transformation $T:{\mathbb{R}}^2 \to {\mathbb{R}}^2$ defined by $T(x,y)=(2x+y,3x+4y)$ we represented in matrix form by first computing the transformation at each standard basis vector, i.e. $T(1,0)=(2,3), T(0,1)=(1,4)$, and then putting these vectors in the columns a matrix 
+For example, the linear transformation $T\colon {\mathbb{R}}^2 \to {\mathbb{R}}^2$ defined by $T(x,y)=(2x+y,3x+4y)$ we represented in matrix form by first computing the transformation at each standard basis vector, i.e., $T(1,0)=(2,3), T(0,1)=(1,4)$, and then putting these vectors in the columns a matrix 
 $A= \begin{bmatrix}2&1\\3&4\end{bmatrix}$. 
 We compute $T(\vec x)$ by computing the matrix product $A\vec x$.  We replaced the linear transformation with matrix multiplication. We now examine how the matrix $A$ changes if we use a different basis to represent the domain and range.
 
-Consider a linear transformation $T:V \to V'$ (where both $V$ and $V'$ are finite dimensional) with corresponding bases $S$ and $R$. 
+Consider a linear transformation $T\colonV \to V'$ (where both $V$ and $V'$ are finite dimensional) with corresponding bases $S$ and $R$. 
 How do we construct the matrix representation of $T$ relative to these basis?  
 We need a matrix $A$ so that we can input coordinates relative to $S$ and get out coordinates relative to $R$.  
 Notationally this matrix is written as $[T]_{S,R}$ and satisfies the equation $$[T]_{S,R}[\vec v]_S=[T(\vec v)]_{R}.$$ 
@@ -289,7 +288,7 @@ Multiplying both sides on the left by $C^{-1}$ gives $$[T]_{S,R}[\vec v]_S=C^{-1
 
 
 \begin{example}
-Consider the linear transformation $T:{\mathbb{R}}^2\to {\mathbb{R}}^3$ defined by $T(x,y)=(x+y,x-y,2x+3y)$. Find a matrix representation using the bases $S=\{(2,3),(-1,1)\}$ and $R=\{(1,0,0),(1,1,0),(3,2,1)\}$.  To start with, the standard matrix representation and basis matrices are 
+Consider the linear transformation $T\colon{\mathbb{R}}^2\to {\mathbb{R}}^3$ defined by $T(x,y)=(x+y,x-y,2x+3y)$. Find a matrix representation using the bases $S=\{(2,3),(-1,1)\}$ and $R=\{(1,0,0),(1,1,0),(3,2,1)\}$.  To start with, the standard matrix representation and basis matrices are 
 $$
 A=
 \begin{bmatrix}
@@ -357,7 +356,7 @@ The rest of this section focuses on learning to pick a good basis for the domain
 
 \subsection{The Kernel, Image, and Eigenspaces}
 We have already spent time studying the three most important subspaces related to a linear transformation. These subspaces are the kernel (null space), the image (column space), and the eigenspaces. Before proceeding, let's review their definitions and why each is a subspace.
-\begin{definition} Consider a linear transformation $T:V\to U$.
+\begin{definition} Consider a linear transformation $T\colonV\to U$.
 \begin{enumerate}
 	\item The kernel (null space) is all vectors in the domain $V$ whose image is zero: $\{\vec x | T(\vec x)=\vec 0\}$.
 	\item The image (column space) is all vectors in the range whose preimage is not empty: $\{\vec y | T(\vec x)=\vec y \text{ for some }\vec x \in V\}$.
@@ -365,7 +364,7 @@ We have already spent time studying the three most important subspaces related t
 \end{enumerate}
 \end{definition}
 \begin{example}\label{verification of key subspaces}
-Let's verify that each of these spaces is indeed a vector subspace. In what follows, we'll assume that $T$ is a linear transformation whose standard matrix representation is $A$, i.e. $T(\vec x)=A\vec x$. 
+Let's verify that each of these spaces is indeed a vector subspace. In what follows, we'll assume that $T$ is a linear transformation whose standard matrix representation is $A$, i.e., $T(\vec x)=A\vec x$. 
 \begin{enumerate}
 	\item Let's show that the kernel is a vector subspace of the domain. Since all the vectors in the kernel are vectors in the domain that get sent to zero, we know it is a subset of the domain.  We now show it satisfies the 3 requirements to be a subspace. 
 \begin{enumerate}
@@ -393,7 +392,7 @@ The three vector spaces above (kernel, image, and eigenspaces) play an important
 
 
 \subsubsection{Extending a basis for the kernel to a basis for the domain.}
-The kernel of $T:{\mathbb{R}}^n\to{\mathbb{R}}^m$ is a vector subspace of the domain ${\mathbb{R}}^n$, so we can select a basis for the kernel. 
+The kernel of $T\colon{\mathbb{R}}^n\to{\mathbb{R}}^m$ is a vector subspace of the domain ${\mathbb{R}}^n$, so we can select a basis for the kernel. 
 If the kernel has dimension $k$, we can pick $k$ vectors $\{\vec u_1, \vec u_2,\ldots, \vec u_k\}$ as the basis. 
 This isn't a basis for the entire domain, so how can we pick $n-k$ other vectors $\{\vec u_{k+1},\ldots, \vec u_n\}$ so that $\{\vec u_1, \vec u_2,\ldots, \vec u_k,\vec u_{k+1},\ldots, \vec u_n\}$ is a basis for the domain ${\mathbb{R}}^n$? 
 There are many ways to do this, I'll just illustrate one.  
@@ -463,7 +462,7 @@ A basis for the domain is the first and second columns, namely $\{(-4/3,1),(1,0)
 \end{example}
 
 \subsubsection{Extending a basis for the kernel to a basis for the domain.}
-The image of $T:{\mathbb{R}}^n\to{\mathbb{R}}^m$ is a vector subspace of the range ${\mathbb{R}}^m$. If the image is $r$ dimensional (recall the rank is the dimension) then we can select a basis for the image consisting of $r$ vectors $\{\vec v_1, \vec v_2,\ldots, \vec v_r\}$. How do we pick $m-r$ other vectors $\{\vec u_{k+1},\ldots, \vec u_m\}$ so that $\{\vec v_1, \vec v_2,\ldots, \vec v_r,\vec v_{r+1},\ldots, \vec v_m\}$ is a basis for the range ${\mathbb{R}}^m$? Again augment these $r$ basis vectors by the $m$ by $m$ identity matrix, and row reduce.  The $m$ pivot columns of the resulting matrix provide your basis.  This basis will always include the first $r$ vectors, and then you just add in some of the standard basis vectors.
+The image of $T\colon{\mathbb{R}}^n\to{\mathbb{R}}^m$ is a vector subspace of the range ${\mathbb{R}}^m$. If the image is $r$ dimensional (recall the rank is the dimension) then we can select a basis for the image consisting of $r$ vectors $\{\vec v_1, \vec v_2,\ldots, \vec v_r\}$. How do we pick $m-r$ other vectors $\{\vec u_{k+1},\ldots, \vec u_m\}$ so that $\{\vec v_1, \vec v_2,\ldots, \vec v_r,\vec v_{r+1},\ldots, \vec v_m\}$ is a basis for the range ${\mathbb{R}}^m$? Again augment these $r$ basis vectors by the $m$ by $m$ identity matrix, and row reduce.  The $m$ pivot columns of the resulting matrix provide your basis.  This basis will always include the first $r$ vectors, and then you just add in some of the standard basis vectors.
 
 \begin{example}
 The reduced row echelon form of 
@@ -586,7 +585,7 @@ so $c_3$ must actually be zero too.  Since each of $c_1,c_2,c_3$ must be zero in
 
 Now an analogous line of reasoning will use the truth of the statement for the case with three eigenvectors to prove the case with four eigenvectors, and so on.
 }
-For a proof, see problem 11.44. The key reason we want to use this theorem is that if the domain $V$ and range $V$ of a linear transformation $T:V\to V$ has dimension $n$, and there are $n$ distinct eigenvalues, then we can form a basis for $V$ by selecting an eigenvector corresponding to each eigenvalue. This creates a basis for $V$ by using eigenvectors. A basis chosen in this fashion will always contain a basis for the null space (as vectors in the null space are eigenvectors corresponding to the eigenvalue $\lambda = 0$). Choosing your basis vectors to be eigenvectors will greatly simplify how we view a linear transformation.
+For a proof, see problem 11.44. The key reason we want to use this theorem is that if the domain $V$ and range $V$ of a linear transformation $T\colonV\to V$ has dimension $n$, and there are $n$ distinct eigenvalues, then we can form a basis for $V$ by selecting an eigenvector corresponding to each eigenvalue. This creates a basis for $V$ by using eigenvectors. A basis chosen in this fashion will always contain a basis for the null space (as vectors in the null space are eigenvectors corresponding to the eigenvalue $\lambda = 0$). Choosing your basis vectors to be eigenvectors will greatly simplify how we view a linear transformation.
 
 
  
@@ -693,7 +692,7 @@ The kernel and image of a transformation provide us with a starting point to obt
 If you start with a basis for the kernel (null space) and extend it to a basis for the domain, then the matrix representation relative to this basis will contain columns of zeros (one for every basis vector in the null space). In other words, you can arrange your basis vectors to purposefully squash out of the matrix everything with gets mapped to zero.  Purposefully filling a matrix with lots of zeros prior to multiplication can greatly simplify computations.
 
 \begin{example}\label{ltbasis1}
-Consider the linear transformation $T:{\mathbb{R}}^3\to {\mathbb{R}}^2$ defined by $T(x,y,z)=(x+y-z,2x+3y+4z)$. The standard matrix representation is 
+Consider the linear transformation $T\colon{\mathbb{R}}^3\to {\mathbb{R}}^2$ defined by $T(x,y,z)=(x+y-z,2x+3y+4z)$. The standard matrix representation is 
 $
 A=
 \begin{bmatrix}
@@ -755,7 +754,7 @@ If $k$ is the dimension of the kernel and $S=\{\vec v_1,\vec v_2,\ldots,\vec v_n
 
 
 \begin{example}
-Consider the linear transformation from example \ref{ltbasis1} $T:{\mathbb{R}}^3\to {\mathbb{R}}^2$ defined by $T(x,y,z)=(x+y-z,2x+3y+4z)$. Using the bases $S=\{(1,0,0),(0,1,0),(7,-6,1)\}$ and $E=\{(1,0),(0,1)\}$ (the standard basis for the plane), the matrix representation of $T$ relative to these bases is  
+Consider the linear transformation from example \ref{ltbasis1} $T\colon{\mathbb{R}}^3\to {\mathbb{R}}^2$ defined by $T(x,y,z)=(x+y-z,2x+3y+4z)$. Using the bases $S=\{(1,0,0),(0,1,0),(7,-6,1)\}$ and $E=\{(1,0),(0,1)\}$ (the standard basis for the plane), the matrix representation of $T$ relative to these bases is  
 $[T]_{S,E} = \begin{bmatrix}
  1 & 1 &0\\
  2 & 3 &0
@@ -906,21 +905,21 @@ $$[T]_{S,R} = C^{-1}AB=
 This is perhaps the simplest form you can obtain.
 \end{example}
 
-Every linear transformation $T:V\to V'$ of rank $r$ can be represented by a matrix of the form $[T]_{S,R}=\bm{I&0\\0&0}$, where the only nonzero entries are $r$ 1's, located in the upper left corner. To obtain this basis require the following steps: 
+Every linear transformation $T\colonV\to V'$ of rank $r$ can be represented by a matrix of the form $[T]_{S,R}=\bm{I&0\\0&0}$, where the only nonzero entries are $r$ 1's, located in the upper left corner. To obtain this basis require the following steps: 
 \begin{enumerate}
 	\item Find a basis for the kernel.
 	\item Extend the basis for the kernel to a basis $S$ for the domain, placing the vectors in the kernel at the end.
 	\item Find the images each basis vector for the domain. The nonzero vectors form a basis for the image.
 	\item Extend the basis for the image to a basis $R$ for the range, placing the vectors in the image at the front.  
 \end{enumerate}
-Along the way, there are infinitely many choices you can make at each step.  The interesting thing is that regardless of the choices we make, we will always obtain the exact same form $[T]_{S,R}=\bm{I&0\\0&0}$. In the next section we will focus on what happens if $T:V\to V$ has the same domain and range, and we use the same basis $S$ for both the domain and range. 
+Along the way, there are infinitely many choices you can make at each step.  The interesting thing is that regardless of the choices we make, we will always obtain the exact same form $[T]_{S,R}=\bm{I&0\\0&0}$. In the next section we will focus on what happens if $T\colonV\to V$ has the same domain and range, and we use the same basis $S$ for both the domain and range. 
 
 
 %As a side note, I would like to include Fourier Coefficients here (just as a brief 3 minute illustration in class).
 
 
 \section{Similar Matrices}
-If a linear transformation $T:V\to V$ has the same domain as range, then we often want to pick the same basis $S$ for both the domain and range. 
+If a linear transformation $T\colonV\to V$ has the same domain as range, then we often want to pick the same basis $S$ for both the domain and range. 
 The coordinates of $\vec u$ relative to $S$ are written $P[\vec u]_S = [\vec u]_E$, where $P$ is the matrix whose columns are the basis vectors in $S$. 
 If $A$ is the standard matrix representation of the linear transformation, then we write 
 $$A[\vec u]_E = [T(\vec u)]_E.$$  
@@ -1065,7 +1064,7 @@ So when $P$ is a matrix of independent eigenvectors, we have $$AP = PD\quad \tex
 This process is called diagonalizing a matrix. 
 Notice that if $A$ is similar to $D$, then $AP=PD$ must hold, which means that $P$ must be a matrix whose columns are linearly independent eigenvectors (so that $P$ has an inverse). We have the following key theorem.
 \begin{theorem}
-A matrix is diagonalizable if and only if there are $n$ linearly independent eigenvectors. For any similarity matrix $P$ that diagonalizes $A$ (i.e. $D = P\inv A P$), the columns of $P$ must be $n$ linearly independent eigenvectors. The $k$th eigenvector corresponds to an eigenvalue of $A$ which is the $k$th entry on the diagonal of $D$. 
+A matrix is diagonalizable if and only if there are $n$ linearly independent eigenvectors. For any similarity matrix $P$ that diagonalizes $A$ (i.e., $D = P\inv A P$), the columns of $P$ must be $n$ linearly independent eigenvectors. The $k$th eigenvector corresponds to an eigenvalue of $A$ which is the $k$th entry on the diagonal of $D$. 
 \end{theorem}
 
 \begin{example}
