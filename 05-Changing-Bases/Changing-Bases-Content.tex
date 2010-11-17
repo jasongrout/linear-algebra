@@ -380,7 +380,7 @@ We have just shown that the kernel (null space), image (column space), and eigen
 The three vector spaces above (kernel, image, and eigenspaces) play an important role in understanding a linear transformation. When creating a matrix representation of a linear transformation, we need a basis for the entire domain and the entire range.  The kernel provides us with a basis for part of the domain. The image provides us with a basis for part of the range.  To use these vector spaces, we must first extend a basis of a subspace to a basis for the whole space.  That is our current goal.
 
 
-\subsubsection{Extending a basis for the kernel to a basis for the domain.}
+\subsubsection{Extending a basis for the kernel to a basis for the domain}
 The kernel of $T\colon{\mathbb{R}}^n\to{\mathbb{R}}^m$ is a vector subspace of the domain ${\mathbb{R}}^n$, so we can select a basis for the kernel. 
 If the kernel has dimension $k$, we can pick $k$ vectors $\{\vec u_1, \vec u_2,\ldots, \vec u_k\}$ as the basis. 
 This isn't a basis for the entire domain, so how can we pick $n-k$ other vectors $\{\vec u_{k+1},\ldots, \vec u_n\}$ so that $\{\vec u_1, \vec u_2,\ldots, \vec u_k,\vec u_{k+1},\ldots, \vec u_n\}$ is a basis for the domain ${\mathbb{R}}^n$? 
@@ -450,7 +450,7 @@ A basis for the domain is the first and second columns, namely $\{(-4/3,1),(1,0)
 
 \end{example}
 
-\subsubsection{Extending a basis for the kernel to a basis for the domain.}
+\subsubsection{Extending a basis for the image to a basis for the range}
 The image of $T\colon{\mathbb{R}}^n\to{\mathbb{R}}^m$ is a vector subspace of the range ${\mathbb{R}}^m$. If the image is $r$ dimensional (recall the rank is the dimension) then we can select a basis for the image consisting of $r$ vectors $\{\vec v_1, \vec v_2,\ldots, \vec v_r\}$. How do we pick $m-r$ other vectors $\{\vec u_{k+1},\ldots, \vec u_m\}$ so that $\{\vec v_1, \vec v_2,\ldots, \vec v_r,\vec v_{r+1},\ldots, \vec v_m\}$ is a basis for the range ${\mathbb{R}}^m$? Again augment these $r$ basis vectors by the $m$ by $m$ identity matrix, and row reduce.  The $m$ pivot columns of the resulting matrix provide your basis.  This basis will always include the first $r$ vectors, and then you just add in some of the standard basis vectors.
 
 \begin{example}
