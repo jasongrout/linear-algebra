@@ -168,41 +168,16 @@ So the vector with coordinates $(-1,3)_{R}$ relative to $R$ is $(5,-3)$ which ha
 \end{enumerate}
 \end{example}
 
-
-\subsubsection{Changing bases from $S$ to $R$ and from $R$ to $S$.}
-Different authors disagree on the use of the term ``change of basis matrix.'' 
-We call $P$ the change of basis matrix \emph{from $S$ to $R$}, referring to the fact that multiplying $[\vec u]_S$ by $P$ transforms coordinates relative to $S$ into coordinates relative to $R$: $P[\vec u]_S=[\vec u]_R$.  
-When working with an equation, for example, another point of view is that we can quickly convert an equation using $R$ coordinates $[\vec u]_{R}$ to an equation using $S$ coordinates $[\vec u]_S$ by replacing each instance of $[\vec u]_{R}$ with $P[\vec u]_S$.  For example, if we know that $[\vec u]_R+[\vec v]_R-2[\vec w]_R=[\vec x]_R$, then we can transform this equation to an equation involving coordinates relative to $S$ by multiplying each coordinate vector by $P$: $P[\vec u]_S+P[\vec v]_S-2P[\vec w]_S=P[\vec x]_S$.  Hence some people call $P$ the change of basis matrix \emph{from $R$ to $S$} (instead of \emph{from $S$ to $R$}).
-\marginpar{In the equation $P[\vec u]_S = [\vec u]_{R}$, do we say $P$ is a change of basis matrix from $S$ to $R$ or from $R$ to $S$? Both can be considered correct, so make sure you know what the author means by the words ``change of basis matrix.''}
-Both phrases appear in different places and both can be considered correct. The difference lies in the context of the problem and how you plan to use the matrix. Are you focusing on what the transformation does to individual vectors, or what the transformation does to equations? 
-
-% \begin{example}
-% We'll use polar coordinates to illustrate the vocabulary difference. The transformation $x=r\cos\theta, y=r\sin\theta$, written in vector form as $ T (r,\theta)_P = (x,y)_C$, is a (nonlinear) transformation between two coordinate systems: the Cartesian and polar coordinate systems. You input vectors in polar form, and get out vectors in Cartesian form. The transformation tells us how to describe all points in the plane in either Cartesian or polar form. The transformation also tells us how to convert equations from one system to the other.  The way we use the transformation (as a transformation from polar to Cartesian, or Cartesian to polar) depends on whether we are transforming vectors or equations.    
-% \begin{enumerate}
-% 	\item Consider the polar vector $(r,\theta)_P = (2,\pi/6)_P$. 
-% 	\marginpar{We say $T$ transforms from $S$ to $R$ when we focus on what $T$ does to individual vectors.}
-% 	We obtain the Cartesian coordinates $(x,y)_C$ by applying the transformation 
-% 	$$T(2,\pi/6)_P = (2\cos(\pi/6),2\sin(\pi/6))_C = (\sqrt{3},1)_C,$$ 
-% 	replacing each $r$ with $2$ and each $\theta$ with $\pi/6$. 
-% 	We transform a vector from polar coordinates to a vector in Cartesian coordinates. 
-	
-% 	\item Consider the Cartesian equation $x^2+y^2=9$ which represents a circle of radius 3 (or a collection of vectors). 
-% 	\marginpar{We say $T$ transforms from $R$ to $S$ when we focus of what $T$ does to an equation (or collection of vectors).}
-% 	We convert this equation to polar coordinates by replacing each $x$ with $r\cos \theta$ and each $y$ with $r\sin\theta$.
-% 	The transformed equation is $(r\cos\theta)^2+(r\sin\theta)^2 = 9$, or $r^2(\cos^2\theta+\sin^2\theta)=r^2=9$, or just $r=3$. 
-% 	We transform an equation from Cartesian coordinates to an equation in polar coordinates. 
-% \end{enumerate}
-% 	Let's emphasize the two ways of using the transformation $T[\vec u]_P=[\vec u]_C$.  
-% \begin{itemize}
-% 	\item $T$ transforms a vector \textit{from polar to Cartesian}. You can put in polar coordinates $(r,\theta) = [\vec u]_P$ and use $T$ to obtain Cartesian coordinates $(r\cos\theta,r\sin\theta) = [\vec u]_C$.  
-% 	\item $T$ transforms equations \textit{from Cartesian to polar}. In any equation, you can replace each Cartesian coordinate of $(x,y)=[\vec u]_C$ with the corresponding polar form in $(r\cos\theta,r\sin\theta) = T[\vec u]_P$ to obtain an equation in polar coordinates. 
-% \end{itemize}
-% \end{example}
-
-%%%%%%%%%%% JASON STOPPED EDITING HERE %%%%%%%%%%%%%%%%%%%%%%%%%%
-
+Picking the right coordinates can help us simplify a problem tremendously.  Changing coordinates lets us express a problem in many different ways.  Often, we want to think about a problem in a simple way (using coordinates that are natural for the problem), but then in order to do more work on the problem, we must change coordinates to express the problem differently.  The next example illustrates this concept.
 
 \begin{example}
+Our goal in this example is to find the equation of an ellipse that is rotated 45 degrees.
+
+\begin{tikzpicture} 
+\draw (1,0) circle [x radius=1, y radius=2, rotate=30]; 
+\end{tikzpicture}
+
+
 Let's look at a linear transformation from one coordinate system to another. How do we find the equation of an ellipse whose major axis is not on the $x$ or $y$ axis?  
 Suppose we have an ellipse in the $xy$ plane centered at $(0,0)$ whose major axis lies on the line $y=x$, while the minor axis lies on the line $y=-x$. 
 The distance from the center to the ellipse along the line $y=x$ is 2 units.  
@@ -249,6 +224,37 @@ Any time you encounter a problem that would be simpler in a new coordinate syste
 
 
 
+\subsubsection{Changing bases from $S$ to $R$ and from $R$ to $S$.}
+Different authors disagree on the use of the term ``change of basis matrix.'' 
+We call $P$ the change of basis matrix \emph{from $S$ to $R$}, referring to the fact that multiplying $[\vec u]_S$ by $P$ transforms coordinates relative to $S$ into coordinates relative to $R$: $P[\vec u]_S=[\vec u]_R$.  
+When working with an equation, for example, another point of view is that we can quickly convert an equation using $R$ coordinates $[\vec u]_{R}$ to an equation using $S$ coordinates $[\vec u]_S$ by replacing each instance of $[\vec u]_{R}$ with $P[\vec u]_S$.  For example, if we know that $[\vec u]_R+[\vec v]_R-2[\vec w]_R=[\vec x]_R$, then we can transform this equation to an equation involving coordinates relative to $S$ by multiplying each coordinate vector by $P$: $P[\vec u]_S+P[\vec v]_S-2P[\vec w]_S=P[\vec x]_S$.  Hence some people call $P$ the change of basis matrix \emph{from $R$ to $S$} (instead of \emph{from $S$ to $R$}).
+\marginpar{In the equation $P[\vec u]_S = [\vec u]_{R}$, do we say $P$ is a change of basis matrix from $S$ to $R$ or from $R$ to $S$? Both can be considered correct, so make sure you know what the author means by the words ``change of basis matrix.''}
+Both phrases appear in different places and both can be considered correct. The difference lies in the context of the problem and how you plan to use the matrix. Are you focusing on what the transformation does to individual vectors, or what the transformation does to equations? 
+
+% \begin{example}
+% We'll use polar coordinates to illustrate the vocabulary difference. The transformation $x=r\cos\theta, y=r\sin\theta$, written in vector form as $ T (r,\theta)_P = (x,y)_C$, is a (nonlinear) transformation between two coordinate systems: the Cartesian and polar coordinate systems. You input vectors in polar form, and get out vectors in Cartesian form. The transformation tells us how to describe all points in the plane in either Cartesian or polar form. The transformation also tells us how to convert equations from one system to the other.  The way we use the transformation (as a transformation from polar to Cartesian, or Cartesian to polar) depends on whether we are transforming vectors or equations.    
+% \begin{enumerate}
+% 	\item Consider the polar vector $(r,\theta)_P = (2,\pi/6)_P$. 
+% 	\marginpar{We say $T$ transforms from $S$ to $R$ when we focus on what $T$ does to individual vectors.}
+% 	We obtain the Cartesian coordinates $(x,y)_C$ by applying the transformation 
+% 	$$T(2,\pi/6)_P = (2\cos(\pi/6),2\sin(\pi/6))_C = (\sqrt{3},1)_C,$$ 
+% 	replacing each $r$ with $2$ and each $\theta$ with $\pi/6$. 
+% 	We transform a vector from polar coordinates to a vector in Cartesian coordinates. 
+	
+% 	\item Consider the Cartesian equation $x^2+y^2=9$ which represents a circle of radius 3 (or a collection of vectors). 
+% 	\marginpar{We say $T$ transforms from $R$ to $S$ when we focus of what $T$ does to an equation (or collection of vectors).}
+% 	We convert this equation to polar coordinates by replacing each $x$ with $r\cos \theta$ and each $y$ with $r\sin\theta$.
+% 	The transformed equation is $(r\cos\theta)^2+(r\sin\theta)^2 = 9$, or $r^2(\cos^2\theta+\sin^2\theta)=r^2=9$, or just $r=3$. 
+% 	We transform an equation from Cartesian coordinates to an equation in polar coordinates. 
+% \end{enumerate}
+% 	Let's emphasize the two ways of using the transformation $T[\vec u]_P=[\vec u]_C$.  
+% \begin{itemize}
+% 	\item $T$ transforms a vector \textit{from polar to Cartesian}. You can put in polar coordinates $(r,\theta) = [\vec u]_P$ and use $T$ to obtain Cartesian coordinates $(r\cos\theta,r\sin\theta) = [\vec u]_C$.  
+% 	\item $T$ transforms equations \textit{from Cartesian to polar}. In any equation, you can replace each Cartesian coordinate of $(x,y)=[\vec u]_C$ with the corresponding polar form in $(r\cos\theta,r\sin\theta) = T[\vec u]_P$ to obtain an equation in polar coordinates. 
+% \end{itemize}
+% \end{example}
+
+%%%%%%%%%%% JASON STOPPED EDITING HERE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
