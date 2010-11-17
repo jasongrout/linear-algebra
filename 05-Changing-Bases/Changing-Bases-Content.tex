@@ -269,7 +269,7 @@ For example, the linear transformation $T\colon {\mathbb{R}}^2 \to {\mathbb{R}}^
 $A= \begin{bmatrix}2&1\\3&4\end{bmatrix}$. 
 We compute $T(\vec x)$ by computing the matrix product $A\vec x$.  We replaced the linear transformation with matrix multiplication. We now examine how the matrix $A$ changes if we use a different basis to represent the domain and range.
 
-Consider a linear transformation $T\colonV \to V'$ (where both $V$ and $V'$ are finite dimensional) with corresponding bases $S$ and $R$. 
+Consider a linear transformation $T\colon V \to V'$ (where both $V$ and $V'$ are finite dimensional) with corresponding bases $S$ and $R$. 
 How do we construct the matrix representation of $T$ relative to these basis?  
 We need a matrix $A$ so that we can input coordinates relative to $S$ and get out coordinates relative to $R$.  
 Notationally this matrix is written as $[T]_{S,R}$ and satisfies the equation $$[T]_{S,R}[\vec v]_S=[T(\vec v)]_{R}.$$ 
@@ -356,7 +356,7 @@ The rest of this section focuses on learning to pick a good basis for the domain
 
 \subsection{The Kernel, Image, and Eigenspaces}
 We have already spent time studying the three most important subspaces related to a linear transformation. These subspaces are the kernel (null space), the image (column space), and the eigenspaces. Before proceeding, let's review their definitions and why each is a subspace.
-\begin{definition} Consider a linear transformation $T\colonV\to U$.
+\begin{definition} Consider a linear transformation $T\colon V\to U$.
 \begin{enumerate}
 	\item The kernel (null space) is all vectors in the domain $V$ whose image is zero: $\{\vec x | T(\vec x)=\vec 0\}$.
 	\item The image (column space) is all vectors in the range whose preimage is not empty: $\{\vec y | T(\vec x)=\vec y \text{ for some }\vec x \in V\}$.
@@ -585,7 +585,7 @@ so $c_3$ must actually be zero too.  Since each of $c_1,c_2,c_3$ must be zero in
 
 Now an analogous line of reasoning will use the truth of the statement for the case with three eigenvectors to prove the case with four eigenvectors, and so on.
 }
-For a proof, see problem 11.44. The key reason we want to use this theorem is that if the domain $V$ and range $V$ of a linear transformation $T\colonV\to V$ has dimension $n$, and there are $n$ distinct eigenvalues, then we can form a basis for $V$ by selecting an eigenvector corresponding to each eigenvalue. This creates a basis for $V$ by using eigenvectors. A basis chosen in this fashion will always contain a basis for the null space (as vectors in the null space are eigenvectors corresponding to the eigenvalue $\lambda = 0$). Choosing your basis vectors to be eigenvectors will greatly simplify how we view a linear transformation.
+For a proof, see problem 11.44. The key reason we want to use this theorem is that if the domain $V$ and range $V$ of a linear transformation $T\colon V\to V$ has dimension $n$, and there are $n$ distinct eigenvalues, then we can form a basis for $V$ by selecting an eigenvector corresponding to each eigenvalue. This creates a basis for $V$ by using eigenvectors. A basis chosen in this fashion will always contain a basis for the null space (as vectors in the null space are eigenvectors corresponding to the eigenvalue $\lambda = 0$). Choosing your basis vectors to be eigenvectors will greatly simplify how we view a linear transformation.
 
 
  
@@ -905,21 +905,21 @@ $$[T]_{S,R} = C^{-1}AB=
 This is perhaps the simplest form you can obtain.
 \end{example}
 
-Every linear transformation $T\colonV\to V'$ of rank $r$ can be represented by a matrix of the form $[T]_{S,R}=\bm{I&0\\0&0}$, where the only nonzero entries are $r$ 1's, located in the upper left corner. To obtain this basis require the following steps: 
+Every linear transformation $T\colon V\to V'$ of rank $r$ can be represented by a matrix of the form $[T]_{S,R}=\bm{I&0\\0&0}$, where the only nonzero entries are $r$ 1's, located in the upper left corner. To obtain this basis require the following steps: 
 \begin{enumerate}
 	\item Find a basis for the kernel.
 	\item Extend the basis for the kernel to a basis $S$ for the domain, placing the vectors in the kernel at the end.
 	\item Find the images each basis vector for the domain. The nonzero vectors form a basis for the image.
 	\item Extend the basis for the image to a basis $R$ for the range, placing the vectors in the image at the front.  
 \end{enumerate}
-Along the way, there are infinitely many choices you can make at each step.  The interesting thing is that regardless of the choices we make, we will always obtain the exact same form $[T]_{S,R}=\bm{I&0\\0&0}$. In the next section we will focus on what happens if $T\colonV\to V$ has the same domain and range, and we use the same basis $S$ for both the domain and range. 
+Along the way, there are infinitely many choices you can make at each step.  The interesting thing is that regardless of the choices we make, we will always obtain the exact same form $[T]_{S,R}=\bm{I&0\\0&0}$. In the next section we will focus on what happens if $T\colon V\to V$ has the same domain and range, and we use the same basis $S$ for both the domain and range. 
 
 
 %As a side note, I would like to include Fourier Coefficients here (just as a brief 3 minute illustration in class).
 
 
 \section{Similar Matrices}
-If a linear transformation $T\colonV\to V$ has the same domain as range, then we often want to pick the same basis $S$ for both the domain and range. 
+If a linear transformation $T\colon V\to V$ has the same domain as range, then we often want to pick the same basis $S$ for both the domain and range. 
 The coordinates of $\vec u$ relative to $S$ are written $P[\vec u]_S = [\vec u]_E$, where $P$ is the matrix whose columns are the basis vectors in $S$. 
 If $A$ is the standard matrix representation of the linear transformation, then we write 
 $$A[\vec u]_E = [T(\vec u)]_E.$$  
