@@ -170,66 +170,61 @@ So the vector with coordinates $(-1,3)_{R}$ relative to $R$ is $(5,-3)$ which ha
 
 Picking the right coordinates can help us simplify a problem tremendously.  Changing coordinates lets us express a problem in many different ways.  Often, we want to think about a problem in a simple way (using coordinates that are natural for the problem), but then in order to do more work on the problem, we must change coordinates to express the problem differently.  The next example illustrates this concept.
 
+
+
 \begin{example}
-Our goal in this example is to find the equation of an ellipse that is rotated 45 degrees.
+% Graphics[{Arrow[{{0, 0}, {-1/Sqrt[2], 1/Sqrt[2]}}], 
+%  Arrow[{{0, 0}, {1/Sqrt[2], 1/Sqrt[2]}}], 
+%  Rotate[Circle[{0, 0}, {2, 1}], 45 Degree], Dashed, 
+%  Line[{{-2, -2}, {2, 2}}], Line[{{-2, 2}, {2, -2}}], 
+%  Text["x'", {2, 1.8}], Text["y'", {-2, 1.8}]}, Axes -> True]
 
-\begin{tikzpicture} 
-\draw (1,0) circle [x radius=1, y radius=2, rotate=30]; 
-\end{tikzpicture}
-
-
-Let's look at a linear transformation from one coordinate system to another. How do we find the equation of an ellipse whose major axis is not on the $x$ or $y$ axis?  
-Suppose we have an ellipse in the $xy$ plane centered at $(0,0)$ whose major axis lies on the line $y=x$, while the minor axis lies on the line $y=-x$. 
-The distance from the center to the ellipse along the line $y=x$ is 2 units.  
-The distance from the center to the ellipse along the line $y=-x$ is $1$ unit.  
-If we rotated the ellipse 45 degrees clockwise, this would place the major axis on the $x$ axis and the corresponding Cartesian equation would be $\ds \frac{x^2}{4}+y^2=1$. 
-What is a Cartesian equation of the original ellipse? 
-This is a problem in which viewing it as a change of basis greatly simplifies things.
+% \begin{tikzpicture} 
+% \begin{axis}
+% \draw (0,0) circle [x radius=1, y radius=2, rotate=-45]; 
+% \end{axis}
+% \end{tikzpicture}
+\marginpartop{\aligntop{
+\includegraphics[width=\marginparwidth]{05-Changing-Bases/rotated-ellipse}}}%
+Our goal in this example is to find the equation of an ellipse that is rotated 45 degrees, centered at the origin, and with major axis length 2 and minor axis length 1.  Looking at the picture in the margin, we can see that it would be very natural to think of this ellipse using the dotted axes rather than the normal coordinate axes.
 
 This problem involves looking at two different coordinate systems for the plane.  
 One coordinate system has the standard basis $S = \{(1,0),\,(0,1)\}$, which we will call the $xy$ coordinate system.  
-The other coordinate system involves the directions $(1,1)$ and $(-1,1)$. 
-To preserve distances in this alternate coordinate system, we'll divide each vector by its length so that each vector has length one.  
-This gives us a second basis $R=\{(1/\sqrt2,1/\sqrt{2}),\, (-1/\sqrt{2},1/\sqrt{2})\}$. 
-We have changed the $x$ axis to the line $y=x$ which we will call the $x'$ axis, and similarly the $y'$ axis is now the line $y=-x$.  
-Let's pause to summarize.  We have the following two coordinate systems.
+The other coordinate system involves the directions along the dotted lines.  To preserve distances along the dotted lines, we'll take as our rotated basis the unit vectors in these directions: $R=\{(1/\sqrt2,1/\sqrt{2}),\, (-1/\sqrt{2},1/\sqrt{2})\}$.
+
+In summary, we have the following coordinate systems now:
 \begin{enumerate}
-	\item The standard $xy$ coordinate system with basis $$S=\{(1,0),\,(0,1)\}$$ represented by the $x$ and $y$ axes. 
+	\item The standard $xy$ coordinate system with basis $$S=\{(1,0),\,(0,1)\}$$ represented by the $x$ and $y$ axes.  Let $B$ be the matrix with the vectors of $S$ as columns.
 	Consider the vector $\vec u = (a,b)$.  The coordinates $(x,y)_S$ of $\vec u$ relative to $S$ satisfy the matrix equation 
-        $$\bm{1&0\\0&1}\bm{x\\y}_{S}=\bm{a\\b},\quad \text{ or } \quad B\bm{x\\y}_{S}=\bm{a\\b},$$
-        where $B$ is the matrix whose columns are the vectors in $S$ (so $B$ is the identity matrix).
-	\item The alternate $x'y'$ coordinate system with basis $$R=\{(1/\sqrt2,1/\sqrt{2}),\, (-1/\sqrt{2},1/\sqrt{2})\}$$ represented by the $x'$ ($y=x$) and $y'$ ($y=-x$) axes.
+        $$B\bm{x\\y}_{S}=\bm{a\\b}\quad \text{or substituting in $B$,}\quad \bm{1&0\\0&1}\bm{x\\y}_{S}=\bm{a\\b}.$$
+	\item The alternate $x'y'$ coordinate system with basis $$R=\{(1/\sqrt2,1/\sqrt{2}),\, (-1/\sqrt{2},1/\sqrt{2})\}$$ represented by the $x'$ ($y=x$) and $y'$ ($y=-x$) axes.  Let $C$ be the matrix with the vectors of $R$ as columns.
 	Consider again the vector $\vec u = (a,b)$.  The coordinates $(x',y')_{R}$ of $(a,b)$ relative to $R$ (so $[\vec u]_{R} = (x',y')_S$) satisfy the matrix equation 
-	$$\bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\bm{x'\\y'}_{R}=\bm{a\\b}, \quad \text{ or }\quad C\bm{x'\\y'}_{R}=\bm{a\\b},$$ where $C$ is the matrix whose columns are the vectors in $R$.
+	$$C\bm{x'\\y'}_{R}=\bm{a\\b} \quad \text{or substituting in $C$,}\quad \bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\bm{x'\\y'}_{R}=\bm{a\\b}.$$
 \end{enumerate}
 
 Our goal is to find an equation of the ellipse in the $xy$ coordinate system. We know that in the $x'y'$ coordinate system an equation is $\ds \frac{(x')^2}{4}+(y')^2=1$. 
-To transform an equation from $R$ to $S$, we need to replace each coordinate $(x',y')=[\vec u]_{R}$ with the its corresponding coordinate $P[\vec u]_{S} = P(x,y)$.  
-We need a matrix $P$ that takes $xy$ coordinates in $S$ to $x'y'$ coordinates in $R$ (notice the order reversed).  
-We seek $P$ such that $P[\vec u]_{S} = [\vec u]_{R}$. 
-For every vector $\vec u =(a,b)$, we already have the equations $$A[\vec u]_{S} = B[\vec u]_{R}\quad \quad \text{or}\quad \quad A\bm{x\\y}=B\bm{x'\\y'}.$$ 
-To find $P$, we simply solve for $[\vec u]_{R}$ which gives us $B\inv A[\vec u]_{S} = [\vec u]_{R}$, or $P=B\inv A$.   
-To find the change of basis matrix $P$ we multiply 
-$$P=B\inv A = \bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\inv \bm{1&0\\0&1} = \bm{1/\sqrt2 &1/\sqrt2\\-1/\sqrt2&1/\sqrt2}.$$
+To transform an equation from using $R$ coordinates to using the normal $S$ coordinates, we need to find a matrix $P$ so that $[\vec u]_R=P[\vec u]_S$.  In other words, we need to find the change of basis matrix from $S$ to $R$ (notice the order reversed).
+
+For every vector $\vec u =(a,b)$, we already have the equations $$B[\vec u]_{S} = [\vec u]_E=C[\vec u]_{R}\quad \quad \text{or}\quad \quad B\bm{x\\y}=C\bm{x'\\y'}.$$ 
+To find $P$, we simply solve for $[\vec u]_{R}$, which gives us $C\inv B[\vec u]_{S} = [\vec u]_{R}$, or $P=C\inv B$, or more explicitly,
+$$P=C\inv B = \bm{1/\sqrt2 &-1/\sqrt2\\1/\sqrt2&1/\sqrt2}\inv \bm{1&0\\0&1} = \bm{1/\sqrt2 &1/\sqrt2\\-1/\sqrt2&1/\sqrt2}.$$
 We now have the transformation 
 $$\bm{x'\\y'} = P\bm{x\\y} = \bm{1/\sqrt2 &1/\sqrt2\\-1/\sqrt2&1/\sqrt2}\bm{x\\y} = \bm{x/\sqrt2+y/\sqrt2\\-x/\sqrt2+y/\sqrt{2}},$$
 or $x'=x/\sqrt2+y/\sqrt2, y'=-x/\sqrt2+y/\sqrt2$.
 
 We can now answer the original question.  
-The ellipse we started with had equation $\frac{(x')^2}{4}+(y')^2=1$ in the $x'y'$ coordinate system.  
-We replace each $x'$ and $y'$ with $x'=x/\sqrt2+y/\sqrt2$ and $y'=-x/\sqrt2+y/\sqrt2$ to obtain  $$\frac{(x/\sqrt2+y/\sqrt2)^2}4+(-x/\sqrt2+y/\sqrt2)^2=1.$$
+The rotated ellipse had equation $\frac{(x')^2}{4}+(y')^2=1$ in the $x'y'$ coordinate system.  
+We replace each $x'$ and $y'$ with $x'=x/\sqrt2+y/\sqrt2$ and $y'=-x/\sqrt2+y/\sqrt2$ to obtain the equation in terms of the normal $xy$ coordinates: $$\frac{(x/\sqrt2+y/\sqrt2)^2}4+(-x/\sqrt2+y/\sqrt2)^2=1.$$
 \end{example}
 
-Any time you encounter a problem that would be simpler in a new coordinate system, there is a change of basis matrix in the background that can solve the problem. Whether you call it a change of basis matrix from $S$ to $R$ or from $R$ to $S$ is irrelevant.  Your job is to create matrices which relate the different coordinate systems, and then appropriately use them to solve the problem at hand. Mastering the vocabulary surrounding a change of basis matrix is crucial, as learning to interpret the use of this term requires that you fully understand the surrounding context (especially since different authors use the term differently and appropriately). 
-
-
-
-\subsubsection{Changing bases from $S$ to $R$ and from $R$ to $S$.}
-Different authors disagree on the use of the term ``change of basis matrix.'' 
+Any time you encounter a problem that would be simpler in a new coordinate system, there is a change of basis matrix that can simplify the problem. 
+\footnote{Different authors disagree on the use of the term ``change of basis matrix.'' 
 We call $P$ the change of basis matrix \emph{from $S$ to $R$}, referring to the fact that multiplying $[\vec u]_S$ by $P$ transforms coordinates relative to $S$ into coordinates relative to $R$: $P[\vec u]_S=[\vec u]_R$.  
 When working with an equation, for example, another point of view is that we can quickly convert an equation using $R$ coordinates $[\vec u]_{R}$ to an equation using $S$ coordinates $[\vec u]_S$ by replacing each instance of $[\vec u]_{R}$ with $P[\vec u]_S$.  For example, if we know that $[\vec u]_R+[\vec v]_R-2[\vec w]_R=[\vec x]_R$, then we can transform this equation to an equation involving coordinates relative to $S$ by multiplying each coordinate vector by $P$: $P[\vec u]_S+P[\vec v]_S-2P[\vec w]_S=P[\vec x]_S$.  Hence some people call $P$ the change of basis matrix \emph{from $R$ to $S$} (instead of \emph{from $S$ to $R$}).
-\marginpar{In the equation $P[\vec u]_S = [\vec u]_{R}$, do we say $P$ is a change of basis matrix from $S$ to $R$ or from $R$ to $S$? Both can be considered correct, so make sure you know what the author means by the words ``change of basis matrix.''}
 Both phrases appear in different places and both can be considered correct. The difference lies in the context of the problem and how you plan to use the matrix. Are you focusing on what the transformation does to individual vectors, or what the transformation does to equations? 
+
+In the equation $P[\vec u]_S = [\vec u]_{R}$, should we say $P$ is a change of basis matrix from $S$ to $R$ or from $R$ to $S$? Both can be considered correct, so make sure you know what the author means by the words ``change of basis matrix.''
+}
 
 % \begin{example}
 % We'll use polar coordinates to illustrate the vocabulary difference. The transformation $x=r\cos\theta, y=r\sin\theta$, written in vector form as $ T (r,\theta)_P = (x,y)_C$, is a (nonlinear) transformation between two coordinate systems: the Cartesian and polar coordinate systems. You input vectors in polar form, and get out vectors in Cartesian form. The transformation tells us how to describe all points in the plane in either Cartesian or polar form. The transformation also tells us how to convert equations from one system to the other.  The way we use the transformation (as a transformation from polar to Cartesian, or Cartesian to polar) depends on whether we are transforming vectors or equations.    
@@ -254,44 +249,28 @@ Both phrases appear in different places and both can be considered correct. The 
 % \end{itemize}
 % \end{example}
 
-%%%%%%%%%%% JASON STOPPED EDITING HERE %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
-
-
-
-
-
-
-
-
-
- 
 \section{Matrix Representations of Linear Transformations}
-We showed in the last chapter that every linear transformation between two finite dimensional vector has a standard matrix representation.  
-For example, the linear transformation $T\colon {\mathbb{R}}^2 \to {\mathbb{R}}^2$ defined by $T(x,y)=(2x+y,3x+4y)$ we represented in matrix form by first computing the transformation at each standard basis vector, i.e., $T(1,0)=(2,3), T(0,1)=(1,4)$, and then putting these vectors in the columns a matrix 
+We showed in the last chapter that every linear transformation between two finite dimensional vector spaces has a standard matrix representation.  As a reminder, let's work a small example.
+\begin{example}
+The linear transformation $T\colon {\mathbb{R}}^2 \to {\mathbb{R}}^2$ defined by $T(x,y)=(2x+y,3x+4y)$ we represented in matrix form by first computing the transformation at each standard basis vector, i.e., $T(1,0)=(2,3), T(0,1)=(1,4)$, and then putting these vectors in the columns a matrix 
 $A= \begin{bmatrix}2&1\\3&4\end{bmatrix}$. 
+\end{example}
 We compute $T(\vec x)$ by computing the matrix product $A\vec x$.  We replaced the linear transformation with matrix multiplication. We now examine how the matrix $A$ changes if we use a different basis to represent the domain and range.
 
 Consider a linear transformation $T\colon V \to V'$ (where both $V$ and $V'$ are finite dimensional) with corresponding bases $S$ and $R$. 
-How do we construct the matrix representation of $T$ relative to these basis?  
+How do we construct the matrix representation of $T$ relative to these bases?  
 We need a matrix $A$ so that we can input coordinates relative to $S$ and get out coordinates relative to $R$.  
 Notationally this matrix is written as $[T]_{S,R}$ and satisfies the equation $$[T]_{S,R}[\vec v]_S=[T(\vec v)]_{R}.$$ 
 To find our matrix, we first consider everything relative to a standard basis. 
 \begin{itemize}
 	\item Let $A$ be the standard matrix representation of the transformation. So $$A\vec v = T(\vec v).$$
 	\item Let $B$ be the matrix whose columns are the basis vectors of $S$. So $$B[\vec v]_S=[\vec v]_E=\vec v.$$
-	\item Let $C$ be the matrix whose columns are the basis vectors of $R$. So $$C[\vec v]_{R}=[\vec v]_E=\vec v, \quad \text{or}\quad C[T(\vec v)]_{R}=[T(\vec v)]_E=T(\vec v).$$
+	\item Let $C$ be the matrix whose columns are the basis vectors of $R$. So $$C[\vec u]_{R}=[\vec u]_E=\vec u, \quad \text{or}\quad C[T(\vec v)]_{R}=[T(\vec v)]_E=T(\vec v).$$
 \end{itemize}
 On the left of $A\vec v = T(\vec v)$ we replace $\vec v$ with $B[\vec v]_S$, and on the right we replace $T(\vec v)$ with $C[T(\vec v)]_{R}$. We obtain the key equation 
 $$AB[\vec v]_S=C[T(\vec v)]_{R}.$$
-Multiplying both sides on the left by $C^{-1}$ gives $$[T]_{S,R}[\vec v]_S=C^{-1}AB[\vec v]_S=[T(\vec v)]_{R}.$$ This last equation requires that we input the coordinates of a vector relative to $S$, and then we get out the coordinates of the transformed vector relative to the basis $R$. This is precisely what we were looking for, which means that the matrix representation relative to $S$ and $R$ is $[T]_{S,R} = C^{-1}AB$. Time for some examples.
-
-
-
-
+Multiplying both sides on the left by $C^{-1}$ gives $$[T]_{S,R}[\vec v]_S=C^{-1}AB[\vec v]_S=[T(\vec v)]_{R}.$$ This last equation requires that we input the coordinates of a vector relative to $S$, and then we get out the coordinates of the transformed vector relative to the basis $R$. This is precisely what we were looking for, which means that the matrix representation relative to $S$ and $R$ is $[T]_{S,R} = C^{-1}AB$.
 
 \begin{example}
 Consider the linear transformation $T\colon{\mathbb{R}}^2\to {\mathbb{R}}^3$ defined by $T(x,y)=(x+y,x-y,2x+3y)$. Find a matrix representation using the bases $S=\{(2,3),(-1,1)\}$ and $R=\{(1,0,0),(1,1,0),(3,2,1)\}$.  To start with, the standard matrix representation and basis matrices are 
@@ -301,13 +280,13 @@ A=
  1 & 1 \\
  1 & -1 \\
  2 & 3
-\end{bmatrix},
+\end{bmatrix},\,
 B=
 \begin{bmatrix}
  2 & -1 \\
  3 & 1
 \end{bmatrix}
-,
+,\,
 C=
 \begin{bmatrix}
  1 & 1 & 3 \\
@@ -315,8 +294,8 @@ C=
  0 & 0 & 1
 \end{bmatrix}
 .$$
-Any vector $\vec u$ in the domain can be written as of coordinates relative to $S$ using the product $ B[\vec u]_S=\vec u$.
-Any vector in the image can be written as coordinates relative to $R$ using the product $C[T(\vec u)]_{R} = T(\vec u)$.  Since $A\vec u = T(\vec u)$, we replace $\vec u$ with $B[\vec u]_S$, and we replace $T(\vec u)$ with $C[T(\vec u)]_{R}$ to obtain $AB[\vec u]_S = C[T(\vec u)]_{R}$ or $C^{-1}AB[\vec u]_S=[T(\vec u)]_{R}$.  The inverse of $C$ is (use software) 
+Any vector $\vec u$ in the domain can be written as coordinates relative to $S$ using the product $ B[\vec u]_S=\vec u$.
+Any vector in the image can be written as coordinates relative to $R$ using the product $C[T(\vec u)]_{R} = T(\vec u)$.  Since $A\vec u = T(\vec u)$, we replace $\vec u$ with $B[\vec u]_S$, and we replace $T(\vec u)$ with $C[T(\vec u)]_{R}$ to obtain $AB[\vec u]_S = C[T(\vec u)]_{R}$ or $C^{-1}AB[\vec u]_S=[T(\vec u)]_{R}$.  The inverse of $C$ is 
 $
 C^{-1}=
 \begin{bmatrix}
@@ -350,9 +329,13 @@ $$C^{-1}AB =
 $$
 \end{example}
 
-Graphically, the previous computations just give us different ways of viewing the domain and range. We can draw grids to represent the basis vectors we have chosen for the domain and range. This just gives us ways of drawing grids on the domain and range which we can then use to count out our coordinates relative to the bases chosen. 
+\note{After we've drawn some pictures with different grids, we can include this paragraph: Graphically, the previous computations just give us different ways of viewing the domain and range. We can draw grids to represent the basis vectors we have chosen for the domain and range. This just gives us ways of drawing grids on the domain and range which we can then use to count out our coordinates relative to the bases chosen. }
 
-The rest of this section focuses on learning to pick a good basis for the domain and the range so that the matrix representation of $T$ is as simple as possible, in particular so that the matrix consists of the identity matrix in the upper left corner followed by additional rows or columns of zeros at the bottom and right of the matrix. To obtain this representation, we need to learn how to extend bases for the kernel and image to bases for the entire domain and range.  We'll start with this, and then apply our knowledge to matrix representations of transformations.
+Just as changing coordinates helps simplify problems, changing coordinates can also help us simplify transformations.  Often, we can find ``natural'' coordinates for the domain and range so that the transformation matrix $[T]_{S,R}$ is a very simple matrix.  When the matrix is very simple, it is easier to intuitively understand the transformation.
+
+The rest of this section focuses on learning to pick a good basis for the domain and the range so that the matrix representation of $T$, $[T]_{S,R}$, is as simple as possible, in particular so that the matrix consists of the identity matrix in the upper left corner and zeroes everywhere else:
+$$[T]_{S,R}=\begin{bmatrix}I&0\\0&0\end{bmatrix}.$$
+To obtain this representation, we need to learn how to extend bases for the kernel and image to bases for the entire domain and range.  We'll start with this, and then apply our knowledge to matrix representations of transformations.
 
 
 
@@ -364,31 +347,31 @@ The rest of this section focuses on learning to pick a good basis for the domain
 We have already spent time studying the three most important subspaces related to a linear transformation. These subspaces are the kernel (null space), the image (column space), and the eigenspaces. Before proceeding, let's review their definitions and why each is a subspace.
 \begin{definition} Consider a linear transformation $T\colon V\to U$.
 \begin{enumerate}
-	\item The kernel (null space) is all vectors in the domain $V$ whose image is zero: $\{\vec x | T(\vec x)=\vec 0\}$.
-	\item The image (column space) is all vectors in the range whose preimage is not empty: $\{\vec y | T(\vec x)=\vec y \text{ for some }\vec x \in V\}$.
-	\item For each eigenvalue $\lambda$, the eigenspace corresponding to $\lambda$ is the set vectors satisfying $T(\vec x) = \lambda\vec x$. 
+	\item The kernel (null space) is the set of all vectors in the domain $V$ whose image is zero: $\{\vec x \st T(\vec x)=\vec 0\}$.
+	\item The image (column space) is the set of all vectors in the range $U$ whose preimage is not empty: $\{\vec y \st T(\vec x)=\vec y \text{ for some }\vec x \in V\}$.
+	\item If $V=U$, for each eigenvalue $\lambda$, the eigenspace corresponding to $\lambda$ is the set of all vectors satisfying $T(\vec x) = \lambda\vec x$.  Note that eigenvalues and eigenspaces are only defined if $V=U$, or in other words, if the domain and range of $T$ are the same.
 \end{enumerate}
 \end{definition}
 \begin{example}\label{verification of key subspaces}
-Let's verify that each of these spaces is indeed a vector subspace. In what follows, we'll assume that $T$ is a linear transformation whose standard matrix representation is $A$, i.e., $T(\vec x)=A\vec x$. 
+Let's verify that each of these spaces is indeed a vector subspace using Theorem~\ref{thm subspace iff closed}. In what follows, we'll assume that $T$ is a linear transformation whose standard matrix representation is $A$, i.e., $T(\vec x)=A\vec x$. \note{we are being really sloppy here, since we said $V$ and $U$ are any vector space, but then we multiply vectors by matrices.  Really we should say $[T(\vec x)]_E=A[\vec x]_E$.  This sloppiness is also in the definitions above and in the discussion below.}
 \begin{enumerate}
-	\item Let's show that the kernel is a vector subspace of the domain. Since all the vectors in the kernel are vectors in the domain that get sent to zero, we know it is a subset of the domain.  We now show it satisfies the 3 requirements to be a subspace. 
+	\item Let's show that the kernel is a vector subspace of the domain. Since all the vectors in the kernel are vectors in the domain that get sent to zero, we know it is a subset of the domain.  We now show it satisfies the three requirements to be a subspace.  We will represent the zero vector of $V$ as $\vec 0_V$ and the zero vector of $U$ as $\vec 0_U$.
 \begin{enumerate}
-	\item Every linear transformation satisfies $T(\vec 0)=\vec 0$, so the zero vector is in the kernel because $T(\vec 0)$ is sent to the zero vector.  
-	\item Is the sum of two vectors in the kernel still in the kernel? If $T(\vec x_1)=\vec 0$ and $T(\vec x_2)=\vec 0$ (so $\vec x_1$ and $\vec x_2$ are in the kernel), then we simply compute $T(\vec x_1+\vec x_2)=T(\vec x_1)+T(\vec x_2)=\vec 0+\vec 0=\vec 0$. This shows that the sum $\vec x_1+\vec x_2$ is in the kernel. 
-	\item Is a scalar multiple of something in the kernel still in the kernel? If $T(\vec x)=\vec 0$ (so $\vec x$ is in the kernel), then we compute $T(c\vec x)=cT(\vec x)=c\vec 0=\vec 0$. This shows that the scalar multiple $c\vec x$ is in the kernel. 
+	\item Every linear transformation satisfies $T(\vec 0_V)=\vec 0_U$, so the zero vector is in the kernel because $T(\vec 0_V)$ is sent to the zero vector in $U$.  
+	\item Is the sum of two vectors in the kernel still in the kernel? If $T(\vec x_1)=\vec 0_U$ and $T(\vec x_2)=\vec 0_U$ (so $\vec x_1$ and $\vec x_2$ are in the kernel), then we simply compute $T(\vec x_1+\vec x_2)=T(\vec x_1)+T(\vec x_2)=\vec 0_U+\vec 0_U=\vec 0_U$. This shows that the sum $\vec x_1+\vec x_2$ is in the kernel. 
+	\item Is a scalar multiple of something in the kernel still in the kernel? If $T(\vec x)=\vec 0_U$ (so $\vec x$ is in the kernel), then we compute $T(c\vec x)=cT(\vec x)=c\vec 0_U=\vec 0_U$. This shows that the scalar multiple $c\vec x$ is in the kernel. 
 \end{enumerate}
 
 	\item Now let's show that the image is a vector subspace of the range. This proof is easiest if we utilize the fact that the span of any set of vectors is always a subspace.  Since the image of $T$ is the same as the column space of its standard matrix representation $A$, then immediately the image of $T$ is the span of the columns of $A$, hence a vector subspace.
 	
-	\item Now we'll show that for each eigenvalue $\lambda$ of $T$, the set of vectors that satify $T(\vec x) = \lambda \vec x$ is a vector subspace of both the domain and range.  In order to compute eigenvalues, the domain and range must be the same, so we only need to show it satisfies the 3 requirements to be a subspace.
+	\item Now we'll show that if $V=U$, then for each eigenvalue $\lambda$ of $T$, the set of vectors that satify $T(\vec x) = \lambda \vec x$ is a vector subspace of both the domain and range.  In order to compute eigenvalues, the domain and range must be the same, so we only need to show it satisfies the three requirements to be a subspace.
 \begin{enumerate}
 	\item The zero vector satifies $T(\vec 0) = \vec 0 = \lambda \vec 0$, so it is in the eigenspace.  Note that $\vec 0$ is always in the eigenspace, but $\vec 0$ is not an eigenvector. The eigenvectors are the other vectors in the eigenspace.
 	\item If $\vec x_1$ and $\vec x_2$ are in the eigenspace, then $T(\vec x_1)=\lambda \vec x_1$ and $T(\vec x_2)=\lambda \vec x_2$. We compute $$T(\vec x_1+\vec x_2)=T(\vec x_1)+T(\vec x_2)=\lambda \vec x_1+\lambda \vec x_2 = \lambda (\vec x_1+\vec x_2),$$ which shows that $\vec x_1+\vec x_2$ is in the eigenspace.
 	\item If $\vec x$ is in the eigenspace, then $T(\vec x)=\lambda \vec x$. We then compute $T(c\vec x)=cT(\vec x)=c\lambda \vec x= \lambda (c\vec x)$. We've shown that $c\vec x$ is also in the eigenspace.
 \end{enumerate}
 \end{enumerate}
-We have just shown that the kernel (null space), image (column space), and eigenspaces are vector spaces. You should take the time to repeat the proofs above. The fact that these spaces are vector spaces means we can find a basis and talk about the coordinates of vectors relative to these bases.  
+We have just shown that the kernel (null space), image (column space), and eigenspaces are vector spaces. You should take the time to work through the proofs above on your own. The fact that these sets of vectors are actually vector spaces means we can find a basis for each of them and talk about the coordinates of vectors in the domain or range relative to these bases.
 \end{example}
 
 

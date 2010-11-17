@@ -36,12 +36,17 @@
 
 \newcommand{\remake}{\tikzset{external/force remake}}
 
-\newcommand{\marginpartop}[1]{\marginpar{\vtop{%
-  \vskip0pt
-  \hbox{%
-    #1%
-  }%
-}}}
+\newcommand\marginpartop[1]{\leavevmode\marginpar{#1}}
+
+\newcommand{\aligntop}[1]{\vtop{\vskip-1ex\hbox{ #1}}}
+
+
+% \newcommand{\marginpartop}[1]{\marginpar{\vtop{%
+%   \vskip0pt
+%   \hbox{%
+%     #1%
+%   }%
+% }}}
 
 
 \newcommand{\myscale}{1}
