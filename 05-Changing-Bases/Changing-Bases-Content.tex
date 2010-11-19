@@ -371,13 +371,33 @@ Let's verify that each of these spaces is indeed a vector subspace using Theorem
 	\item If $\vec x$ is in the eigenspace, then $T(\vec x)=\lambda \vec x$. We then compute $T(c\vec x)=cT(\vec x)=c\lambda \vec x= \lambda (c\vec x)$. We've shown that $c\vec x$ is also in the eigenspace.
 \end{enumerate}
 \end{enumerate}
-We have just shown that the kernel (null space), image (column space), and eigenspaces are vector spaces. You should take the time to work through the proofs above on your own. The fact that these sets of vectors are actually vector spaces means we can find a basis for each of them and talk about the coordinates of vectors in the domain or range relative to these bases.
 \end{example}
+
+We have just shown that the kernel (null space), image (column space), and eigenspaces are vector spaces. You should take the time to work through the proofs above on your own. The fact that these sets of vectors are actually vector spaces means we can find a basis for each of them and talk about the coordinates of vectors in the domain or range relative to these bases.
+
 
 
 
 \subsection{Extending a basis for a subspace to the whole space}
 The three vector spaces above (kernel, image, and eigenspaces) play an important role in understanding a linear transformation. When creating a matrix representation of a linear transformation, we need a basis for the entire domain and the entire range.  The kernel provides us with a basis for part of the domain. The image provides us with a basis for part of the range.  To use these vector spaces, we must first extend a basis of a subspace to a basis for the whole space.  That is our current goal.
+
+
+\subsubsection{Extending Bases}
+\label{sec:extending-bases}
+
+First, we need to discuss the relationships between linearly independent sets of vectors, spanning sets of vectors, and sets of vectors that are both linearly independent and span (i.e., bases).
+
+A linearly independent set of vectors always has less than or equal vectors than a spanning set.  Past a certain size, you are guaranteed that a set will be linearly dependent.
+
+A spanning set always has more than or equal vectors than a spanning set.  If a set is small enough, you are guaranteed that it will not span the space.
+
+So if a set has set of vectors both spans a space and is linearly independent, it has a fixed number of vectors, which is called the dimension of the space.
+
+Similarly, suppose we have a spanning set.  Can we cut it down to a linearly independent set?  Yes, just remove vectors and eventually you will have a linearly independent set.
+
+A basis for a subspace is still linearly independent in the bigger ``parent'' space.  Can we take a linearly independent set and add vectors to it to become a spanning set?  The answer is yes: we need to add enough vectors to have a spanning set, and we need to make sure that the vectors we add still make the set linearly independent.
+
+Now, we will take the kernel (a subspace of the domain) and add vectors to make it a basis for the domain.  Similarly, we will take the image (a subspace of the range), and add vectors to make it a basis for the range.
 
 
 \subsubsection{Extending a basis for the kernel to a basis for the domain}
