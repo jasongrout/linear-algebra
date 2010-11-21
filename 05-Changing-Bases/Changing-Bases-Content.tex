@@ -385,20 +385,52 @@ The three vector spaces above (kernel, image, and eigenspaces) play an important
 \subsubsection{Extending Bases}
 \label{sec:extending-bases}
 
-First, we need to discuss the relationships between linearly independent sets of vectors, spanning sets of vectors, and sets of vectors that are both linearly independent and span (i.e., bases).
+First, we need some key theorems which discuss the relationships between linearly independent sets of vectors, spanning sets of vectors, and sets of vectors that are both linearly independent and span (i.e., bases).  We will briefly discuss these in class, and you can find more rigorous proofs in Jim Heffron's free book on linear algebra\footnote{\url{http://joshua.smcvt.edu/linearalgebra/book.pdf}, section III.2, page 118} or Rob Beezer's free book on linear algebra\footnote{\url{http://linear.ups.edu/jsmath/latest/fcla-jsmath-latest.html}, section D}.
 
-A linearly independent set of vectors always has less than or equal vectors than a spanning set.  Past a certain size, you are guaranteed that a set will be linearly dependent.
+\begin{theorem}
+  In a vector space, a linearly independent set of vectors never
+  has more vectors than a spanning set.
+\end{theorem}
 
-A spanning set always has more than or equal vectors than a spanning set.  If a set is small enough, you are guaranteed that it will not span the space.
+This means that if you know the size of the smallest spanning set, any set of vectors with bigger size is guaranteed to be linearly dependent.
 
-So if a set has set of vectors both spans a space and is linearly independent, it has a fixed number of vectors, which is called the dimension of the space.
+\begin{theorem}
+  In a vector space, a spanning set of vectors never has less vectors
+  than a linearly independent set.
+\end{theorem}
 
-Similarly, suppose we have a spanning set.  Can we cut it down to a linearly independent set?  Yes, just remove vectors and eventually you will have a linearly independent set.
+This means that if you know the size of the largest linearly independent set, any set of vectors with smaller size is guaranteed to not span the space.
 
-A basis for a subspace is still linearly independent in the bigger ``parent'' space.  Can we take a linearly independent set and add vectors to it to become a spanning set?  The answer is yes: we need to add enough vectors to have a spanning set, and we need to make sure that the vectors we add still make the set linearly independent.
+\begin{theorem}
+  In a vector space, all sets of vectors which are bases have the same number of vectors.  We call this number the \emph{dimension} of the vector space.
+\end{theorem}
+
+This refers to the fact that a basis is a set of vectors which both span the space and are linearly independent.
+
+Furthermore, we can get always create a basis from a spanning or linearly independent set.
+
+\begin{theorem}
+  If $S$ is a spanning set of vectors for a vector space $V$, then we can make a basis for $V$ by deleting appropriate vectors in $S$.
+\end{theorem}
+
+In the last theorem, ``appropriate vectors'' to delete are vectors which do not change $\vspan(S)$ (i.e., we can delete a vector as long as the new set is still a spanning set).
+
+
+\begin{theorem}
+  If $S$ is a linearly independent set of vectors in a vector space $V$, we can make a basis for $V$ by adding appropriate vectors to $S$ (so that the basis contains the vectors in our initial set $S$).
+\end{theorem}
+
+In this last theorem, ``appropriate vectors'' we add are vectors which ensure that $S$ is still linearly independent.
+
+This last theorem leads to a way to construct a basis for a vector space from a basis for a subspace.
+
+\begin{theorem}
+  Let $V$ be a vector space, and $U$ be a subspace of $V$.  If $B$ is a basis for $U$, then we can add vectors to $B$ to make a basis $C$ for the vector space $V$.  In other words, we can make a basis for $V$ which contains the vectors in $B$.
+\end{theorem}
+
+Since $B$ is a basis for $U$, $B$ is a linearly independent set of vectors in $V$.  We just need to add appropriate vectors until we have a spanning set for $V$.
 
 Now, we will take the kernel (a subspace of the domain) and add vectors to make it a basis for the domain.  Similarly, we will take the image (a subspace of the range), and add vectors to make it a basis for the range.
-
 
 \subsubsection{Extending a basis for the kernel to a basis for the domain}
 The kernel of $T\colon{\mathbb{R}}^n\to{\mathbb{R}}^m$ is a vector subspace of the domain ${\mathbb{R}}^n$, so we can select a basis for the kernel. 
@@ -683,10 +715,6 @@ $. A basis for the domain and range which contains eigenvectors (and one other) 
 
 
 
-
-
-
-
 \subsection{Simplifying Matrix Representations}
 
 %\fixthis I want to illustrate this section with graphics.  I want to show how you start with the standard basis vectors, you switch them to a different basis prior to mapping across (this just means you place different axes on the domain)  Then the transformation takes things nicely over to a different space, and the you take that space back to the standard basis.  This could be done with a sequence of 4 pictures (where you see where the unit square gets mapped).
@@ -926,7 +954,8 @@ Along the way, there are infinitely many choices you can make at each step.  The
 
 %As a side note, I would like to include Fourier Coefficients here (just as a brief 3 minute illustration in class).
 
-
+\newpage
+%% I gave the previous stuff to class already.
 \section{Similar Matrices}
 If a linear transformation $T\colon V\to V$ has the same domain as range, then we often want to pick the same basis $S$ for both the domain and range. 
 The coordinates of $\vec u$ relative to $S$ are written $P[\vec u]_S = [\vec u]_E$, where $P$ is the matrix whose columns are the basis vectors in $S$. 
