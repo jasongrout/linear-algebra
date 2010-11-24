@@ -322,9 +322,9 @@ $$C^{-1}AB =
 \end{bmatrix}
 =
 \begin{bmatrix}
- 5 & 0 \\
- -1 & -2 \\
- 13 & 1
+ -7&1\\
+ -27&-4\\
+ 13&1
 \end{bmatrix}=[T]_{S,R}.
 $$
 \end{example}
@@ -381,6 +381,8 @@ We have just shown that the kernel (null space), image (column space), and eigen
 \subsection{Extending a basis for a subspace to the whole space}
 The three vector spaces above (kernel, image, and eigenspaces) play an important role in understanding a linear transformation. When creating a matrix representation of a linear transformation, we need a basis for the entire domain and the entire range.  The kernel provides us with a basis for part of the domain. The image provides us with a basis for part of the range.  To use these vector spaces, we must first extend a basis of a subspace to a basis for the whole space.  That is our current goal.
 
+
+% JASON: I think I stopped heavy editing here.
 
 \subsubsection{Extending Bases}
 \label{sec:extending-bases}
@@ -460,7 +462,7 @@ $
  -2 & 1 & 0 & 0 \\
  1 & 0 & 1 & 0 \\
  0 & 0 & 0 & 1\end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 1 & 0 \\
  0 & 1 & 2 & 0 \\
@@ -492,7 +494,7 @@ $$
  -\frac{4}{3} & 1 & 0 \\
  1 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 1 \\
  0 & 1 & \frac{4}{3}
@@ -542,7 +544,7 @@ $
  3 & 1 & 0 \\
  6 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & \frac{1}{6} \\
  0 & 1 & -\frac{1}{2}
@@ -575,7 +577,7 @@ $
  3 & 0 & 1 & 0 \\
  -2 & 0 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 0 & -\frac{1}{2} \\
  0 & 1 & 0 & \frac{1}{2} \\
@@ -689,16 +691,16 @@ $
  0 & 0 & 0
 \end{bmatrix}
 $. 
-There is only one free variable, so only 1 linearly independent eigenvector corresponding to 3, namely $(1,1,0)$. There is also only one linearly independent eigenvector corresponding to 1, which is still $(-1,1,0)$. 
-Some software packages return $(0,0,0)$ as a third eigenvector which the software expects you to forget, as the zero vector is by definition never an eigenvector. 
-We can only obtain 2 linearly independent eigenvectors, and so a basis for the domain and range cannot be obtained just from one eigenvectors alone. For now, we augment these two vectors by the identity and row reduce to obtain 
+There is only one free variable, so only one linearly independent eigenvector corresponding to 3, namely $(1,1,0)$. There is also only one linearly independent eigenvector corresponding to 1, which is still $(-1,1,0)$. 
+\footnote{Some software packages return $(0,0,0)$ as a third eigenvector which the software expects you to forget, as the zero vector is by definition never an eigenvector.}
+We can only obtain two linearly independent eigenvectors, and so a basis for the domain and range cannot be obtained just from one eigenvectors alone. For now, we augment these two vectors by the identity and row reduce to obtain 
 $
 \begin{bmatrix}
  1 & -1 & 1 & 0 & 0 \\
  1 & 1 & 0 & 1 & 0 \\
  0 & 0 & 0 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & \frac{1}{2} & \frac{1}{2} & 0 \\
  0 & 1 & -\frac{1}{2} & \frac{1}{2} & 0 \\
@@ -750,7 +752,7 @@ $
  -6 & 0 & 1 & 0 \\
  1 & 0 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 0 & 1 \\
  0 & 1 & 0 & -7 \\
@@ -786,12 +788,12 @@ Notice how this made the entire first column of the matrix zero. If we rearrange
 \end{example}
 
 After picking a basis for the domain which contains the kernel, let's carefully construct a basis for the range to make our matrix representation extremely nice.  
-If $k$ is the dimension of the kernel and $S=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis for the domain (whose last $k$ vectors are in the kernel - they were moved to the end), then consider the $n-k$ vectors $\{T(\vec v_{1}),\ldots,T(\vec v_{n-k})\}$ which are nonzero vectors in the image.  Since the image has to have dimension $n-k$, these $n-k$ vectors form a basis for the image. We can extend them to a basis $R$ for the range (augmenting by the identity and reducing). The matrix representation of $T$ relative to the bases $S$ and $R$ will always be a matrix which consists of all zeros and $n-k$ 1's (what can be simpler than zeros and 1's).  This representation of $T$ illustrates how the kernel and image can be use to obtain an extremely nice form for our matrix representation.  Mathematicians who work with maps in high dimensions often start by placing things in ``general position'' which is very similar to picking nice bases so that their maps consist of identity and zero transformations, precisely what we are doing now.  Let's look at examples.
+If $k$ is the dimension of the kernel and $S=\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ is a basis for the domain (whose last $k$ vectors are in the kernel---they were moved to the end), then consider the $n-k$ vectors $\{T(\vec v_{1}),\ldots,T(\vec v_{n-k})\}$ which are nonzero vectors in the image.  Since the image has to have dimension $n-k$, these $n-k$ vectors form a basis for the image. We can extend them to a basis $R$ for the range (augmenting by the identity and reducing). The matrix representation of $T$ relative to the bases $S$ and $R$ will always be a matrix which consists of all zeros and $n-k$ 1's (what can be simpler than zeros and 1's).  This representation of $T$ illustrates how the kernel and image can be use to obtain an extremely nice form for our matrix representation\footnote{Mathematicians who work with maps in high dimensions often start by placing things in ``general position'' which is very similar to picking nice bases so that their maps consist of identity and zero transformations, precisely what we are doing now.}.
 
 
 
 \begin{example}
-Consider the linear transformation from example \ref{ltbasis1} $T\colon{\mathbb{R}}^3\to {\mathbb{R}}^2$ defined by $T(x,y,z)=(x+y-z,2x+3y+4z)$. Using the bases $S=\{(1,0,0),(0,1,0),(7,-6,1)\}$ and $E=\{(1,0),(0,1)\}$ (the standard basis for the plane), the matrix representation of $T$ relative to these bases is  
+Consider the linear transformation from example \ref{ltbasis1}, $T\colon{\mathbb{R}}^3\to {\mathbb{R}}^2$ defined by $T(x,y,z)=(x+y-z,2x+3y+4z)$. Using the bases $S=\{(1,0,0),(0,1,0),(7,-6,1)\}$ and $E=\{(1,0),(0,1)\}$ (the standard basis for the plane), the matrix representation of $T$ relative to these bases is  
 $[T]_{S,E} = \begin{bmatrix}
  1 & 1 &0\\
  2 & 3 &0
@@ -844,7 +846,7 @@ A=
  2 & 0 & 1 & 0 \\
  1 & 0 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 0 & 1 \\
  0 & 1 & 0 & 2 \\
@@ -861,7 +863,7 @@ $$
  2 & 0 & 0 & 1 & 0 \\
  1 & 0 & 0 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 0 & 0 & 1 \\
  0 & 1 & 0 & 0 & 1 \\
@@ -901,7 +903,7 @@ $$\begin{bmatrix}
  2 & 0 & 1 & 0 & 0 & 1 & 0 \\
  1 & 0 & 0 & 0 & 0 & 0 & 1
 \end{bmatrix}
-\xrightarrow{rref}
+\xrightarrow{\rref}
 \begin{bmatrix}
  1 & 0 & 0 & 0 & 0 & 0 & 1 \\
  0 & 1 & 0 & 0 & 1 & -1 & 2 \\
@@ -957,50 +959,48 @@ Along the way, there are infinitely many choices you can make at each step.  The
 \newpage
 %% I gave the previous stuff to class already.
 \section{Similar Matrices}
-If a linear transformation $T\colon V\to V$ has the same domain as range, then we often want to pick the same basis $S$ for both the domain and range. 
-The coordinates of $\vec u$ relative to $S$ are written $P[\vec u]_S = [\vec u]_E$, where $P$ is the matrix whose columns are the basis vectors in $S$. 
-If $A$ is the standard matrix representation of the linear transformation, then we write 
-$$A[\vec u]_E = [T(\vec u)]_E.$$  
-Replacing $[\vec u]_E$ on the left with $P[\vec u]_S = [\vec u]_E$, and replacing $[T(\vec u)]_E$ on the right with $P[T(\vec u)]_S = [T(\vec u)]_E$ gives the matrix equation 
-$$AP[\vec u]_S = P[T(\vec u)]_S\quad \text{or}\quad P^{-1}AP [\vec u]_S = [T(\vec u)]_S.$$ The matrix representation of $T$ relative to the basis $S$ is $[T]_{S,S}=[T]_S = P^{-1}AP$ (we only write one $S$). 
-This new matrix is found by multiplying on the right by $P$, and on the left by $P\inv$.    
 
-\begin{definition}
-We say $A$ and $B$ are similar matrices, and write $A\sim B$ if there exists an invertible matrix $P$ such that $B=P^{-1}AP$.
-\end{definition}
+If a linear transformation $T\colon V\to V$ has the same domain as range, then we often want to pick the same basis $S$ for both the domain and range.  The coordinates of $\vec u$ relative to $S$ are written $P[\vec u]_S = [\vec u]_E$, where $P$ is the matrix whose columns are the basis vectors in $S$.  If $A$ is the standard matrix representation of the linear transformation, then we write
+$$A[\vec u]_E = [T(\vec u)]_E.$$  Replacing $[\vec u]_E$ on the left with $P[\vec u]_S = [\vec u]_E$, and replacing $[T(\vec u)]_E$ on the right with $P[T(\vec u)]_S = [T(\vec u)]_E$ gives the matrix equation $$AP[\vec u]_S = P[T(\vec u)]_S\quad \text{or}\quad P^{-1}AP [\vec u]_S = [T(\vec u)]_S.$$ The matrix representation of $T$ relative to the basis $S$ is $[T]_{S,S}=[T]_S = P^{-1}AP$ (we only write one $S$). This new matrix is found by multiplying on the right by $P$, and on the left by $P\inv$.  Pictorially, we see
+\begin{equation*}
+  S\xrightarrow{P}E\xrightarrow{A}E\xrightarrow{P\inv}S
+\end{equation*}
+
+
+\begin{definition} We say $A$ and $B$ are similar matrices, and write $A\sim B$ if there exists an invertible matrix $P$ such that $B=P^{-1}AP$.  \end{definition}
 
 Similar matrices have many properties that we'll put into a theorem. 
 
-\begin{theorem}
+\begin{theorem} Similarity has the following properties\footnote{Any relationship between objects which satisfies the first three properties in this theorem is said to be an \emph{equivalence relation}.  Equivalence relations are studied more in later math classes.}.
+
 \begin{enumerate}
-	\item Every matrix is similar to itself, $A\sim A$. (We say similarity is reflexive.)
+	\item Every matrix is similar to itself: $A\sim A$. (We say similarity is reflexive.)
 	\item If $A\sim B$, then $B\sim A$. (We say similarity is symmetric.)
 	\item If $A\sim B$ and $B\sim C$, then $A\sim C$. (We say similarity is transitive.)
 	\item Similar matrices have the same determinant, eigenvalues, rank, and nullity.
 \end{enumerate}
 \end{theorem}
-\begin{proof} Let's take a moment to justify why each of the facts above is true.  Any relationship between sets which satisfies the first three facts above is said to be an equivalence relation.  You will study equivalence relations in more depth in future classes.
+\begin{proof} Let's take a moment to justify why each of the facts above is true.  
 \begin{enumerate}
-	\item Every matrix $A$ is similar to itself, because letting $P=I$, the identity matrix, gives $A=I^{-1}AI$. 
-	\item If $A$ is similar to $B$, then there is some $P$ such that $B=P^{-1}AP$, then multiplying both sides on the right by $P^{-1}$ and on the left by $P$ gives $PBP^{-1}=A$, or $A = (P^{-1})^{-1}BP^{-1}$ (as $(P^{-1})^{-1}=P$). Hence $B$ is similar to $A$.  
-	\item If $A$ is similar to $B$ and $B$ is similar to $C$, then $B=P^{-1}AP$ and $C=Q^{-1}BQ$.  We replace $B$ in the second equation to obtain $C=Q^{-1}BQ = Q^{-1}P^{-1}APQ = R^{-1}AR$ where $R=PQ$ and recall that $R^{-1} = Q^{-1}P^{-1}$ (inverting a product requires inverting each factor and reversing the order of multiplication). This shows that $A$ is similar to $C$.
-	\item If $A$ and $B$ are similar, then $B=P\inv A P$. Taking determinants gives $|B|=|P^{-1}AP| = |P^{-1}||A||P| = |P|^{-1}|A||P| =|A|$, hence similar matrices have the same determinant. 
-	
-	To show they have the same eigenvalues, we compute 
-	\begin{align*}
-	|B-\lambda I|&=|P^{-1}AP-\lambda I|\\
-	&=|P^{-1}AP-\lambda P^{-1}IP|\\
-	&=|P^{-1}(A-\lambda I)P|\\
-	&=|P^{-1}||(A-\lambda I)||P|,
-	\end{align*} 
-	which means $|B-\lambda I| = 0 $ if and only if $|P^{-1}||(A-\lambda I)||P|=0$. The latter equals zero if and only if $|(A-\lambda I)|=0$. Hence $B$ and $A$ have the same eigenvalues.
-	
-  We now show the rank and nullity are the same. We'll show that for every vector in the null space of $A$, there is a corresponding vector in the null space of $B$ (so the nullity of $A$ cannot be larger than the nullity of $B$).  Then by similarity, we interchange the roles of $A$ and $B$ (so the nullity of $B$ cannot be larger than the nullity of $A$). If $\vec x$ is in the null space of $A$, then $A\vec x = \vec 0$. The vector $\vec y = P\inv \vec x$ is in the null space of $B$ since $B\vec y = P\inv A P (P\inv \vec x) = P A \vec x = P\vec 0 = \vec 0.$ Because $P$ is invertible, every vector in the null space of $A$ corresponds to a different vector in the null space of $B$, which means that the nullity of $A$ cannot be larger than the nullity of $A$.  By similarity, the nullity of $B$ cannot be larger than the nullity of $A$, so the nullity of both is the same.  Since rank plus nullity equals the number of columns for both matrices, we know that the ranks are the same as well.     
-\end{enumerate}
-\end{proof}
+	\item Every matrix $A$ is similar to itself because letting $P=I$, the identity matrix, gives $A=I^{-1}AI$. 
+	\item If $A$ is similar to $B$, then there is some $P$ such that $B=P^{-1}AP$.  If we solve for $A$ by multiplying on the left by $P$ and the right by $P\inv$, we get $A=PBP\inv$, or $A=(P\inv)\inv B P\inv=Q\inv B Q$, where $Q=P\inv$. Hence $B$ is similar to $A$.  
+	\item If $A$ is similar to $B$ and $B$ is similar to $C$, then $B=P^{-1}AP$ and $C=Q^{-1}BQ$ for some matrices $P$ and $Q$.  We replace $B$ in the second equation to obtain $C=Q^{-1}BQ = Q^{-1}P^{-1}APQ = R^{-1}AR$ where $R=PQ$ (recall that $(PQ)\inv=Q\inv P\inv$). This shows that $A$ is similar to $C$.
+	\item If $A$ and $B$ are similar, then $B=P\inv A P$. Taking determinants gives $|B|=|P^{-1}AP| = |P^{-1}||A||P| = \frac{1}{|P|}|A||P| =|A|$, hence similar matrices have the same determinant. 
+          
+          To show they have the same eigenvalues, we compute 
+          \begin{align*}
+            |B-\lambda I|&=|P^{-1}AP-\lambda I|\\
+            &=|P^{-1}AP-\lambda P^{-1}IP|\\
+            &=|P^{-1}(A-\lambda I)P|\\
+            &=|P^{-1}||(A-\lambda I)||P|,
+          \end{align*} 
+          which means $|B-\lambda I| = 0 $ if and only if $|P^{-1}||(A-\lambda I)||P|=0$. The latter equals zero if and only if $|(A-\lambda I)|=0$. Hence $B$ and $A$ have the same eigenvalues.
+          
+          We now show the rank and nullity are the same. First, we'll show that for every vector in the null space of $A$, there is a corresponding vector in the null space of $B$ (so the nullity of $A$ cannot be larger than the nullity of $B$).  If $\vec x$ is in the null space of $A$, then $A\vec x = \vec 0$.  The vector $\vec y = P\inv \vec x$ is in the null space of $B$ since $B\vec y = P\inv A P (P\inv \vec x) = P A \vec x = P\vec 0 = \vec 0.$ Because $P\inv$ is invertible, the linear transformation $T(\vec x)=P\inv \vec x$ has the property that $\ker T=\{\vec 0\}$, which means that $T$ is one-to-one.  This means that every null vector $\vec y$ in the nullspace of $B$ came from a different vector $\vec x$ in the nullspace of $A$.  This means that the nullity of $A$ has to be less than or equal to the nullity of $B$.  If we apply the same reasoning the other way, we see that the nullity of $B$ has to be less than or equal to the nullity of $A$.  Therefore the nullity of $A$ and the nullity of $B$ are the same.  Since rank plus nullity equals the number of columns for both matrices, we know that the ranks are the same as well.  
+        \end{enumerate} 
+      \end{proof}
 
-Similar matrices are just different ways of viewing the same linear transformation in terms of a different basis. The facts above show that the determinant, eigenvalues, rank, and nullity of a linear transformation do not depend on the basis chosen. They are important numbers which belong to any linear transformation (regardless of the basis) and can be discussed without referencing the basis vectors (or obtaining a matrix).
-
+      Similar matrices are just different ways of viewing a linear transformation by looking at it in terms of different bases. The facts above show that the determinant, eigenvalues, rank, and nullity of a linear transformation do not depend on the basis chosen. They are important numbers which are properties of the linear transformation, and do not depend on the specific basis or matrix  chosen to represent the linear transformation.
 
 \begin{example}
  Consider the matrix
@@ -1053,9 +1053,9 @@ $P=
 \end{bmatrix} 
 $ which means 
 $P^{-1} = 
-\begin{bmatrix}
- \frac{1}{3} & \frac{2}{3} \\
- -\frac{1}{3} & \frac{1}{3}
+\dfrac{1}{3}\begin{bmatrix}
+ 1&2\\
+-1&1
 \end{bmatrix} 
 $. The matrix representation of $T$ relative to $S$ (the column vectors of $P$) is the similar matrix 
 $$
@@ -1079,40 +1079,40 @@ P^{-1}AP=\begin{bmatrix}
 .$$  Notice how this choice of basis resulted in a diagonal matrix. The next section shows how you can find the right matrix $P$ so that $A$ is similar to a diagonal matrix.
 \end{example}
 
+%% JASON STARTED EDITING AGAIN HERE
 
 \subsection{Diagonalizing a Matrix - Picking the ``Best Basis'' }
-Recall the following: we say that $A$ is similar to $B$ if $B=P^{-1}AP$ for some invertible matrix $A$. 
-This is equivalent to writing $AP=PB$, for some invertible matrix $P$. 
-In this section, we will show that choosing $P$ to be a matrix of eigenvectors, when possible, yields a diagonal matrix $D$ that is similar to  $A$, so that $AP=PD$. This process is called diagonalization.  We'll connect diagonalization to a geometric visualization of linear transformations. We'll also show how diagonalization yields a vector field with specified properties. The next chapter explore this topic more and shows how diagonalization greatly simplifies computing powers of matrices and its connection to differential equations.
+Recall the following: we say that $A$ and $D$ are similar matrices if $D=P^{-1}AP$ for some matrix $P$.   In this section, we will show that if we want $D$ to be a diagonal matrix, then the columns of $P$ must be linearly independent eigenvectors of $A$. This means that there is a basis $S$ (the columns of $P$) so that the transformation $T$ associated with $A$ will have the very simple matrix $[T]_S=D$.  If $D=P\inv A P$, then we say that the matrix $P$ \define{diagonalizes} the matrix $A$.
 
-Let $A$ be an $n$ by $n$ matrix.  Suppose $A$ has $n$ linearly independent eigenvectors $\{\vec x_1,\vec x_2, \ldots, \vec x_n\}$. Let $P = [\vec x_1~\vec x_2~\cdots~\vec x_n]$ be the matrix whose columns are these independent eigenvectors of $A$.  We compute the matrix product
+%If we multiply by $P$, we get $AP=PD$, where $P$ is an invertible matrix.
+
+%In this section, we will show that if we can make $P$ choosing $P$ to be a matrix with the eigenvectors of $A$ as columns (if possible) yields a diagonal matrix $D$ that is similar to  $A$, so that $AP=PD$. This process is called diagonalization.  We'll connect diagonalization to a geometric visualization of linear transformations. We'll also show how diagonalization yields a vector field with specified properties. The next chapter explore this topic more and shows how diagonalization greatly simplifies computing powers of matrices and its connection to differential equations.
+
+Let $A$ be an $n$ by $n$ matrix and suppose that $D=P\inv A P$ for some diagonal matrix $D=\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)$, or in other words, $AP=PD$ for some invertible matrix $P=[\vec x_1~\vec x_2~\cdots~\vec x_n]$.  Computing both $AP$ and $PD$ gives us
 \begin{align*}
 AP &= A[\vec x_1~\vec x_2~\vec x_3~\cdots~\vec x_n] \\
-&= [A\vec x_1~A\vec x_2~A\vec x_3~\cdots~A\vec x_n] \\
-&= [\lambda_1\vec x_1~\lambda_2\vec x_2~\lambda_3\vec x_3~\cdots~\lambda_n\vec x_n] \\
-&= [\vec x_1~\vec x_2~\vec x_3~\cdots~\vec x_n]
+&= [A\vec x_1~A\vec x_2~A\vec x_3~\cdots~A\vec x_n], \text{ and } \\
+PD &= [\vec x_1~\vec x_2~\vec x_3~\cdots~\vec x_n]
 \bm{
 \lambda_1&0&0&\cdots&0\\
 0&\lambda_2&0&\cdots&0\\
 0&0&\lambda_3&\ddots&0\\
 \vdots&\vdots&\ddots&\ddots&\vdots\\
 0&0&0&\cdots&\lambda_n\\}\\
-&= PD\end{align*} where $D$ is the diagonal matrix of eigenvalues (written in the same order as the order in which the eigenvectors are written in $P$).  
-So when $P$ is a matrix of independent eigenvectors, we have $$AP = PD\quad \text{or}  P^{-1}AP=D.$$ The matrix $A$ is similar to the diagonal matrix $D$, using $P$ as the similarity matrix. 
-This process is called diagonalizing a matrix. 
-Notice that if $A$ is similar to $D$, then $AP=PD$ must hold, which means that $P$ must be a matrix whose columns are linearly independent eigenvectors (so that $P$ has an inverse). We have the following key theorem.
+&=[\lambda_1\vec x_1~\lambda_2\vec x_2~\lambda_3\vec x_3~\cdots~\lambda_n\vec x_n].
+\end{align*} 
+Comparing columns between $AP$ and $PD$, we see that $A\vec x_1=\lambda_1\vec x_1$, $A\vec x_2=\lambda_2\vec x_2$, and so on.  This means that $\lambda_1,\lambda_2,\ldots,\lambda_n$ are eigenvalues of $A$ with corresponding eigenvectors $\vec x_1, \vec x_2,\ldots,\vec x_n$.  Furthermore, since $P$ is invertible, we know that the eigenvectors $\vec x_1,\vec x_2,\ldots,\vec x_n$ must be linearly independent.  Let's formalize this understanding in the following key theorem.
 \begin{theorem}
-A matrix is diagonalizable if and only if there are $n$ linearly independent eigenvectors. For any similarity matrix $P$ that diagonalizes $A$ (i.e., $D = P\inv A P$), the columns of $P$ must be $n$ linearly independent eigenvectors. The $k$th eigenvector corresponds to an eigenvalue of $A$ which is the $k$th entry on the diagonal of $D$. 
+A matrix $A$ can be diagonalized (i.e., $D=P\inv A P$, where $D=\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)$ and $P=[\vec x_1~\vec x_2~\cdots~\vec x_n]$) if and only if $A$ has $n$ linearly independent eigenvectors $\vec x_1, \vec x_2,\ldots, \vec x_n$ with corresponding eigenvalues $\lambda_1,\lambda_2,\ldots,\lambda_n$.  
 \end{theorem}
 
 \begin{example}
-Consider the linear transformation $T(x,y) = (x+4y,2x+3y)$ whose standard matrix representation is
-$A=  
+Consider the linear transformation $T(x,y) = (x+4y,2x+3y)$ with standard matrix representation $A=  
 \begin{bmatrix}
  1 & 4 \\
  2 & 3
 \end{bmatrix} 
-$. The eigenvalues are 5 and -1 (verify this by hand on 2 by 2 matrices, but use the computer to do anything bigger). Corresponding eigenvectors are $(1,1)$ and $(-2,1)$, so let $S=\{(1,1),(-2,1)\}$ be a basis for the plane.  Form the matrix 
+$. The eigenvalues are $5$ (with eigenvector $(1,1)$) and $-1$ (with eigenvector $(-2,1)$.  Let the eigenvectors be a basis for the domain and range $\RR^2$: $S=\{(1,1),(-2,1)\}$.  Form the matrix 
 $P=
 \begin{bmatrix}
  1 & -2 \\
@@ -1143,8 +1143,7 @@ P^{-1}AP=\begin{bmatrix}
  5 & 0 \\
  0 & -1
 \end{bmatrix} 
-,$$ a diagonal matrix.  We have diagonalized $A$ (or found a diagonal representation of the linear transformation $T$). Type this example into the Maple introduction to visual what we have just done.
- 
+,$$ a diagonal matrix.  We have diagonalized $A$.  In other words, we have found a basis $S$ so that $[T]_S$ is a diagonal matrix.
 \end{example}
 
 \begin{example} \label{multiplicityex1}
@@ -1156,7 +1155,7 @@ $A=
  1 & 2 & 0 \\
  0 & 0 & 3
 \end{bmatrix} 
-$. The eigenvalues are 3,3,1 (use the computer). Corresponding eigenvectors are $(0,0,1), (1,1,0),$ and $(-1,1,0)$, so let $S=\{(0,0,1), (1,1,0),(-1,1,0)\}$ be a basis for our domain and range.  Form the matrix 
+$. The eigenvalues are $3$ (with multiplicity 2) and $1$.  The eigenspace for the eigenvalue 3 (i.e., the nullspace of $A-3I$) has dimension 2 and has a basis $\{(0,0,1),\, (1,1,0)\}$.  The eigenspace for the eigenvalue 1 (i.e., the nullspace of $A-I$) is dimension 1 and has a basis $\{(-1,1,0)\}$ (verify each of these facts).  So we see that we can get 3 linearly independent eigenvectors, two from the eigenspace for the eigenvalue 3 and one from the eigenspace for the eigenvalue 1: $S=\{(0,0,1),\, (1,1,0),\,(-1,1,0)\}$.  $S$ is then a basis for our domain and range $\RR^3$.  Form the matrix 
 $P=
 \begin{bmatrix}
  0 & 1 & -1 \\
@@ -1172,7 +1171,7 @@ $P^{-1} =
 \end{bmatrix} 
 $. The matrix representation of $T$ relative to $S$ is 
 $$
-P^{-1}AP=
+[T]_S=P^{-1}AP=
 \begin{bmatrix}
  0 & 0 & 1 \\
  \frac{1}{2} & \frac{1}{2} & 0 \\
@@ -1194,9 +1193,10 @@ P^{-1}AP=
  0 & 3 & 0 \\
  0 & 0 & 1
 \end{bmatrix} 
-,$$ a diagonal matrix.  We have diagonalized $A$ (or found a diagonal representation of the linear transformation $T$). Type this example into the Maple introduction to visual what we have just done.
+,$$ a diagonal matrix.  Again, we have diagonalized $A$ (or found a diagonal representation $[T]_S$ of the linear transformation $T$).
 \end{example}
-This last example shows that not every matrix can be diagonalized.  Remember that in order to diagonalize a matrix, you must be able to find $n$ linearly independent eigenvectors. After this example, we'll state the general results.
+
+The next example shows that not every matrix can be diagonalized.  Remember that in order to diagonalize a matrix, you must be able to find $n$ linearly independent eigenvectors. 
 
 \begin{example} \label{multiplicityex2}
 Consider the linear transformation defined by the matrix
@@ -1207,29 +1207,36 @@ $A=
  0 & 0 & 3
 \end{bmatrix} 
 $. 
-The eigenvalues are 3,3,1 (use a computer). Corresponding bases for the eigenspaces are $(0,0,1)$ for 3 and $(-1,1,0)$ for 1. There are only 2 linearly independent eigenvectors.  In this case, there are not enough linearly independent eigenvectors to diagonalize this matrix.  Jordan Form is a method of handling these kinds of matrices, which we will study in the next chapter. 
+The eigenvalues are $3$ (multiplicity 2) and $1$. This time, however, the eigenspace for the eigenvalue 3 has dimension only 1 (a basis is $\{(0,0,1)\}$).  The eigenspace for the eigenvalue 1 is also dimension 1 (a basis is $\{-1,1,0)\}$).  So we only have two linearly independent eigenvectors for $A$, one from each eigenspace.  In this case, there are not enough linearly independent eigenvectors to construct the matrix $P$ and diagonalize this matrix.  \note{Jordan Form is a method of handling these kinds of matrices, which we will study in the next chapter. }
 \end{example}
-
 
 \subsection{Algebraic and Geometric Multiplicity}
 Is every $n$ by $n$ matrix diagonalizable?  
 Does every $n$ by $n$ matrix have $n$ linearly independent eigenvectors? 
-The previos example shows that the answer is no. 
-There are matrices which cannot be diagonalized. 
-So what does it take for a matrix to not be diagonalizable. 
-To not have enough eigenvectors, 
-an eigenvalue must appear with multiplicity greater than 1, but not have the same number of corresponding linearly independent eigenvectors. We now make some definitions to simplify talking about this issue.
+Example~\ref{multiplicityex2} shows that the answer is no. 
+What does it take for a matrix to not be diagonalizable? 
+The matrix must not have enough linearly independent eigenvectors.
+We now make some definitions to simplify talking about this issue.
 \begin{definition}
-The \textbf{algebraic multiplicity} of an eigenvalue is the number of times that eigenvalues appears as a root of the characteristic polynomial.
+The \define{algebraic multiplicity} of an eigenvalue is the number of times that eigenvalues appears as a root of the characteristic polynomial.
 
-The \textbf{geometric multiplicity} of an eigenvalue is the dimension of the corresponding eigenspace. 
+The \define{geometric multiplicity} of an eigenvalue is the dimension of the corresponding eigenspace.
 
-If the geometric multiplicity of an eigenvalue is less than the algebraic multiplicity, then we say the eigenvalue is \textbf{deficient} (there were not enough eigenvectors in the eigenspace).
+If the geometric multiplicity of an eigenvalue is less than the algebraic multiplicity, then we say the eigenvalue is \define{deficient} (there were not enough eigenvectors in the eigenspace).
 \end{definition}
+
+%% JASON edit to here; talk about these theorems.
+
+\begin{theorem}
+The geometric multiplicity is always less than or equal to the algebraic multiplicity.  
+\end{theorem}
+
+\begin{theorem}
+A matrix is diagonalizable if and only if the algebraic multiplicity of each eigenvalue equals the geometric multiplicity of each eigenvalue. 
+\end{theorem}
 
 
 \begin{theorem}
-The geometric multiplicity is always less than or equal to the algebraic multiplicity.  A matrix is diagonalizable if and only if the algebraic multiplicity of each eigenvalue equals the geometric multiplicity of each eigenvalue. 
 If all the eigenvalues are distinct, then $A$ is diagonalizable.
 \end{theorem}
 
@@ -1247,7 +1254,7 @@ Suppose we have a vector field that pushes objects straight outwards in the dire
 $$A = PDP\inv = \bm{1&-1\\1&1}\bm{3&0\\0&-1}\frac12\bm{1&1\\-1&1} = \bm{1&2\\2&1}.$$
 We just obtained the matrix which represents our vector field. All we needed to know was the eigenvalues and eigenvectors, something than can be seen and measured physically in a vector field. So we now have the ability to take a physical moving force and use diagonalization to connect it back to matrices.  
 
-As time permits, I will add one other application related to computer graphics. Stay tuned.
+%As time permits, I will add one other application related to computer graphics. Stay tuned.
 
 
 

@@ -10,3 +10,9 @@ In the applications unit:
 		
 I think this method will help students see the beauty and power of vectors much more.  It will help economists see why they need vector fields.  It will show how the second derivative test is used and why it is used.  If students had taylor series, I could even show them why it works (or include it inside an appendix).
 
+Also, somewhere block matrices ought to be addressed.  Probably in the
+first section when we talk about computation.
+
+Somewhere there should a comparison of the sizes of linearly
+independent and spanning sets.  For now, I put a few statements in
+chapter 5 about this, but it would be good to see it earlier.
