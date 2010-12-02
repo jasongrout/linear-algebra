@@ -956,7 +956,7 @@ Along the way, there are infinitely many choices you can make at each step.  The
 
 %As a side note, I would like to include Fourier Coefficients here (just as a brief 3 minute illustration in class).
 
-\newpage
+
 %% I gave the previous stuff to class already.
 \section{Similar Matrices}
 
@@ -1081,7 +1081,7 @@ P^{-1}AP=\begin{bmatrix}
 
 %% JASON STARTED EDITING AGAIN HERE
 
-\subsection{Diagonalizing a Matrix - Picking the ``Best Basis'' }
+\subsection{Diagonalizing a Matrix: Picking the ``Best Basis'' }
 Recall the following: we say that $A$ and $D$ are similar matrices if $D=P^{-1}AP$ for some matrix $P$.   In this section, we will show that if we want $D$ to be a diagonal matrix, then the columns of $P$ must be linearly independent eigenvectors of $A$. This means that there is a basis $S$ (the columns of $P$) so that the transformation $T$ associated with $A$ will have the very simple matrix $[T]_S=D$.  If $D=P\inv A P$, then we say that the matrix $P$ \define{diagonalizes} the matrix $A$.
 
 %If we multiply by $P$, we get $AP=PD$, where $P$ is an invertible matrix.
@@ -1112,7 +1112,7 @@ Consider the linear transformation $T(x,y) = (x+4y,2x+3y)$ with standard matrix 
  1 & 4 \\
  2 & 3
 \end{bmatrix} 
-$. The eigenvalues are $5$ (with eigenvector $(1,1)$) and $-1$ (with eigenvector $(-2,1)$.  Let the eigenvectors be a basis for the domain and range $\RR^2$: $S=\{(1,1),(-2,1)\}$.  Form the matrix 
+$. The eigenvalues are $5$ (with eigenvector $(1,1)$) and $-1$ (with eigenvector $(-2,1)$).  Let the eigenvectors be a basis for the domain and range $\RR^2$: $S=\{(1,1),(-2,1)\}$.  Form the matrix 
 $P=
 \begin{bmatrix}
  1 & -2 \\
@@ -1207,7 +1207,7 @@ $A=
  0 & 0 & 3
 \end{bmatrix} 
 $. 
-The eigenvalues are $3$ (multiplicity 2) and $1$. This time, however, the eigenspace for the eigenvalue 3 has dimension only 1 (a basis is $\{(0,0,1)\}$).  The eigenspace for the eigenvalue 1 is also dimension 1 (a basis is $\{-1,1,0)\}$).  So we only have two linearly independent eigenvectors for $A$, one from each eigenspace.  In this case, there are not enough linearly independent eigenvectors to construct the matrix $P$ and diagonalize this matrix.  \note{Jordan Form is a method of handling these kinds of matrices, which we will study in the next chapter. }
+The eigenvalues are $3$ (multiplicity 2) and $1$. This time, however, the eigenspace for the eigenvalue 3 has dimension only 1 (a basis is $\{(0,0,1)\}$).  The eigenspace for the eigenvalue 1 is also dimension 1 (a basis is $\{(-1,1,0)\}$).  So we only have two linearly independent eigenvectors for $A$, one from each eigenspace.  In this case, there are not enough linearly independent eigenvectors to construct the matrix $P$ and diagonalize this matrix.  \note{Jordan Form is a method of handling these kinds of matrices, which we will study in the next chapter. }
 \end{example}
 
 \subsection{Algebraic and Geometric Multiplicity}
@@ -1226,6 +1226,8 @@ If the geometric multiplicity of an eigenvalue is less than the algebraic multip
 \end{definition}
 
 %% JASON edit to here; talk about these theorems.
+
+For a sketch of a proof for the next theorem, see problem 11.46 in Schaum's.
 
 \begin{theorem}
 The geometric multiplicity is always less than or equal to the algebraic multiplicity.  
@@ -1250,7 +1252,7 @@ For example \ref{multiplicityex2}, a basis for $E_3$ is $\{(0,0,1)\}$. The geome
 \end{example}
 
 \subsection{Physical Applications of Diagonalization}
-Suppose we have a vector field that pushes objects straight outwards in the direction $(1,1)$ with a force that is triple the distance from the origin, and pulls objects towards the origin in the direction $(-1,1)$ with a force that is equal to the distance to the origin. In other words, our vector field has eigenvectors $(1,1)$ and $(-1,1)$ with corresponding eigenvalues $3$ and $-1$. Is this enough information to determine the entire vector field?  We seek a matrix $A$ with eigenvectors $(1,1)$ and $(-1,1)$ with eigenvalues 3 and $-1$.  The principle of diagonalization comes to our aide.  Because $A$ has two linearly independent eigenvectors, we know that it is diagonalizable where $$ P = \bm{1&-1\\1&1}, D = \bm{3&0\\0&-1},P\inv =\frac12\bm{1&1\\-1&1}. $$ We solve the equation $D = P\inv A P$ for $A$ to obtain 
+Suppose we have a vector field that pushes objects straight outwards in the direction $(1,1)$ with a force that is triple the distance from the origin, and pulls objects towards the origin in the direction $(-1,1)$ with a force that is equal to the distance to the origin. In other words, our vector field has eigenvectors $(1,1)$ and $(-1,1)$ with corresponding eigenvalues $3$ and $-1$. Is this enough information to determine the entire vector field?  We seek a matrix $A$ with eigenvectors $(1,1)$ and $(-1,1)$ with eigenvalues 3 and $-1$.  The principle of diagonalization comes to our aid.  Because $A$ has two linearly independent eigenvectors, we know that it is diagonalizable where $$ P = \bm{1&-1\\1&1}, D = \bm{3&0\\0&-1},P\inv =\frac12\bm{1&1\\-1&1}. $$ We solve the equation $D = P\inv A P$ for $A$ to obtain 
 $$A = PDP\inv = \bm{1&-1\\1&1}\bm{3&0\\0&-1}\frac12\bm{1&1\\-1&1} = \bm{1&2\\2&1}.$$
 We just obtained the matrix which represents our vector field. All we needed to know was the eigenvalues and eigenvectors, something than can be seen and measured physically in a vector field. So we now have the ability to take a physical moving force and use diagonalization to connect it back to matrices.  
 
