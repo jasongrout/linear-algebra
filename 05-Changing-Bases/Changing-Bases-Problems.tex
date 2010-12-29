@@ -122,11 +122,15 @@ $T(x,y,z) = (x+2y-z, 2x+4y+4z,-x-2y)$.
 \begin{enumerate}
 \item This project explores the use of coordinates relative to a basis to send and receive radio communications.  We'll start with a brief introduction to the idea, and then do some computations. Make sure you have a CAS like SAGE nearby so that you can rapidly perform the computations required.
 
-Radio waves form a vector space, which means the sum of two radio waves is again a radio wave, and radio waves can be scaled by any real number. We will represent radio waves in this example by using trigonometric functions. The telecommunications industry (radio, TV, internet, cell phone, etc.) utilizes these facts to send and receive messages.  Here is the basis idea:
+Radio waves form a vector space, which means the sum of two radio waves is again a radio wave, and radio waves can be scaled by any real number. We will represent radio waves in this example by using trigonometric functions. The telecommunications industry (radio, TV, internet, cell phone, etc.) utilizes these facts to send and receive messages.  Here is the basic idea:
 \begin{itemize}
 	\item The government assigns each radio station a different frequency to broadcast at (they state a basis and require everyone to use this basis). We'll see what happens later if someone doesn't follow the rules. 
-	\item The radio station first converts their message into numbers (vectors). They then creates and transmit radio waves whose amplitude matches the numbers being sent. (Here is where we use the ability to scale vectors by any amount.)
-	\item Every radio station simultaneously transmits radio waves at their frequency, so these radios waves add together. This total combined radio wave looks very different than any of the individually transmitted radio waves. (Here is where we use the ability to sum any collection of vectors.)
+	\item The radio station first converts their message into
+          numbers (vectors). They
+          then create and transmit radio waves, modifying the amplitude (for AM radio) or frequence (for FM radio) to match 
+          the numbers being sent. (Here is where we use the ability to
+          scale vectors by any amount.)
+	\item Every radio station simultaneously transmits radio waves at their frequency, so these radios waves add together in the air. This total combined radio wave looks very different than any of the individually transmitted radio waves. (Here is where we use the ability to sum any collection of vectors.)
 	\item When you turn the dial on your radio tuner to FM 91.5, an electrical circuit in your radio called an ``integrator'' computes an integral (yes it actually computes an integral). This integral is a linear transformation that takes radio waves to numbers. The numbers obtained from this integral are the numbers sent by FM 91.5, or the coordinates of some vectors, relative to a basis.  
 	When you change the dial to a different frequency, then the integral returns the coordinates transmitted by the new station.	
 \end{itemize}
