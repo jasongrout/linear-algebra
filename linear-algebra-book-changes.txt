@@ -22,6 +22,17 @@ Vector Spaces
 -------------
 So I think all that's needed is a bit more emphasis in chapter 2 that vector subspaces are just spans of vectors, and then an emphasis in chapter 3 that these are the relevant "patterns" that addition and multiplication take from the vectors in R^n.
 
+Application of linear transformations 
+------------------------------------- 
+
+When watching football, you see a timer projected onto the field.  The
+nice thing about a football field is that there are straight lines
+that give us a way to calculate the linear transformation.  So give
+the students a picture of the field from an angle, and have them
+calculate the linear transformation needed to project some text onto
+the field and have it appear as part of the field.  Maybe even have
+them actually have them measure the angle and distances.
+
 
 Chapter 3
 ---------
