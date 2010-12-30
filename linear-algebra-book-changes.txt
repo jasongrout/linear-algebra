@@ -67,8 +67,9 @@ more practical homework dealing with this, and make |AB|=|A||B| part of
 the objective dealing with elementary matrices. 
 
 
-Chapter 4
----------
+[x] Switch order of subsections in 4.2
+--------------------------------------
+
 In keeping with the philosophy that students get lost when lots of definitions and terminology come before concrete examples, I propose reversing the subsections in 4.2 (so it would be "Standard matrix transforms", "Linear Transformations", "General vocabulary of functions"; see my revisions at https://bitbucket.org/jasongrout/linear-algebra/downloads to check the section numbers). This does several things:
 
 1. It puts finding the matrix of a linear transformation just after we've talked about what a matrix does in a linear transformation.  This is very natural (i.e., first is given a matrix, what is the geometry, then given the geometry, what is the matrix?) and very easy to do.

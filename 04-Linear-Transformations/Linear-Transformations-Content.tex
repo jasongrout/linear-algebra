@@ -298,52 +298,122 @@ In keeping with the philosophy that students get lost when lots of definitions a
 
 3. *then* we formalize the function vocabulary in preparation for talking about the images and kernel of a transformation.  That way the vocabulary comes right before we need it, instead of at the beginning of the chapter, not to be used until the next section.  It also comes after the motivation of linear transformations, inverse matrices, etc. }
 
-\subsection{General Function Notation and Vocabulary}
-Let's start with a review of function notation from beginning algebra. 
-A function $y=f(x)$ is a rule which assigns to each input $x$ from the domain a value $y$ from the range. 
-Notationally we may write $f:D\to R$ to represent the function as a map from $D$ (the domain) to $R$ (the range).  
-The sets $D$ and $R$ in previous classes have normally been the set of real numbers. 
-Before we proceed to work with functions between vector spaces, we need to build some vocabulary. 
-We now consider functions (maps or transformations) from any set $D$ to any set $R$.
-\begin{definition}
-  \begin{itemize}
-  \item Any mapping which assigns to each element of the \define{domain} $D$ exactly one element of the \define{range} $R$ is called a \define{function}. We write $f:D\to R$ to emphasis the domain $D$ and range $R$.  Sometimes the range is called the \define{codomain} of the function.
 
-  \item The \define{image} of an element $x\in D$ is the value $y\in R$ such that $f(x)=y$. We can write $x\mapsto y$ (read ``$x$ maps to $y$'') to illustrate the idea that the input $x$ transforms into the output $y$ through this function.
 
-  \item The \define{image} of $f$, written $\im f=f(D)$, is the set of $y\in R$ which are the image of some $x\in D$.  This means that $\im f$ is always a subset (or is equal to) the range of $f$.  In set notation, we write $$\im f = \{y\in R \st f(x)=y \text{ for some $x\in D$}\}.$$
 
-  \item The \define{preimage} of $y\in R$, written $f^{-1}(y)$, is the set of all $x\in D$ such that $f(x)=y$.  There may be any number of things in $D$ which map to $y$, so the preimage could be any size.
-	
-  \item We say a function $f$ is \define{one-to-one}, or \define{injective}, if every $y$ value in the image has only one $x$ value which maps to it.  In other words, for every $y\in \im f$, the preimage $f^{-1}(y)$ has one thing in it.  Mathematically, we could also say that if $f(x_1)=f(x_2)$, then $x_1=x_2$.  Another way to say this is that the preimage of any $y\in R$ is always size one or less.
+\subsection{Standard Matrix Representation}
+Every matrix $A$ we have studied this semester represents a linear transformation $f(\vec v)=A\vec v$. We can see that the function is linear since
+\begin{enumerate}
+\item $f(\vec v_1+\vec v_2)=A(\vec v_1+\vec v_2)=A\vec v_1+A\vec v_2=f(\vec v_1)+f(\vec v_2)$, so $f$ preserves vector addition.
 
-  \item We say a function $f$ is \define{onto}, or \define{surjective}, if $\im f=R$.  In other words, every $y\in R$ is the image of some $x\in D$.  Another way to say this is that the preimage of any $y\in R$ is always size one or more.
+\item $f(c\vec v)=A(c\vec v)=c(A\vec v)=cf(\vec v)$, so $f$ preserves scalar multiplication.
+\end{enumerate}
 
-  \item We say a function $f$ is \define{bijective} if $f$ is both one-to-one and onto (both injective and surjective).  In other words, every $y\in R$ has exactly one $x\in D$ in its preimage.
+Conversely, every linear transformation (between finite dimensional vector spaces) can be expressed in matrix form $T(\vec x)=A\vec x$ for some matrix $A$.  Examples \ref{ltex matrix1} and \ref{ltex matrix2} illustrate how to find the matrix $A$ relative to the standard basis.  To find this matrix, we start by computing the image of each standard basis vector, i.e. $$T(1,0,\ldots,0),\,T(0,1,\ldots,0),\, \ldots,\,T(0,0,\ldots,1).$$ We then place these vectors in the columns of a matrix.  This matrix $A$ is called the standard matrix representation of the linear transformation. We use the word ``standard'' because are using the standard basis vectors to give the coordinates of each vector.  The next two units explore using different basis vectors to describe linear transformations.
 
-  \item If a function $f$ is bijective, we define the \define{inverse} of $f^{-1}\colon R\to D$ to be the function which takes a $y\in R$ and returns the preimage $x\in D$.  This means that $f^{-1}(f(x))=x$, and so $f^{-1}$ inverts $f$.
+\begin{example} Let's find the standard matrix representation of the
+  linear transformation $$T(x,y,z,w)=(2x+3y-4z,\,x+y-w,\,z+2x-5w).$$
+  We start by computing images of the four standard basis vectors
+  \begin{align*}
+    T(1,0,0,0)&=(2,1,2), & T(0,1,0,0)&=(3,1,0),\\
+    T(0,0,1,0)&=(-4,0,1), & T(0,0,0,1)&=(0,-1,-5).
+  \end{align*}
+We now place these vectors into the columns of a matrix.  This matrix gives the standard matrix representation of $T$.  We could write $T$ as
+$$T(x,y,z,w)=A\vec x=
+\begin{bmatrix}
+2&3&-4&0\\
+1&1&0 &-1\\
+2&0&1 &-5
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+z\\
+w
+\end{bmatrix}.$$ 
+The matrix $A$ is called the standard matrix representation of $T$. 
+\marginpar{The number of rows is the dimension of the range. The number of columns is the dimension of the domain.}% 
+Notice that we input 4D vectors ($A$ has 4 columns) and get out 3D vectors ($A$ has 3 rows).  
+\end{example}
 
-  \item The composition of two functions $f\colon A\to B$ and $g\colon B\to C$ is a new function $g\circ f\colon A\to C$ that takes an element $a\in A$ and returns the element $c\in C$ given by $c=(g\circ f)(a)=g(f(a))$. Notice that in order to compose two maps, the image of $f$ must be a subset of the domain of $g$.
-
-\end{itemize}
-\end{definition}
-
+Sometimes a linear transformation is described in words.  Examples include things like ``rotate everything 30 degrees'' or ``find the shadow of this object if the sun is located at ...''  In such a case, you can create the standard matrix representation of the transformation by asking where each standard basis vector is sent.  Here is an example.
 
 \begin{example}
-Consider the sets $D=\{A,B,C\}$, $R_1=\{1,3,9\}$, and $R_2=\{1,3,7,9\}$.
-\begin{enumerate}
-	\item Let's define a function $f\colon D\to R_1$ by $f(A)=1$, $f(B)=9$, $f(C)=3$.  The image of $B$ is $9$, so we write $B\mapsto 9$. The image of $f$ is $f(D)=\{1,3,9\}$, so $f$ is onto. The preimage of $3$ is $f^{-1}(3)=C$. This map $f\colon D\to R_1$ is injective and surjective, so it is bijective and has an inverse $f^{-1}$.  The inverse does $f^{-1}(1)=A$, $f^{-1}(9)=B$, and $f^{-1}(3)=C$. 
-        \item If we define $f\colon D\to R_2$ by the same rules as above, then $f$ is not surjective (onto) because 7 is not the image of any value in $D$ (i.e., the preimage of $7$ is empty).  You can also see that the function is not surjective since $\im f\neq R_2$.
-	\item If we define $f(A)=1$, $f(A)=9$, $f(C)=3$, then $f\colon D\to R_1$ is not a function. There are two things wrong: $f(B)$ is not defined, and $A$ gets mapped to two different values, $A\mapsto 1,9$.
-	\item If we define $f\colon D\to R_1$ by $f(A)=1$, $f(B)=3$, $f(C)=3$, then $f$ is a function.  The image of both $B$ and $C$ is $3$ so the preimage of $3$ is $f^{-1}(3)=\{B,C\}$ and has size 2.  This means $f$ is not injective.  Another way to think about this is that $f(B)=f(C)$, but $B\neq C$.
-	\item If we define $f\colon D\to R_1$ by $f(A)=1$, $f(B)=3$, $f(C)=9$, and we define $g\colon R_1\to R_2$ by $g(1)=1$, $g(3)=3$, $g(9)=7$, then the composite function $g\circ f$ satisfies $g(f(A))=g(1)=1$, $g(f(B))=g(3)=3$, and $g(f(C))=g(9)=7$. The composite is injective, but not surjective (it misses 9 in $R_2$). 
-\end{enumerate}
+Let's rotate an object in the plane counterclockwise by 90 degrees. 
+How do we obtain the standard matrix representation of this transformation? 
+We find what happens to the standard basis vectors. 
+Let $T(x,y)$ be the linear transformation which rotates counterclockwise by 90 degrees.  Then $T(1,0)=(0,1)$ and $T(0,1)=(-1,0)$.  
+This means the standard matrix representation of $T$ is 
+\begin{align*}
+\begin{bmatrix}
+\cos \pi/2&\cos\pi\\
+\sin\pi/2&\sin\pi
+\end{bmatrix}&=\begin{bmatrix}0&-1\\1&0\end{bmatrix} && \text{(a rotation of 90 degrees)}.
+\end{align*}
+
+If instead we want to rotate counterclockwise by 30 degrees ($\pi/6$ radians)  then we compute 
+$T(1,0) = (\cos \pi/6, \sin \pi/6) = (\sqrt3/2,1/2)$ (the values on the unit circle at $\pi/6$)  and 
+$T(0,1) = (\cos 2\pi/3, \sin 2\pi/3) = (-1/2,\sqrt3/2) $ (the values on the unit circle at $\pi/2+\pi/6 = 2\pi/3$). 
+This means the standard matrix representation of $T$ is 
+\marginpar{
+\includegraphics[width=\marginparwidth]{04-Linear-Transformations/support/LTrotate30}
+
+A 30 degree rotation.}
+\begin{align*}
+\begin{bmatrix}
+\cos \pi/6&\cos(\pi/2+\pi/6)\\
+\sin\pi/6&\sin(\pi/2+\pi/6)
+\end{bmatrix}
+&=\begin{bmatrix}\sqrt3/2&-1/2\\1/2&\sqrt3/2\end{bmatrix}  &&\text{(a rotation of 30 degrees)}.
+\end{align*}
+
 \end{example}
+
+Let's generalize the pattern we've seen above to rotations through any angle. We can write the image of the second basis vector above in terms of trig function at $\theta$, instead of at $\pi/2+\theta$, if we recall that $\cos(\pi/2+\theta) = -\sin(\theta)$ and $\sin(\pi/2+\theta) = \cos(\theta)$ (these identities just say that shifting cosine left $\pi/2$ gives negative sine, and shifting sine left $\pi/2$ gives cosine).  
+We can now write the standard matrix representation of a rotation through $\theta$ degrees as
+\begin{align*}
+\begin{bmatrix}
+\cos \theta&\cos(\pi/2+\theta)\\
+\sin \theta&\sin(\pi/2+\theta)
+\end{bmatrix}
+&=
+\begin{bmatrix}
+\cos \theta&-\sin\theta\\
+\sin \theta&\cos\theta
+\end{bmatrix}
+&& \text{(a rotation of $\theta$ radians)}.
+\end{align*}
+
+
+
+
+Sometimes we are able to extract from a problem information about how a transformation changes vectors other than the standard basis vectors.  When this occurs, provided we know what the transformation does to a basis of the domain, we can still find the standard representation. It just requires a little more work. Let's look at an example. 
+
+\begin{example}
+Suppose we know that $T(x,y)$ is a linear transformation from $\RR^2$ to $\RR^3$ and we know that $T(1,1)=(3,0,5)$ and $T(2,0)=(1,-2,0)$. We don't know $A$ yet, but we do know that 
+$$
+A\begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}3\\0\\5\end{bmatrix} \text{ and }
+A\begin{bmatrix}2\\0\end{bmatrix} = \begin{bmatrix}1\\-2\\0\end{bmatrix},\quad \text{ so  } \quad
+A\begin{bmatrix}1&2\\1&0\end{bmatrix} = \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}.
+$$  
+The vectors $(1,1)$ and $(2,0)$ are linearly independent, so they form a basis for $\RR^2$. The matrix formed by placing these vectors in columns, $\begin{bmatrix}1&2\\1&0\end{bmatrix}$, is an invertible matrix since the columns are independent. Since it is invertible, we can multiply both sides of our equation on the right by this inverse to obtain $$A= \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}\begin{bmatrix}1&2\\1&0\end{bmatrix}^{-1} = \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}\begin{bmatrix}0&1\\1/2&-1/2\end{bmatrix} =\begin{bmatrix}1/2&5/2\\-1&1\\0&5\end{bmatrix}.$$ 
+We found the standard matrix representation by using the inverse of the matrix of basis vectors that we had. We can check that our matrix $A$ is correct by computing the matrix product 
+$$\begin{bmatrix}1/2&5/2\\-1&1\\0&5\end{bmatrix}
+\begin{bmatrix}1&2\\1&0\end{bmatrix} 
+= \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}$$ to show that $T(1,1)=(3,0,5)$ and $T(2,0)=(1,-2,0)$, as required.  We also know now that $T(1,0) = (1/2,-1,0)$ and $T(0,1)=(5/2,1,5)$, so we know the images of the standard basis vectors. 
+\end{example}
+ 
+In general, when you know what a transformation does to any basis of the domain, you can use this to find the standard matrix by multiplying on the right by an inverse.  
+Schaum's outlines writes out the equations and then solves them (which is equivalent to using an inverse). In this book, we'll focus on the fact that the inverse matrix is a key tool needed to understand a linear transformation.
+
+
+
 
 \subsection{Linear Transformations}
 One of the main topics in linear algebra is the study of special types of functions, called linear transformations (or linear mappings) where the domain and codomain (range) are both vector spaces.  All of the transformations resulting from matrices in the first section are linear transformations.  The following definition is a result of noticing the patterns which arose from the examples in the first section.
 \begin{definition}[Linear Transformation]
-We call a function $T\colon V\to W$ between vector spaces $V$ and $W$ linear function or \define{linear transformation} if both of the following criteria are satisfied:
+We call a function $T\colon V\to W$ between vector spaces $V$ and $W$
+a \define{linear transformation} if both of the following criteria are satisfied:
 \begin{enumerate}
 	\item $T(\vec v_1+\vec v_2)=T(\vec v_1)+T(\vec v_2)$ for every $\vec v_1,\vec v_2\in V$
 	\item $T(c\vec v)=cT(\vec v)$ for every scalar $c$ and vector $\vec v\in V$.
@@ -456,114 +526,48 @@ Let $V$ be the set of infinitely differentiable functions defined on all of $\RR
 
 
 
+\subsection{General Function Notation and Vocabulary}
+Now let's formalize some of the notation so we can more precisely
+discuss and understand these concepts.
+A function $y=f(x)$ is a rule which assigns to each input $x$ from the domain a value $y$ from the range. 
+Notationally we may write $f:D\to R$ to represent the function as a map from $D$ (the domain) to $R$ (the range).  
+The sets $D$ and $R$ in previous classes have normally been the set of real numbers. 
+Before we proceed to work with functions between vector spaces, we need to build some vocabulary. 
+We now consider functions (maps or transformations) from any set $D$ to any set $R$.
+\begin{definition}
+  \begin{itemize}
+  \item Any mapping which assigns to each element of the \define{domain} $D$ exactly one element of the \define{range} $R$ is called a \define{function}. We write $f:D\to R$ to emphasis the domain $D$ and range $R$.  Sometimes the range is called the \define{codomain} of the function.
+
+  \item The \define{image} of an element $x\in D$ is the value $y\in R$ such that $f(x)=y$. We can write $x\mapsto y$ (read ``$x$ maps to $y$'') to illustrate the idea that the input $x$ transforms into the output $y$ through this function.
+
+  \item The \define{image} of $f$, written $\im f=f(D)$, is the set of $y\in R$ which are the image of some $x\in D$.  This means that $\im f$ is always a subset (or is equal to) the range of $f$.  In set notation, we write $$\im f = \{y\in R \st f(x)=y \text{ for some $x\in D$}\}.$$
+
+  \item The \define{preimage} of $y\in R$, written $f^{-1}(y)$, is the set of all $x\in D$ such that $f(x)=y$.  There may be any number of things in $D$ which map to $y$, so the preimage could be any size.
+	
+  \item We say a function $f$ is \define{one-to-one}, or \define{injective}, if every $y$ value in the image has only one $x$ value which maps to it.  In other words, for every $y\in \im f$, the preimage $f^{-1}(y)$ has one thing in it.  Mathematically, we could also say that if $f(x_1)=f(x_2)$, then $x_1=x_2$.  Another way to say this is that the preimage of any $y\in R$ is always size one or less.
+
+  \item We say a function $f$ is \define{onto}, or \define{surjective}, if $\im f=R$.  In other words, every $y\in R$ is the image of some $x\in D$.  Another way to say this is that the preimage of any $y\in R$ is always size one or more.
+
+  \item We say a function $f$ is \define{bijective} if $f$ is both one-to-one and onto (both injective and surjective).  In other words, every $y\in R$ has exactly one $x\in D$ in its preimage.
+
+  \item If a function $f$ is bijective, we define the \define{inverse} of $f^{-1}\colon R\to D$ to be the function which takes a $y\in R$ and returns the preimage $x\in D$.  This means that $f^{-1}(f(x))=x$, and so $f^{-1}$ inverts $f$.
+
+  \item The composition of two functions $f\colon A\to B$ and $g\colon B\to C$ is a new function $g\circ f\colon A\to C$ that takes an element $a\in A$ and returns the element $c\in C$ given by $c=(g\circ f)(a)=g(f(a))$. Notice that in order to compose two maps, the image of $f$ must be a subset of the domain of $g$.
+
+\end{itemize}
+\end{definition}
 
 
-\subsection{Standard Matrix Representation}
-Every matrix $A$ we have studied this semester represents a linear transformation $f(\vec v)=A\vec v$. We can see that the function is linear since
+\begin{example}
+Consider the sets $D=\{A,B,C\}$, $R_1=\{1,3,9\}$, and $R_2=\{1,3,7,9\}$.
 \begin{enumerate}
-\item $f(\vec v_1+\vec v_2)=A(\vec v_1+\vec v_2)=A\vec v_1+A\vec v_2=f(\vec v_1)+f(\vec v_2)$, so $f$ preserves vector addition.
-
-\item $f(c\vec v)=A(c\vec v)=c(A\vec v)=cf(\vec v)$, so $f$ preserves scalar multiplication.
+	\item Let's define a function $f\colon D\to R_1$ by $f(A)=1$, $f(B)=9$, $f(C)=3$.  The image of $B$ is $9$, so we write $B\mapsto 9$. The image of $f$ is $f(D)=\{1,3,9\}$, so $f$ is onto. The preimage of $3$ is $f^{-1}(3)=C$. This map $f\colon D\to R_1$ is injective and surjective, so it is bijective and has an inverse $f^{-1}$.  The inverse does $f^{-1}(1)=A$, $f^{-1}(9)=B$, and $f^{-1}(3)=C$. 
+        \item If we define $f\colon D\to R_2$ by the same rules as above, then $f$ is not surjective (onto) because 7 is not the image of any value in $D$ (i.e., the preimage of $7$ is empty).  You can also see that the function is not surjective since $\im f\neq R_2$.
+	\item If we define $f(A)=1$, $f(A)=9$, $f(C)=3$, then $f\colon D\to R_1$ is not a function. There are two things wrong: $f(B)$ is not defined, and $A$ gets mapped to two different values, $A\mapsto 1,9$.
+	\item If we define $f\colon D\to R_1$ by $f(A)=1$, $f(B)=3$, $f(C)=3$, then $f$ is a function.  The image of both $B$ and $C$ is $3$ so the preimage of $3$ is $f^{-1}(3)=\{B,C\}$ and has size 2.  This means $f$ is not injective.  Another way to think about this is that $f(B)=f(C)$, but $B\neq C$.
+	\item If we define $f\colon D\to R_1$ by $f(A)=1$, $f(B)=3$, $f(C)=9$, and we define $g\colon R_1\to R_2$ by $g(1)=1$, $g(3)=3$, $g(9)=7$, then the composite function $g\circ f$ satisfies $g(f(A))=g(1)=1$, $g(f(B))=g(3)=3$, and $g(f(C))=g(9)=7$. The composite is injective, but not surjective (it misses 9 in $R_2$). 
 \end{enumerate}
-
-Conversely, every linear transformation (between finite dimensional vector spaces) can be expressed in matrix form $T(\vec x)=A\vec x$ for some matrix $A$.  Examples \ref{ltex matrix1} and \ref{ltex matrix2} illustrate how to find the matrix $A$ relative to the standard basis.  To find this matrix, we start by computing the image of each standard basis vector, i.e. $$T(1,0,\ldots,0),\,T(0,1,\ldots,0),\, \ldots,\,T(0,0,\ldots,1).$$ We then place these vectors in the columns of a matrix.  This matrix $A$ is called the standard matrix representation of the linear transformation. We use the word ``standard'' because are using the standard basis vectors to give the coordinates of each vector.  The next two units explore using different basis vectors to describe linear transformations.
-
-\begin{example} Let's find the standard matrix representation of the
-  linear transformation $$T(x,y,z,w)=(2x+3y-4z,\,x+y-w,\,z+2x-5w).$$
-  We start by computing images of the four standard basis vectors
-  \begin{align*}
-    T(1,0,0,0)&=(2,1,2), & T(0,1,0,0)&=(3,1,0),\\
-    T(0,0,1,0)&=(-4,0,1), & T(0,0,0,1)&=(0,-1,-5).
-  \end{align*}
-We now place these vectors into the columns of a matrix.  This matrix gives the standard matrix representation of $T$.  We could write $T$ as
-$$T(x,y,z,w)=A\vec x=
-\begin{bmatrix}
-2&3&-4&0\\
-1&1&0 &-1\\
-2&0&1 &-5
-\end{bmatrix}
-\begin{bmatrix}
-x\\
-y\\
-z\\
-w
-\end{bmatrix}.$$ 
-The matrix $A$ is called the standard matrix representation of $T$. 
-\marginpar{The number of rows is the dimension of the range. The number of columns is the dimension of the domain.}% 
-Notice that we input 4D vectors ($A$ has 4 columns) and get out 3D vectors ($A$ has 3 rows).  
 \end{example}
-
-Sometimes a linear transformation is described in words.  Examples include things like ``rotate everything 30 degrees'' or ``find the shadow of this object if the sun is located at ...''  In such a case, you can create the standard matrix representation of the transformation by asking where each standard basis vector is sent.  Here is an example.
-
-\begin{example}
-Let's rotate an object in the plane counterclockwise by 90 degrees. 
-How do we obtain the standard matrix representation of this transformation? 
-We find what happens to the standard basis vectors. 
-Let $T(x,y)$ be the linear transformation which rotates counterclockwise by 90 degrees.  Then $T(1,0)=(0,1)$ and $T(0,1)=(-1,0)$.  
-This means the standard matrix representation of $T$ is 
-\begin{align*}
-\begin{bmatrix}
-\cos \pi/2&\cos\pi\\
-\sin\pi/2&\sin\pi
-\end{bmatrix}&=\begin{bmatrix}0&-1\\1&0\end{bmatrix} && \text{(a rotation of 90 degrees)}.
-\end{align*}
-
-If instead we want to rotate counterclockwise by 30 degrees ($\pi/6$ radians)  then we compute 
-$T(1,0) = (\cos \pi/6, \sin \pi/6) = (\sqrt3/2,1/2)$ (the values on the unit circle at $\pi/6$)  and 
-$T(0,1) = (\cos 2\pi/3, \sin 2\pi/3) = (-1/2,\sqrt3/2) $ (the values on the unit circle at $\pi/2+\pi/6 = 2\pi/3$). 
-This means the standard matrix representation of $T$ is 
-\marginpar{
-\includegraphics[width=\marginparwidth]{04-Linear-Transformations/support/LTrotate30}
-
-A 30 degree rotation.}
-\begin{align*}
-\begin{bmatrix}
-\cos \pi/6&\cos(\pi/2+\pi/6)\\
-\sin\pi/6&\sin(\pi/2+\pi/6)
-\end{bmatrix}
-&=\begin{bmatrix}\sqrt3/2&-1/2\\1/2&\sqrt3/2\end{bmatrix}  &&\text{(a rotation of 30 degrees)}.
-\end{align*}
-
-\end{example}
-
-Let's generalize the pattern we've seen above to rotations through any angle. We can write the image of the second basis vector above in terms of trig function at $\theta$, instead of at $\pi/2+\theta$, if we recall that $\cos(\pi/2+\theta) = -\sin(\theta)$ and $\sin(\pi/2+\theta) = \cos(\theta)$ (these identities just say that shifting cosine left $\pi/2$ gives negative sine, and shifting sine left $\pi/2$ gives cosine).  
-We can now write the standard matrix representation of a rotation through $\theta$ degrees as
-\begin{align*}
-\begin{bmatrix}
-\cos \theta&\cos(\pi/2+\theta)\\
-\sin \theta&\sin(\pi/2+\theta)
-\end{bmatrix}
-&=
-\begin{bmatrix}
-\cos \theta&-\sin\theta\\
-\sin \theta&\cos\theta
-\end{bmatrix}
-&& \text{(a rotation of $\theta$ radians)}.
-\end{align*}
-
-
-
-
-Sometimes we are able to extract from a problem information about how a transformation changes vectors other than the standard basis vectors.  When this occurs, provided we know what the transformation does to a basis of the domain, we can still find the standard representation. It just requires a little more work. Let's look at an example. 
-
-\begin{example}
-Suppose we know that $T(x,y)$ is a linear transformation from $\RR^2$ to $\RR^3$ and we know that $T(1,1)=(3,0,5)$ and $T(2,0)=(1,-2,0)$. We don't know $A$ yet, but we do know that 
-$$
-A\begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}3\\0\\5\end{bmatrix} \text{ and }
-A\begin{bmatrix}2\\0\end{bmatrix} = \begin{bmatrix}1\\-2\\0\end{bmatrix},\quad \text{ so  } \quad
-A\begin{bmatrix}1&2\\1&0\end{bmatrix} = \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}.
-$$  
-The vectors $(1,1)$ and $(2,0)$ are linearly independent, so they form a basis for $\RR^2$. The matrix formed by placing these vectors in columns, $\begin{bmatrix}1&2\\1&0\end{bmatrix}$, is an invertible matrix since the columns are independent. Since it is invertible, we can multiply both sides of our equation on the right by this inverse to obtain $$A= \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}\begin{bmatrix}1&2\\1&0\end{bmatrix}^{-1} = \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}\begin{bmatrix}0&1\\1/2&-1/2\end{bmatrix} =\begin{bmatrix}1/2&5/2\\-1&1\\0&5\end{bmatrix}.$$ 
-We found the standard matrix representation by using the inverse of the matrix of basis vectors that we had. We can check that our matrix $A$ is correct by computing the matrix product 
-$$\begin{bmatrix}1/2&5/2\\-1&1\\0&5\end{bmatrix}
-\begin{bmatrix}1&2\\1&0\end{bmatrix} 
-= \begin{bmatrix}3&1\\0&-2\\5&0\end{bmatrix}$$ to show that $T(1,1)=(3,0,5)$ and $T(2,0)=(1,-2,0)$, as required.  We also know now that $T(1,0) = (1/2,-1,0)$ and $T(0,1)=(5/2,1,5)$, so we know the images of the standard basis vectors. 
-\end{example}
- 
-In general, when you know what a transformation does to any basis of the domain, you can use this to find the standard matrix by multiplying on the right by an inverse.  
-Schaum's outlines writes out the equations and then solves them (which is equivalent to using an inverse). In this book, we'll focus on the fact that the inverse matrix is a key tool needed to understand a linear transformation.
-
-
 
 
   
