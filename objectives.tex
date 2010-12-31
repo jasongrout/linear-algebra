@@ -1,0 +1,129 @@
+
+\documentclass[letterpaper,oneside]{article}%msart}%rticle}%
+\usepackage[margin=1in]{geometry}
+\usepackage{tabls}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{microtype}
+% Abbreviations
+
+\newcommand{\ii}{\ensuremath{\mathbf{\hat \i}}}
+\newcommand{\jj}{\ensuremath{\mathbf{\hat \j}}}
+\newcommand{\kk}{\ensuremath{\mathbf{\hat k}}}
+\newcommand{\vv}{\ensuremath{\mathbf{v}}}
+\newcommand{\colvec}[1]{\ensuremath{\begin{bmatrix}#1\end{bmatrix}}}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\rref}{rref}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\row}{row}
+\DeclareMathOperator{\nullspace}{null}
+\DeclareMathOperator{\adjoint}{adj} % adjoint
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+
+\renewcommand{\thefootnote}{\roman{footnote}}
+\newcommand{\note}[1]{\footnote{#1}\marginpar{\fbox{\textbf{\thefootnote}}}}
+%%%%%%%To make all notes ignored, uncomment the following command.
+\renewcommand{\note}[1]{}
+
+
+
+\newcommand{\cl}[1]{  \begin{matrix}  #1  \end{matrix}  }
+\newcommand{\bm}[1]{  \begin{bmatrix}  #1  \end{bmatrix}  }
+\newcommand{\inv}{^{-1}}
+\newcommand{\im}{\ensuremath{\text{im }}}
+\newcommand{\R}{\mathbb{R}}
+\providecommand{\norm}[1]{\lVert#1\rVert} 
+\newcommand{\st}{\ensuremath{\mid}}
+
+
+%------------------------------------------------------------------------------------------------------------
+
+\usepackage[pdfpagelabels]{hyperref}
+\makeindex
+
+\begin{document}
+
+%\frontmatter
+\title{Linear Algebra Objectives}
+%\author{Ben Woodruff\\Revised by Jason Grout}
+\date{Fall 2010}
+\maketitle
+% \copyright{This work is licensed under the Creative Commons
+%   Attribution-Share Alike 3.0 United States License.  You may copy,
+%   distribute, display, and perform this copyrighted work but only if
+%   you give credit to Ben Woodruff — and all derivative works based
+%   upon it must be published under the Creative Commons
+%   Attribution-Share Alike 3.0 United States License. Please attribute
+%   to Ben Woodruff, Mathematics Faculty at Brigham Young University -
+%   Idaho, woodruffb@byui.edu.  To view a copy of this license, visit\\
+%   \centerline{\url{http://creativecommons.org/licenses/by-sa/3.0/us/}}
+%   \\ or send a letter to Creative Commons, 171 Second Street, Suite
+%   300, San Francisco, California, 94105, USA.
+% \vfill 
+
+% See \url{http://bitbucket.org/jasongrout/linear-algebra} for the source for the book.
+% }
+%\tableofcontents
+
+
+
+%\chapter*{Preface}
+%
+%I would like to thank BYU-Idaho for the resources they have provided me to create this text.  
+
+%\chapter{Introduction}
+%
+%The introduction is entered using the usual chapter command. Since
+%the introduction chapter appears before the \verb|mainmatter| TeX
+%field, it is again an unnumbered chapter. The primary difference
+%between the preface and the introduction in this sample document
+%is that the introduction will appear in the table of contents and
+%the page headings for the introduction are automatically handled
+%without the need for the \verb|markboth| TeX field. You may use
+%either or both methods to create chapters at the beginning of your
+%document. You may also delete these preliminary chapters.
+
+
+
+
+
+%\mainmatter
+Here is a list of objectives for the book.  Notice that many
+objectives are simple extensions of other objectives and involve the
+same main ideas.  
+
+%For example, objective 5.2 is an extension of
+%objective 4.4, and 4.4 is itself an extension of objective 2.5.
+
+\begin{itemize}
+\item Chapter 1
+\input{01-Arithmetic/Arithmetic-Objectives}
+\item Chapter 2
+\input{02-Applications/Linear-Algebra-Applications-Objectives}
+\item Chapter 3
+\input{03-Patterns/Patterns-Objectives}
+\item Chapter 4
+\input{04-Linear-Transformations/Linear-Transformations-Objectives}
+\item Chapter 5
+\input{05-Changing-Bases/Changing-Bases-Objectives}
+\item Chapter 6
+\input{07-Inner-Products/Inner-Products-Objectives}
+\end{itemize}
+
+%\input{06-Jordan-Form/Jordan-Form-Objectives}
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
