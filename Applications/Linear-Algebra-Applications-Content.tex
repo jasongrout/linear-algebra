@@ -4,7 +4,7 @@
 This chapter covers the following ideas.  The purpose of this chapter
 is to show you a variety of applications of linear algebra and provide you with ample opportunities to practice and polish the skills learned in the arithmetic unit.  
 
-\input{02-Applications/Linear-Algebra-Applications-objectives}
+\input{Applications/Linear-Algebra-Applications-objectives}
 
 
 
@@ -50,7 +50,7 @@ The matrix $\begin{bmatrix}2&1\\1&2\end{bmatrix}$ gives us the vector field $$\v
 (1,-1) & (1,-1)
 \end{array}$};
 \node (vf) [right=of A] {
-\includegraphics[height=2in]{02-Applications/support/vf21128points}};
+\includegraphics[height=2in]{Applications/support/vf21128points}};
 \end{tikzpicture}
 \end{center}
 
@@ -66,15 +66,15 @@ The middle plot in Figure \ref{vf2112} includes two lines representing the eigen
 \begin{tikzpicture}[inner sep=0mm]
 \node (A) 
 {
-\includegraphics[height=1.3in]{02-Applications/support/vf211225points}
+\includegraphics[height=1.3in]{Applications/support/vf211225points}
 };
 \node (B) [right=of A] 
 {
-\includegraphics[height=1.3in]{02-Applications/support/vf2112com}
+\includegraphics[height=1.3in]{Applications/support/vf2112com}
 };
 \node (C) [right=of B] 
 {
-\includegraphics[height=1.3in]{02-Applications/support/vf2112flow}
+\includegraphics[height=1.3in]{Applications/support/vf2112flow}
 };
 \end{tikzpicture}
 \caption{\label{vf2112} Three views of the vector field $\vec F(x,y) =(2x+y,x+2y)$. The first plot shows the appropriate lengths.  The second plot includes two lines which come from the eigenvector directions. The third plot includes flow lines which describe the path of an object flowing through the vector field. Because flow is outward in all directions, this vector field is called a source.}
@@ -89,7 +89,7 @@ Figure \ref{vflots} contains other examples. Again, the eigenvalues and eigenvec
 \begin{tikzpicture}[inner sep=0mm]
 \node (B0) 
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfsinkhand}
+\includegraphics[width=1.3in]{Applications/support/vfsinkhand}
 };
 \node (A0) [left=of B0] 
 {
@@ -110,12 +110,12 @@ Eigenvectors: $(-\sqrt{2} ,1), (\sqrt{2}, 1)$
 };
 \node (C0) [right=of B0] 
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfsinkcom}
+\includegraphics[width=1.3in]{Applications/support/vfsinkcom}
 };
 
 \node (B1) [below=of B0]
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfrotationalhand}
+\includegraphics[width=1.3in]{Applications/support/vfrotationalhand}
 };
 \node (A1) [left=of B1] 
 {
@@ -136,12 +136,12 @@ Eigenvectors: $(i,1), (-1, 1)$
 };
 \node (C1) [right=of B1] 
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfrotationalcom}
+\includegraphics[width=1.3in]{Applications/support/vfrotationalcom}
 };
 
 \node (B2) [below=of B1] 
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfsaddlehand}
+\includegraphics[width=1.3in]{Applications/support/vfsaddlehand}
 };
 \node (A2) [left=of B2]
 {
@@ -162,12 +162,12 @@ Eigenvectors: $(1,1), (-2, 1)$
 };
 \node (C2) [right=of B2] 
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfsaddlecom}
+\includegraphics[width=1.3in]{Applications/support/vfsaddlecom}
 };
 
 \node (B3) [below=of B2] 
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfspiralhand}
+\includegraphics[width=1.3in]{Applications/support/vfspiralhand}
 };
 \node (A3) [left=of B3]
 {
@@ -188,7 +188,7 @@ Eigenvectors: $(i ,1), (-i, 1)$
 };
 \node (C3) [right=of B3] 
 {
-\includegraphics[width=1.3in]{02-Applications/support/vfspiralcom}
+\includegraphics[width=1.3in]{Applications/support/vfspiralcom}
 };
 
 
@@ -229,7 +229,7 @@ The function $f(x) = x^3-3x$ has derivatives $f^\prime = 3x^2-3$ and $f^{\prime\
 The second derivative at $x=1$ is $f''(1)=6$ (concave upwards), so there is a minimum at $x=1$.  
 The second derivative at $x=-1$ is $f''(-1)=-6$ (concave downwards),
 so there is a maximum at that point. This is all illustrated in the margin.
-\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/sage0.png}}
+\marginpar{\includegraphics[width=\marginparwidth]{Applications/support/sage0.png}}
 \end{example}
 
 \subsection{Partial Derivatives}
@@ -312,14 +312,14 @@ For the function {$f(x,y)=x^2+xy+y^2$}, the derivative is $Df = \begin{bmatrix}2
 The Hessian is $D^2f = \begin{bmatrix}2&1 \\1&2\end{bmatrix}$. The eigenvalues are found by solving $0=\det \begin{bmatrix}2-\lambda &1 \\1&2-\lambda \end{bmatrix} = (2-\lambda)^2-1 = 4-4\lambda+\lambda^2 -1 = (\lambda-3)(\lambda-1)$, so $\lambda = 3,1$ are the eigenvalues.  Since both eigenvalues are positive, the function is concave upwards in all directions, so there is a minimum at $(0,0)$.  
 
 The eigenvectors of the Hessian help us understand more about the graph of the function.  An eigenvector corresponding to 3 is $(1,1)$, and corresponding to 1 is $(-1,1)$. These vectors are drawn in the graph of the function in the margin, together with two parabolas whose 2nd derivatives are precisely 3 and 1.  The parabola which opens upwards the most quickly has a 2nd derivative of 3.  The other parabola has a second derivative of 1. In every other direction, the 2nd derivative would be between 1 and 3.
-\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/2nddertest1}}
+\marginpar{\includegraphics[width=\marginparwidth]{Applications/support/2nddertest1}}
 \end{example}
 
 \begin{example}
 For the function {$f(x,y)=x^3-3x+y^2-4y$}, the derivative is $Df = \begin{bmatrix}3x^2-3&2y-4 \end{bmatrix}$, which is zero at $x=1,y=2$ or $x=-1,y=2$. Hence there are two critical points, so we have to find two sets of eigenvalues. The Hessian is $D^2f = \begin{bmatrix}6x&0 \\0&2\end{bmatrix}$. When $x=-1,y=2$, the eigenvalues of $\begin{bmatrix}-6&0 \\0&2\end{bmatrix}$ are $\lambda=-6,2$. Since one is positive and one is negative, there is a saddle point at $(-1,2)$. When $x=1,y=2$, the eigenvalues of $\begin{bmatrix}6&0 \\0&2\end{bmatrix}$ are $\lambda=6,2$. Since both are positive, there is a minimum at $(-1,2)$ (as in every direction the function is concave upwards).
 
 Again the eigenvectors help us understand how the function behaves, as illustrated in the margin.  At $(1,2)$, we have an eigenvector $(1,0)$ corresponding to 6, and $(0,1)$ corresponding to 2. In both eigenvector directions, the function is concave upwards, but opens more steeply in the $(1,0)$ direction since \mbox{$6>2$}.  At $(-1,2)$, we have an eigenvector $(1,0)$ corresponding to $-6$, and $(0,1)$ corresponding to 2. The functions opens steeply downwards in the $(1,0)$ direction, and upwards in the $(0,1)$ direction.
-\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/2nddertest2}}
+\marginpar{\includegraphics[width=\marginparwidth]{Applications/support/2nddertest2}}
 \end{example}
 
 \note{Can we draw a connection between positive eigenvalues in a
@@ -453,9 +453,9 @@ Resistors are measured in terms of ohms, and the larger the ohms, the smaller th
 \begin{figure}[htb]
 \begin{center}
 \begin{tabular}{cc}
-\input{02-Applications/electric-circuit-2-loops}
+\input{Applications/electric-circuit-2-loops}
 &
-\input{02-Applications/electric-circuit-3-loops}
+\input{Applications/electric-circuit-3-loops}
 \\
 Two Loop System & Three Loop System
 \end{tabular}\end{center}
@@ -1213,7 +1213,7 @@ The coordinates of $(3,-2,6)$ relative to this basis are $-1$ and $2$.  In other
 =-1\begin{bmatrix}1\\2\\0\end{bmatrix}+2\begin{bmatrix}2\\0\\3\end{bmatrix} 
 =\begin{bmatrix}\cl{1\\2\\0}&\cl{2\\0\\3}\end{bmatrix}\begin{bmatrix}-1\\2\end{bmatrix} .$$ 
 \marginpar{
-\includegraphics[width=\marginparwidth]{02-Applications/support/colspace1}
+\includegraphics[width=\marginparwidth]{Applications/support/colspace1}
 
 Each column of a matrix is a linear combination of the pivot columns.  The coordinates of each column vector are the numbers in the corresponding column of the rref (excluding zero rows).
 }
@@ -1290,7 +1290,7 @@ A
 
 This shows us that every row of the original matrix is a linear combination of the nonzero rows of rref. The row space is the span of the rows, and since the rows of $A$ depend on the nonzero rows of rref, we can span the row space using these nonzero rows. Since the nonzero rows of the rref are linearly independent (placing these rows into columns and reducing won't change the pivots), we know that the nonzero rows of rref form a basis for the row space.  
 \marginpar{
-\includegraphics[width=\marginparwidth]{02-Applications/support/rowspace2}
+\includegraphics[width=\marginparwidth]{Applications/support/rowspace2}
 
 Each row is a linear combination of the nonzero rows of rref.  The coordinates of each row are found in the pivot columns.
 }\end{example}
@@ -1388,15 +1388,15 @@ $
 \\ \\
 \hline\hline \multicolumn{3}{c}{Bases for the column space of $A$, $\col(A)$}\\
 \hline Using Pivot Columns of $A$ & Using nonzero rows of rref$(A^T)$ & Both\\ \\
-\includegraphics[height=2in]{02-Applications/support/colspace1}
-&\includegraphics[height=2in]{02-Applications/support/colspace2}
-&\includegraphics[height=2in]{02-Applications/support/colspace3}
+\includegraphics[height=2in]{Applications/support/colspace1}
+&\includegraphics[height=2in]{Applications/support/colspace2}
+&\includegraphics[height=2in]{Applications/support/colspace3}
 \\ \\
 \hline\hline \multicolumn{3}{c}{Bases for the row space of $A$, $\row(A)$}\\
 \hline Using Pivot Columns of $A^T$ & Using nonzero rows of rref$(A)$ & Both\\ \\
-\includegraphics[height=2in]{02-Applications/support/rowspace1}
-&\includegraphics[height=2in]{02-Applications/support/rowspace2}
-&\includegraphics[height=2in]{02-Applications/support/rowspace3}
+\includegraphics[height=2in]{Applications/support/rowspace1}
+&\includegraphics[height=2in]{Applications/support/rowspace2}
+&\includegraphics[height=2in]{Applications/support/rowspace3}
 \end{tabular}
 
 \caption{\label{column and row space table} In examples \ref{colspace1ex}, \ref{ex:row-space}, and \ref{colspace2ex}, we found two different bases for the column and row space. This table shows graphs to help us visualize the differences between these bases.  In all the graphs, the blue vectors represent columns or rows in the matrix and the red vectors represent the vectors in the basis.  
@@ -1541,7 +1541,7 @@ If $\vec b$ is in the column space of $A$, then the answer is $\vec b$, the syst
       %\draw[->,ultra thick] (origin) -- (0,0,1);
  \end{tikzpicture}
 \end{center}%
-%\marginpar{\includegraphics[width=\marginparwidth]{02-Applications/support/regressionpic1}
+%\marginpar{\includegraphics[width=\marginparwidth]{Applications/support/regressionpic1}
 
 Because $\vec b$ is not in the column space of $A$, we find the vector $\vec w$ closest to $\vec b$ in the columns space of $A$.  The difference $\vec b-\vec w$ is a vector $\vec r$ that is orthogonal to the column space.}%
 To be closest to $\vec b$, a vector $\vec r$ (the ``residual'' vector) with base at $\vec w$ and

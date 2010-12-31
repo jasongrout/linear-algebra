@@ -3,7 +3,7 @@
 The study of linear algebra is really the study of special functions (linear transformations) between vector spaces.  The purpose of this chapter is to extend the notion of functions between numbers to functions between vector spaces using matrices.  We'll see that vector subspaces related to these functions can help us solve many problems we have been looking at in previous chapters.  Thinking about these functions as coming from matrices will help us see the real full power of matrices.
 
 This chapter covers these ideas:
-\input{04-Linear-Transformations/Linear-Transformations-objectives}
+\input{Linear-Transformations/Linear-Transformations-objectives}
 
 \section{Matrix Transformations}
 
@@ -52,8 +52,8 @@ Eigenvalues\\
 Eigenvectors\\
 (1,0), (1,1)
 \end{tabular}};
-\node (B) [left=of middle,xshift=1cm] {\includegraphics[height=2in]{04-Linear-Transformations/support/LT1b}};
-\node (A) [left=of B,xshift=1cm] {\includegraphics[height=2in]{04-Linear-Transformations/support/LT1}};
+\node (B) [left=of middle,xshift=1cm] {\includegraphics[height=2in]{Linear-Transformations/support/LT1b}};
+\node (A) [left=of B,xshift=1cm] {\includegraphics[height=2in]{Linear-Transformations/support/LT1}};
 \end{tikzpicture}
 \end{center}
 
@@ -114,8 +114,8 @@ $4,2$\\
 Eigenvectors\\
 $(1,1), (-1,1)$
 \end{tabular}};
-\node [right=of symmetric] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTsymmetricb}};
-\node [left=of symmetric] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTsymmetrica}};
+\node [right=of symmetric] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTsymmetricb}};
+\node [left=of symmetric] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTsymmetrica}};
 
 
 \node (negative) [below=of symmetric] {\begin{tabular}{c}
@@ -128,8 +128,8 @@ $-2,2$\\
 Eigenvectors\\
 $(1,1), (-1,3)$
 \end{tabular}};
-\node [right=of negative] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTnegativeb}};
-\node [left=of negative] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTnegativea}};
+\node [right=of negative] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTnegativeb}};
+\node [left=of negative] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTnegativea}};
 
 
 \node (irrational) [below=of negative] {\begin{tabular}{c}
@@ -142,8 +142,8 @@ $-\sqrt{2},\sqrt{2}$\\
 Eigenvectors\\
 $(1-\sqrt2,1), (1+\sqrt2,1)$
 \end{tabular}};
-\node [right=of irrational] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTirrationalb}};
-\node [left=of irrational] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTirrationala}};
+\node [right=of irrational] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTirrationalb}};
+\node [left=of irrational] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTirrationala}};
 
 \node (complex) [below=of irrational] {\begin{tabular}{c}
 Matrix\\
@@ -155,8 +155,8 @@ $1+i,1-i$\\
 Eigenvectors\\
 $(-i,1), (i,1)$
 \end{tabular}};
-\node [right=of complex] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTcomplexb}};
-\node [left=of complex] {\includegraphics[height=\myvfplotheight]{04-Linear-Transformations/support/LTcomplexa}};
+\node [right=of complex] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTcomplexb}};
+\node [left=of complex] {\includegraphics[height=\myvfplotheight]{Linear-Transformations/support/LTcomplexa}};
 
 \end{tikzpicture}
 \caption{Four 2D transformations. See Example~\ref{details for four} for details. In the pictures on the right, the purple vectors are eigenvectors of length 1, and the green vectors have been scaled by the eigenvalue.
@@ -209,10 +209,10 @@ $-3,-\sqrt{2},\sqrt 2$\\
 Eigenvectors\\
 $(0,1,0)$\\$(\sqrt2/2,0,1)$\\$(-\sqrt2/2,0,1)$
 \end{tabular}};
-\node  [left=of middle] {\includegraphics[width=2in]{04-Linear-Transformations/support/LT3da}};
-\node  [right=of middle]  {\includegraphics[width=2in]{04-Linear-Transformations/support/LT3db}};
-\node  [left=of middle2]{\includegraphics[width=2in]{04-Linear-Transformations/support/LT3d2a}};
-\node  [right=of middle2] {\includegraphics[width=2in]{04-Linear-Transformations/support/LT3d2b}};
+\node  [left=of middle] {\includegraphics[width=2in]{Linear-Transformations/support/LT3da}};
+\node  [right=of middle]  {\includegraphics[width=2in]{Linear-Transformations/support/LT3db}};
+\node  [left=of middle2]{\includegraphics[width=2in]{Linear-Transformations/support/LT3d2a}};
+\node  [right=of middle2] {\includegraphics[width=2in]{Linear-Transformations/support/LT3d2b}};
 \end{tikzpicture}
 \end{center}
 
@@ -232,8 +232,8 @@ For the matrix
 $A=\bm{1&-2\\-1&2}$, we map $(1,0)$ to $(1,-1)$ and $(0,1)$ to $(-2,2)$. Both vectors lie on the same line.
 We obtain the two visualizations below. \marginpar{When the determinant is zero, a 2D transformation takes the entire plane to a line. The column space is the line onto which the transformation maps.}
 \begin{center}
-\includegraphics[height=2in]{04-Linear-Transformations/support/LTsingular2da}
-\includegraphics[height=2in]{04-Linear-Transformations/support/LTsingular2db}
+\includegraphics[height=2in]{Linear-Transformations/support/LTsingular2da}
+\includegraphics[height=2in]{Linear-Transformations/support/LTsingular2db}
 \end{center}
 Notice that every vector, in addition to $(1,0)$ and $(0,1)$, is mapped onto this same line.  The column space of $A$ is precisely the line given by the span of $(-1,1)$. The column space corresponds directly with the line onto which everything is mapped. Because $\det A = 0$, we know that $\lambda=0$ is an eigenvalue. The corresponding eigenvector $(2,1)$ is drawn in the image on the right. This eigenvector is found by solving $A\vec x = 0$, which means that the set of solutions is the null space. \marginpar{The null space of $A$ is precisely the set of vectors which get squashed to $\vec 0$ by $A$.} Every vector on the line containing $(2,1)$ is transformed to the origin (so in this direction we are squashing an entire line to a point).  Because this transformation squashes two dimension onto a line, it is impossible to invert the transformation (hence no inverse matrix exists).
 
@@ -245,8 +245,8 @@ the vector $(1,0,0)$ to $(0,-1,1)$,
 the vector $(0,1,0)$ to $(1,0,-1)$, and 
 the vector $(0,0,1)$ to $(-1,1,0)$. These three images lie on the same plane (since the determinant is zero).  We obtain two visualizations below. \marginpar{When the determinant is zero, a 3D transformation takes the all of space to a plane (if the rank is 2) or a line (if the rank is 1). The column space is precisely the subspace of $\RR^3$ onto which the transformation squashes things.}
 \begin{center}
-\includegraphics[height=2in]{04-Linear-Transformations/support/LTsingular3da}
-\includegraphics[height=2in]{04-Linear-Transformations/support/LTsingular3db}
+\includegraphics[height=2in]{Linear-Transformations/support/LTsingular3da}
+\includegraphics[height=2in]{Linear-Transformations/support/LTsingular3db}
 \end{center}
 Notice that every vector  is mapped onto the same plane containing column vectors of $A$. 
 The column space of $A$ is precisely the plane onto which everything is mapped. 
@@ -275,12 +275,12 @@ $A=\bm{0&1\\1&0\\1&1}$ and
 $B=\bm{-2&-1&-1\\1&2&-1}$.
 The first transformation requires that we input 2D vectors and returns 3D vectors. To graph this transformation, we notice that multiplying $A$ by the vectors $(1,0)$ and $(0,1)$ returns the two columns of $A$.  So in the $xy$ plane we draw the unit square, and in 3D we graph the parallelogram formed by the two columns.  This is illustrated below. Notice that the unit circle becomes an ellipse in the plane spanned by the columns of $A$.  Again we see that all the output vectors are drawn in the column space of $A$.
 \begin{center}
-\includegraphics[width=\marginparwidth]{04-Linear-Transformations/support/LT2dto3d}
+\includegraphics[width=\marginparwidth]{Linear-Transformations/support/LT2dto3d}
 \end{center}
 
 The transformation given by $B$ requires that we input a 3D vector to obtain a 2D vector.  We graph the unit cube in 3D and graph the columns of $A$ in the $xy$ plane. In this transformation, we are squashing a dimension out of the problem. This is the kind of transformation used to cast shadows in 3D graphics, as well as to present a 2D image of 3D objects for viewing on a screen. 
 \begin{center}
-\includegraphics[height=2in]{04-Linear-Transformations/support/LT3dto2d}
+\includegraphics[height=2in]{Linear-Transformations/support/LT3dto2d}
 \end{center}
 
 
@@ -356,7 +356,7 @@ $T(1,0) = (\cos \pi/6, \sin \pi/6) = (\sqrt3/2,1/2)$ (the values on the unit cir
 $T(0,1) = (\cos 2\pi/3, \sin 2\pi/3) = (-1/2,\sqrt3/2) $ (the values on the unit circle at $\pi/2+\pi/6 = 2\pi/3$). 
 This means the standard matrix representation of $T$ is 
 \marginpar{
-\includegraphics[width=\marginparwidth]{04-Linear-Transformations/support/LTrotate30}
+\includegraphics[width=\marginparwidth]{Linear-Transformations/support/LTrotate30}
 
 A 30 degree rotation.}
 \begin{align*}
@@ -791,7 +791,7 @@ We want transformation that has this vector as a basis for the kernel.
 Because we're mapping from 3D onto the $xy$ plane, we need a $2$ by $3$ matrix. 
 Divide every component in $\vec v$ by $4$ to get a 1 in the $z$ component. The vector $(1/2,1/4,1)$ looks a lot like the vectors we obtain by having a free variable $z$.  The null space is all linear combinations of this vector, which we can express as $$\bm{x\\y\\z} = z\bm{1/2\\1/4\\1}. $$ We now have two equations: $x=1/2 z$ and $y=1/4z$, or $x-\frac12 z=0$ and $y-\frac14 z=0$.  Now we just write down the matrix associated with this system of linear equations: $$A=\bm{1&0&-1/2\\0&1&-1/4}.$$
 \marginpar{
-\includegraphics[width=\marginparwidth]{04-Linear-Transformations/support/LTshadow}
+\includegraphics[width=\marginparwidth]{Linear-Transformations/support/LTshadow}
 
 Knowing the null space is sufficient to find a transformation to cast shadows onto the $xy$ plane.
 }
