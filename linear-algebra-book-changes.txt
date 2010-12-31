@@ -1,31 +1,12 @@
-In the applications unit:
-	Change the order to be 
-		Derivatives
-		Vector fields (they are derivatives)
-		Special Kinds of vector fields - represented by matrices
-		The second derivative test (they can tell me why flow outwards means positive eigenvalues, means concave up).
-		Then move Markov Processes
-		Then hit Kirchoff's laws, fitting data points, and regression
-		End with Vector space vocabulary and why regression works.
-		
-I think this method will help students see the beauty and power of vectors much more.  It will help economists see why they need vector fields.  It will show how the second derivative test is used and why it is used.  If students had taylor series, I could even show them why it works (or include it inside an appendix).
+Applications
+------------
 
-Also, somewhere block matrices ought to be addressed.  Probably in the
-first section when we talk about computation.
+[ ] Write an application for traffic analysis (grid of streets, etc.)
+[ ] Write an application of ray-based tomography:
+http://www.allacademic.com/meta/p_mla_apa_research_citation/4/3/5/8/1/p435815_index.html,
+http://en.wikipedia.org/wiki/X-ray_computed_tomography#Process
 
-Somewhere there should a comparison of the sizes of linearly
-independent and spanning sets.  For now, I put a few statements in
-chapter 5 about this, but it would be good to see it earlier.
-
-
-Vector Spaces
--------------
-So I think all that's needed is a bit more emphasis in chapter 2 that vector subspaces are just spans of vectors, and then an emphasis in chapter 3 that these are the relevant "patterns" that addition and multiplication take from the vectors in R^n.
-
-Application of linear transformations 
-------------------------------------- 
-
-When watching football, you see a timer projected onto the field.  The
+[ ] When watching football, you see a timer projected onto the field.  The
 nice thing about a football field is that there are straight lines
 that give us a way to calculate the linear transformation.  So give
 the students a picture of the field from an angle, and have them
@@ -34,37 +15,71 @@ the field and have it appear as part of the field.  Maybe even have
 them actually have them measure the angle and distances.
 
 
-Chapter 3
+Somewhere
 ---------
 
-That's how I plan to teach it today (subspaces today as spans, with bases and coordinate vectors).  Next time we'll look at the main definition as an extension of R^n, P_n, and M_n properties.  I plan to talk about the logarithmic space (well, maybe R^n for the first coordinate, log for the second) and use that to talk about the common properties of the main definition.  I hope it goes well---it seems like it should. 
+[ ] Block matrices (in the first chapter?  Maybe the project for the
+first chapter?)
 
-If inner products are before the linear transformation chapter, then
+[ ] Comparison of the sizes of linearly independent and spanning sets.
+For now, I put a few statements in chapter 5 about this, but it would
+be good to see it earlier.
+
+[ ] More emphasis in chapter 2 that vector spaces are spans of vectors
+
+[ ] More emphasis in chapter 3 that the properties of vector space
+operations are the patterns that we take from addition and
+multiplication of vectors in R^n and M_{mn} and P_n
+
+[ ] Move Inner Products before Changing Bases, and maybe even before
+Linear Transformations.  The idea is to introduce what nice bases look
+like before talking about transforming bases, so people have an idea
+why they might want to change bases.  Actually, having inner products
+right after vector spaces might make a lot of sense because we are
+talking about projecting vectors, orthogonalization, etc.
+
+Patterns Chapter
+----------------
+
+[ ] Change order of vector space chapter to have 
+
+* Change what we mean by "vector", and have subspaces as spans of
+  vectors.  Emphasize bases and coordinate vectors
+
+* Change what we mean by addition/multiplication, and view the rules
+as an extension of the properties in R^n, P_n, and M_n properties.
+
+* Talk about logarithmic space as an example of the common
+  properties.
+
+[ ] Add HW: Having another problem or two in
+chapter 3 asking them to find det(AB), det(A-1), det(A2), det(3A)
+given that det(A)=4 and det(B)=5 and that A is a 3x3 matrix would help
+them look up and see and use the theorems a bit more.
+
+
+Linear Transformations Chapter
+------------------------------
+
+[ ] LU decomposition project (especially after the elementary matrices
+
+[ ] If inner products are before the linear transformation chapter, then
 householder reflections and QR decomposition might make a great
 project (as it deals with inner products and with geometry)
 
-Also, LU decomposition would make a great project for the chapter on
-elementary matrices.
+[ ] Add knowing |AB|=|A||B| in with the objectives
+
+[ ] Add more HW dealing with the determinant property |AB|=|A||B|
 
 
-Objectives to add in 
+Changing Bases chapter
 ----------------------
-   * |AB|=|A||B| (linear transformations and elementary matrices)
-   * (AB)^{-1}=B^{-1}A^{-1} (changing bases - composition of 2 base
-     changes could be a great place to emphasize this, with a homework
-     question that says something like "to change from B1 to B2, we
-     need S. To change from B2 to B3, we need T.  What matrix gets us
-     from B3 to B1?) 
 
-More homework
--------------
-Having another problem or two in
-chapter 3 asking them to find det(AB), det(A-1), det(A2), det(3A)
-given that det(A)=4 and det(B)=5 and that A is a 3x3 matrix would help
-them look up and see and use the theorems a bit more.  However, later in
-chapter 4, we could put more conceptual homework dealing with this, or
-more practical homework dealing with this, and make |AB|=|A||B| part of
-the objective dealing with elementary matrices. 
+[ ] Add (AB)^{-1}=B^{-1}A^{-1} to the objectives
+
+[ ] Add HW problem that says something like to change from B1 to B2, we
+     need S. To change from B2 to B3, we need T.  What matrix gets us
+     from B3 to B1?
 
 
 [x] Switch order of subsections in 4.2
@@ -77,3 +92,4 @@ In keeping with the philosophy that students get lost when lots of definitions a
 2. Then it is very easy to talk about what a linear transformation is.  For example, after I had the class find a bunch of matrices given the geometry of the transformation, I talked about how f(2,1)=2f(1,0)+f(0,1), and the fact that the linear transformation totally depended on just the values of those two vectors.  This was very natural since they saw obviously that the results of those two vectors gave the entire matrix for a 2 by 2 matrix.  That led naturally into a discussion of linear transformations, the definition, and examples.
 
 3. *then* we formalize the function vocabulary in preparation for talking about the images and kernel of a transformation.  That way the vocabulary comes right before we need it, instead of at the beginning of the chapter, not to be used until the next section.  It also comes after the motivation of linear transformations, inverse matrices, etc.
+
