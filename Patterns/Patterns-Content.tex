@@ -632,135 +632,59 @@ The notion of a vector space is the foundational structure upon which we will bu
 
 We have looked at sets of vectors that we call vector spaces.  This is a set (of vectors) that has special properties.  $\RR^n$ is an example of a vector space.  We've also seen that linear combinations of a set of vectors is also a vector space.  A vector space is the span of some vectors.  For example, we've seen that the multiples of a vector is a vector space, as well as a plane through the origin or all of 3d space.  The important property here is that a set is a vector space if it is closed under vector addition and scalar multiplication, and also contains a zero vector.
 
-Do some examples of subspaces like $P_n$, $M_n$.
+****************************************************************************
+
+\note{Do some examples of subspaces like $P_n$, $M_n$.
 
 Give the subspace theorem
 
 Emphasize bases and coordinate vectors?
 
-\subsection{Generalizing vector operations}
-
-We can also generalize what we mean when we say ``vector addition'' or ``scalar multiplication.''  
-
-Talk about essential properties of the operations
-
-Give final big theorem
-
-Example of log space
-
-
-\note{* Change what we mean by "vector", and have subspaces as spans of
-  vectors.  Emphasize bases and coordinate vectors
-
-* Change what we mean by addition/multiplication, and view the rules
-as an extension of the properties in $R^n$, $P_n$, and $M_n$ properties.
-
-* Talk about logarithmic space as an example of the common
-  properties.
 }
-
-
-
-
-
-\section{Vector Spaces}
-
-The notion of a vector space is the foundational tool upon which we will build for the rest of the semester. Vectors in the plane, vectors in space, and planes in space through the origin are all examples of vector spaces. We have looked at the column space, row space, null space, and eigenspaces of a matrix as other examples of vector spaces.  In all of the examples we have looked at, we were able to create the vector space by considering a basis and using the span of that basis to obtain the vector space.  This is the fundamental idea we need to abstract vector spaces to a more general setting.  \marginpar{Vector spaces are spans of sets of vectors.}
-Continuous and differentiable functions form vector spaces. Matrices of the same size form a vector space. Radio waves, light waves, electromagnetic waves, and more all form vector spaces. Mathematicians discovered some common properties about all of these kinds of objects, and created a definition of of the term ``vector space'' to allow them to focus on the key commonalities. The results which sprang from the following definition created linear algebra as we know it today. 
-
-\begin{definition}\marginpar{We use the word ``real'' to emphasize that the scalars are real numbers. For those of you who know about fields, you can replace ``real'' with any field, such as the complex numbers or finite fields used in computers or cryptography. For simplicity, we will stick to scalars being real numbers for now.}%
-A (real) \define{vector space} is a set $V$ of things (which we will call ``vectors'') together with two operations:
-\begin{enumerate}
-	\item[(C1)] \define{vector addition} ($+$), which assigns to any pair $\vec u, \vec v\in V$ another vector $\vec u+\vec v\in V$,
-	\item[(C2)] \define{scalar multiplication} ($\cdot$), which assigns to any $\vec v \in V$ and $c\in {\mathbb{R}}$ another vector $c\vec v\in V$.
-\end{enumerate}
-\marginpar{We say that the set $V$ is closed under the operations of vector addition and scalar multiplication because adding vectors and scaling vectors produces other vectors in $V$.}%
-These two operations must satisfy the following axioms ($c,d\in {\mathbb{R}}$ and $\vec u,\vec v,\vec w\in V$):
-\marginpar{Compare these properties to Theorems~\ref{rn vector space properties} and \ref{matrix vector space properties}.}%
-\begin{enumerate}
-	\item[($A_1$)] Vector addition is associative: $(\vec u+\vec v)+\vec w = \vec u +(\vec v+\vec w)$.
-	\item[($A_2$)] Vector addition is commutative: $\vec u+\vec v= \vec v+\vec u$.
-	\item[($A_3$)] There is a zero vector $\vec 0$ in $V$ which satisfies $\vec 0+\vec v = \vec v+\vec 0=\vec v$.
-	\item[($A_4$)] Every $\vec v\in V$ has an additive inverse, called $-\vec v$, which satisfies $\vec v+(-\vec v)=\vec 0$.
-	\item[($M_1$)] Scalar multiplication distributes across vector addition: $c(\vec u+\vec v)= c\vec u + c\vec v$.
-	\item[($M_2$)] Scalar multiplication distributes across scalar addition: $(c+d)\vec v= c\vec v+ d\vec v$.
-	\item[($M_3$)] Scalar multiplication is associative: $(cd)\vec v = c(d\vec v)$
-	\item[($M_4$)] Scalar multiplication by 1 does nothing: $1\vec v=\vec v$
-\end{enumerate}
-\end{definition}
-The definition above is the formal definition of a vector space. The definition generalizes the properties we already use about vectors in $\RR^2$ and $\RR^3$. This definition essentially means you can add and multiply as you would normally expect---no surprises will occur. 
- However, you can work with this definition if you think 
-\begin{quote}
-A vector space is a set of things (``vectors'') closed under vector addition and scalar multiplication, and these operations obey the usual rules of addition and multiplication.
-\end{quote}
-
-
-With vector addition and scalar multiplication properly defined, the span of any set of vectors from the vector space will always be a vector space. In other words, every linear combination of the vectors in that space must also be in the space. This means that lines and planes in $\RR^3$ which pass through the origin are examples of vector spaces. As the semester progresses, we will discover that our intuition about what happens in $\RR^2$ and $\RR^3$ generalizes to all dimensions and can help us understand any kind of vector space.  For now, let's look at some examples of vector spaces, and explain why they are vector spaces.
-
-\begin{example}[Examples of vector spaces]
-Here are some examples of sets (and corresponding vector addition and scalar multiplication operations) that are vector spaces.
-\begin{enumerate}
-	\item Both ${\mathbb{R}}^2$ and ${\mathbb{R}}^3$ are vector spaces. The set of all lists of real numbers of length $n$, ${\mathbb{R}}^n$, is a vector space.  Vector addition is defined component-wise. Addition is associative, commutative, the zero vector is $(0,0,\ldots,0)$, and $(v_1,v_2,\ldots,v_n)+(-v_1,-v_2,\ldots,-v_n)=\vec 0$. Also, scalar multiplication distributes across vector and scalar addition, it is associative, and $1\vec v=\vec v$.  The definition of a vector space was defined to capture the properties of ${\mathbb{R}}^n$ which are useful in other settings.
-	\item The set of $m$ by $n$ matrices, written $M_{mn}$, with ``vector addition'' being normal matrix addition and ``scalar multiplication'' being normal matrix-scalar multiplication, is a vector space.
-	\item The set of all polynomials, written $P(x)$, with ``vector addition'' being the normal sum of polynomials, and ``scalar multiplication'' being the normal number-times-polynomial operation, is a vector space.
-	\item The set of continuous functions on an interval $[a,b]$, written $C[a,b]$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
-	\item The set of continuously differentiable functions on an interval $(a,b)$, written $C^1(a,b)$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
-\end{enumerate}
-\end{example}
-\begin{example}[Examples that are \emph{NOT} vector spaces] 
-Here are some examples of sets that are not vector spaces along with an explanation of one of the properties they do not satisfy.
-\begin{enumerate}
-	\item A line that does not pass through the origin. The zero vector is not on the line.
-	\item Polynomials of degree $n$.  There is no zero vector.
-	\item Invertible Matrices. There is no zero matrix since it is not invertible.
-	\item The nonnegative $x$ axis. There is no additive inverse for $(1,0)$, as $(-1,0)$ is not in the space.
-	\item The line segment from $(-1,0)$ to $(1,0)$. The product $2(1,0)=(2,0)$ is not in the space.
-\end{enumerate}	
-\end{example}
-
-
-\begin{example} [The set of all polynomials is a vector space]
-To illustrate how to verify that a set is a vector space, let's formally verify that one of the examples above is indeed a vector space. Let's work with the set of all polynomials $P(x)$. Our vectors are polynomials, which are functions of the form
-$$a(x) = a_0 +a_1 x+a_2 x^2 + \cdots + a_n x^n = \sum_{i=0}^n a_i x^i.$$
-We must define vector addition and scalar multiplication.  
-If $\ds a(x) =  \sum_{i=0}^n a_i x^i$ and $\ds b(x) =  \sum_{i=0}^m b_i x^i$ are two polynomials, define their sum to be a new polynomial $c(x)$ where $c_i = a_i+b_i$ for each $i$ (where $a_i=0$ if $i> n$ and $b_i=0$ if $i> m$). This is just normal polynomial addition.
-For example, we compute the sum $(1+4x+3x^2)+(x-x^3) = (1+0)+(4+1)x+(3+0)x^2+(0-1)x^3$. If $c$ is a real number, then scalar multiplication $c\cdot a(x)$ is a new polynomial $b(x)$ where $b_i=ca_i$ for each $i$.  This is just the normal number-times-polynomial operation
-
-First, we need to check that the ``vector addition'' of two polynomials is also in our set (i.e., the result is a polynomial).  This is clear from the definition.  We also need to check that the ``scalar product'' of a number and a polynomial is also a polynomial.  This again is clear from the definition of scalar multiplication.
-
-Finally, we need to show the 8 axioms hold:
-\begin{enumerate}
-	\item[($A_1$)] Polynomial addition is associative: $(a(x)+b(x))+c(x) = a(x) +(b(x)+c(x))$. To verify this, we look at each coefficient of the sum.  The coefficients are $(a_i+b_i)+c_i = a_i+(b_i+c_i)$, and equality holds because addition of real numbers is associative.
-	\item[($A_2$)] Polynomial addition is commutative: $a(x)+b(x)=b(x)+a(x)$. Again this follows because addition of real numbers is commutative. In particular, $a_i+b_i=b_i+a_i$ for each $i$.
-	\item[($A_3$)] The zero polynomial $z(x)=0$ is the zero vector, as $0+a(x) = a(x)+0=a(x)$ for any polynomial.
-	\item[($A_4$)] The additive inverse of $a(x) = a_0+a_1x+\cdots+a_nx^n$ is $-a(x) = -a_0-a_1x-\cdots-a_nx^n$.
-	\item[($M_1$)] Scalar multiplication distributes across vector addition: $c(a(x)+b(x))= ca(x) + cb(x)$. For each $i$, we compute $c(a_i+b_i) = ca_i+cb_i$. 
-	\item[($M_2$)] Scalar multiplication distributes across scalar addition: $(c+d)a(x)= ca(x)+ da(x)$. For each $i$, we compute $(c+d)a_i = ca_i+da_i$. 
-	\item[($M_3$)] Scalar multiplication is associative: $(cd)a(x) = c(da(x))$. For each $i$, we compute $(cd)a_i = c(da_i)$.
-	\item[($M_4$)] Scalar multiplication by 1 does nothing: $1a(x)=a(x)$. For each $i$, we compute $1a_i = a_i$.
-\end{enumerate}
-We have now shown that the set of polynomials is a vector space.
-\end{example}
-
 \subsection{Subspaces}
-The formal definition of a vector space is rather long. Trying to show that a set is a vector space can be a long and tedious process. Once we have taken the time to show that a set is a vector space, we can use this result to find many subspaces inside the vector space that are themselves vector spaces.  We have done this already when we looked at the column space, row space, null space, and eigenspaces of a matrix. The notion of a subspace allows us to quickly find new vector spaces inside of vector spaces we already understand.
+
+The notion of a subspace allows us to quickly find new vector spaces inside of vector spaces we already understand.
 
 \begin{definition}
-Suppose $V$ is a vector space. If $U$ is a set of vectors in $V$ such that $U$ is a vector space itself (using the addition and multiplication in $V$), then we say that $U$ is a \define{vector subspace} of $V$ and write $U\subset V$.   
+Suppose $V$ is a vector space. If $U$ is a nonempty set of vectors in $V$ such that you can write $U$ as the span of some vectors, then $U$ is also a vector space.  We say $U$ is a \define{vector subspace} of $V$ and write $U\subset V$.   
 \end{definition}
 
 \begin{example}
-We know that the vectors in a plane in $\RR^3$ form a vector space. Each line through the origin that lies in the plane is a vector subspace of the plane. Each  line and plane in $\RR^3$ which passes through the origin is a vector subspace of $\RR^3$. 
+We know that $\RR^3$, the set of all vectors with three components, is a vector space.  Some vector subspaces of $\RR^3$ are the sets of vectors:
+\begin{enumerate}
+\item  $\{c(1,2,3) \st c\in\RR\}$: all multiples (i.e., linear combinations) of the vector $(1,2,3)$.  The endpoints of these vectors form a line through the origin
+\item ${(0,0,0)}$: just the zero vector (i.e., all linear combinations of the zero vector).  This vector space has only one vector, as opposed to the others which have an infinite number of vectors.
+\item $\{c_1(-1,0,1)+c_2(2,1,2) \st c_1,c_2\in\RR\}$: all linear combinations of $(-1,0,1)$ and $(2,1,2)$. The endpoints of these vectors form a plane through the origin
+\item $\{c_1(-1,0,1)+c_2(2,1,2)+c_3(-4,-1,0) \st c_1,c_2,c_3\in\RR\}$: all linear combinations of $(-1,0,1)$, $(2,1,2)$, and $(-4,-1,0)$.  Since the third vector $(-4,-1,0)$ is actually a linear combination of $(-1,0,1)$ and $(2,1,2)$, $(-4,-1,0)=2(-1,0,1)-(2,1,2)$, any linear combination of the three vectors can actually be written as a linear combination of just the first two vectors.  For example, 
+\begin{align*}
+3(-1,0,1)-2(2,1,2)+2(-4,-1,0)&=3(-1,0,1)-2(2,1,2)+2(2(-1,0,1)-(2,1,2))\\
+&=7(-1,0,1)-4(2,1,2).
+\end{align*}
+From this, we can see that the set of all linear combinations of the three vectors is the same as the set of all linear combinations of just the first two vectors.  So this vector subspace is the same as the previous example.
+\end{enumerate}
 \end{example}
 
-We have also seen lots of examples of sets of vectors in a vector space that are \emph{not} vector subspaces.  We now state a key theorem which allows us to quickly verify that a set of vectors in a vector space is a actually vector subspace.
+In general, each line through the origin that lies in the plane is a vector subspace of the plane. Each line and plane in $\RR^3$ which passes through the origin is a vector subspace of $\RR^3$. 
+
+\begin{example}
+  Here are some examples of sets of vectors that are \emph{NOT} vector subspaces of $\RR^3$.  Can you see that each of these is impossible to express as the span of some vectors?
+  \begin{enumerate}
+  \item $\{ (1,2,3)\}$
+  \item $\{c(-1,0,1)+(2,1,3)\st c\in\RR\}$
+  \item all vectors in $\RR^2$ that have only positive components
+  \item all vectors in $\RR^2$ that are on either the $x$ or $y$ axes
+  \item all vectors in $\RR^3$ that have length less than or equal to 1
+  \end{enumerate}
+\end{example}
+
+In order for a set of vectors to actually be the span of some vectors, the set must be closed under linear combinations.  In other words, if we take any vectors in the subspace, then every linear combination of the vectors must also be in the subspace.  To avoid trivialities, we insist that vector subspaces actually have at least one vector.  Since the vector space must have all multiples of any vectors, we know that every vector space at least has the zero vector.  These facts help us formulate a quick way to verify that a set of vectors is actually a vector space (i.e., the set of vectors is actually the span of some vectors).
 
 \begin{theorem}\label{thm subspace iff closed}
 Suppose $U$ is a set of vectors in a vector space $V$ and the following three conditions hold:
 \begin{enumerate}
   \item $0\in U$
 	\item $\vec u+\vec v\in U$ for every $\vec u,\vec v\in U$ (the set is closed under vector addition)
-	\item $c\vec u\in U$ for every $\vec u\in U$ and $c\in {\mathbb{R}}$ (the set is closed under scalar multiplication)
+	\item $c\vec u\in U$ for every $\vec u\in U$ and $c\in \RR$ (the set is closed under scalar multiplication)
 \end{enumerate}
 Then $U$ is a vector subspace of $V$. 
 \end{theorem}
@@ -768,9 +692,19 @@ The first item requires that the set actually contain at least one element.
 The second and third items basically state that every linear combination of vectors in $U$ is also in $U$ (the set is closed under linear combinations). 
 A vector subspace is a nonempty set of vectors in which every linear combination of vectors is also in the set. 
 The key value of this theorem is that it allows us to quickly show that many spaces are vector spaces.  
-Let's start with some examples, and then we'll end with a proof.
 
 
+\subsection{Generalizing what a ``vector'' is}
+
+The ideas behind linear combinations are very useful for things besides lists of numbers, which is what we've meant when we've said ``vector'' up to this point.  Many times we'd like to work with things other than lists of numbers.  In this section, let's look at how the concepts of subspace and linear combinations apply when we change what a ``vector'' is.
+
+\begin{example}
+  Here are some examples of sets of ``vectors'' where a ``vector'' is something other than a list of numbers.
+  \begin{enumerate}
+  \item A vector is an $m\times n$ matrix.  $M_{mn}$ is the set of all $m\times n$ matrices and is a vector space.  If $m=n$, then we abbreviate $M_{mn}$ as just $M_n$.
+  \item A vector is a polynomial of degree less than or equal to 2\marginpar{The \define{degree} of a polynomial is the highest power of the variable.}.  The set of all polynomials of degree less than or equal to two is $P_2$ and is a vector space.  Likewise the set of all polynomials with degree less than or equal to $n$ is $P_n$, and this is a vector space.
+ \end{enumerate}
+\end{example}
 
 \begin{example} Here are some examples of vector subspaces.
 \begin{enumerate}
@@ -1001,6 +935,114 @@ We can now work with 2 by 2 matrices as a vector space by considering vectors in
 \end{example}
 
 Whenever we encounter vector spaces of finite dimension, we will often start by finding a basis and then work with coordinates relative to this basis instead. Then we can work with the coordinates as vectors in ${\mathbb{R}}^n$ to perform calculations. This means that once we understand what happens in ${\mathbb{R}}^n$, we can understand what happens in any vector space of dimension $n$. 
+
+*************************************************************************
+
+
+\subsection{Generalizing vector operations}
+
+We can also generalize what we mean when we say ``vector addition'' or ``scalar multiplication.''  
+
+Talk about essential properties of the operations
+
+Give final big theorem
+
+Example of log space
+
+
+\note{* Change what we mean by "vector", and have subspaces as spans of
+  vectors.  Emphasize bases and coordinate vectors
+
+* Change what we mean by addition/multiplication, and view the rules
+as an extension of the properties in $R^n$, $P_n$, and $M_n$ properties.
+
+* Talk about logarithmic space as an example of the common
+  properties.
+}
+
+
+
+
+
+\subsection{Vector Spaces}
+
+The notion of a vector space is the foundational tool upon which we will build for the rest of the semester. Vectors in the plane, vectors in space, and planes in space through the origin are all examples of vector spaces. We have looked at the column space, row space, null space, and eigenspaces of a matrix as other examples of vector spaces.  In all of the examples we have looked at, we were able to create the vector space by considering a basis and using the span of that basis to obtain the vector space.  This is the fundamental idea we need to abstract vector spaces to a more general setting.  \marginpar{Vector spaces are spans of sets of vectors.}
+Continuous and differentiable functions form vector spaces. Matrices of the same size form a vector space. Radio waves, light waves, electromagnetic waves, and more all form vector spaces. Mathematicians discovered some common properties about all of these kinds of objects, and created a definition of of the term ``vector space'' to allow them to focus on the key commonalities. The results which sprang from the following definition created linear algebra as we know it today. 
+
+\begin{definition}\marginpar{We use the word ``real'' to emphasize that the scalars are real numbers. For those of you who know about fields, you can replace ``real'' with any field, such as the complex numbers or finite fields used in computers or cryptography. For simplicity, we will stick to scalars being real numbers for now.}%
+A (real) \define{vector space} is a set $V$ of things (which we will call ``vectors'') together with two operations:
+\begin{enumerate}
+	\item[(C1)] \define{vector addition} ($+$), which assigns to any pair $\vec u, \vec v\in V$ another vector $\vec u+\vec v\in V$,
+	\item[(C2)] \define{scalar multiplication} ($\cdot$), which assigns to any $\vec v \in V$ and $c\in {\mathbb{R}}$ another vector $c\vec v\in V$.
+\end{enumerate}
+\marginpar{We say that the set $V$ is closed under the operations of vector addition and scalar multiplication because adding vectors and scaling vectors produces other vectors in $V$.}%
+These two operations must satisfy the following axioms ($c,d\in {\mathbb{R}}$ and $\vec u,\vec v,\vec w\in V$):
+\marginpar{Compare these properties to Theorems~\ref{rn vector space properties} and \ref{matrix vector space properties}.}%
+\begin{enumerate}
+	\item[($A_1$)] Vector addition is associative: $(\vec u+\vec v)+\vec w = \vec u +(\vec v+\vec w)$.
+	\item[($A_2$)] Vector addition is commutative: $\vec u+\vec v= \vec v+\vec u$.
+	\item[($A_3$)] There is a zero vector $\vec 0$ in $V$ which satisfies $\vec 0+\vec v = \vec v+\vec 0=\vec v$.
+	\item[($A_4$)] Every $\vec v\in V$ has an additive inverse, called $-\vec v$, which satisfies $\vec v+(-\vec v)=\vec 0$.
+	\item[($M_1$)] Scalar multiplication distributes across vector addition: $c(\vec u+\vec v)= c\vec u + c\vec v$.
+	\item[($M_2$)] Scalar multiplication distributes across scalar addition: $(c+d)\vec v= c\vec v+ d\vec v$.
+	\item[($M_3$)] Scalar multiplication is associative: $(cd)\vec v = c(d\vec v)$
+	\item[($M_4$)] Scalar multiplication by 1 does nothing: $1\vec v=\vec v$
+\end{enumerate}
+\end{definition}
+The definition above is the formal definition of a vector space. The definition generalizes the properties we already use about vectors in $\RR^2$ and $\RR^3$. This definition essentially means you can add and multiply as you would normally expect---no surprises will occur. 
+ However, you can work with this definition if you think 
+\begin{quote}
+A vector space is a set of things (``vectors'') closed under vector addition and scalar multiplication, and these operations obey the usual rules of addition and multiplication.
+\end{quote}
+
+
+With vector addition and scalar multiplication properly defined, the span of any set of vectors from the vector space will always be a vector space. In other words, every linear combination of the vectors in that space must also be in the space. This means that lines and planes in $\RR^3$ which pass through the origin are examples of vector spaces. As the semester progresses, we will discover that our intuition about what happens in $\RR^2$ and $\RR^3$ generalizes to all dimensions and can help us understand any kind of vector space.  For now, let's look at some examples of vector spaces, and explain why they are vector spaces.
+
+\begin{example}[Examples of vector spaces]
+Here are some examples of sets (and corresponding vector addition and scalar multiplication operations) that are vector spaces.
+\begin{enumerate}
+	\item Both ${\mathbb{R}}^2$ and ${\mathbb{R}}^3$ are vector spaces. The set of all lists of real numbers of length $n$, ${\mathbb{R}}^n$, is a vector space.  Vector addition is defined component-wise. Addition is associative, commutative, the zero vector is $(0,0,\ldots,0)$, and $(v_1,v_2,\ldots,v_n)+(-v_1,-v_2,\ldots,-v_n)=\vec 0$. Also, scalar multiplication distributes across vector and scalar addition, it is associative, and $1\vec v=\vec v$.  The definition of a vector space was defined to capture the properties of ${\mathbb{R}}^n$ which are useful in other settings.
+	\item The set of $m$ by $n$ matrices, written $M_{mn}$, with ``vector addition'' being normal matrix addition and ``scalar multiplication'' being normal matrix-scalar multiplication, is a vector space.
+	\item The set of all polynomials, written $P(x)$, with ``vector addition'' being the normal sum of polynomials, and ``scalar multiplication'' being the normal number-times-polynomial operation, is a vector space.
+	\item The set of continuous functions on an interval $[a,b]$, written $C[a,b]$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
+	\item The set of continuously differentiable functions on an interval $(a,b)$, written $C^1(a,b)$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
+\end{enumerate}
+\end{example}
+\begin{example}[Examples that are \emph{NOT} vector spaces] 
+Here are some examples of sets that are not vector spaces along with an explanation of one of the properties they do not satisfy.
+\begin{enumerate}
+	\item A line that does not pass through the origin. The zero vector is not on the line.
+	\item Polynomials of degree $n$.  There is no zero vector.
+	\item Invertible Matrices. There is no zero matrix since it is not invertible.
+	\item The nonnegative $x$ axis. There is no additive inverse for $(1,0)$, as $(-1,0)$ is not in the space.
+	\item The line segment from $(-1,0)$ to $(1,0)$. The product $2(1,0)=(2,0)$ is not in the space.
+\end{enumerate}	
+\end{example}
+
+
+\begin{example} [The set of all polynomials is a vector space]
+To illustrate how to verify that a set is a vector space, let's formally verify that one of the examples above is indeed a vector space. Let's work with the set of all polynomials $P(x)$. Our vectors are polynomials, which are functions of the form
+$$a(x) = a_0 +a_1 x+a_2 x^2 + \cdots + a_n x^n = \sum_{i=0}^n a_i x^i.$$
+We must define vector addition and scalar multiplication.  
+If $\ds a(x) =  \sum_{i=0}^n a_i x^i$ and $\ds b(x) =  \sum_{i=0}^m b_i x^i$ are two polynomials, define their sum to be a new polynomial $c(x)$ where $c_i = a_i+b_i$ for each $i$ (where $a_i=0$ if $i> n$ and $b_i=0$ if $i> m$). This is just normal polynomial addition.
+For example, we compute the sum $(1+4x+3x^2)+(x-x^3) = (1+0)+(4+1)x+(3+0)x^2+(0-1)x^3$. If $c$ is a real number, then scalar multiplication $c\cdot a(x)$ is a new polynomial $b(x)$ where $b_i=ca_i$ for each $i$.  This is just the normal number-times-polynomial operation
+
+First, we need to check that the ``vector addition'' of two polynomials is also in our set (i.e., the result is a polynomial).  This is clear from the definition.  We also need to check that the ``scalar product'' of a number and a polynomial is also a polynomial.  This again is clear from the definition of scalar multiplication.
+
+Finally, we need to show the 8 axioms hold:
+\begin{enumerate}
+	\item[($A_1$)] Polynomial addition is associative: $(a(x)+b(x))+c(x) = a(x) +(b(x)+c(x))$. To verify this, we look at each coefficient of the sum.  The coefficients are $(a_i+b_i)+c_i = a_i+(b_i+c_i)$, and equality holds because addition of real numbers is associative.
+	\item[($A_2$)] Polynomial addition is commutative: $a(x)+b(x)=b(x)+a(x)$. Again this follows because addition of real numbers is commutative. In particular, $a_i+b_i=b_i+a_i$ for each $i$.
+	\item[($A_3$)] The zero polynomial $z(x)=0$ is the zero vector, as $0+a(x) = a(x)+0=a(x)$ for any polynomial.
+	\item[($A_4$)] The additive inverse of $a(x) = a_0+a_1x+\cdots+a_nx^n$ is $-a(x) = -a_0-a_1x-\cdots-a_nx^n$.
+	\item[($M_1$)] Scalar multiplication distributes across vector addition: $c(a(x)+b(x))= ca(x) + cb(x)$. For each $i$, we compute $c(a_i+b_i) = ca_i+cb_i$. 
+	\item[($M_2$)] Scalar multiplication distributes across scalar addition: $(c+d)a(x)= ca(x)+ da(x)$. For each $i$, we compute $(c+d)a_i = ca_i+da_i$. 
+	\item[($M_3$)] Scalar multiplication is associative: $(cd)a(x) = c(da(x))$. For each $i$, we compute $(cd)a_i = c(da_i)$.
+	\item[($M_4$)] Scalar multiplication by 1 does nothing: $1a(x)=a(x)$. For each $i$, we compute $1a_i = a_i$.
+\end{enumerate}
+We have now shown that the set of polynomials is a vector space.
+\end{example}
+
 
 
 %%% Local Variables: 
