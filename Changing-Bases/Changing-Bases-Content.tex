@@ -218,7 +218,7 @@ We replace each $x'$ and $y'$ with $x'=x/\sqrt2+y/\sqrt2$ and $y'=-x/\sqrt2+y/\s
 \end{example}
 
 Any time you encounter a problem that would be simpler in a new coordinate system, there is a change of basis matrix that can simplify the problem. 
-\footnote{Different authors disagree on the use of the term ``change of basis matrix.'' 
+\endnote{Different authors disagree on the use of the term ``change of basis matrix.'' 
 We call $P$ the change of basis matrix \emph{from $S$ to $R$}, referring to the fact that multiplying $[\vec u]_S$ by $P$ transforms coordinates relative to $S$ into coordinates relative to $R$: $P[\vec u]_S=[\vec u]_R$.  
 When working with an equation, for example, another point of view is that we can quickly convert an equation using $R$ coordinates $[\vec u]_{R}$ to an equation using $S$ coordinates $[\vec u]_S$ by replacing each instance of $[\vec u]_{R}$ with $P[\vec u]_S$.  For example, if we know that $[\vec u]_R+[\vec v]_R-2[\vec w]_R=[\vec x]_R$, then we can transform this equation to an equation involving coordinates relative to $S$ by multiplying each coordinate vector by $P$: $P[\vec u]_S+P[\vec v]_S-2P[\vec w]_S=P[\vec x]_S$.  Hence some people call $P$ the change of basis matrix \emph{from $R$ to $S$} (instead of \emph{from $S$ to $R$}).
 Both phrases appear in different places and both can be considered correct. The difference lies in the context of the problem and how you plan to use the matrix. Are you focusing on what the transformation does to individual vectors, or what the transformation does to equations? 
@@ -1257,7 +1257,6 @@ $$A = PDP\inv = \bm{1&-1\\1&1}\bm{3&0\\0&-1}\frac12\bm{1&1\\-1&1} = \bm{1&2\\2&1
 We just obtained the matrix which represents our vector field. All we needed to know was the eigenvalues and eigenvectors, something than can be seen and measured physically in a vector field. So we now have the ability to take a physical moving force and use diagonalization to connect it back to matrices.  
 
 %As time permits, I will add one other application related to computer graphics. Stay tuned.
-
 
 
 %%% Local Variables: 
