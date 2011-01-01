@@ -92,8 +92,9 @@ We say a set $\{\vec v_1,\vec v_2,\ldots,\vec v_n\}$ of vectors is \define{linea
 \end{definition}
 
 \begin{definition}[Basis]
-A \define[basis!$\RR^n$]{basis} for $\mathbb{R}^n$ is a set of vectors that are (1) linearly independent and (2) span all of $\mathbb{R}^n$.
-The \define{standard basis} for $\mathbb{R}^n$ is the set 
+\label{def:basis for Rn}
+A \define[basis!$\RR^n$]{basis} for $\RR^n$ is a set of vectors that are (1) linearly independent and (2) span all of $\RR^n$.
+The \define[standard basis!$\RR^n$]{standard basis} for $\RR^n$ is the set 
 $$\{\vec e_1 = (1,0,0,\ldots,0,0),\, 
 \vec e_2 = (0,1,0,\ldots,0,0),\, 
 \ldots,\, 
@@ -117,6 +118,7 @@ The \definestyle{dimension} of the row space is the number of vectors in a basis
 \end{definition}
 
 \begin{definition}[Coordinates]
+\label{def coordinates for Rn}
 \marginpar{See examples \ref{colspace1ex} and \ref{colspace2ex}.}%
 If $\beta=\{\vec b_1,\vec b_2,\ldots,\vec b_n\}$ is a basis for a vector space, and a vector $\vec v$ equals the linear combination 
 $$ \vec v = c_1\vec b_1+c_2\vec v_2 + \cdots c_n\vec v_n, $$ then we call the scalars $c_1,\,c_2,\,\ldots,\, c_n$ the  \define{coordinates} of $\vec v$ relative to the basis $\beta$. We may write $\vec v = (c_1,c_2,\ldots, c_n)_\beta$ to represent the vector $\vec v$, or if the basis $\beta$ is understood, we may just write $\vec v = (c_1,c_2,\ldots, c_n)$.
@@ -275,7 +277,7 @@ For a nonhomogeneous system $A\vec x=\vec b$, the difference $\vec x_1-\vec x_2$
 
 \subsubsection{Matrix Properties}
 
-\begin{theorem} [Vector space properties of $M_{mn}$]\label{matrix vector space properties}
+\begin{theorem} [Vector space properties of $M_{m,n}$]\label{matrix vector space properties}
 Let $A,B$ and $C$ be $m$ by $n$ matrices, and $c,d$ be real numbers.  Matrix addition and scalar multiplication satisfy the following properties:
 \begin{enumerate}
 	\item[($A_1$)] Matrix addition is associative: $(A+B)+C = A +(B+C)$.
@@ -621,7 +623,7 @@ The results of these two theorems involve two if-then statements (an if and only
 At this point, if we want to say that (10) implies (9) (determinant nonzero implies there is an inverse), then the proof above shows that (10) implies (11) which implies (1) which implies (2) and so on until it implies (9) as well.  By creating a circle of implications, all of the ideas above are equivalent.
 
 
-In the homework, I ask you to illustrate this theorem with a few matrices.  Your job is to show that your example matrix either satisfies every single one of the statements in Theorem~\ref{huge equivalence}, or satisfies every single one of the statements in Theorem~\ref{huge equivalence negated}.
+In the homework, you are asked to illustrate this theorem with a few matrices.  Your job is to show that your example matrix either satisfies every single one of the statements in Theorem~\ref{huge equivalence}, or satisfies every single one of the statements in Theorem~\ref{huge equivalence negated}.
 
 
 \section{Vector Spaces}
@@ -630,31 +632,20 @@ The notion of a vector space is the foundational structure upon which we will bu
 
 \subsection{Vector Subspaces}
 
-We have looked at sets of vectors that we call vector spaces.  This is a set (of vectors) that has special properties.  $\RR^n$ is an example of a vector space.  We've also seen that linear combinations of a set of vectors is also a vector space.  A vector space is the span of some vectors.  For example, we've seen that the multiples of a vector is a vector space, as well as a plane through the origin or all of 3d space.  The important property here is that a set is a vector space if it is closed under vector addition and scalar multiplication, and also contains a zero vector.
+We have looked at sets of vectors that we call vector spaces.  This is a set (of vectors) that can be expressed as a span.  For example, we've seen that the set of all multiples of a single vector is a vector space.
 
-****************************************************************************
-
-\note{Do some examples of subspaces like $P_n$, $M_n$.
-
-Give the subspace theorem
-
-Emphasize bases and coordinate vectors?
-
-}
-\subsection{Subspaces}
-
-The notion of a subspace allows us to quickly find new vector spaces inside of vector spaces we already understand.
+The notion of a vector subspace allows us to quickly find new vector spaces inside of vector spaces we already understand.
 
 \begin{definition}
 Suppose $V$ is a vector space. If $U$ is a nonempty set of vectors in $V$ such that you can write $U$ as the span of some vectors, then $U$ is also a vector space.  We say $U$ is a \define{vector subspace} of $V$ and write $U\subset V$.   
 \end{definition}
 
 \begin{example}
-We know that $\RR^3$, the set of all vectors with three components, is a vector space.  Some vector subspaces of $\RR^3$ are the sets of vectors:
+We know that $\RR^3$, the set of all vectors with three components, is a vector space.  Here are some sets of vectors in $\RR^3$ that are vector subspaces of $\RR^3$.
 \begin{enumerate}
-\item  $\{c(1,2,3) \st c\in\RR\}$: all multiples (i.e., linear combinations) of the vector $(1,2,3)$.  The endpoints of these vectors form a line through the origin
-\item ${(0,0,0)}$: just the zero vector (i.e., all linear combinations of the zero vector).  This vector space has only one vector, as opposed to the others which have an infinite number of vectors.
-\item $\{c_1(-1,0,1)+c_2(2,1,2) \st c_1,c_2\in\RR\}$: all linear combinations of $(-1,0,1)$ and $(2,1,2)$. The endpoints of these vectors form a plane through the origin
+\item  $\{c(1,2,3) \st c\in\RR\}$: all multiples (i.e., linear combinations) of the vector $(1,2,3)$.  The endpoints of these vectors form a line through the origin.
+\item $\{(0,0,0)\}$: just the zero vector (i.e., all linear combinations of the zero vector).  This vector space has only one vector, as opposed to the others which have an infinite number of vectors.
+\item $\{c_1(-1,0,1)+c_2(2,1,2) \st c_1,c_2\in\RR\}$: all linear combinations of $(-1,0,1)$ and $(2,1,2)$. The endpoints of these vectors form a plane through the origin.
 \item $\{c_1(-1,0,1)+c_2(2,1,2)+c_3(-4,-1,0) \st c_1,c_2,c_3\in\RR\}$: all linear combinations of $(-1,0,1)$, $(2,1,2)$, and $(-4,-1,0)$.  Since the third vector $(-4,-1,0)$ is actually a linear combination of $(-1,0,1)$ and $(2,1,2)$, $(-4,-1,0)=2(-1,0,1)-(2,1,2)$, any linear combination of the three vectors can actually be written as a linear combination of just the first two vectors.  For example, 
 \begin{align*}
 3(-1,0,1)-2(2,1,2)+2(-4,-1,0)&=3(-1,0,1)-2(2,1,2)+2(2(-1,0,1)-(2,1,2))\\
@@ -664,34 +655,74 @@ From this, we can see that the set of all linear combinations of the three vecto
 \end{enumerate}
 \end{example}
 
-In general, each line through the origin that lies in the plane is a vector subspace of the plane. Each line and plane in $\RR^3$ which passes through the origin is a vector subspace of $\RR^3$. 
+%In general, each line through the origin that lies in the plane is a vector subspace of the plane. Each line and plane in $\RR^3$ which passes through the origin is a vector subspace of $\RR^3$. 
 
 \begin{example}
   Here are some examples of sets of vectors that are \emph{NOT} vector subspaces of $\RR^3$.  Can you see that each of these is impossible to express as the span of some vectors?
   \begin{enumerate}
   \item $\{ (1,2,3)\}$
   \item $\{c(-1,0,1)+(2,1,3)\st c\in\RR\}$
-  \item all vectors in $\RR^2$ that have only positive components
-  \item all vectors in $\RR^2$ that are on either the $x$ or $y$ axes
-  \item all vectors in $\RR^3$ that have length less than or equal to 1
+  \item $\{(x,y) \st x\geq 0 \text{ and } y\geq0\}$: all vectors in $\RR^2$ that have only positive components
+  \item $\{(x,y)\st x=0 \text{ or } y=0\}$: all vectors in $\RR^2$ that are on either the $x$ or $y$ axes
+  \item $\{(x,y,z)\st \sqrt{x^2+y^2+z^2}\leq 1\}$: all vectors in $\RR^3$ that have length less than or equal to 1
   \end{enumerate}
 \end{example}
 
-In order for a set of vectors to actually be the span of some vectors, the set must be closed under linear combinations.  In other words, if we take any vectors in the subspace, then every linear combination of the vectors must also be in the subspace.  To avoid trivialities, we insist that vector subspaces actually have at least one vector.  Since the vector space must have all multiples of any vectors, we know that every vector space at least has the zero vector.  These facts help us formulate a quick way to verify that a set of vectors is actually a vector space (i.e., the set of vectors is actually the span of some vectors).
+In order for a set of vectors to actually be the span of some vectors, the set must be closed under linear combinations.  In other words, if we take any vectors in the subspace, then every linear combination of the vectors must also be in the subspace.  To avoid trivialities, we insist that vector subspaces actually have at least one vector.  Since the vector space must have all multiples of any vectors, we know that every vector space at least has the zero vector.  These facts help us formulate a quick test to verify that a set of vectors is actually a vector space (i.e., the set of vectors is actually the span of some vectors).
 
 \begin{theorem}\label{thm subspace iff closed}
-Suppose $U$ is a set of vectors in a vector space $V$ and the following three conditions hold:
+Suppose $U$ is a set of vectors in a vector space $V$ and the all of the following three conditions hold:
 \begin{enumerate}
-  \item $0\in U$
-	\item $\vec u+\vec v\in U$ for every $\vec u,\vec v\in U$ (the set is closed under vector addition)
-	\item $c\vec u\in U$ for every $\vec u\in U$ and $c\in \RR$ (the set is closed under scalar multiplication)
+  \item $\vec 0\in U$
+	\item For every $\vec u,\vec v\in U$, we have $\vec u+\vec v\in U$ (we say $U$ is closed under vector addition)
+	\item For every $\vec u \in U$ and every $c\in \RR$, we have $c\vec u\in U$ (we say $U$ is closed under scalar multiplication)
 \end{enumerate}
-Then $U$ is a vector subspace of $V$. 
+If each of those three conditions hold, then $U$ is a vector subspace of $V$.  If any of the three conditions above are false, then $U$ is not a vector space, and so is not a vector subspace of $V$.
 \end{theorem}
-The first item requires that the set actually contain at least one element.  
-The second and third items basically state that every linear combination of vectors in $U$ is also in $U$ (the set is closed under linear combinations). 
-A vector subspace is a nonempty set of vectors in which every linear combination of vectors is also in the set. 
-The key value of this theorem is that it allows us to quickly show that many spaces are vector spaces.  
+
+The first condition above just ensures that $U$ has at least one vector in it since a vector space will always have the zero vector.  The second two conditions are testing if $U$ is closed under linear combinations by testing to see if $U$ is closed under both operations involved in a linear combination (scalar multiplication and vector addition).
+
+\begin{example}
+  Let's use this test to show that the set of vectors $U=\{c(1,2,3)\st
+  c\in\RR\}$ from the example above is a vector space.  First, $\vec
+  0\in U$ since setting $c=0$ gives the vector $(0,0,0)=\vec 0$.
+  Second, if we have any two vectors in $U$ (i.e., two multiples of
+  $(1,2,3)$), say $c_1(1,2,3)$ and $c_2(1,2,3)$, then their sum
+  $c_1(1,2,3)+c_2(1,2,3)=(c_1+c_2)(1,2,3)$ is also a multiple of
+  $(1,2,3)$, so the sum is in $U$.  Finally, if we have any vector in
+  $U$, say $c_1(1,2,3)$, and we multiply it by any real number $c$, we
+  get $cc_1(1,2,3)$, which is a multiple of $(1,2,3)$ and therefore in
+  $U$.  Thus $U$ contains the zero vector and is closed under linear
+  combinations, and so $U$ is a vector space.
+
+  Note that we need to show that the last two conditions hold no matter what two vectors we pick from $U$ (for the second condition) or what vector from $U$ and what scalar from $\RR$ we pick (for the third condition).  It is not enough to show the two conditions hold for specific examples.  The last two conditions must hold \emph{always}.
+\end{example}
+
+\begin{example} Now let's use the conditions in the theorem to show
+  that the set $U=\{c(-1,0,1)+(2,1,3)\}$ is not a vector subspace.
+  Note that you cannot pick a constant $c$ so that $\vec
+  0=(0,0,0)=c(-1,0,1)+(2,1,3)$ since you'd have to pick $c=2$ to zero
+  out the first component, but then the second component would be 1.
+  That means that $U$ does not contain the zero vector, violating the first condition above.  That would be enough to show that $U$ is not a vector space.
+  However, let's test the other two conditions anyway. 
+
+  Let's pick two generic vectors from $U$, $\vec u=c_1(-1,0,1)+(2,1,3)$ and $\vec v=c_2(-1,0,1)+(2,1,3)$.  In order to show that the second condition fails, we only need to find one specific example where $\vec u+\vec v \notin U$.  However, we use variables $c_1$ and $c_2$ so that we can analyze what happens for \emph{any} pair of vectors in $U$, and that will make it easier to find the example we need.  The sum is
+  \begin{align*}
+    \vec u+\vec v=(c_1+c_2)(-1,0,1)+(4,2,6)
+    =(-c_1-c_2+4, 2, c_1+c_2+6).
+    \end{align*}
+    Note that the second component of $\vec u+\vec v$ is 2, but any vector in $U$ will always have a second component equal to 1 (since it is of the form $c(-1,0,1)+(2,1,3)=(-c+2, 1, c+3)$).  This shows that $\vec u+\vec v$ is \emph{never} in $U$, no matter what $\vec u,\vec v$ we pick from $U$, so $U$ is not closed under vector addition.  Again, violating just this second condition is enough to show that $U$ is not a vector space, but we'll test the last condition anyway to see how it is done.
+
+    Let's pick a vector from $U$, $\vec u=c_1(-1,0,1)+(2,1,3)$, and a scalar $c\in\RR$.  Again, notice that we use variables to analyze what happens for any vector in $U$ and any scalar in $\RR$.  The scalar multiplication $c\vec u$ is
+    \begin{align*}
+      c\vec u = c(c_1(-1,0,1)+(2,1,3)) = (-cc_1+2, c, cc_1+3).
+    \end{align*}
+    If $c\neq 1$, then the second component of $c\vec u$ is not 1, so $c\vec u$ is not in $U$.  This means that $U$ is not closed under scalar multiplication.
+
+    Note that we only need to show that one of the conditions in the test fails to show that $U$ is not a vector space (and hence not a vector subspace).  Furthermore, since the second two conditions must hold always, if we can come up with a single example of two vectors $\vec u$ and $\vec v$ which are in $U$, but $\vec u+\vec v$ is not in $U$, that is enough to show that the second condition fails and $U$ is not a vector space.  If we can come up with a single example of a vector $\vec u\in U$ and a scalar $c\in\RR$ where $c\vec u$ is not in $U$, then the third condition fails and $U$ is not a vector space.
+
+In this example, all three conditions failed.  Sometimes only one or two of the conditions will be false.  In those cases, $U$ is still not a vector space.
+\end{example}
 
 
 \subsection{Generalizing what a ``vector'' is}
@@ -701,16 +732,30 @@ The ideas behind linear combinations are very useful for things besides lists of
 \begin{example}
   Here are some examples of sets of ``vectors'' where a ``vector'' is something other than a list of numbers.
   \begin{enumerate}
-  \item A vector is an $m\times n$ matrix.  $M_{mn}$ is the set of all $m\times n$ matrices and is a vector space.  If $m=n$, then we abbreviate $M_{mn}$ as just $M_n$.
-  \item A vector is a polynomial of degree less than or equal to 2\marginpar{The \define{degree} of a polynomial is the highest power of the variable.}.  The set of all polynomials of degree less than or equal to two is $P_2$ and is a vector space.  Likewise the set of all polynomials with degree less than or equal to $n$ is $P_n$, and this is a vector space.
- \end{enumerate}
+  \item A vector is a $3\times 2$ matrix.  $M_{3,2}$ is the set of all $3\times 2$ matrices and is a vector space.  All of the vectors in $M_{3,2}$ are linear combinations of the vectors
+    \begin{equation*}
+      \left\{
+      \begin{bmatrix}1&0\\0&0\\0&0\end{bmatrix},
+      \begin{bmatrix}0&1\\0&0\\0&0\end{bmatrix},
+      \begin{bmatrix}0&0\\1&0\\0&0\end{bmatrix},
+      \begin{bmatrix}0&0\\0&1\\0&0\end{bmatrix},
+      \begin{bmatrix}0&0\\0&0\\1&0\end{bmatrix},
+      \begin{bmatrix}0&0\\0&0\\0&1\end{bmatrix}
+      \right\}
+  \end{equation*}
+
+  \item A vector is an $m\times n$ matrix.  $M_{m,n}$ is the vector space of all $m\times n$ matrices.  If $m=n$, then we abbreviate $M_{m,n}$ as just $M_n$, e.g., $M_3$ is the vector space, or set of vectors, of all $3\times 3$ matrices.
+  \item A vector is a polynomial of degree less than or equal to 2\marginpar{The \define{degree} of a nonzero polynomial is the highest power of the variable.  The degree of $x^3-3x^4+1$ is four and the degree of the constant polynomial $2$ is zero.  The degree of the zero polynomial $0$ is either $-1$ or $-\infty$, depending on the convention used.}.  $P_2(x)$ is the set of all polynomials of degree less than or equal to 2 and is a vector space.  All of the vectors in $P_2(x)$ are linear combinations of the vectors $\{1,x,x^2\}$.
+ \item A vector is a polynomial with degree less than or equal to $n$.  The set of all polynomials with degree less than or equal to $n$ is $P_n(x)$, and this is a vector space.
+ \item A vector is a polynomial.  The set of all polynomials with variable $x$ is the vector space $P(x)$.
+\end{enumerate}
 \end{example}
 
 \begin{example} Here are some examples of vector subspaces.
 \begin{enumerate}
 	\item  The span of a set of vectors in a vector space $V$ is always a subspace of $V$. This is because every linear combination is by definition in the span, so it is in the subspace.  Hence, if $M$ is an $m$ by $n$ matrix, the row space (the span of the rows) is a subspace of $\RR^n$ and the column space is a subspace of $\RR^m$.
-	\item  The set of upper triangular $m$ by $n$ matrices is a subspace of $M_{mn}$. The zero matrix is in $M_{mn}$. The sum of two upper triangular matrices is upper triangular.  Multiplying each entry of an upper triangular matrix by a scalar will still result in an upper triangular matrix.
-	\item  The set of polynomials of degree less than or equal to $n$, written $P_n(x)$, is a subspace of $P(x)$. The zero polynomial ($p(x)=0$, which has degree 0) is in the set.  If two polynomials each have degree less than or equal to $n$, then their sum also has degree less than or equal to $n$.  Also, multiplying a polynomial by a constant cannot increase the degree, so the set is closed under scalar multiplication.
+	\item  The set of upper triangular $m$ by $n$ matrices is a subspace of $M_{m,n}$. The zero matrix is in $M_{m,n}$. The sum of two upper triangular matrices is upper triangular.  Multiplying each entry of an upper triangular matrix by a scalar will still result in an upper triangular matrix.
+	\item  The set of polynomials of degree less than or equal to $n$, written $P_n(x)$, is a subspace of $P(x)$. The zero polynomial ($p(x)=0$, which has degree less than zero) is in the set.  If two polynomials each have degree less than or equal to $n$, then their sum also has degree less than or equal to $n$.  Also, multiplying a polynomial by a constant cannot increase the degree, so the set is closed under scalar multiplication.
 	\item  More examples are given in Schaum's outlines on page 160 (examples 4.4, 4.5, and 4.6).
         \item See Example~\ref{RR subspace examples} for some examples we've seen before of sets which are vector subspaces of $\RR^n$.
 \end{enumerate}
@@ -724,13 +769,9 @@ Here are some examples of sets that are \emph{NOT} vector subspaces. To show a s
 \end{enumerate}
 \end{example}
 
-
-
-
-
-\begin{proof}
-The proof of this theorem is rather quick. Let $V$ be the larger vector space, and $U$ the subset of vectors that satisfy the 3 properties.  From the conditions in the theorem, we know that $U$ is nonempty and closed under vector addition and scalar multiplication. Because every vector in $U$ is also a vector in $V$, we immediately know that vector addition is associative ($A_1$) and commutative ($A_2$), scalar multiplication distributes across vector addition ($M_1$) and distributes across scalar addition ($M_2$), scalar multiplication is associative ($M_3$), and multiplication by 1 does nothing ($M_4$). The first condition in the theorem shows that $U$ has a zero vector ($A_3$). So all we need to show is that the additive inverse ($A_4$) of any vector in $U$ is also in $U$. If $\vec u\in U$, then because $c\vec u\in U$ for every $c\in \mathbb{R}$, we can pick $c=-1$ to obtain $-1 \vec u\in U$. This means that $u+(-1\vec u) = (1-1)\vec u = 0\vec u = \vec 0$, which means every $u\in U$ has an additive inverse $-1\vec u\in U$ ($A_4$). We have now verified that $U$ satisfies all the axioms required to be a vector space.
-\end{proof}
+% \begin{proof}
+% The proof of this theorem is rather quick. Let $V$ be the larger vector space, and $U$ the subset of vectors that satisfy the 3 properties.  From the conditions in the theorem, we know that $U$ is nonempty and closed under vector addition and scalar multiplication. Because every vector in $U$ is also a vector in $V$, we immediately know that vector addition is associative ($A_1$) and commutative ($A_2$), scalar multiplication distributes across vector addition ($M_1$) and distributes across scalar addition ($M_2$), scalar multiplication is associative ($M_3$), and multiplication by 1 does nothing ($M_4$). The first condition in the theorem shows that $U$ has a zero vector ($A_3$). So all we need to show is that the additive inverse ($A_4$) of any vector in $U$ is also in $U$. If $\vec u\in U$, then because $c\vec u\in U$ for every $c\in \mathbb{R}$, we can pick $c=-1$ to obtain $-1 \vec u\in U$. This means that $u+(-1\vec u) = (1-1)\vec u = 0\vec u = \vec 0$, which means every $u\in U$ has an additive inverse $-1\vec u\in U$ ($A_4$). We have now verified that $U$ satisfies all the axioms required to be a vector space.
+% \end{proof}
 
 
 The first example of a vector subspace that we examined involved looking at the span of a set of vectors. Because any vector subspace is closed under linear combinations, the span of all vectors in the subspace is the subspace itself. This means that every vector subspace is the span of a set of vectors. This pattern will be used so often that we will state it as a theorem.
@@ -744,7 +785,7 @@ If $W$ is a subset of vectors in a vector space $V$, then $W$ is a subspace of $
 Let's use the previous theorem to show that some sets are vector subspaces. 
 \begin{enumerate}
 	\item The set of 2 by 2 diagonal matrices is spanned by 
-	$\begin{bmatrix}1&0\\0&0\end{bmatrix}$ and $\begin{bmatrix}0&0\\0&1\end{bmatrix}$, and so is a vector subspace of $M_{22}$.
+	$\begin{bmatrix}1&0\\0&0\end{bmatrix}$ and $\begin{bmatrix}0&0\\0&1\end{bmatrix}$, and so is a vector subspace of $M_{2,2}$.
 	\item We already know that $P(x)$ is a vector space. The span of $\{1,x,x^2,x^3,x^4\}$ is the set of polynomials of the form $a+bx+cx^2+dx^3+ex^4$, which is the set of all polynomials of degree 4 or less, $P_4(x)$. Since $P_4(x)$ is the span of set of vectors, it is a vector subspace of $P(x)$. 
 \end{enumerate}
 \end{example}
@@ -755,6 +796,7 @@ Let's use the previous theorem to show that some sets are vector subspaces.
 Vector spaces are often rather large sets. In the previous chapter, we found basis vectors for the column and row space of a matrix by row reducing a matrix. These basis vectors allow us to talk about the entire space by considering the span of the basis vectors. The coordinates of other vectors can then be given relative to the chosen basis. Let's review these ideas with an example of finding a basis for the column space of a matrix.
 
 \begin{example}
+In this example, a vector is a list of three numbers, i.e., an element of $\RR^3$.
 The reduced row echelon form of 
 $\begin{bmatrix}[ccc] 1&-1&1\\3&0&6\\5&1&11\end{bmatrix}$ 
 is 
@@ -774,7 +816,7 @@ The coordinates of the third vector relative to this basis are $(2,1)$, the numb
 The dimension of the column space is the number of vectors in a basis for the column space, so here the dimension of the column space is 2.  The column space is a plane of vectors in $\RR^3$.
 \end{example}
 
-The example above illustrates the key ideas we need to work with any finite dimensional vector spaces.  Let's now give the formal definitions.
+The example above illustrates the key ideas we need to work with any finite dimensional vector spaces.  Let's now give the formal definitions of basis, dimension, and coordinates that will work no matter what things we are calling ``vectors.''  Compare this definition to Definitions~\ref{def:basis for Rn} and \ref{def coordinates for Rn} and see that the underlying concepts are exactly the same, no matter what sort of thing a ``vector'' is.
 
 \begin{definition}[Basis, Dimension, Coordinates]
 A \define[basis!vector space]{basis} for a vector space is a set of vectors that are 
@@ -798,16 +840,16 @@ To show that this set forms a basis for $P_2(x)$, we only need to show that thes
 To show this, we must show that $$a_0(1)+a_1(x)+a_2(x^2) = 0 \text{ implies } a_0=a_1=a_2=0$$ (the only linear combination which results in the zero polynomial is the trivial combination).  
 Since the equation above holds for every real number $x$, we can simply plug in 3 different $x$ values to obtain 3 different equations. Letting $x=0,1,-1$ gives us the three equations $a_0=0$, $a_0+a_1+a_2=0$, and $a_0-a_1+a_2=0$. Solving this system yields $a_0=a_1=a_2=0$. Hence, the three polynomials $1, x, x^2$ are linearly independent.  
 These three polynomials form a basis for $P_2(x)$, and we call this the standard basis for $P_2(x)$.  Using this basis, the coordinates of $a_0+a_1x+a_2x^2$ relative to the standard basis are $(a_0,a_1,a_2)$.
-Notice that dimension of $P_2(x)$ is 3 (one more than the maximum degree of the polynomials). 
+Since there are three basis vectors, the dimension of $P_2(x)$ is 3 (one more than the maximum degree of the polynomials). 
 \marginpar{In general, the set $\{1, x, x^2, x^3, \ldots, x^n\}$ is called the standard basis for $P_n(x)$.}%
 \end{example}
 
 
-For vector spaces that are not ${\mathbb{R}}^n$, a simple way to work with vectors is to start by finding a basis. Once you have a basis, you can give the coordinates of every vector in the space relative to that basis.  These coordinates can then be thought of as vectors in ${\mathbb{R}}^n$. Questions about the vector space can then be reduced to questions about vectors in $\mathbb{R}^n$.  As seen in the last example, the vector space $P_2(x)$ consists of all polynomials of the form $a_0+a_1x+a_2x^2$. If we use the standard basis for polynomials, then the coordinates are simply $(a_0,a_1,a_2)$. We can now use these coordinates to ask other questions about the vectors in $P_2(x)$. Here are two examples.
+For vector spaces that are not ${\mathbb{R}}^n$, a simple way to work with vectors is to start by finding a basis for the vector space. Once you have a basis, you can give the coordinates of every vector in the space relative to that basis.  These coordinates can then be thought of as vectors in ${\mathbb{R}}^n$. Questions about the vector space can then be reduced to questions about vectors in $\mathbb{R}^n$.  As seen in the last example, the vector space $P_2(x)$ consists of all polynomials of the form $a_0+a_1x+a_2x^2$. If we use the standard basis for polynomials, then the coordinates are simply $(a_0,a_1,a_2)$. We can now use these coordinates to ask other questions about the vectors in $P_2(x)$. Here are two examples.
 
 \begin{example}
-Let $V$ be the vector space spanned by $1+x,x+x^2, 4+x-3x^2$. We'll show it is a 2-dimensional vector subspace of $P_2(x)$, and provide a basis for this space in two different ways. The coordinates of these three polynomials relative to the standard basis are $(1,1,0)$, $(0,1,1)$, and $(4,1,-3)$. 
-To study the span of the polynomials, we instead look at the column space of 
+In this example, a vector is a polynomial.  Let $V$ be the vector space $\span\{1+x,\,x+x^2,\, 4+x-3x^2\}$. We'll show it is a 2-dimensional vector subspace of $P_2(x)$, and provide a basis for this space in two different ways. The coordinates of these three polynomials relative to the standard basis for $P_2(x)$ are $(1,1,0)$, $(0,1,1)$, and $(4,1,-3)$. 
+To study the span of the polynomials, we instead look at the column space of $A$.
 $$
 A=
 \begin{bmatrix}
@@ -820,14 +862,10 @@ A=
  1 & 0 & 4\\
  0 & 1 & -3\\
  0 & 0 & 0
-\end{bmatrix} 
-.$$\note{write $A$ as $CR$}
-Row reduction of $A$ shows us that the first two columns of $A$ are pivot columns, 
-hence basis vectors for the column space of $A$. 
-This tells us that the corresponding set of polynomials $\{1+x, x+x^2\}$ is a basis for $V$. 
-The coordinates of $4+x-3x^2$ relative to this basis are $(4,-3)$.
+\end{bmatrix}, \quad A=\begin{bmatrix}1&0\\1&1\\0&1\end{bmatrix}
+\begin{bmatrix}1&0&4\\0&1&-3\end{bmatrix}.$$ Row reduction of $A$ shows us that the first two columns of $A$ are pivot columns, hence basis vectors for the column space of $A$.  This tells us that the corresponding set of polynomials $\{1+x, x+x^2\}$ is a basis for $V$.  From writing $A$ as $CR$, we see the coordinates of $4+x-3x^2$ relative to this basis are $(4,-3)$.
 
-To find a different basis for $V$, we instead look at the row space of
+To find a different basis for $V$, we instead look at the row space of $A^T$.
 $$A^T
 =
 \begin{bmatrix}
@@ -840,15 +878,15 @@ $$A^T
  1 & 0 & -1 \\
  0 & 1 & 1 \\
  0 & 0 & 0
-\end{bmatrix}
-.$$ \note{write $A^T$ as $CR$}
-Row reduction tell us that $(1,0,-1)$ and $(0,1,1)$ are basis vectors for the row space of $A^T$ (hence the column space of $A$).  The corresponding polynomials $1-x^2$ and $x+x^2$ are basis vectors for $V$. The coordinates of $4+x-3x^2$ relative to this basis are $(4,1)$.
+\end{bmatrix},\quad A^T=\begin{bmatrix}1&1\\0&1\\4&1\end{bmatrix}
+\begin{bmatrix}1&0&-1\\0&1&1\end{bmatrix}.$$ 
+Row reduction tell us that $(1,0,-1)$ and $(0,1,1)$ are basis vectors for the row space of $A^T$ (hence the column space of $A$).  The corresponding polynomials $1-x^2$ and $x+x^2$ are basis vectors for $V$. From the last row of the $C$ matrix in the $CR$ factorization above, the coordinates of $4+x-3x^2$ relative to this basis are $(4,1)$.
   
 \end{example}
 
 \begin{example}
-Let's show the vectors $1 = (1,0,0),1+x=(1,1,0), 1+x+x^2=(1,1,1)$ form a basis for $P_2(x)$, and then write $2+3x-4x^2 = (2,3,-4)$ as a linear combination of these vectors. 
-To do this, we place the coordinates of each vector (relative to the standard basis) into the columns of a matrix, and then reduce 
+Let's show the set of vectors $\{1,\, 1+x,\, 1+x+x^2\}$ is a basis for $P_2(x)$, and then write $2+3x-4x^2$ as a linear combination of these vectors. 
+To do this, we place the coordinates of each vector (relative to the standard basis for $P_2(x)$) into the columns of a matrix, and then reduce 
 $$\begin{bmatrix}
  1 & 1 & 1 & 2 \\
  0 & 1 & 1 & 3 \\
@@ -891,8 +929,8 @@ $$\left\{
  0 & 1 
 \end{bmatrix}
 \right\}$$
-forms a basis for the vector space $M_{22}$ of 2 by 2 matrices (which means this space has dimension 4).  
-To show it is a basis, we must show that (1) the matrices are linearly independent and (2) the matrices span $M_{22}$.
+forms a basis for the vector space $M_{2,2}$ of 2 by 2 matrices (which means this space has dimension 4).  
+To show it is a basis, we must show that (1) the matrices are linearly independent and (2) the matrices span $M_{2,2}$.
 To show linearly independent, we solve 
 $$c_1
 \begin{bmatrix}
@@ -936,9 +974,6 @@ We can now work with 2 by 2 matrices as a vector space by considering vectors in
 
 Whenever we encounter vector spaces of finite dimension, we will often start by finding a basis and then work with coordinates relative to this basis instead. Then we can work with the coordinates as vectors in ${\mathbb{R}}^n$ to perform calculations. This means that once we understand what happens in ${\mathbb{R}}^n$, we can understand what happens in any vector space of dimension $n$. 
 
-*************************************************************************
-
-
 \subsection{Generalizing vector operations}
 
 We can also generalize what we mean when we say ``vector addition'' or ``scalar multiplication.''  
@@ -950,24 +985,10 @@ Give final big theorem
 Example of log space
 
 
-\note{* Change what we mean by "vector", and have subspaces as spans of
-  vectors.  Emphasize bases and coordinate vectors
-
-* Change what we mean by addition/multiplication, and view the rules
-as an extension of the properties in $R^n$, $P_n$, and $M_n$ properties.
-
-* Talk about logarithmic space as an example of the common
-  properties.
-}
-
-
 
 
 
 \subsection{Vector Spaces}
-
-The notion of a vector space is the foundational tool upon which we will build for the rest of the semester. Vectors in the plane, vectors in space, and planes in space through the origin are all examples of vector spaces. We have looked at the column space, row space, null space, and eigenspaces of a matrix as other examples of vector spaces.  In all of the examples we have looked at, we were able to create the vector space by considering a basis and using the span of that basis to obtain the vector space.  This is the fundamental idea we need to abstract vector spaces to a more general setting.  \marginpar{Vector spaces are spans of sets of vectors.}
-Continuous and differentiable functions form vector spaces. Matrices of the same size form a vector space. Radio waves, light waves, electromagnetic waves, and more all form vector spaces. Mathematicians discovered some common properties about all of these kinds of objects, and created a definition of of the term ``vector space'' to allow them to focus on the key commonalities. The results which sprang from the following definition created linear algebra as we know it today. 
 
 \begin{definition}\marginpar{We use the word ``real'' to emphasize that the scalars are real numbers. For those of you who know about fields, you can replace ``real'' with any field, such as the complex numbers or finite fields used in computers or cryptography. For simplicity, we will stick to scalars being real numbers for now.}%
 A (real) \define{vector space} is a set $V$ of things (which we will call ``vectors'') together with two operations:
@@ -1002,7 +1023,7 @@ With vector addition and scalar multiplication properly defined, the span of any
 Here are some examples of sets (and corresponding vector addition and scalar multiplication operations) that are vector spaces.
 \begin{enumerate}
 	\item Both ${\mathbb{R}}^2$ and ${\mathbb{R}}^3$ are vector spaces. The set of all lists of real numbers of length $n$, ${\mathbb{R}}^n$, is a vector space.  Vector addition is defined component-wise. Addition is associative, commutative, the zero vector is $(0,0,\ldots,0)$, and $(v_1,v_2,\ldots,v_n)+(-v_1,-v_2,\ldots,-v_n)=\vec 0$. Also, scalar multiplication distributes across vector and scalar addition, it is associative, and $1\vec v=\vec v$.  The definition of a vector space was defined to capture the properties of ${\mathbb{R}}^n$ which are useful in other settings.
-	\item The set of $m$ by $n$ matrices, written $M_{mn}$, with ``vector addition'' being normal matrix addition and ``scalar multiplication'' being normal matrix-scalar multiplication, is a vector space.
+	\item The set of $m$ by $n$ matrices, written $M_{m,n}$, with ``vector addition'' being normal matrix addition and ``scalar multiplication'' being normal matrix-scalar multiplication, is a vector space.
 	\item The set of all polynomials, written $P(x)$, with ``vector addition'' being the normal sum of polynomials, and ``scalar multiplication'' being the normal number-times-polynomial operation, is a vector space.
 	\item The set of continuous functions on an interval $[a,b]$, written $C[a,b]$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
 	\item The set of continuously differentiable functions on an interval $(a,b)$, written $C^1(a,b)$, where ``vector addition'' is just adding the two functions together and ``scalar multiplication'' is just multiplying the function by a scalar, is a vector space.
