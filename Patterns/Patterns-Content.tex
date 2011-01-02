@@ -324,7 +324,7 @@ The columns of a matrix are linearly independent if and only if every column is 
 \end{theorem}
 
 \begin{theorem}\label{dependentiff}
-A set (of two or more vectors) is linearly dependent if and only if at least one of the vectors can be written as a linear combination of the others. In particular, two vectors are linearly dependent if and only if one is a multiple of the other.
+  A set (of two or more vectors) is linearly dependent if and only if at least one of the vectors can be written as a linear combination of the others. In particular, two vectors are linearly dependent if and only if one is a multiple of the other.  Definition~\ref{def linear independence} gives a test for determining if a set of vectors is linearly dependent.
 \end{theorem}
 
 
@@ -397,7 +397,7 @@ The determinant of a triangular matrix is the product of the entries along its m
 \end{theorem}
 
 \begin{theorem}\label{thm det product}
-The determinant of $AB$ is $|AB|=|A||B|$.\note{Postpone the proof of this one.} This implies that $|cA|=c^n|A|$ and $|A\inv|=\frac{1}{|A|}$. 
+The determinant of $AB$ is $|AB|=|A||B|$. This implies that $|cA|=c^n|A|$ and $|A\inv|=\frac{1}{|A|}$. 
 \end{theorem}
 
 \begin{theorem}\label{thm det transpose}
@@ -447,12 +447,12 @@ If the sum of every column of $A$ is the same, then that sum is an eigenvalue of
 A stochastic matrix (e.g., a transition matrix for a Markov process) always has 1 as an eigenvalue because the columns sum to 1. 
 \end{theorem}
 
-\begin{theorem}\label{thm spectral}
-If a matrix is symmetric ($A^T=A$), then the eigenvalues of $A$ are real. In addition, eigenvectors corresponding to different eigenvalues of a symmetric matrix are orthogonal (if $\vec x_1$ and $\vec x_2$ are eigenvectors corresponding to different eigenvalues, then $\vec x_1\cdot \vec x_2=0$).  
-\end{theorem}
-
 \begin{theorem}\label{thm independent eigenvectors}
 Let $A$ be an $n$ by $n$ matrix.  Suppose there are $n$ distinct eigenvalues of $A$, named $\lambda_1, \lambda_2, \ldots, \lambda_n$. Let $\vec x_i$ be an eigenvector corresponding to $\lambda_i$ for each $i$.  The set $\{\vec x_1,\vec x_2, \ldots,\vec x_n\}$ is linearly independent, and hence is a basis for $\mathbb{R}^n$.
+\end{theorem}
+
+\begin{theorem}\label{thm spectral}
+If a matrix is symmetric ($A^T=A$), then the eigenvalues of $A$ are real. In addition, eigenvectors corresponding to different eigenvalues of a symmetric matrix are orthogonal (if $\vec x_1$ and $\vec x_2$ are eigenvectors corresponding to different eigenvalues, then $\vec x_1\cdot \vec x_2=0$).  
 \end{theorem}
 
 
@@ -518,13 +518,10 @@ Write
 $$v_k=c_1\vec v_1+\cdots+c_{k-1}\vec v_{k+1}+c_{k+1}\vec v_{k+1}+\cdots+c_n\vec v_n.$$  
 Subtracting $v_k$ from both sides gives a nonzero solution ($c_k=-1$) to the equation $\vec 0=c_1\vec v_1+\cdots+c_{k-1}\vec v_{k+1}-v_k+c_{k+1}\vec v_{k+1}+\cdots+c_n\vec v_n$, which means the vectors are linearly dependent.
 
-
-
-
 \subsubsection{Proof by contradiction}
 Sometimes in order to prove a theorem, we make a contradictory assumption and then show that this assumption leads to an error (which means the assumption cannot be correct).  
 We will do this to show that if $A$ is invertible, then $|A|\neq 0$. 
-We will also use the fact that the determinant of a product is the product of the determinants, $|AB|=|A||B|$, a fact we will verify in a later chapter. 
+We will also use the fact that the determinant of a product is the product of the determinants, $|AB|=|A||B|$.
 Let's start with a matrix $A$ which has an inverse and then assume that the determinant is $|A|=0$.  
 The inverse of $A$ is $A\inv$ and the product $AA\inv=I$ is the identity. 
 Taking determinants of both sides gives $|AA\inv|=|I|=1$, or $|A||A\inv|=1$ (remember the identity matrix has determinant 1).  
