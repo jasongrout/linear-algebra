@@ -789,7 +789,7 @@ Let's use the previous theorem to show that some sets are vector subspaces.
 
 
 
-\subsection{Basis and Dimension}
+\subsection{Generalizing Bases, Dimension, and Coordinates}
 Vector spaces are often rather large sets. In the previous chapter, we found basis vectors for the column and row space of a matrix by row reducing a matrix. These basis vectors allow us to talk about the entire space by considering the span of the basis vectors. The coordinates of other vectors can then be given relative to the chosen basis. Let's review these ideas with an example of finding a basis for the column space of a matrix.
 
 \begin{example}
@@ -845,7 +845,7 @@ Since there are three basis vectors, the dimension of $P_2(x)$ is 3 (one more th
 For vector spaces that are not ${\mathbb{R}}^n$, a simple way to work with vectors is to start by finding a basis for the vector space. Once you have a basis, you can give the coordinates of every vector in the space relative to that basis.  These coordinates can then be thought of as vectors in ${\mathbb{R}}^n$. Questions about the vector space can then be reduced to questions about vectors in $\mathbb{R}^n$.  As seen in the last example, the vector space $P_2(x)$ consists of all polynomials of the form $a_0+a_1x+a_2x^2$. If we use the standard basis for polynomials, then the coordinates are simply $(a_0,a_1,a_2)$. We can now use these coordinates to ask other questions about the vectors in $P_2(x)$. Here are two examples.
 
 \begin{example}
-In this example, a vector is a polynomial.  Let $V$ be the vector space $\span\{1+x,\,x+x^2,\, 4+x-3x^2\}$. We'll show it is a 2-dimensional vector subspace of $P_2(x)$, and provide a basis for this space in two different ways. The coordinates of these three polynomials relative to the standard basis for $P_2(x)$ are $(1,1,0)$, $(0,1,1)$, and $(4,1,-3)$. 
+In this example, a vector is a polynomial.  Let $V$ be the vector space $\vspan\{1+x,\,x+x^2,\, 4+x-3x^2\}$. We'll show it is a 2-dimensional vector subspace of $P_2(x)$, and provide a basis for this space in two different ways. The coordinates of these three polynomials relative to the standard basis for $P_2(x)$ are $(1,1,0)$, $(0,1,1)$, and $(4,1,-3)$. 
 To study the span of the polynomials, we instead look at the column space of $A$.
 $$
 A=
@@ -973,19 +973,14 @@ Whenever we encounter vector spaces of finite dimension, we will often start by 
 
 \subsection{Generalizing vector operations}
 
-We can also generalize what we mean when we say ``vector addition'' or ``scalar multiplication.''  
+Not only can we change what a ``vector'' is, but we can also change our definition of ``vector addition'' or ``scalar multiplication.''  Again, the power of mathematics is in understanding the key properties of our vector addition and scalar multiplication properties so that we can change what those operations are, but still retain the important properties that let us do useful things.
 
-Talk about essential properties of the operations
+To understand what exactly are the key properties of vector addition and scalar multiplication, let's see what common properties those two operations have for various things we have considered as vectors.
 
-Give final big theorem
+Comparing Theorems~\ref{rn vector space properties} and \ref{matrix vector space properties}, we see that there are 4 important properties of addition and 4 important properties of scalar multiplication that are shared between vectors in $\RR^n$ and matrices (vectors in $M_{m,n}$).  These 8 properties also hold for normal polynomial addition and scalar multiplication (i.e., for vectors in $P_n(x)$).  These 8 properties are the key things that need to hold for vector addition and scalar multiplication to give us what we consider ``normal'' addition and scalar multiplication.  If you want to define a different way to combine two vectors together (vector addition) or a different way to combine a scalar and a vector (scalar multiplication), and your new vector addition and scalar multiplication satisfies these 8 properties, then you can use all the tools, patterns, and theorems we have discussed for vector spaces.
 
-Example of log space
+We finally now have the fundamental underlying properties that makes vectors in $\RR^n$, matrices, polynomials, and other structures similar.
 
-
-
-
-
-\subsection{Vector Spaces}
 
 \begin{definition}\marginpar{We use the word ``real'' to emphasize that the scalars are real numbers. For those of you who know about fields, you can replace ``real'' with any field, such as the complex numbers or finite fields used in computers or cryptography. For simplicity, we will stick to scalars being real numbers for now.}%
 A (real) \define{vector space} is a set $V$ of things (which we will call ``vectors'') together with two operations:
@@ -1014,7 +1009,7 @@ A vector space is a set of things (``vectors'') closed under vector addition and
 \end{quote}
 
 
-With vector addition and scalar multiplication properly defined, the span of any set of vectors from the vector space will always be a vector space. In other words, every linear combination of the vectors in that space must also be in the space. This means that lines and planes in $\RR^3$ which pass through the origin are examples of vector spaces. As the semester progresses, we will discover that our intuition about what happens in $\RR^2$ and $\RR^3$ generalizes to all dimensions and can help us understand any kind of vector space.  For now, let's look at some examples of vector spaces, and explain why they are vector spaces.
+With vector addition and scalar multiplication properly defined, the span of any set of vectors from the vector space will always be a vector space. In other words, every linear combination of the vectors in that space must also be in the space.  Let's look at some examples of vector spaces, and explain why they are vector spaces.
 
 \begin{example}[Examples of vector spaces]
 Here are some examples of sets (and corresponding vector addition and scalar multiplication operations) that are vector spaces.
