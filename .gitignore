@@ -17,6 +17,8 @@
 *.nav
 *.snm
 *.vrb
+*.dvi
+*.rel
 .DS_Store
 linear-algebra.pdf
 objectives.pdf
