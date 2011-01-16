@@ -1112,7 +1112,9 @@ The determinant of a {$2\times 2$} and {$3\times 3$} matrix can be computed as f
 \begin{vmatrix}a&b&c\\d&e&f\\g&h&i\end{vmatrix} &= a\det\begin{vmatrix}e&f\\h&i\end{vmatrix} -b\det\begin{vmatrix}d&f\\g&i\end{vmatrix} +c\det\begin{vmatrix}d&e\\g&h\end{vmatrix}\\
 &=a(ei-hf)-b(di-gf)+c(dh-ge)
 \end{align*}
-We use absolute value signs (vertical bars) around a matrix to as notation for the determinant. Notice the negative sign on the middle term of the {$3 \times 3$} determinant. Also, notice that we had to compute three determinants of 2 by 2 matrices in order to find the determinant of a 3 by 3.  
+We use absolute value signs (vertical bars) around a matrix as
+notation for the determinant. Notice the negative sign on the middle
+term of the 3 by 3 determinant. Also, notice that we had to compute three determinants of 2 by 2 matrices in order to find the determinant of a 3 by 3.  
 
 The determinant in general is defined recursively in terms of minors (determinants of smaller matrices) and cofactors. 
 This method is called the cofactor expansion of the determinant. 
