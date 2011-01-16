@@ -2,14 +2,96 @@
 
 The ``Notes for teaching'' section in each chapter includes some brief notes from instructors that have used the book before.  These comments are not edited extensively, but rather are more free-form reflective thoughts about the chapter and how to teach it.
 
-This might make sense to move to a wiki eventually, maybe the wiki on bitbucket or github (or wherever the book text is hosted).
+This might make sense to move to a wiki eventually, maybe the wiki on github (or wherever the book text is hosted).
 
-This chapter is a brief overview of some of the arithmetic we'll be using throughout the course.  It's easy to get bogged down in the theory---much of that discussion will come later in the course.
 
-\subsection{Ben Woodruff}
+\subsection*{Notes from Ben Woodruff}
 
 I've been thinking a lot about why I get through chapter 1 so fast.  I think a lot of it has to do with me skipping many introductory examples. I just assign them to do the first few problems and don't ever really lecture on them at all. I start Gaussian elimination on Day 2, and then by Day 3 I'm through with rank, span, and independence (really we just spend the day practicing more with Gaussian elimination and then adding a few comments).  Near the end of day 3, I'll talk about determinants, and if there is time, connect them to area and volume, and have them explain to me what is special about a zero determinant (on a 2 by 2 example). They can see the vectors are dependent.  Day 4 we spend on determinants and inverses (and catch up if needed with repeated questions about rank, dependence, etc. because once they row reduce a matrix there are lots of quick question I can ask).  Day 5 I start with making a connection between inverses, determinants, and dependence (if not already done on day 4), and then end with some eigenvalue/vector stuff.  The last day I would spend on eigenvalues/vectors.
 
 I think one key is to not lecture on matrix and vector arithmetic, but instead let them do it for homework.  I didn't spend much time with the dot product and why a zero dot product means a 90 degree angle.  I let them read those facts.  The hardest topic to get students to see is the concept of linearly independent and dependent.  I think the definition ``any linearly combination which equals zero is the zero combination'' is not the best definition for gaining understanding (though it is the best definition for proving theorems).  I always introduce dependent first by saying, ``one vector is a linear combination of the others, so that vector depends on the others,'' and I show them how to find the dependence immediately from rref. Since they just finished row reducing the example I am about to use, it makes the class practice time lead right into the lecture.  This is a definition of dependence students can grab onto and see immediately. I'll talk about force vectors and a machine that can push or pull things in only 2 ways (hence can get a whole plane of pushes and pulls by combining things - which is where I introduce the word ``span'').  They see that vectors are dependent when one column does not have a pivot and independent if every column has a pivot. Span comes out of this discussion for free---it's a side comment while I'm discussing dependence (though I'll follow it up with some 3d examples and pieces of paper to represent planes). I won't go back and revise their understanding of independence as the first definition until chapter~3.
 
 I think I could do better in the eigenvector section by reusing the word ``span'' more.  The problem is that I don't want to get into ``bases'' yet, though I could easily use the word ``span'' more without causing problems. However, then we have to deal with excluding the zero vector from the span. This would emphasize more the notion of a ``vector space'' prior to them seeing the formal definition.
+
+\subsection*{Notes from Jason Grout}
+
+Remember that this chapter is a brief overview of some of the arithmetic we'll be using throughout the course.  It's easy to get bogged down in the theory---much of that discussion will come later in the course.
+
+\subsubsection*{Day 1: Matrix/vector arithmetic, magnitude/dot product, matrix multiplication, systems of equations}
+\label{sec:day1}
+
+Emphasize that all of this material is in the book, so they will be able to read it and watch videos elaborating it after class.  Next time we will be using these things, so it is important to practice these computations.
+
+\begin{itemize}
+\item Vector and matrix addition, subtraction, and scalar multiplication is component-wise.
+\item Drawing vectors and vector notation (square, angle, round brackets, row and column)
+\item Magnitude of vector
+\item Dot product and connection to angle and magnitude
+\item Linear combination of vectors
+\item $A\vec x$ as a linear combination of columns of $A$
+\item Linear system of equations as $A\vec x=\vec b$ (discuss homogeneous system)
+\end{itemize}
+
+\subsubsection*{Day 2: Gaussian elimination}
+\label{sec:day-2:-gaussian}
+
+\begin{enumerate}
+\item Practice problems reviewing:
+\begin{itemize}
+\item Matrix Multiplication as a linear combination of rows, columns, and as dot product.  In the dot product one, have one dot product equal to zero and ask what the angle between the two vectors is.
+\item Setting up a system of linear equations as $A\vec x=\vec b$
+\item Interpreting an answer from an rref
+\end{itemize}
+\item Short lecture on solving systems of equations and Gaussian elimination:
+  \begin{enumerate}
+  \item Numbers of solutions
+  \item Solutions are intersections of lines, planes, etc.
+  \item What rref is and pivot columns
+  \end{enumerate}
+\item Short practice on one-step or two-step eliminations
+\item Mention rank is the number of pivot columns
+\end{enumerate}
+
+\subsubsection*{Day 3: Rank, span, dependence}
+\label{sec:day-3:-rank}
+
+\begin{enumerate}
+\item Practice Gaussian elimination (3x3 system)
+\item Solve systems and talk about spans, linear dependence/independence
+\item 2x2 determinant
+\item 2x2 zero determinant and linear dependence
+\end{enumerate}
+
+\subsubsection*{Day 4: Determinants, Inverses}
+\label{sec:day-4:-determinants}
+
+\begin{enumerate}
+\item Practice $2\times 2$ and $3\times 3$ determinants
+\item Practice finding $2\times 2$ and $3\times 3$ inverses
+\item Review rank, dependence, etc. after reducing a matrix
+\item Find inverse of diagonal matrix
+\end{enumerate}
+
+
+\subsubsection*{Day 5: Connection between inverses, det, and dependence; Eigenstuff}
+
+\begin{enumerate}
+\item Practice lots of problems drawing connections between inverses, det, and dependence
+\item Inverse $\implies$ unique solution
+\item Introduce eigenvalues/eigenvectors
+\end{enumerate}
+
+\subsubsection*{Day 6: Eigenvalues/Eigenvectors}
+\label{sec:eigenv}
+
+\begin{enumerate}
+\item Practice eigenvalues/eigenvectors
+\item Practice relationship between spans, dependence, eigenvectors, det, homogeneous equations
+\end{enumerate}
+
+ 
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../linear-algebra"
+%%% End: 
