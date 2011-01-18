@@ -8,7 +8,7 @@ This chapter covers the following ideas.
 The next unit will focus on applications of these ideas. The main goal of this unit is to familiarize yourself with the arithmetic involved in linear algebra.
 
 \section{Basic Notation}
-Most of linear algebra centers around understanding matrices and vectors. The first chapter of this text contains a brief introduction to the arithmetic involved with matrices and vectors.  The second chapter will show you many of the uses of the ideas we are learning. You will be given motivation for all of the ideas learned here, as well as real world applications of these ideas, before the end of the second chapter.  For now, work on becoming familiar with the arithmetic of linear algebra so that we can easily discuss the ideas behind linear algebra throughout the course.
+Most of linear algebra centers around understanding matrices and vectors. The first chapter of this text contains a brief introduction to the arithmetic involved with matrices and vectors.  The second chapter will show you many real-world applications of the ideas we are learning.  For now, work on becoming familiar with the arithmetic of linear algebra so that we can easily discuss the ideas behind linear algebra throughout the course.
 
 
 \subsection{Matrices}
@@ -27,13 +27,13 @@ a_{21}&\cdots&a_{2n}\\
 a_{m1}&\cdots&a_{mn} 
 \end{bmatrix} 
 = [a_{jk}],$$
-where $a_{jk}$ is the entry in the $j$th row, $k$th column. 
+where $a_{jk}$ is the entry in the $j$th row and $k$th column. 
 
 
 We say two matrices {$A$} and {$B$} are equal if corresponding entries
 are equal (i.e., {$a_{jk}=b_{jk}$} for all $j$ and $k$). We add and
 subtract matrices of the same size entry-wise.  A \define{scalar} is a
-single number or variable.  We multiply a scalar and a matrix $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main \define{diagonal} of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the \define{trace} is the sum of the entries on the main diagonal ($\sum a_{jj}$). \note{TODO: make picture of diagonal in the margin}
+single number or variable.  We multiply a scalar and a matrix $cA$ by multiplying every entry in the matrix by the scalar {$c$}. If the number of rows and columns are equal, then we say the matrix is square.  The main \define{diagonal} of a square ({$n \times n$}) matrix consists of the entries {$a_{11},a_{22},\ldots,a_{nn}$}, and the \define{trace} is the sum of the entries on the main diagonal ($\sum a_{jj}$).
 \begin{example}
 If $A=\begin{bmatrix}
 1&3\\
@@ -54,6 +54,14 @@ $, then $$A-2B
 -5&5\\
 0&-6
 \end{bmatrix}.$$ The main diagonal of $B$ consists of the entries $b_{11} = 3$ and $b_{22}=4$, which means the trace of $B$ is $3+4=7$ (the sum of the entries on the main diagonal).
+\end{example}
+
+\begin{example}
+Let $A=\begin{bmatrix}
+\fbox{3}&2&1\\
+-2&\fbox{-1}&5\\
+4&7&\fbox{9}
+\end{bmatrix}$.  The diagonal of a square matrix is the list of entries from upper left diagonally to lower right: $3,-1,9$ (we've emphasized this by drawing boxes around the diagonal entries).  The trace is 11.
 \end{example}
 
 The \definemargin{transpose} of a matrix {$A=[a_{jk}]$} is a new matrix {$A^T=[a_{kj}]$} formed by interchanging the rows and columns (the first row of $A$ is the first column of $B$; first column of $A$ is the first row of $B$, etc.)
@@ -107,7 +115,7 @@ $$\left<-2,3\right>
 = \begin{pmatrix}-2&3\end{pmatrix} 
 = \begin{pmatrix}-2\\3\end{pmatrix}
 $$ 
-In this chapter, we will switch freely between these notations so that you get used to reading different notations.  In practice, it is a good idea to not switch notations as often.  Also, notice that the notation $(-2,3)$ (with parentheses) has other meanings as well (like a point in the plane, or an open interval).  Please make sure that when you use the notation $(-2,3)$ to represent a vector, it is clear from the context that you working with a vector. 
+In this chapter, we will switch freely between these notations so that you get used to reading different notations.  In practice, it is a good idea to not switch notations as often to avoid confusion.  Also, notice that the notation $(-2,3)$ (with parentheses) has other meanings as well (like a point in the plane, or an open interval).  Please make sure that when you use the notation $(-2,3)$ to represent a vector, it is clear from the context that you working with a vector. 
 
 {\marginpar{{
 \begin{tikzpicture}[scale=.5]
@@ -119,7 +127,7 @@ In this chapter, we will switch freely between these notations so that you get u
 Both vectors 
 represent $\left<-2,3\right>$, regardless of where they start.
 }}}
-To draw a vector, pick a starting point (the tail).  Then draw a line that moves $v_1$ units horizontally and $v_2$ units vertically, and put an arrow at the ending point (the head).  Many times we will put the tail of the vector at the origin $(0,0)$.
+To draw a vector, pick a starting point (the tail).  Then draw a line that moves $v_1$ units horizontally and $v_2$ units vertically, and put an arrow at the ending point (the head).  Many times we will put the tail of the vector at the origin ($(0,0)$ for 2-d vectors).
 
 
 The entry-wise methods of adding, subtracting, and multiplying by a scalar that we learned for matrices apply to vectors as well (this is consistent, since a vector can be thought of as a row or column matrix). For example, $$\left<1,3\right>-2\left<-1,2\right>+\left<4,0\right> = \left<1-2(-1)+4,3-2(2)+0\right> = \left<7,-1\right>.$$ 
@@ -181,10 +189,10 @@ Scalar multiplication $c\vec u$ ($c$ is a scalar and $\vec u$ is a vector) is eq
 To subtract to vectors $\vec u-\vec v$, we use scalar multiplication and vector addition.  We write $\vec u-\vec v = \vec u +(-\vec v)$, which means we reverse $\vec v$ and then add it to $\vec u$.  You can visualize this using the parallelogram law of addition.  You can also visualize the difference $\vec u-\vec v$ as the vector connecting the heads of the two vectors when their tails are both placed on the same spot, with the direction pointing towards the head of $\vec u$.  When you see a vector difference $\vec u-\vec v$, you might imagine an arrowhead on the subtraction sign like this: $\vec u \leftarrow \vec v$, or think ``head  minus tail'' to remind you which way the difference vector points. The difference $\vec u - \vec v=\left<1,2\right> - \left<3,1\right> = \left<-2,1\right>$ is illustrated in two vectors in the margin.
 
 \subsection{Magnitude and the Dot Product}
-The length of a vector is found using the Pythagorean theorem: $c^2=a^2+b^2$.  The \define[vector!magnitude]{magnitude} (or length) of the vector $\left<2,3\right>$ is simply the length of the hypotenuse of a right triangle with short side lengths 2 and 3, hence $|\left<2,3\right>|=\sqrt{2^2+3^2}=\sqrt{13}$. We denote magnitude with absolute value symbols, and compute for $\vec u = \left<u_1,u_2\right>$ the magnitude as $|\vec u| = \sqrt{u_1^2+u_2^2}$.  In higher dimensions we extend this as $$\ds |\vec u| = \sqrt{u_1^2+u_2^2+u_3^2+\cdots u_n^2} = \sqrt{\sum_{i=1}^n u_i^2}.$$ 
+The length of a vector is found using the Pythagorean theorem: $c^2=a^2+b^2$.  The \define[vector!magnitude]{magnitude} (or length) of the vector $\left<2,3\right>$ is simply the length of the hypotenuse of a right triangle with short side lengths 2 and 3, hence $\norm{\left<2,3\right>}=\sqrt{2^2+3^2}=\sqrt{13}$. We denote magnitude with absolute value symbols, and compute for $\vec u = \left<u_1,u_2\right>$ the magnitude as $\norm{\vec u} = \sqrt{u_1^2+u_2^2}$.  In higher dimensions we extend this as $$\ds \norm{\vec u} = \sqrt{u_1^2+u_2^2+u_3^2+\cdots u_n^2} = \sqrt{\sum_{i=1}^n u_i^2}.$$ 
 
 A unit vector is a vector with length 1. 
-\marginpar{A unit vector $\bf \hat u$ has length $|\vec u|=1$} In many books, unit vectors are written with a hat above them, as $\bf{\hat u}$.
+\marginpar{A unit vector $\bf \hat u$ has length $\norm{\bf \hat u}=1$} In many books, unit vectors are written with a hat above them, as $\bf{\hat u}$.
 Any vector that is not a unit vector can be rewritten as a scalar times a unit vector by dividing the vector by its magnitude. This allows us to write any vector as a magnitude times a direction (where the direction is given by a unit vector).
  
 \begin{example}
@@ -193,7 +201,7 @@ A unit vector in the direction of $\vec u$ is
 $\ds\frac{1}{\sqrt{14}}\left<2,1,-3\right> = \left<\frac{2}{\sqrt{14}},\frac{1}{\sqrt{14}},\frac{-3}{\sqrt{14}}\right>$. 
 We can rewrite $\vec u$ as a magnitude times a direction by writing 
 \marginpar{Every vector can be rewritten as a magnitude times direction (unit vector).}
-$$\vec u = |\vec u| \frac{\vec u}{|\vec u|} = \sqrt{14} \left<\frac{2}{\sqrt{14}},\frac{1}{\sqrt{14}},\frac{-3}{\sqrt{14}}\right>.$$ 
+$$\vec u = \norm{\vec u} \frac{\vec u}{\norm{\vec u}} = \sqrt{14} \left<\frac{2}{\sqrt{14}},\frac{1}{\sqrt{14}},\frac{-3}{\sqrt{14}}\right>.$$ 
 \end{example}
 
 
@@ -203,40 +211,40 @@ The dot product of $\begin{bmatrix}1&3&-2\end{bmatrix}$ and $\begin{bmatrix}2&-1
  $$\begin{bmatrix}1&3&-2\end{bmatrix}\cdot \begin{bmatrix}2&-1&4\end{bmatrix} = (1)(2)+(3)(-1)+(-2)(4)=-9.$$ 
 \end{example}
 
-We use the dot product to find lengths and angles in all dimensions. We will also use it multiply matrices.  The rest of this section explains how to use the dot product to find lengths and angles, and is included for completeness.  We will revisit the dot product more in later chapters.
+We use the dot product to find lengths and angles in all dimensions. We will also use it multiply matrices.  The rest of this section explains how to use the dot product to find lengths and angles.  We will revisit the dot product more in later chapters.
 Notice that if $\vec u = \left<u_1,u_2,\ldots,u_n\right>$, then we can find the length of a vector using the dot product since
-\marginpar{The dot product finds length: $$\vec u\cdot \vec u = |\vec u|^2$$}
-$$\vec u\cdot \vec u = u_1^2+u_2^2+u_3^2+\cdots u_n^2 = \sum_{i=1}^n u_i^2 = |\vec u|^2.$$
-If $\theta$ is the angle between two vectors $\vec u$ and $\vec v$, then we can find the angle between these two vectors using the formula \marginpar{The dot product finds angles: $$\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$$}
-$$\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta.$$
-This follows from the law of cosines $c^2 = a^2 + b^2 -2ab \cos \theta$, where $a=|\vec u|$, $b=|\vec v|$, and $c = |\vec u-\vec v|$. 
+\marginpar{The dot product finds length: $$\vec u\cdot \vec u = \norm{\vec u}^2$$}
+$$\vec u\cdot \vec u = u_1^2+u_2^2+u_3^2+\cdots u_n^2 = \sum_{i=1}^n u_i^2 = \norm{\vec u}^2.$$
+If $\theta$ is the angle between two vectors $\vec u$ and $\vec v$, then we can find the angle between these two vectors using the formula \marginpar{The dot product finds angles: $$\vec u \cdot \vec v = \norm{\vec u}\norm{\vec v}\cos \theta$$}
+$$\vec u \cdot \vec v = \norm{\vec u}\norm{\vec v}\cos \theta.$$
+This follows from the law of cosines $c^2 = a^2 + b^2 -2ab \cos \theta$, where $a=\norm{\vec u}$, $b=\norm{\vec v}$, and $c = \norm{\vec u-\vec v}$. 
 Because the dot product is equal to the square of the magnitude, we have 
-$$(\vec u-\vec v)\cdot (\vec u-\vec v) = \vec u\cdot \vec u +\vec v\cdot \vec v -2|\vec u||\vec v|\cos \theta.$$
+$$(\vec u-\vec v)\cdot (\vec u-\vec v) = \vec u\cdot \vec u +\vec v\cdot \vec v -2\norm{\vec u}\norm{\vec v}\cos \theta.$$
 \marginpar{{%\normalsize
 \begin{center}
 Law of Cosines
 $$c^2=a^2+b^2-2ab\cos\theta$$
 \begin{tikzpicture}[scale=1.3]
 %\draw[help lines,step=1cm] (0,0) grid (3,2);
-\draw[->,>=stealth,red] (0,0) -- node[above left ,fill=white] {$a=|\vec u|$}(1,2);
-\draw[->,>=stealth,blue] (0,0) -- node[below right=1pt,fill=white] {$b=|\vec v|$} (3,1);
+\draw[->,>=stealth,red] (0,0) -- node[above left ,fill=white] {$a=\norm{\vec u}$}(1,2);
+\draw[->,>=stealth,blue] (0,0) -- node[below right=1pt,fill=white] {$b=\norm{\vec v}$} (3,1);
 %\draw[<-,>=stealth,blue] [shift={(-2,1)}](0,0) -- node[above left=1pt,fill=white]{$-\vec v$} (3,1);
 %\draw[->,>=stealth,ultra thick] (0,0) -- node[below left=0pt,fill=white] {$\vec u-\vec v$}(-2,1);
-\draw[->,>=stealth,black] [shift={(3,1)}](0,0) -- node[above right=0pt,fill=white] {$c=|\vec u-\vec v|$}(-2,1);
+\draw[->,>=stealth,black] [shift={(3,1)}](0,0) -- node[above right=0pt,fill=white] {$c=\norm{\vec u-\vec v}$}(-2,1);
 \draw(0,0) node[above right=3mm]{$\theta$};
 \end{tikzpicture}
 \end{center}
 }}
 Distributing on the left gives 
-$$\vec u\cdot \vec u - 2 \vec u \cdot \vec v +\vec v\cdot \vec v = \vec u\cdot \vec u +\vec v\cdot \vec v -2|\vec u||\vec v|\cos \theta.$$
-Now cancel the common terms on both sides and divide by 2 to obtain our formula $\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$.  
+$$\vec u\cdot \vec u - 2 \vec u \cdot \vec v +\vec v\cdot \vec v = \vec u\cdot \vec u +\vec v\cdot \vec v -2\norm{\vec u}\norm{\vec v}\cos \theta.$$
+Now cancel the common terms on both sides and divide by 2 to obtain our formula $\vec u \cdot \vec v = \norm{\vec u}\norm{\vec v}\cos \theta$.  
 This formula geometrically explains how to connect the dot product to angles in both 2 and 3 dimensions.  
 In higher dimensions, we can define the angle between two vectors using this formula.
 
-If two vectors meet at a right angle, then since $\cos 90^\circ = 0$, we see that $\vec u \cdot \vec v = |\vec u||\vec v|0=0$, so the dot product is zero. 
-Similarly, if the dot product is zero, then $0=\vec u \cdot \vec v = |\vec u||\vec v|\cos \theta$, so either one of the vectors has zero length, or the angle between them is zero. 
+If two vectors meet at a right angle, then since $\cos 90^\circ = 0$, we see that $\vec u \cdot \vec v = \norm{\vec u}\norm{\vec v}0=0$, so the dot product is zero. 
+Similarly, if the dot product is zero, then $0=\vec u \cdot \vec v = \norm{\vec u}\norm{\vec v}\cos \theta$, so either one of the vectors has zero length or the angle between them is zero. 
 We say that $\vec u$ and $\vec v$ are \define{orthogonal} if $\vec u \cdot \vec v=0$. 
-\marginpar{orthogonal = dot product is zero}Two lines are perpendicular when the angle between then is $90^\circ$. Two vectors are orthogonal when either the angle between them is $90^\circ$, or one of the vectors is the zero vector.
+\marginpar{orthogonal = dot product is zero}Two lines are perpendicular when the angle between then is $90^\circ$. Two vectors are orthogonal when either the angle between them is $90^\circ$ or one of the vectors is the zero vector.
 
 \section{Multiplying Matrices}
 
@@ -256,34 +264,33 @@ In 3D, we include the vector $\kk = \vec k=\left<0,0,1\right>$ as well as add a 
 A similar idea is used in higher dimensions. 
 The word \emph{basis} suggests that we can base other vectors on these basis vectors, and we typically write other vectors in terms of these standard basis vectors. 
 Using only scalar multiplication and vector addition, we can obtain the other vectors in 2D from the standard basis vectors. 
-For example we can write $$\left<a,b\right> =a\left<1,0\right>+b\left<0,1\right> = a\vec i+b\vec j.$$ 
+For example, we can write $$\left<a,b\right> =a\left<1,0\right>+b\left<0,1\right> = a\vec\i+b\vec \j.$$ 
 The entries of a row or column vector are called the coordinates of the vector relative to the standard basis, or just the components of the vector. 
-Notice that we scaled the vectors $\vec i$ and $\vec j$, and then summed the scaled vectors. 
+Notice that we scaled the vectors $\vec \i$ and $\vec \j$, and then summed the scaled vectors. 
 This is an example of a linear combination.
 
 A \define{linear combination} of vectors $\vec v_{1}, \vec v_{2}, \ldots, \vec v_{n}$ is an expression of the form {$c_1\vec v_{1}+c_2\vec v_{2}+\ldots+c_n\vec v_{n}$}, where each {$c_i$} is a constant. 
 A linear combination of vectors is simply a sum of scalar multiples of the vectors. 
 We start with some vectors, stretch each one by some scalar, and then sum the result. 
-Much of what we will do this semester (and in many courses to come) relates directly to understanding linear combinations.  
+Much of what we will do this semester, and in many applications of linear algebra to come, relates directly to understanding linear combinations.  
 
 \begin{example}
 Let's look at a physical application of linear combinations that you use every day when you drive.
 When you place your foot on the accelerator of your car, the car exerts a force $\vec F_{1}$ pushing you forward. When you turn the steering wheel left, the car exerts a force $\vec F_{2}$ pushing you left. The total force acting on you is the vector sum of these forces, or a linear combination $\vec F_{\text{total}} = \vec F_1 +\vec F_2$. If $\vec T$ represents a unit vector pointing forward, and $\vec N$ represents a unit vector pointing left, then we can write the total force as the linear combination
-$$\vec F_{\text{total}} = |\vec F_1|\vec T +|\vec F_2|\vec N.$$
+$$\vec F_{\text{total}} = \norm{\vec F_1}\vec T +\norm{\vec F_2}\vec N.$$
 To understand motion, we can now focus on finding just the magnitude of each force and the tangential unit vector $\vec T$ and normal unit vector $\vec N$.  Once we understand these quantities, we can understand any force because it is a linear combination of quantities we understand.
 \end{example}
 
 \subsection{Matrix Multiplication}
 
-One of the key applications of linear combinations we will use throughout the semester is matrix multiplication. Let's introduce the idea with an example.  
+One of the key applications of linear combinations we will use throughout the semester is matrix multiplication. We will introduce the idea with an example.  
 \begin{example}
 Consider the three vectors 
 $\begin{bmatrix}1\\0\\1\end{bmatrix}$,
 $\begin{bmatrix}0\\2\\-3\end{bmatrix}$,
 and 
 $\begin{bmatrix}2\\1\\1\end{bmatrix}$.
-Let's multiply the first vector by 2, the second by -1, and the third by 4, and then sum the result.  
-This gives us the linear combination
+Multiplying the first vector by $2$, the second by $-1$, the third by $4$, and then summing the result gives us the linear combination
 $$2\begin{bmatrix}1\\0\\1\end{bmatrix}
 -1\begin{bmatrix}0\\2\\-3\end{bmatrix}
 +4\begin{bmatrix}2\\1\\1\end{bmatrix}
@@ -291,7 +298,7 @@ $$2\begin{bmatrix}1\\0\\1\end{bmatrix}
 \begin{bmatrix}10\\2\\9\end{bmatrix} 
 $$
 We define matrix multiplication so that multiplying a matrix and a vector (with the vector on the right) corresponds precisely to creating a linear combination of the columns of $A$. 
-We now write the linear combination above in matrix form 
+The linear combination above in matrix form is
 $$ 
 \begin{bmatrix}1&0&2\\0&2&1\\1&-3&1\end{bmatrix}
 \begin{bmatrix}2\\-1\\4\end{bmatrix}
@@ -308,8 +315,8 @@ $A = \begin{bmatrix}\vec a_1 & \vec a_2 &\cdots &\vec a_n\end{bmatrix}$,
 and let $\vec x = \begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix}$. Then the matrix product is the linear combination 
 \marginpar{The product $A\vec x$ gives us linear combinations of the columns of $A$.}
 $$A\vec x 
-=\begin{bmatrix}\vec a_1 & \vec a_2 &\cdots &\vec a_n\end{bmatrix}\begin{bmatrix}x_1\\x_2\\ \hdots \\ x_n\end{bmatrix}
-= \vec a_1 x_1+\vec a_2 x_2+\cdots +\vec a_n x_n.$$ This should look like the dot product. If you think of $A$ as a vector of vectors, then $A\vec x$ is just the dot product of $A$ and $\vec x$.  
+=\begin{bmatrix}\vec a_1 & \vec a_2 &\cdots &\vec a_n\end{bmatrix}\begin{bmatrix}x_1\\x_2\\ \vdots \\ x_n\end{bmatrix}
+= \vec a_1 x_1+\vec a_2 x_2+\cdots +\vec a_n x_n.$$ This should look like the dot product. If you think of $A$ as a ``vector'' of column vectors, then $A\vec x$ can be thought of as the dot product of $A$ and $\vec x$.  
 
 \marginpar{Matrix multiplication $AB$}
 We can now define the product of two matrices $A$ and $B$.  
@@ -366,7 +373,7 @@ DC \text{ is undefined}
 \end{example}
 
 \marginpar{The identity matrix behaves like the number 1, in that $AI=IA=A$. 
-}The \define{identity matrix} is a square matrix which has only 1's along the diagonal, and zeros everywhere else. We often use $I_n$ to mean the $n$ by $n$ identity matrix. The identity matrix is like the number 1, in that $AI=A$ and $IA=A$ for any matrix $A$ of appropriate size.  If $A$ is a 2 by 3 matrix, then $AI_3=A$ and $I_2A=A$ (notice that the size of the identity matrix changes based on the order of multiplication).  If $A$ is a square matrix, then $AI=IA=A$.
+\label{identity matrix}}The \define{identity matrix} is a square matrix which has only 1's along the diagonal, and zeros everywhere else. We often use $I_n$ to mean the $n$ by $n$ identity matrix. The identity matrix is like the number 1, in that $AI=A$ and $IA=A$ for any matrix $A$ of appropriate size.  If $A$ is a 2 by 3 matrix, then $AI_3=A$ and $I_2A=A$ (notice that the size of the identity matrix changes based on the order of multiplication).  If $A$ is a square matrix, then $AI=IA=A$.
 
 
 
@@ -545,6 +552,7 @@ Systems with solutions are called \define{consistent},
 \marginpar{consistent system: has a solution}
 whereas systems without solutions are called inconsistent.
 %\marginpar{inconsistent}
+
 A particularly important kind of linear system is of the form $A\vec x
 = \vec 0$ (i.e., $\vec b=\vec 0$)---this kind of system is called a
 \define{homogeneous} system.
@@ -717,27 +725,32 @@ Writing the final matrix in terms of a system of linear equations, we have the s
 
 The following steps describe the Gaussian elimination algorithm that we used above. 
 Please take a moment to compare what is written below with the example above. 
-Most of the problems in this unit can be solved using Gaussian elimination, so we will practice it as we learn a few new ideas.
+Most of the problems in this unit can be solved using Gaussian elimination, so we will practice it as we learn a few new ideas.  
+
+A key idea in Gaussian elimination is that we methodically eliminate entries in the matrix (by making them zero) in such a way that the entries we make zero will stay zero throughout the rest of the computation.
 \begin{enumerate}
 \item Forward Phase (getting row echelon form): the following 4 steps should be repeated until you have mentally erased all the rows or all the columns. In step 1 or 4, you will erase a column and/or row from the matrix.
 \begin{enumerate}
 	\item
-	\marginpar{Computer algorithms place the largest (in absolute value) nonzero entry in the first row. This reduces potential errors due to rounding that can occur in later steps.}%
+	\marginpar{Computer algorithms often place the largest (in absolute value) nonzero entry in the first row. This reduces potential errors due to rounding that can occur in later steps.}%
 Consider the first column of your matrix. Start by interchanging rows (if needed) to place a nonzero entry in the first row. If all the elements in the first column are zero, then ignore that column in future computations (mentally erase the column) and begin again with the smaller matrix which is missing this column. If you erase the last column, then stop.
   \item 
-  Divide the first row (of your possibly smaller matrix) by its leading entry so that you have a leading 1. This entry is a pivot, and the column is a pivot column. (When doing this by hand, it is often convenient to skip this step and do it at the very end so that you avoid fractional arithmetic. If you can find a common multiple of all the terms in this row, then divide by it to reduce the size of your computations.)
+  Divide the first row (of your possibly smaller matrix) by its leading entry so that you have a leading 1. This entry is a pivot, and the column is a pivot column. 
 	\item Use the pivot to eliminate each nonzero entry below the pivot by adding a multiple of the row with the pivot to the nonzero lower row.
 	\item 
 	\marginpar{Ignoring rows and columns is equivalent to incrementing row and column counters in a computer program.}%
 	Ignore the row and column containing your new pivot and return to the first step (mentally cover up or erase the row and column containing your pivot). If you erase the last row, then stop.
 \end{enumerate}
-	\item Backward Phase (getting reduced row echelon form): at this point, each row should have a leading 1 (the pivots), and you should have all zeros to the left and below each leading 1. If you skipped step 2 above, then the pivot entries may not actually be 1, but at the end of this phase you should divide each row by its leading coefficient to make each row have a leading 1.
+	\item Backward Phase (getting reduced row echelon form): at this point, any row that has a nonzero entry should start with a leading~1 (the pivot for the row), and you should have all zeros to the left and below each leading~1.
 \begin{enumerate}
-	\item Starting with the last pivot column. Use the pivot in that column to eliminate all the nonzero entries above it by adding multiples of the row containing the pivot to the nonzero rows above. 
+	\item Start with the last pivot column.   Use the pivot in that column to eliminate all the nonzero entries above it by adding multiples of the row containing the pivot to the nonzero rows above. 
 	\item Work from right to left, using each pivot in turn to eliminate the nonzero entries above it. Nothing to the left of the current pivot column will change in an elimination step.  By working right to left, you methodically work through the matrix and greatly reduce the number of computations needed to fully reduce the matrix.
 \end{enumerate}
 \end{enumerate}
 
+When doing row reduction by hand, it is often convenient to skip step 1(b) initially to avoid arithmetic involving fractions. Instead of making the first entry in the row a one, you can also find a common multiple of all the terms in the row and divide by the common mulitple to reduce the size of the numbers in the row.  If you skip 1(b) initially, then at the start of the backward phase, the pivot entries may not all be ones.  In this case, after finishing the backward phase, you should divide all the rows by their first nonzero entry in order to make each pivot entry a one.
+
+To summarize, first we work from left to right and use pivot entries to eliminate (make zero) all the entries below the pivots.  Then we work right to left and use the pivot entries to eliminate all entries above the pivots.
 
 \begin{example}\label{ex rref last}
 As a final example, let's reduce 
@@ -979,7 +992,7 @@ Recall that a linear combination of vectors {$\vec v_{1},\vec v_{2},\ldots,\vec 
 A linear combination of vectors is a sum of scalar multiples of the vectors. 
 Also recall that a linear combination of vectors is really just matrix multiplication, $A\vec c$, where the columns of $A$ are the vectors $\vec v_i$ and $\vec c= \left<c_1,c_2,\ldots,c_n\right>$. We will try to emphasis this in what follows.
 
-First we need another definition. The \define{span} of a set of vectors is the set of all possible linear combinations of the vectors.  We often write this as $\vspan\{\vec v_1, \vec v_2, \ldots, \vec v_n\}$.  In terms of matrices, if $A$ is the matrix with columns $\vec v_1, \vec v_2, \ldots, \vec v_n$, then the span of $\vec v_1, \vec v_2, \ldots, \vec v_n$ is the set of all possible vectors $\vec b$ such that $A\vec x=\vec b$ for some $\vec x$.
+First we need another definition. The \definemargin{span} of a set of vectors is the set of all possible linear combinations of the vectors.  We often write this as $\vspan\{\vec v_1, \vec v_2, \ldots, \vec v_n\}$.  In terms of matrices, if $A$ is the matrix with columns $\vec v_1, \vec v_2, \ldots, \vec v_n$, then the span of $\vec v_1, \vec v_2, \ldots, \vec v_n$ is the set of all possible vectors $\vec b$ such that $A\vec x=\vec b$ for some $\vec x$.
 
 \begin{example}\label{ex span}
 \begin{enumerate}
@@ -1071,9 +1084,6 @@ In the preceding example, the coefficients in the linear combination (2 and 1) a
 
 We have used the concept of \textit{coordinates of a vector relative to other vectors} to state that the coordinates of $(2,-3,4)$ relative to $(1,0,0),(0,1,0),(0,0,1)$ are  $2$, $-3$, and $4$.  We will study this concept of coordinates in greater depth later.
 
-\note{This section could be improved with more examples.  I want them to see this vocabulary, especially when the linear algebra text is written.  Perhaps it could be removed from the 316 text.}
-
-
 \subsection{Linear Combinations, Spans, and RREF}
 Solving a system of equations such as $x+3y=0$, $2x-y=5$ is equivalent to solving the vector equation 
 $x\begin{bmatrix} 1\\2\end{bmatrix}+y\begin{bmatrix} 3\\-1\end{bmatrix}=\begin{bmatrix} 0\\5\end{bmatrix}$. This is also equivalent to the following questions.
@@ -1138,7 +1148,7 @@ $\begin{bmatrix}
 sign matrix
 \end{tabular}%\end{wraptable}
 }
-A sign matrix keeps track of the $(-1)^{j+k}$ term in the cofactor. All you have to do is determine if the first entry of your expansion has a plus or minus, and then alternate the sign as you expand. We will eventually prove why you can pick any row or column. For now, just become comfortable with the arithmetic.
+A sign matrix keeps track of the $(-1)^{j+k}$ term in the cofactor. All you have to do is determine if the first entry of your expansion has a plus or minus, and then alternate the sign as you expand.
 \begin{example} \label{ex det}
 Let's find the determinant of the matrix
 $A = 
@@ -1213,7 +1223,7 @@ $\begin{vmatrix}{\red 3}&{\blue 1}\\{\red 0}&{\blue 2}\end{vmatrix}=6$ and $\beg
 
    The determinant gives area and direction.
     }}
-These two vectors give the edges of a parallelogram whose area is the determinant ($6$).  If we swap the order of the two vectors in the matrix, then the determinant of $\begin{bmatrix}1&3\\2&0\end{bmatrix}$ is $-6$.  The absolute value of the determinant is still the area, but the sign of the determinant depends on the order of the vectors. Starting at the first vector, if you can turn counterclockwise through an angle smaller than 180$^\circ$ to obtain the second vector, then the determinant is positive.  If you have to turn clockwise instead, then the determinant is negative.  This is often termed ``the right-hand rule,'' since rotating the fingers of your right hand from the first vector to the second vector will cause your thumb to point up precisely when the determinant is positive.
+These two vectors give the edges of a parallelogram whose area is the determinant ($6$).  If we swap the order of the two vectors in the matrix, then the determinant of $\begin{bmatrix}1&3\\2&0\end{bmatrix}$ is $-6$.  The absolute value of the determinant is still the area, but the sign of the determinant depends on the order of the vectors. Starting at the first vector, if you can turn counterclockwise through an angle smaller than 180$^\circ$ to obtain the second vector, then the determinant is positive.  If you have to turn clockwise instead, then the determinant is negative.  This is often termed the ``right-hand rule'' since rotating the fingers of your right hand from the first vector to the second vector will cause your thumb to point up precisely when the determinant is positive.
 
 \marginpar{\includegraphics[width=\marginparwidth]{Arithmetic/support/det}
 
@@ -1254,11 +1264,12 @@ This shows us that the determinant of a square matrix is nonzero if and only if 
 
 
 \section{The Matrix Inverse}
-Recall that the identity matrix $I$ behaves in matrix multiplication like the number 1 behaves in regular multiplication.  
+\marginpar{See Section \ref{identity matrix}, page \pageref{identity matrix}}Recall that the identity matrix $I$ behaves in matrix multiplication like the number 1 behaves in regular multiplication.  
 When we solve the equation $ax=b$ with numbers, we multiply both sides by $a^{-1}$ to obtain $x=a^{-1}b=\frac{1}{a}b$. 
 The multiplicative inverse of $a$ is simply $1/a$, because $a\frac1a=\frac1a a=1$.
 We have been studying linear systems of the form {$A\vec x=\vec b$}. 
-It would be nice if we could just divide both sides by {$A$}, but there is no such thing as division by a matrix in general. 
+\marginpar{If $A$ is a matrix, we \emph{never} write $\frac{1}{A}$ because matrix multiplication is not commutative.}% 
+It would be nice if we could just divide both sides by {$A$}, but there is no such thing as division by a matrix in general.
 If we look only at square matrices, then sometimes it is possible to find a matrix {$B$} such that {$BA=AB=I$}, the identity matrix. 
 If such a matrix {$B$} exists, then multiplying both sides of {$A\vec x = \vec b$} on the left by the matrix {$B$} yields $BA\vec x = B\vec B$, or $I\vec x = \vec x = B\vec b$. The matrix {$B$} is then called the \define[matrix!inverse]{inverse} of {$A$}, and we write it as $A^{-1}$, the same symbol we used with regular multiplication. \marginpar{The solution to $A\vec x= \vec b$ is $\vec x=A^{-1}\vec b$, if $A^{-1}$ exists.}When an inverse exists, the solution to $A\vec x = \vec b$ is simply $\vec x = A^{-1}\vec b$.
 
@@ -1315,15 +1326,17 @@ The following are also equivalent:
 \end{enumerate}
 }or in compact form $\begin{bmatrix}[c|c]A &I\end{bmatrix}$. We now reduce this larger matrix to reduced row echelon form and obtain $\begin{bmatrix}[c|c]I &B\end{bmatrix}$, which tells us the coordinates of $(1,0,0)$, $(0,1,0),$ and  $(0,0,1)$ relative to the columns of $A$. 
 The columns of the augmented portion $B$ on the right are the solutions to the three original systems, hence are the columns of $A^{-1}$.
-To summarize, an inverse exists precisely if the augmented system $[A|I]$ reduces to $[I|A^{-1}]$. 
-Then the inverse matrix appears on the right in the rref matrix if the identity matrix appears on the left.
-If the left block of the augmented matrix does not reduce to the identity matrix, then the matrix does not have an inverse.
-If the left block does not reduce to the identity, then this implies that the original columns of $A$ are dependent.  
-Later we will show that having an inverse is equivalent to having a nonzero determinant and having a rank which equals the number of columns. Remember that this is true for square matrices, or systems where we have the same number of equations as unknowns.
+
+To summarize, an inverse exists precisely if the augmented system $[A\mid I]$ reduces to $[I\mid A^{-1}]$. 
+\begin{itemize}
+\item If the identity matrix appears in the left block in the rref, the inverse matrix appears is in the right block and the original columns of $A$ are a linearly independent set.
+\item If the left block of the augmented matrix does not reduce to the identity matrix, then the matrix $A$ does not have an inverse and the original columns of $A$ are a linearly dependent set.
+\end{itemize}
+Later we will show that having an inverse is equivalent to having a nonzero determinant and having a rank which equals the number of columns.
 
 \begin{example}\label{ex inverse}
 To find the inverse of 
-$\begin{bmatrix} 1&2\\3&4\end{bmatrix}$ 
+$\begin{bmatrix} 1&2\\3&4\end{bmatrix}$,
 we reduce 
 $\begin{bmatrix}[cc|cc] 1&2&1&0\\3&4&0&1\end{bmatrix}$.  
 Reduction gives 
@@ -1344,15 +1357,15 @@ $\begin{cases}1x+2y=4\\3x+4y=0\end{cases}$ is $A^{-1}\vec b
 =  \begin{bmatrix}-8\\6\end{bmatrix}$, so $x=-8$ and $y=6$.
 \end{example}
 
-Notice that if $A$ has an inverse, then $A\vec x=\vec b$ always has exactly one solution, $\vec x=A^{-1}\vec b$.  If a square matrix $A$ does not have an inverse, then the system $A\vec x=\vec b$ can have no solutions or infinitely many solutions.
+Notice that if $A$ has an inverse, then $A\vec x=\vec b$ always has exactly one solution, $\vec x=A^{-1}\vec b$.  If a square matrix $A$ does not have an inverse, then the system $A\vec x=\vec b$ may have no solutions or may have infinitely many solutions.
 
 \section{Eigenvalues and Eigenvectors}
 In this section, we also assume that we are dealing with square matrices.  We will start by looking at an example to motivate the language we are about to introduce.  Consider the matrix
 $A=\begin{bmatrix} 2&1\\1&2\end{bmatrix} $.  When we multiply this matrix by the vector 
 $\vec x = \begin{bmatrix} 1\\1\end{bmatrix} $, 
 we obtain 
-$\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\1\end{bmatrix} = \begin{bmatrix} 3\\3\end{bmatrix}=3\vec x$. Multiplication by the matrix $A$ was miraculously the same as multiplying by the number 3. Symbolically, we have $A\vec x = 3\vec x$. 
-Not every vector $\vec x$ satisfies this property, for example, multiplying by 
+$\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\1\end{bmatrix} = \begin{bmatrix} 3\\3\end{bmatrix}=3 \begin{bmatrix} 1\\1\end{bmatrix}=3\vec x$. Multiplication by the matrix $A$ was the same as multiplying by the number 3! Symbolically, we have $A\vec x = 3\vec x$. 
+Not every vector $\vec x$ satisfies this property, for example, multiplying $A$ by 
 $\vec x = \begin{bmatrix} 1\\0\end{bmatrix} $ 
 gives  
 $\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\0\end{bmatrix} = \begin{bmatrix} 2\\1\end{bmatrix}$, which is not a multiple of $\vec x = \begin{bmatrix} 1\\0\end{bmatrix} $. Our main goal in this section is to answer the following two questions:
@@ -1361,13 +1374,14 @@ $\begin{bmatrix} 2&1\\1&2\end{bmatrix} \begin{bmatrix} 1\\0\end{bmatrix} = \begi
 	\item Which scalars $\lambda$ satisfy $A\vec x = \lambda \vec x$ for some vector $\vec x$? (We will call these scalars eigenvalues.)
 \end{enumerate}
 
-Now for some definitions. 
+Let's start with some vocabulary.
 Let $A$ be a square $n\times n$ matrix. 
-An \definemargin{eigenvector} is a nonzero vector $\vec x$ such that $A\vec x =\lambda \vec x$ (matrix multiplication is the same as scalar multiplication) for some scalar {$\lambda$}, called the \definemargin{eigenvalue} associated with the eigenvector $\vec x$.
-Zero vectors are not eigenvectors because $A\vec 0=\lambda \vec 0$ no matter what $\lambda$ is.
-We can rewrite the equation $A\vec x = \lambda \vec x$ as $\vec 0 = A\vec x-\lambda \vec x = A\vec x-\lambda I \vec x$ and then factor to obtain $$(A-\lambda I)\vec x=\vec 0.$$ 
-In other words, we need to find a scalar $\lambda$ so that there are nonzero solutions to the homogeneous system of equations $(A-\lambda I)\vec x=\vec 0$, or equivalently, we need to pick a $\lambda$ so that the columns of $A-\lambda I$ are linearly dependent. 
-Recall that if $A-\lambda I$ has an inverse, then $(A-\lambda I)\vec x=\vec 0$ has only one solution, $\vec x=(A-\lambda I)^{-1}\vec 0=\vec 0$.  So if $A-\lambda I$ has an inverse, $\vec x$ cannot be an eigenvector.  With the correct $\lambda$, we know that $A-\lambda I$ has no inverse, so $\det(A-\lambda I)=0$. 
+An \definemargin{eigenvector} is a nonzero vector $\vec x$ such that $A\vec x =\lambda \vec x$ for some scalar {$\lambda$} (i.e., multiplying $\vec x$ by the matrix $A$ is the same as multiplying $\vec x$ by the scalar $\lambda$).  The scalar $\lambda$ is called the \definemargin{eigenvalue} associated with the eigenvector $\vec x$.
+Zero vectors are not eigenvectors because $A\vec 0=\lambda \vec 0$ no matter what $\lambda$ is (can you see that a particular nonzero eigenvector is only associated with one eigenvalue?).
+We can rewrite the equation $A\vec x = \lambda \vec x$ as $\vec 0 = A\vec x-\lambda \vec x = A\vec x-\lambda I \vec x$ and then factor out the $\vec x$ to obtain 
+$$(A-\lambda I)\vec x=\vec 0.$$ 
+To solve this equation for $\lambda$, we need to find a scalar $\lambda$ so that there are nonzero solutions to the homogeneous system of equations $(A-\lambda I)\vec x=\vec 0$, or equivalently, we need to pick a $\lambda$ so that the columns of $A-\lambda I$ are linearly dependent. 
+Recall that if the matrix $A-\lambda I$ has an inverse, then $(A-\lambda I)\vec x=\vec 0$ has only one solution, $\vec x=(A-\lambda I)^{-1}\vec 0=\vec 0$.  So if $A-\lambda I$ has an inverse, $\vec x$ cannot be an eigenvector.  With the correct $\lambda$, we know that $A-\lambda I$ has no inverse, so $\det(A-\lambda I)=0$. 
 This last equation is the key equation we will solve since it does not contain the vector $\vec x$ anymore. 
 The expression {$\det(A-\lambda I)$} is called the \definemargin{characteristic polynomial} of {$A$}.
 It is a polynomial of degree {$n$} with variable $\lambda$, and hence there are at most {$n$} eigenvalues (which correspond to the roots of the polynomial). 
@@ -1378,10 +1392,11 @@ In summary, to find the eigenvalues and eigenvectors:
 \end{enumerate}
 As a way to check your work, the following two facts can help.
 \begin{itemize}
-	\item \marginpar{The trace and determinant are equal to the sum and product of the eigenvalues.
-	}The sum of the eigenvalues equals the trace of the matrix (the sum of the diagonal elements).
+	\item \marginpar{The trace is the sum and the determinant is the product of the eigenvalues.}%
+The sum of the eigenvalues equals the trace of the matrix (the sum of the diagonal elements).
 	\item The product of the eigenvalues equals the determinant.
 \end{itemize}
+These are quick checks on your work.  You could have the wrong eigenvalues, but still have the sum equal the trace and the product equal the determinant.  However, if the sum of your computed eigenvalues is not the trace, or the product is not the determinant, you know there is an error somewhere.
 
 \begin{example} \label{ex eigen1}
 To find the eigenvalues of {$\begin{bmatrix} 2&1\\1&2\end{bmatrix} $}, first subtract $\lambda$ from each diagonal entry to get {$A-\lambda I=\begin{bmatrix} 2-\lambda&1\\1&2-\lambda\end{bmatrix} $}, and then find the determinant {$(2-\lambda)(2-\lambda)-1 = \lambda^2-4\lambda+3=(\lambda-1)(\lambda-3)$}. The roots are 1 and 3, so the eigenvalues are {$\lambda=1,3$}. As a check, the trace of this matrix is $2+2=4$ and the sum of the eigenvalues is $1+3$. Also, the determinant is $4-1=3$ which equals the product of the eigenvalues.  
@@ -1405,7 +1420,7 @@ as the semester progresses.  For now we'll just focus on being able to find them
 Let's find the eigenvalues and eigenvectors of the matrix 
 $A=\begin{bmatrix}2&1&4\\ 1&2&4\\ 0&0&1\end{bmatrix}$. 
 Subtracting $\lambda$ from the diagonals gives 
-$A-\lambda I=\begin{bmatrix}2-\lambda&1&4\\ 1&2-\lambda&4\\ 0&0&1-\lambda\end{bmatrix}$. The determinant of this matrix is easiest to compute if you expand along the third row to get $0 - 0 + (1-\lambda) \begin{vmatrix} 2-\lambda&1\\1&2-\lambda\end{vmatrix}$. Computing the 2 by 2 determinant gives $(1-\lambda)(\thinspace(2-\lambda)(2-\lambda)-1) = (1-\lambda)(\lambda-1)(\lambda-3)$,  so the eigenvalues are $1,1,3$ (1 is a repeated root). As a check, their sum is $1+1+3=5$ and the trace of $A$ is $2+2+1=5$ as well. For larger matrices, determinants are not always easy to check, so just checking the trace is a fast way to make sure you are on the right path.
+$A-\lambda I=\begin{bmatrix}2-\lambda&1&4\\ 1&2-\lambda&4\\ 0&0&1-\lambda\end{bmatrix}$. The determinant of this matrix is easiest to compute if you expand along the third row to get $0 - 0 + (1-\lambda) \begin{vmatrix} 2-\lambda&1\\1&2-\lambda\end{vmatrix}$. Computing the 2 by 2 determinant gives $(1-\lambda)(\thinspace(2-\lambda)(2-\lambda)-1) = (1-\lambda)(\lambda-1)(\lambda-3)$,  so the eigenvalues are $1,1,3$ (1 is a repeated root). As a quick sanity check, the sum of our computed eigenvalues is $1+1+3=5$ and the trace of $A$ is $2+2+1=5$ as well.
 
 When $\lambda=1$, we compute $A-\lambda I =\begin{bmatrix}1&1&4\\ 1&1&4\\ 0&0&0\end{bmatrix} $. Reducing the system  $(A-\lambda I )\vec x=0$ yields $\begin{bmatrix}[ccc|c]1&1&4&0\\ 0&0&0&0\\ 0&0&0&0\end{bmatrix}$, which has two free variables. The solution is $\begin{bmatrix} x_1\\x_2\\ x_3\end{bmatrix} = x_2\begin{bmatrix} -1\\1\\0\end{bmatrix}+x_3\begin{bmatrix} -4\\0\\1\end{bmatrix} $. Hence the eigenvectors are nonzero linear combinations of $\begin{bmatrix} -1\\1\\0\end{bmatrix}$ and $\begin{bmatrix} -4\\0\\1\end{bmatrix}$. Notice that all the eigenvectors can be obtained as linear combinations of two linearly independent eigenvectors, in part because $\lambda =1$ is a double root of the characteristic polynomial. 
 
