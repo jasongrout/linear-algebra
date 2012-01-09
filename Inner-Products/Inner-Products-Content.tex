@@ -157,24 +157,22 @@ An (real) \textbf{inner product} on a vector space $V$ is a function (written $\
 \item $\left< a\vec u ,    \vec v \right>= a\left< \vec u ,    \vec v \right>$ (The inner product preserves scalar multiplication.)
 \item $\left< \vec u ,    \vec v  \right> = \left< \vec v ,    \vec u \right>$ (The inner product is commutative) 
 \item $\left< \vec u ,    \vec u \right> \geq 0$ and $\left< \vec u ,   \vec u \right>=0$ if and only if $\vec u =\vec 0$ (The inner product is positive definite.)
-%	\item $\left<a\vec u +b\vec v,\vec w\right> = a\left<\vec u,\vec w\right> +b\left<\vec v,\vec w\right> $ (it's linear)
-%	\item $\left<\vec u,\vec v\right> = \left<\vec v,\vec u\right>$ (it's symmetric) 
-% 	\item $\left<\vec u,\vec u\right> \geq 0$ and $\left<\vec u,\vec 0\right> =0$ if and only if $\vec u = \vec 0$. (it's positive definite)
 \end{enumerate}
 A vector space together with an inner product is called an \textbf{inner product space}.
 \end{definition}
 
 The axioms above allow us to treat an inner product in the same way we treat the dot product.  The first two properties imply that the inner product is linear, which basically means we can distribute as in 
 $$\left<a\vec u +b\vec v,\vec w\right> = a\left<\vec u,\vec w\right> +b\left<\vec v,\vec w\right>.$$  
+
 If $\left<\vec u,\vec v\right>$ is an inner product on a vector space $V$, then relative to this inner product we can
 \begin{enumerate}
 	\item 
-	\marginpar{When working with an abstract inner product, we normally use double bars $\norm{\vec u}$ instead of single bar $|\vec u|$ to talk about the norm of a vector.}
+	\marginpar{When working with an abstract inner product, we normally use double bars $\lVert\vec u\rVert$ instead of single bars $|\vec u|$ to talk about the norm of a vector.}
 	Find the norm (length) of a vector: $\left<\vec u , \vec u\right>=\norm{\vec u }^2$,
 	\item Find the angle between two vectors :$\left<\vec u , \vec v\right>= \norm{\vec u} \norm{\vec v}\cos \theta$,
 	\item Determine if two vectors are orthogonal: $\left<\vec u , \vec v\right> = 0$.
 \end{enumerate}
-In order to define angles, we need to know that $-1\leq \cos\theta \leq 1$, or $\ds -1\leq \dfrac{\left<\vec u,\vec v\right>}{\norm{\vec u}\ \norm{\vec v}}\leq 1$.  The Cauchy-Swartz inequality (pg 247) verifies that $|\left<\vec u , \vec v\right>|\leq \norm{\vec u} \norm{\vec v}$, which provides the required justification. 
+In order to define angles, we need to know that $-1\leq \cos\theta \leq 1$, or $\ds -1\leq \dfrac{\left<\vec u,\vec v\right>}{\norm{\vec u}\ \norm{\vec v}}\leq 1$.  The Cauchy-Swartz inequality (pg. 247 in Schaum's) verifies that $|\left<\vec u , \vec v\right>|\leq \norm{\vec u} \norm{\vec v}$, which provides the required justification. 
 Always remember: the inner product is just a generalization of the dot product which allows us to work with vector spaces  and define lengths and angles just as we did with the dot product. It's time for some examples of inner products.
 
 \begin{example}
@@ -209,7 +207,6 @@ We will now show that the inner product $\left<f,g\right> = \int_0^1 fg dx$ is a
 	\end{align*}
 	Since $\left<af,g\right> =a \left<f,g\right>$, this product preserves scalar multiplication.
 
-%	\item $\left<af +bg,h\right> =\int_0^1(af+bg)h\ dx = \int_0^1(afh+bgh)\ dx = a\int_0^1fh\ dx + b\int_0^1gh\ dx =  a\left<f,h\right> +b\left<g,h\right> $ (so it's linear)
 	\item We need to show that you can interchange the order of the inner product without changing the value (we say the inner product is commutative). 
 	We compute
 		 \begin{align*}
@@ -234,16 +231,17 @@ Let's now take a look at alternate ways to define inner products on $\R^n$, usin
 To introduce this example, recall that the dot product is really just the matrix product 
 $$\vec u\cdot \vec v = \vec u^T\vec v = \vec u^T I \vec v,$$
 where $I$ is the identity matrix inserted between $u^T$ and $v$.
-As mathematicians solved various problems, they discovered a pattern that if $A$ is a symmetric matrix (so $A^T=A$) whose eigenvalues are positive, then $\vec u^T A \vec v$ created an inner product. After further work, they then showed that if $\left<\vec u,\vec v\right>$ is an inner product on a finite dimensional vector space, then relative to some basis $S$ you can always find a symmetric matrix $A$ such that 
-$$\left<\vec u,\vec v\right> = [\vec u]_S^T A [\vec v]_S$$.  In other words, when dealing with finite dimensional vector spaces, symmetric matrices produce inner products, and inner products produce symmetric matrices. Studying symmetric matrices is the same as studying inner products.
+As mathematicians solved various problems, they discovered a pattern that if $A$ is a symmetric matrix (so $A^T=A$) whose eigenvalues are positive, then $\vec u^T A \vec v$ created an inner product. After further work, they then showed that if $\left<\vec u,\vec v\right>$ is an inner product on a finite-dimensional vector space, then relative to some basis $S$ you can always find a symmetric matrix $A$ such that the coordinate vectors relative to $S$ ($[\vec u]_S$ and $[\vec v]_S$) satisfy this relationship:
+$$\left<\vec u,\vec v\right> = [\vec u]_S^T A [\vec v]_S$$.  
+In other words, when dealing with finite-dimensional vector spaces, symmetric matrices produce inner products, and inner products produce symmetric matrices. Studying symmetric matrices is the same as studying inner products.  Discovering equivalent concepts like this in two seemingly different areas is one of the reasons why mathematics is so valuable.
 
 \begin{example}
-Let $A$ be a symmetric matrix which satisfies $$\vec x^T A\vec x> 0\quad \text{for}\quad \vec x\neq 0.$$ 
+Let $A$ be a symmetric matrix which satisfies $$\vec x^T A\vec x> 0\quad \text{for every }\quad \vec x\neq 0.$$ 
 %This condition is equivalent to having real positive eigenvalues, which for now we'll just use it as a fact (we'll see why in a bit). 
 Define a new inner product on $\R^n$ by the formula $\left<\vec u,\vec v\right> = \vec u^T A \vec v$. 
-Let's show that this provides an inner product on $\R^n$.
+Let's explicitly show that this actually is an inner product on $\R^n$.
 \begin{enumerate}
-	\item We compute \begin{align*} 
+\item We compute \begin{align*} 
 	\left<\vec u +\vec v,\vec w\right> 
 	& =(\vec u+\vec v) A \vec w \\
 	&=\vec uA\vec w+\vec vA \vec w  \\
@@ -267,35 +265,35 @@ Let's show that this provides an inner product on $\R^n$.
 	The transpose of a number is itself, so $\vec u^T A \vec v$ is the same as its transpose $(\vec u^T A \vec v)^T = \vec v^T A^T\vec u$ (remember you reverse the order and transpose each matrix).  
 	Since $A$ is symmetric, we can replace $A^T$ with $A$. This means  
 	$$\left<\vec u, \vec v \right> = \vec v^T A^T\vec u= \vec v^T A\vec v = \left<\vec v,\vec u\right>.$$ This shows that the product is commutative.
-	\item We are assuming $\vec x^T A\vec x> 0$ for $\vec x\neq 0$. So it is immediately positive definite.  We say a symmetric matrix is positive definite if it has this property.
+	\item We are assuming that $A$ is such that $\vec x^T A\vec x> 0$ for every $\vec x\neq 0$, so our inner product is positive definite by definition.  In fact, we say that a symmetric matrix with this property is a positive definite matrix.
 %	 (which is equivalent to being symmetric and having all positive eigenvalues).
 \end{enumerate}
 \end{example}
 
 In the example above, we assumed that the matrix $A$ satisfied $\vec x A \vec x>0$ for all nonzero vectors $\vec x$. This property is precisely the property needed to satisfy the last axiom of an inner product. We now state a theorem that will help us connect eigenvalues to this property.
 \begin{theorem}
-A symmetric matrix $A$ satisfies the property $\vec x^T A\vec x>0$ if and only if the eigenvalues of $A$ are all positive.
+A symmetric matrix $A$ satisfies the property $\vec x^T A\vec x>0$ for all nonzero $\vec x$ if and only if the eigenvalues of $A$ are all positive.
 If $A$ is a symmetric matrix with all positive eigenvalues, then we say $A$ is a positive definite matrix. 
 \end{theorem}
 
-Let's give a partial explanation of why this theorem works. 
-Start by finding the eigenvalues of $A$ and a set of linearly independent eigenvectors $S = \{\vec x_1,\vec x_2,\ldots,\vec x_n\}$. For each eigenvector $\vec x_i$ corresponding to $\lambda_i$, we compute (remember you can replace matrix multiplication with scalar multiplication)
-$$\vec x_1^T A \vec x_1 = \vec x_1^T \lambda_i \vec x_1  = \lambda_i \vec x_i^T\vec x_i = \lambda_i \vec x_i\cdot \vec x_i$$
-where we know $\vec x_i\cdot \vec x_i>0$ from the usual inner product (dot product). 
-We've shown  $$\vec x_1^T A \vec x_1=\lambda_i\vec x_i\cdot \vec x_i>0$$ only if all the eigenvalues are positive.  
-If one of the eigenvalues were zero or negative, then for a corresponding eigenvector$\vec x$, we know that $\vec x A\vec x$ is zero or negative.  We have now shown why the eigenvalues must be positive.  To prove the reverse implication (that all positive eigenvalues implies $\vec x A\vec x>0$ for all nonzero $\vec x$, including vectors other than eigenvectors)  requires considerable more work. We'll postpone that argument for now.
+Here is a partial explanation of why this theorem works. 
+Start by finding the eigenvalues of $A$ and a set of $n$ linearly independent eigenvectors $S = \{\vec x_1,\vec x_2,\ldots,\vec x_n\}$ (we'll see later that we can always do this if $A$ is symmetric). For each eigenvector $\vec x_i$ corresponding to $\lambda_i$, we see that  (using the definition of eigenvalues and eigenvectors)
+$$0<\vec x_i^T A \vec x_i = \vec x_i^T \lambda_i \vec x_i  = \lambda_i \vec x_i^T\vec x_i = \lambda_i \vec x_i\cdot \vec x_i.$$
+If one of the eigenvalues $\lambda_i$ of $A$ was zero or negative, then $\vec x_i A\vec x=\lambda_i \vec x_i \cdot \vec x_i$ would be zero or negative, contradicting the above equation.  Therefore, we conclude that all of the eigenvalues of $A$ must be positive.  To prove the reverse implication (that all positive eigenvalues implies $\vec x A\vec x>0$ for all nonzero $\vec x$, including vectors other than eigenvectors)  requires considerable more work, which we won't do right now.
 
 The usual inner product (the dot product) is obtain by letting $A=I$, the identity matrix. 
 All the eigenvalues of the identity matrix are 1, so $\vec u I \vec v$ defines an inner product on $\R^n$. 
-If you want to show that a product on a finite dimensional vector space is an inner product, 
+
+If you want to show that a product on a finite-dimensional vector space is actually an inner product, 
 one approach is to show that it is represented by a symmetric matrix with positive eigenvalues. 
 Let's now illustrate this with an example.
 
 \begin{example}
 Consider the product on $\R^2$ defined by 
-$$\left<(u_1, u_2),(v_1,v_2)\right> =3u_1v_1-1u_1v_2-1u_2v_1+3u_2v_2.$$ Does this define an inner product on $\R^2$.
+$$\left<(u_1, u_2),(v_1,v_2)\right> =3u_1v_1-1u_1v_2-1u_2v_1+3u_2v_2.$$ 
+Does this define an inner product on $\R^2$?
 
-We can answer this question in 2 ways.  
+We can answer this question in two ways.  
 We could show that this product satisfies the axioms to be an inner product, or we can find a symmetric matrix $A$ with positive eigenvalues such that 
 $$3u_1v_1-1u_1v_2-1u_2v_1+3u_2v_2= \bm{u_1&u_2}A \bm{v_1\\v_2}.$$
 Let's try the latter approach.  We write $A = \bm{a&b\\c&d}$ and then compute 
@@ -311,7 +309,7 @@ $$
 This matrix is symmetric, so we now just need to find the eigenvalues. 
 We compute $(3-\lambda)^2-1 = \lambda^2-6\lambda+8 = (\lambda-4)(\lambda-2) = 0$, and so the eigenvalues (4 and 2) are both positive. We know that $A$ defines an inner product. 
 
-This is an alternate approach to showing a formula is an inner product, but it only works on finite dimensional vector spaces. 
+This alternate approach to showing a formula is an inner product only works on finite dimensional vector spaces. 
 \marginpar{Page 258 in Schaum's contains more examples}.
 \end{example}
 
@@ -320,7 +318,7 @@ As a final example, let's look at the vector space $M_{mn}$ of $m$ by $n$ matric
 Define an inner product on $M_{mn}$ by computing $$\left<A,B\right>= \text{trace}(B^T A).$$ 
 We use the transpose of $B$ so that the product $B^TA$ makes sense. 
 Recall that the trace is the sum of the diagonal entries.  
-Because we want the trace of $B^TA$, we need to compute the diagonal entries of $C=B^T$.  
+Because we want the trace of $B^TA$, we need to compute the diagonal entries of $C=B^TA$.  
 For each $j$, to compute $C_{jj}$ we take row $j$ of $B^T$ and dot it with column $j$ of $A$.  
 This is the same thing as dotting column $j$ of $B$ with column $j$ of $A$, so we have 
 $$C_{jj} = \vec a_j \cdot \vec b_j = \sum_{i=1}^n a_{ij}b_{ij}.$$
@@ -328,7 +326,7 @@ The trace is $\ds C_{11}+C_{22}+\cdots+C_{nn} = \sum_{j=1}^n \sum_{i=1}^n a_{ij}
 In other words, if you just rewrite the matrices as big long vectors in $\R^{mn}$, then you use the usual dot product of $\R^{mn}$ to define an inner product on $M_{mn}$.  Because this is equivalent to the dot product on $\R^{mn}$, we know it satisfies the axioms to be an inner product.
 
 \begin{example}
-To find the inner product of $A=\bm{2&3&0\\-1&4&2}$ and $B=\bm{-1&0&5\\4&1&1}$ we compute 
+To find the inner product of $A=\bm{2&3&0\\-1&4&2}$ and $B=\bm{-1&0&5\\4&1&1}$, we compute 
 $$B^TA = \bm{2&3&0\\-1&4&2}\bm{ -1 & 4 \\ 0 & 1 \\ 5 & 1}= \bm{ -6 & 13 & 8 \\ -1 & 4 & 2 \\ 9 & 19 & 2}.$$
 The trace of this matrix is $-6 +4 +2 = 0$. This means that these two matrices are orthogonal.
 
@@ -373,7 +371,7 @@ We will mostly be working with a finite set of vectors.
 Consider the set  $S=\{(1,2,-4)\}$ composed of a single vector. Let's find the orthogonal complement.
 Let $A$ the matrix whose only column is the vector in $S$. 
 The reduced row echelon form of $A^T$ is $\begin{bmatrix}1&2&-4\end{bmatrix}$. 
-A basis for the null space is $\{(-2,1,0), (4,0,1)\}$, which means that so $S^\perp = \text{span}\{(-2,1,0), (4,0,1)\}$. 
+A basis for the null space is $\{(-2,1,0), (4,0,1)\}$, which means that $S^\perp = \text{span}\{(-2,1,0), (4,0,1)\}$. 
 
 Notice that $S$ contained only one vector, hence the subspace $V = \text{span}\{(1,2,-4)\}$ is represented by a line through the origin. 
 The orthogonal complement of a line should be a plane, as there is an entire plane full of vector that are orthogonal to the line.  
@@ -386,7 +384,7 @@ Consider the set  $S=\{(1,0,3),(0,2,4)\}$. Let's find the orthogonal complement 
 Let $A$ the matrix whose columns are the vectors in $S$. The reduced row echelon form of $A^T$ is $\begin{bmatrix}1&0&3\\0&1&2\end{bmatrix}$. A basis for the null space is $\{(-3,-2,1)\}$, so $S^\perp = \text{span}\{(-3,-2,1)\},$ the one dimensional line which meets the plane spanned by the given vectors at a 90 degree angle.
 \end{example}
 
-Why do we use the words ``orthogonal complement''? The word ``orthogonal refers to the fact that every vector in $S^\perp$ is orthogonal to every vector in $S$.  To understand the word ``complement'', recall that 40$^\circ$ and 50$^\circ$ are complementary angles because their sum is complete (90$^\circ$).  The word ``complement'' refers to the fact using vectors in $S$ and $S^\perp$, we can obtain a ``complete'' basis for all of $\R^n$.  The orthogonal complement adds to $S$ enough vectors to form a basis for $\R^n$, it provides a way to extend $S$ to a basis for all of $\R^n$.
+Why do we use the words ``orthogonal complement''? The word ``orthogonal'' refers to the fact that every vector in $S^\perp$ is orthogonal to every vector in $S$.  To understand the word ``complement'', recall that 40$^\circ$ and 50$^\circ$ are complementary angles because their sum is complete (90$^\circ$).  The word ``complement'' refers to the fact using vectors in $S$ and $S^\perp$, we can obtain a ``complete'' basis for all of $\R^n$.  The orthogonal complement adds to $S$ enough vectors to form a basis for $\R^n$, it provides a way to extend $S$ to a basis for all of $\R^n$.
 
 
 
@@ -628,26 +626,24 @@ $w_3 = v_3
 %add a picture when you have time
 
 \begin{example}
-Example 7.13 in the book (page 256) illustrates this nicely. Due to time constraints, I won't have my own example here.
+Example 7.13 in the book (page 256) illustrates this nicely.
 \end{example}
 
 
 \subsection{Orthogonal Matrices}
-We have seen in chapter 5 that many problems become simpler when we can find a basis that diagonalizes a linear transformation. If $P$ is a similarity matrix that diagonalizes $A$, then $D=P^{-1}AP$ is the diagonal matrix.  As matrices become larger, finding the inverse or $P$ is perhaps the most time intensive part of this computation.  This section shows that when $A$ is a symmetric matrix, it is always possible to find a basis such that the inverse of $P$ is extremly simple, namely $P^{-1} = P^T$ (the inverse is the transpose). To introduce this idea, let's start with a simple example.
+Finding the inverse of a matrix is expensive and error-prone, even for computers.  Matrices that have orthonormal columns have a very nice property: $P^{-1} = P^T$ (the inverse is the transpose). To introduce this idea, let's start with a simple example.
 
 \begin{example}
-The matrix $A = \bm {2&1\\1&2}$ has eigenvalues $3,1$ with eigenvector $(1,1)$ and $(-1,1)$. 
-Notice that these two eigenvectors are orthogonal as $(1,1)\cdot(-1,1)=0$. 
+Consider the two vectors $(1,1)$ and $(-1,1)$. 
+Notice that these two vectors are orthogonal since $(1,1)\cdot(-1,1)=0$. 
 If we let $P = \bm{1&-1\\1&1}$, then $\ds P^{-1} = \frac{1}{2}\bm{1&1\\-1&1} = \frac{1}{2}P^T$, almost the transpose.
-The vectors we choose were orthogonal, but not normalized. Since eigenvectors can be multiplied by any scalar and still remain as eigenvectors, let's use the vectors $\frac{1}{\sqrt{2}}(1,1)$ and $\frac{1}{\sqrt{2}}(-1,1)$ instead. With these eigenvectors, we have 
-$$P = \bm{1\sqrt{2}&-1\sqrt{2}\\1\sqrt{2}&1\sqrt{2}}, \quad P^{-1} = \bm{1\sqrt{2}&1\sqrt{2}\\-1\sqrt{2}&1\sqrt{2}} = P^T,\quad
-\text{and}\quad D = \bm{3&0\\0&1} = P^T A P.$$ 
-The inverse of $P$ is extremely simple and we can replace $D=P^{-1}AP$ with $D=P^T A P$.  
+The vectors we choose were orthogonal, but not normalized. Since orthogonal vectors can be multiplied by any scalar and still remain as orthogonal, let's use the vectors $\frac{1}{\sqrt{2}}(1,1)$ and $\frac{1}{\sqrt{2}}(-1,1)$ instead. With these vectors, we have 
+$$P = \bm{1\sqrt{2}&-1\sqrt{2}\\1\sqrt{2}&1\sqrt{2}}, \quad\text{ and }\quad P^{-1} = \bm{1\sqrt{2}&1\sqrt{2}\\-1\sqrt{2}&1\sqrt{2}} = P^T.$$ 
 \end{example}
 
 Now it's time for some language.
 \begin{definition}
-A matrix is said to be orthogonal if $A^TA=AA^T=I$, or in other words $A^T=A^{-1}$ (the transpose is the inverse).  
+A matrix is said to be \define{orthogonal} if $A^TA=AA^T=I$, or in other words $A^T=A^{-1}$ (the transpose is the inverse).  
 \end{definition}
 \marginpar{Schaum's has more examples on pages 113-114.} If $\vec u_i$ is the $i$th column of $A$, then the product $A^TA$ has in  the $ij$th spot the product $\vec u_i^T \vec u_j$.  In order for a matrix to be orthogonal, this requires that $\vec u_i^T \vec u_j=0$ if $i\neq j$ (so columns $i$ and $j$ are orthogonal) and that $\vec u_i^T \vec u_j=1$ when $i=j$ (so each vector has length 1).  We have just proved the following theorem
 \begin{theorem}
@@ -658,43 +654,13 @@ The following three conditions are equivalent for a square matrix $A$:
 	\item The rows of $A$ form an orthonormal set.
 \end{enumerate}
 \end{theorem}
-The key use we'll make of this theorem is that if a similarity matrix $P$ has orthonormal columns, then its inverse is the transpose, and we can diagonalize $A$ by writing $D=P^TAP$. 
 
 \begin{example}
 See example 7.14 in Schaum's (page 257). Part b is a rotation matrix. Every rotation in any dimension is represented by an orthogonal matrix, so computer graphic designers use these all the time.
 \end{example}
 
 
-\subsection{Diagonalizing Symmetric Matrices}
-
-If $A$ is a matrix that can be diagonalized by an orthogonal matrix, then what can be said about $A$?  We'll show that $A$ must be symmetric ($A^T=A$).  Here's why.  If $D = P^T A P$, then multiply on the left by $P$ and on the right by $P^T=P^{-1}$ to obtain $A=P DP^T$. The transpose of $A$ is hence (reverse the order and transpose each) 
-$$A^T = (PDP^T)^T = P^T D^T (P^T)^T = P^T D P^T = A,$$ since $D^T=D$ (as a diagonal matrix) and $(P^T)^T=P$.
-Hence, the only kinds of matrices that can be diagonalized with an orthogonal matrix are precisely symmetric matrices.
-
-Symmetric matrices appeared earlier in the semester when we studied optimization and the second derivative test.  They also appeared at the beginning of the unit as every inner product can be represented by a symmetric matrix.  Much has been learned about symmetric matrices. We now state a key theorem about symmetric matrices.
-\begin{theorem}[Real Spectral Theorem]
-Let $A$ be a symmetric matrix. 
-\begin{enumerate}
-	\item All the eigenvalues of $A$ are real.
-	\item For each eigenvalue, the geometric multiplicity matches the algebraic multiplicity.
-	\item Eigenvectors corresponding to different eigenvalues are orthogonal.
-\end{enumerate}
-In particular, these three facts imply that every symmetric matrix can be diagonalized by an orthogonal matrix of real numbers (the Gram-Schmidt process may have to be used if an eigenvalue occurs with algebraic multiplicity more than one). 
-\end{theorem}
-
-\begin{example}
-See page 404 in Schaum's, example 11.9.  
-When finding the characteristic polynomial, you can either compute the trace and determinant to find the coefficients, or you can subtract $\lambda$ from the diagonals and then find the determinant. 
-\end{example}
-
-Now, do you remember the second derivative test we learned at the beginning of the semester?  Every matrix involved in the second derivative test will always be symmetric.  This means that with every 2nd derivative test (optimization problem), you will always be able to find the eigenvalues and they will be real numbers.  
-In addition, a basis of eigenvectors can be chosen to always meet at right angles. 
-Changing bases is a way of rearranging how we view a problem, and symmetric matrices have extremely nice bases. 
-
-
-
-
-
-
-
-
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../linear-algebra"
+%%% End: 
