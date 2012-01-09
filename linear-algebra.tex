@@ -5,7 +5,13 @@
 %% uncomment one of the following, depending if you want to include the
 %% instructor notes or not
 \instructortrue
-%\instructorfalse
+\instructorfalse
+
+\renewcommand{\thefootnote}{\roman{footnote}}
+\newcommand{\note}[1]{\footnote{#1}\marginpar{\fbox{\textbf{\thefootnote}}}}
+%%%%%%%To make all notes ignored, uncomment the following command.
+\renewcommand{\note}[1]{}
+
 
 \usepackage[left=1in,right=2.75in,top=1in,bottom=1in]{geometry}
 \marginparwidth 1.75in
@@ -64,10 +70,6 @@
 \renewcommand\marginpar[1]{\-\oldmarginpar{\raggedright\footnotesize #1}}
 %\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]{\raggedright\footnotesize #1}}
 
-\renewcommand{\thefootnote}{\roman{footnote}}
-\newcommand{\note}[1]{\footnote{#1}\marginpar{\fbox{\textbf{\thefootnote}}}}
-%%%%%%%To make all notes ignored, uncomment the following command.
-%\renewcommand{\note}[1]{}
 
 %\usepackage[12hr]{datetime}
 %\newdateformat{draftdate}{%
@@ -86,6 +88,7 @@
 \newtheorem*{lemma*}{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{problem}[theorem]{Problem}
 
 \newtheoremstyle{box}%
 {}{}% standard spacing before and after
@@ -152,7 +155,7 @@
 \newcommand{\R}{\mathbb{R}}
 
 % double-vertical bars for norm
-%\providecommand{\norm}[1]{\lVert#1\rVert} 
+\providecommand{\normd}[1]{\lVert#1\rVert} 
 
 % single-vertical bars for norm
 \providecommand{\norm}[1]{\left|#1\right|} 
@@ -179,7 +182,7 @@
 \copyright{This work is licensed under the Creative Commons
   Attribution-Share Alike 3.0 United States License.  You may copy,
   distribute, display, and perform this copyrighted work but only if
-  you give credit to Ben Woodruff — and all derivative works based
+  you give credit to Ben Woodruff  and all derivative works based
   upon it must be published under the Creative Commons
   Attribution-Share Alike 3.0 United States License. Please attribute
   to Ben Woodruff, Mathematics Faculty at Brigham Young University -
@@ -225,42 +228,42 @@ See \url{https://github.com/jasongrout/linear-algebra} for the source for the bo
 \include{01-Arithmetic/Arithmetic-Instructor}
 \fi
 
-% \include{02-Applications/Linear-Algebra-Applications-Content}
-% \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
-% \include{02-Applications/Linear-Algebra-Applications-Problems}
-% \restoregeometry
-% \ifinstructor
-% \include{02-Applications/Linear-Algebra-Applications-Instructor}
-% \fi
+ \include{02-Applications/Linear-Algebra-Applications-Content}
+ \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
+ \include{02-Applications/Linear-Algebra-Applications-Problems}
+ \restoregeometry
+ \ifinstructor
+ \include{02-Applications/Linear-Algebra-Applications-Instructor}
+ \fi
 
-% \include{03-Patterns/Patterns-Content}
-% \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
-% \include{03-Patterns/Patterns-problems}
-% \restoregeometry
-% \ifinstructor
-% \include{03-Patterns/Patterns-Instructor}
-% \fi
+\include{03-Patterns/Patterns-Content}
+ \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
+ \include{03-Patterns/Patterns-problems}
+ \restoregeometry
+ \ifinstructor
+ \include{03-Patterns/Patterns-Instructor}
+ \fi
 
-% \include{04-Inner-Products/Inner-Products-Content}
-% \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
-% \include{04-Inner-Products/Inner-Products-Problems}
-%  \restoregeometry
+\include{04-Inner-Products/Inner-Products-Content}
+\newgeometry{left=1in,right=1in,top=1in,bottom=1in}
+\include{04-Inner-Products/Inner-Products-Problems}
+\restoregeometry
 
-% \include{05-Linear-Transformations/Linear-Transformations-Content}
-% \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
-% \include{05-Linear-Transformations/Linear-Transformations-Problems}
-% \restoregeometry
-% \ifinstructor
-% \include{05-Linear-Transformations/Linear-Transformations-Instructor}
-% \fi
+\include{05-Linear-Transformations/Linear-Transformations-Content}
+\newgeometry{left=1in,right=1in,top=1in,bottom=1in}
+\include{05-Linear-Transformations/Linear-Transformations-Problems}
+\restoregeometry
+\ifinstructor
+\include{05-Linear-Transformations/Linear-Transformations-Instructor}
+\fi
 
 
-% \include{06-Changing-Bases/Changing-Bases-Content}
-% \theendnotes
-% \setcounter{endnote}{0}
-%  \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
-%  \include{06-Changing-Bases/Changing-Bases-Problems}
-%  \restoregeometry
+\include{06-Changing-Bases/Changing-Bases-Content}
+\theendnotes
+\setcounter{endnote}{0}
+ \newgeometry{left=1in,right=1in,top=1in,bottom=1in}
+ \include{06-Changing-Bases/Changing-Bases-Problems}
+ \restoregeometry
 
 
 
