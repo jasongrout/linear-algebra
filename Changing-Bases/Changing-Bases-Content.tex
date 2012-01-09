@@ -869,8 +869,8 @@ $$
  0 & 1 & 0 & 0 & 1 \\
  0 & 0 & 1 & 0 & 2 \\
  0 & 0 & 0 & 1 & -2
-\end{bmatrix},
-$$. 
+\end{bmatrix}.
+$$
 A basis for the domain is $S=\{(1,0,0,0),(0,1,0,0),(0,0,1,0),(-1,-2,2,1)\}$, where we placed the vector in the kernel at the end. 
 Using the standard basis for the range, we compute the matrix representation of $T$ relative to the bases $S$ and $E$ by noting 
 $$C=I=C^{-1},
@@ -1255,6 +1255,75 @@ For example \ref{multiplicityex2}, a basis for $E_3$ is $\{(0,0,1)\}$. The geome
 Suppose we have a vector field that pushes objects straight outwards in the direction $(1,1)$ with a force that is triple the distance from the origin, and pulls objects towards the origin in the direction $(-1,1)$ with a force that is equal to the distance to the origin. In other words, our vector field has eigenvectors $(1,1)$ and $(-1,1)$ with corresponding eigenvalues $3$ and $-1$. Is this enough information to determine the entire vector field?  We seek a matrix $A$ with eigenvectors $(1,1)$ and $(-1,1)$ with eigenvalues 3 and $-1$.  The principle of diagonalization comes to our aid.  Because $A$ has two linearly independent eigenvectors, we know that it is diagonalizable where $$ P = \bm{1&-1\\1&1}, D = \bm{3&0\\0&-1},P\inv =\frac12\bm{1&1\\-1&1}. $$ We solve the equation $D = P\inv A P$ for $A$ to obtain 
 $$A = PDP\inv = \bm{1&-1\\1&1}\bm{3&0\\0&-1}\frac12\bm{1&1\\-1&1} = \bm{1&2\\2&1}.$$
 We just obtained the matrix which represents our vector field. All we needed to know was the eigenvalues and eigenvectors, something than can be seen and measured physically in a vector field. So we now have the ability to take a physical moving force and use diagonalization to connect it back to matrices.  
+
+\note{TODO: Go through the following and make it fit here}
+\section{Orthogonal Matrices}
+We have seen in this chapter that many problems become simpler when we can find a basis that diagonalizes a linear transformation. If $P$ is a similarity matrix that diagonalizes $A$, then $D=P^{-1}AP$ is the diagonal matrix.  As matrices become larger, finding the inverse or $P$ is perhaps the most time intensive part of this computation.  This section shows that when $A$ is a symmetric matrix, it is always possible to find a basis such that the inverse of $P$ is extremly simple, namely $P^{-1} = P^T$ (the inverse is the transpose). To introduce this idea, let's start with a simple example.
+
+\begin{example}
+The matrix $A = \bm {2&1\\1&2}$ has eigenvalues $3,1$ with eigenvector $(1,1)$ and $(-1,1)$. 
+Notice that these two eigenvectors are orthogonal as $(1,1)\cdot(-1,1)=0$. 
+If we let $P = \bm{1&-1\\1&1}$, then $\ds P^{-1} = \frac{1}{2}\bm{1&1\\-1&1} = \frac{1}{2}P^T$, almost the transpose.
+The vectors we choose were orthogonal, but not normalized. Since eigenvectors can be multiplied by any scalar and still remain as eigenvectors, let's use the vectors $\frac{1}{\sqrt{2}}(1,1)$ and $\frac{1}{\sqrt{2}}(-1,1)$ instead. With these eigenvectors, we have 
+$$P = \bm{1\sqrt{2}&-1\sqrt{2}\\1\sqrt{2}&1\sqrt{2}}, \quad P^{-1} = \bm{1\sqrt{2}&1\sqrt{2}\\-1\sqrt{2}&1\sqrt{2}} = P^T,\quad
+\text{and}\quad D = \bm{3&0\\0&1} = P^T A P.$$ 
+The inverse of $P$ is extremely simple and we can replace $D=P^{-1}AP$ with $D=P^T A P$.  
+\end{example}
+
+Now it's time for some language.
+\begin{definition}
+A matrix is said to be orthogonal if $A^TA=AA^T=I$, or in other words $A^T=A^{-1}$ (the transpose is the inverse).  
+\end{definition}
+\marginpar{Schaum's has more examples on pages 113-114.} If $\vec u_i$ is the $i$th column of $A$, then the product $A^TA$ has in  the $ij$th spot the product $\vec u_i^T \vec u_j$.  In order for a matrix to be orthogonal, this requires that $\vec u_i^T \vec u_j=0$ if $i\neq j$ (so columns $i$ and $j$ are orthogonal) and that $\vec u_i^T \vec u_j=1$ when $i=j$ (so each vector has length 1).  We have just proved the following theorem
+\begin{theorem}
+The following three conditions are equivalent for a square matrix $A$:
+\begin{enumerate}
+	\item $A$ is orthogonal - meaning $A^TA=AA^T=I$.
+	\item The columns of $A$ form an orthonormal set.
+	\item The rows of $A$ form an orthonormal set.
+\end{enumerate}
+\end{theorem}
+The key use we'll make of this theorem is that if a similarity matrix $P$ has orthonormal columns, then its inverse is the transpose, and we can diagonalize $A$ by writing $D=P^TAP$. 
+
+\begin{example}
+See example 7.14 in Schaum's (page 257). Part b is a rotation matrix. Every rotation in any dimension is represented by an orthogonal matrix, so computer graphic designers use these all the time.
+\end{example}
+
+
+\subsection{Diagonalizing Symmetric Matrices}
+
+If $A$ is a matrix that can be diagonalized by an orthogonal matrix, then what can be said about $A$?  We'll show that $A$ must be symmetric ($A^T=A$).  Here's why.  If $D = P^T A P$, then multiply on the left by $P$ and on the right by $P^T=P^{-1}$ to obtain $A=P DP^T$. The transpose of $A$ is hence (reverse the order and transpose each) 
+$$A^T = (PDP^T)^T = P^T D^T (P^T)^T = P^T D P^T = A,$$ since $D^T=D$ (as a diagonal matrix) and $(P^T)^T=P$.
+Hence, the only kinds of matrices that can be diagonalized with an orthogonal matrix are precisely symmetric matrices.
+
+Symmetric matrices appeared earlier in the semester when we studied optimization and the second derivative test.  They also appeared at the beginning of the unit as every inner product can be represented by a symmetric matrix.  Much has been learned about symmetric matrices. We now state a key theorem about symmetric matrices.
+\begin{theorem}[Real Spectral Theorem]
+Let $A$ be a symmetric matrix. 
+\begin{enumerate}
+	\item All the eigenvalues of $A$ are real.
+	\item For each eigenvalue, the geometric multiplicity matches the algebraic multiplicity.
+	\item Eigenvectors corresponding to different eigenvalues are orthogonal.
+\end{enumerate}
+In particular, these three facts imply that every symmetric matrix can be diagonalized by an orthogonal matrix of real numbers (the Gram-Schmidt process may have to be used if an eigenvalue occurs with algebraic multiplicity more than one). 
+\end{theorem}
+
+\begin{example}
+See page 404 in Schaum's, example 11.9.  
+When finding the characteristic polynomial, you can either compute the trace and determinant to find the coefficients, or you can subtract $\lambda$ from the diagonals and then find the determinant. 
+\end{example}
+
+Now, do you remember the second derivative test we learned at the beginning of the semester?  Every matrix involved in the second derivative test will always be symmetric.  This means that with every 2nd derivative test (optimization problem), you will always be able to find the eigenvalues and they will be real numbers.  
+In addition, a basis of eigenvectors can be chosen to always meet at right angles. 
+Changing bases is a way of rearranging how we view a problem, and symmetric matrices have extremely nice bases. 
+
+
+
+
+
+
+
+
+
 
 %As time permits, I will add one other application related to computer graphics. Stay tuned.
 

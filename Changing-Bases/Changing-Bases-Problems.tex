@@ -206,28 +206,36 @@ You could interpret this as: (1) your device should not jam other communications
 	\item Compute $\ds \int_{-1}^1 \sin(3\pi x)\sin(n \pi x) dx$ for $n=1,2,3$. One is nonzero.
 \end{itemize}
 As a challenge (optional), use the product-to-sum trig identities to prove the general cases. 
-We'll be revisiting this topic when we study inner products.  The integral $\int _{-1}^1 fg dx$ is called an inner product. Because the nonzero integrals are 1, we say that $S$ is an orthonormal basis.
+We've studied this topic already when we studied inner products.  The integral $\int _{-1}^1 fg dx$ is called an inner product. Because the nonzero integrals are 1, we say that $S$ is an orthonormal basis.
 
 \end{enumerate}
 
-\item DCT Project, involving changing coordinates to frequency domain,
-  jumping to a nearby vector, and storing that nearby vector.
-  Decompression involves converting that nearby vector into the time
-  domain and viewing the result.  Should cover 1-D DCT as well as 2d
-  DCT and highlight the connections with JPEG and MPEG compression.
-  Highlight the connection to "basis functions" and coordinate vectors
-  in 1d or 2d.  Resources include
-  \url{http://www.cs.cf.ac.uk/Dave/Multimedia/node231.html},
-  \url{http://en.wikipedia.org/wiki/JPEG},
-  \url{http://en.wikipedia.org/wiki/Discrete_cosine_transform#Example_of_IDCT},
-  \url{http://vision.arc.nasa.gov/publications/mathjournal94.pdf}
-  (mathematica example), p. 325 of Strang's book (see also ``The
-  Discrete Cosine Transform'' by Strang, where he treats the basis
-  vectors as eigenvectors of a symmetric matrix, which shows they are
-  orthonormal:  \url{http://disp.ee.ntu.edu.tw/meeting/%E8%82%B2%E6%80%9D/Integer%20Transfrom/%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99/The%20Discrete%20Cosine%20Transform.pdf}, or
-  \url{http://www-math.mit.edu/~gs/papers/dct.ps}.  You can also
-  emphasize the similarity part of the transform and emphasize the
-  connections to eigenvectors.  Plot a cosine curve or two as well.
+% \note{\item DCT Project, involving changing coordinates to frequency domain,
+%   jumping to a nearby vector, and storing that nearby vector.
+%   Decompression involves converting that nearby vector into the time
+%   domain and viewing the result.  Should cover 1-D DCT as well as 2d
+%   DCT and highlight the connections with JPEG and MPEG compression.
+%   Highlight the connection to "basis functions" and coordinate vectors
+%   in 1d or 2d.  Resources include
+%   \url{http://www.cs.cf.ac.uk/Dave/Multimedia/node231.html},
+%   \url{http://en.wikipedia.org/wiki/JPEG},
+%   \url{http://en.wikipedia.org/wiki/Discrete_cosine_transform#Example_of_IDCT},
+%   \url{http://vision.arc.nasa.gov/publications/mathjournal94.pdf}
+%   (mathematica example), p. 325 of Strang's book (see also ``The
+%   Discrete Cosine Transform'' by Strang, where he treats the basis
+%   vectors as eigenvectors of a symmetric matrix, which shows they are
+%   orthonormal:  \url{http://disp.ee.ntu.edu.tw/meeting/%E8%82%B2%E6%80%9D/Integer%20Transfrom/%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99/The%20Discrete%20Cosine%20Transform.pdf}, or
+%   \url{http://www-math.mit.edu/~gs/papers/dct.ps}.  You can also
+%   emphasize the similarity part of the transform and emphasize the
+%   connections to eigenvectors.  Plot a cosine curve or two as well.
+%   See
+%   \url{http://www.faqs.org/faqs/compression-faq/part2/section-6.html},
+%   \url{http://www.dip.ee.uct.ac.za/~nicolls/lectures/eee401f/projects/dct.pdf}, 
+
+%   According to
+%   \url{http://eeweb.poly.edu/~yao/EE3414/ImageCoding_DCT.pdf}, the DCT
+%   is particularly useful if the image can be modeled by a markov
+%   process (the next pixel depends only on the previous pixel).}
 \end{enumerate}
 
 \input{Changing-Bases/Changing-Bases-solutions}
